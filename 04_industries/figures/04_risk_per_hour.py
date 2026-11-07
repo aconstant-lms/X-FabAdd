@@ -10,11 +10,12 @@ HERE = pathlib.Path(__file__).resolve().parent
 rows = list(csv.DictReader(open(HERE.parent / "tables" / "04_risk_per_hour.csv", encoding="utf-8")))
 COL = {"Sports": "#2a78d6", "Medical": "#eb6834", "Car": "#1baf7a",
        "Train": "#eda100", "Aviation": "#e87ba4", "Space": "#008300"}
-INK, INK2, GRID = "#1F2933", "#52514e", "#E3E1DC"
+INK, INK2, GRID, BG = "#1B2433", "#566170", "#DDD6C6", "#FBFAF7"  # deck palette (AM slides)
 rows.sort(key=lambda r: float(r["low_per_h"]) * float(r["high_per_h"]))
 
 plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 11})
-fig, ax = plt.subplots(figsize=(10.5, 6.2), dpi=220)
+fig, ax = plt.subplots(figsize=(10.5, 6.2), dpi=220, facecolor=BG)
+ax.set_facecolor(BG)
 ax.set_xscale("log"); ax.set_xlim(5e-9, 3e-2)
 for k in (1e-9, 1e-8, 1e-7, 1e-6, 1e-5, 1e-4, 1e-3, 1e-2):
     ax.axvline(k, color=GRID, lw=0.8, zorder=0)
@@ -31,7 +32,7 @@ for i, r in enumerate(rows):
     ax.plot([lo, lo], [i - 0.28, i + 0.28], color=c, lw=2.5, zorder=4)
     ax.plot([hi, hi], [i - 0.28, i + 0.28], color=c, lw=2.5, zorder=4)
     ax.text(hi * 1.35, i, r["activity"], va="center", fontsize=10.5, color=INK, zorder=5,
-            bbox=dict(boxstyle="square,pad=0.1", fc="white", ec="none"))
+            bbox=dict(boxstyle="square,pad=0.1", fc=BG, ec="none"))
 ax.set_yticks([]); ax.set_ylim(-0.7, len(rows) - 0.2)
 for s in ("left", "right", "top"):
     ax.spines[s].set_visible(False)
@@ -44,4 +45,4 @@ h = [Patch(color=c, label={"Car": "Road (car, bus, motorcycle)"}.get(d, d)) for 
 h.append(Patch(facecolor="white", edgecolor="#eb6834", hatch="////", label="device failure event (not a death)"))
 ax.legend(handles=h, loc="lower right", frameon=False, fontsize=9.5, ncol=2)
 fig.tight_layout()
-fig.savefig(HERE / "04_risk_per_hour.png")
+fig.savefig(HERE / "04_risk_per_hour.png", facecolor=BG)

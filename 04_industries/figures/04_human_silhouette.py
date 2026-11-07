@@ -4,7 +4,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.patches import Circle, FancyBboxPatch
 
-INK = "#2B3440"
+INK = "#1B2433"
 fig = plt.figure(figsize=(2.4, 7.2), dpi=300)
 ax = fig.add_axes([0, 0, 1, 1])
 ax.set_xlim(-1.2, 1.2); ax.set_ylim(-0.1, 7.1); ax.set_aspect("equal"); ax.axis("off")
