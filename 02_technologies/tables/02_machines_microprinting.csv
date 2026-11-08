@@ -1,0 +1,10 @@
+printer,technology,state_of_feedstock,min_layer_thickness,min_resolution,price_usd,source
+BMF microArch line,PµSL (projection micro-stereolithography),liquid,5 µm,2 µm,"145,000 – 230,000",https://all3dp.com/1/micro-3d-printing-guide/
+Nanoscribe Quantum X,TPP (two-photon polymerisation),liquid,0.1 µm,0.2 µm,"500,000",https://all3dp.com/1/micro-3d-printing-guide/
+UpNano NanoOne,TPP (two-photon polymerisation),liquid,0.17 µm,0.01 µm,request quote,https://all3dp.com/1/micro-3d-printing-guide/
+Nano Dimension Tera Series,PµSL (projection micro-stereolithography),liquid,5 µm,2 µm,request quote,https://all3dp.com/1/micro-3d-printing-guide/
+Incus Hammer Lab35,LMM (lithography-based metal manufacturing),pasty (metal-loaded resin),10 µm,35 µm,"250,000",https://all3dp.com/1/micro-3d-printing-guide/
+Exaddon Ceres,electrochemical deposition (metal),ionised,na,< 1 µm,"272,000",https://all3dp.com/1/micro-3d-printing-guide/
+3D MicroPrint DMP line,µ-SLS (micro selective laser sintering of metal),powder,15 µm,1 µm,request quote,https://all3dp.com/1/micro-3d-printing-guide/
+Microlight3D µFAB-3D & Altraspin,TPP (two-photon polymerisation),liquid,0.6 µm,0.2 µm,"120,000 – 180,000",https://all3dp.com/1/micro-3d-printing-guide/
+Femtika Laser Nanofactory,TPP (two-photon polymerisation),liquid,0.2 µm,0.3 µm,request quote,https://all3dp.com/1/micro-3d-printing-guide/

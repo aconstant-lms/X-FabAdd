@@ -1,0 +1,8 @@
+manufacturer,model,price_usd,build_volume_mm,notes,source
+SLM Solutions,SLM 125,"400,000 – 500,000",125 x 125 x 125,,deck 03_Technologies (2025) slide 11; performance index chart from AMPOWER Insights
+SLM Solutions,SLM 280,"500,000 – 800,000",280 x 280 x 300,,deck 03_Technologies (2025) slide 11
+SLM Solutions,SLM 500,"800,000+",500 x 500 x 500,,deck 03_Technologies (2025) slide 11
+EOS,M 290,"600,000 – 1,000,000",290 x 290 x 400,,deck 03_Technologies (2025) slide 11
+EOS,M 400,"1,000,000+",400 x 400 x 400,,deck 03_Technologies (2025) slide 11
+Renishaw,AM 400,"600,000 – 1,000,000",400 x 400 x 400,build volume to check against the maker's data sheet,deck 03_Technologies (2025) slide 11
+TRUMPF,TruPrint 1000,"170,000",100 x 100 x 100,,deck 03_Technologies (2025) slide 11

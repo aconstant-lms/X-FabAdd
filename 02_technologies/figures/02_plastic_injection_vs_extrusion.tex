@@ -1,0 +1,80 @@
+% From the plastic state: injection moulding vs material extrusion (FFF)
+\documentclass[tikz,border=6pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\xfabpanels{Injection moulding}{molten polymer is pushed into a closed mould}
+           {Material extrusion (FFF)}{a heated nozzle lays roads, layer by layer}
+
+% ================= LEFT: injection moulding
+\begin{scope}[shift={(0.4,-5.4)}]
+  % hopper with pellets
+  \draw[machine] (0.9,3.3) -- (2.1,3.3) -- (1.7,2.4) -- (1.3,2.4) -- cycle;
+  \pgfmathsetseed{3}
+  \foreach \i in {1,...,14}{\fill[plastic!45, draw=plastic!70!black, line width=0.3pt]
+     (1.15+0.7*rnd, 2.75+0.45*rnd) ellipse (0.07 and 0.05);}
+  % barrel
+  \draw[machine] (0.2,1.6) rectangle (4.2,2.4);
+  % screw
+  \fill[plastic!35] (0.3,1.7) rectangle (4.1,2.3);
+  \draw[steel, line width=1pt] (0.3,2.0) -- (3.5,2.0);
+  \foreach \xx in {0.5,0.85,...,3.3} \draw[steel, line width=1.2pt] (\xx,1.72) -- (\xx+0.2,2.28);
+  % melt ahead of the screw
+  \fill[plastic!80] (3.5,1.7) rectangle (4.1,2.3);
+  % heater bands
+  \foreach \xx in {1.6,2.4,3.2} \fill[heat] (\xx,2.4) rectangle (\xx+0.45,2.55) (\xx,1.45) rectangle (\xx+0.45,1.6);
+  % nozzle
+  \fill[machinedark] (4.2,1.75) -- (4.55,1.9) -- (4.55,2.1) -- (4.2,2.25) -- cycle;
+  % mould halves
+  \fill[mould] (4.55,0.6) rectangle (5.35,3.4);
+  \fill[mould] (5.35,0.6) rectangle (6.15,3.4);
+  \draw[steel, line width=1pt] (4.55,0.6) rectangle (5.35,3.4) (5.35,0.6) rectangle (6.15,3.4);
+  % cavity
+  \fill[white] (5.0,0.95) rectangle (5.7,3.05);
+  \fill[plastic!80, draw=plastic!60!black, line width=0.6pt] (5.0,0.95) rectangle (5.7,3.05);
+  \fill[plastic!80] (4.55,1.93) rectangle (5.0,2.07);
+  % ram force + clamp
+  \draw[flow=steel] (-0.4,2.0) -- (0.15,2.0);
+  \draw[flow=steel] (6.7,2.0) -- (6.2,2.0);
+  % labels
+  \node[lbl, anchor=west] (h) at (2.25,3.15) {pellets};
+  \node[lbl, anchor=north] at (2.2,1.3) {heated barrel and screw};
+  \node[lbl, anchor=north] at (5.35,0.5) {mould (steel, reused)};
+  \node[lbl, anchor=south] at (6.6,2.15) {clamp};
+  \node[lbl, anchor=south] at (-0.15,2.15) {ram};
+\end{scope}
+
+% ================= RIGHT: FFF
+\begin{scope}[shift={(8.6,-6.1)}]
+  % bed
+  \draw[machine] (0,0) rectangle (5.6,0.25);
+  % roads (cross-section, stacked, slightly staggered)
+  \foreach \i/\a/\b in {0/0.7/4.2, 1/0.8/4.1, 2/0.9/4.0, 3/1.0/3.9, 4/1.1/3.8}{
+    \pgfmathsetmacro{\yy}{0.25+\i*0.3}
+    \fill[plastic!55, draw=plastic!75!black, line width=0.5pt, rounded corners=0.13cm] (\a,\yy) rectangle (\b,\yy+0.3);}
+  % current road being laid
+  \fill[plastic!85, draw=plastic!60!black, line width=0.5pt, rounded corners=0.13cm] (1.2,1.75) rectangle (2.55,2.05);
+  % hot end
+  \draw[machine] (2.0,2.85) rectangle (3.2,3.5);
+  \fill[energy!80] (2.15,2.85) -- (3.05,2.85) -- (2.68,2.15) -- (2.52,2.15) -- cycle;
+  \draw[plastic!85, line width=4pt] (2.6,2.15) -- (2.6,2.0);
+  \draw[plastic!85, line width=4pt, rounded corners=4pt] (2.6,2.12) -- (2.6,1.9) -- (2.45,1.9);
+  % filament and drive gears
+  \draw[plastic!60, line width=3pt] (2.6,5.4) -- (2.6,3.5);
+  \foreach \gx in {2.25,2.95}{
+    \draw[machinedark] (\gx,4.15) circle (0.28);
+    \fill[white] (\gx,4.15) circle (0.08);}
+  \draw[motion] (1.9,4.45) arc[start angle=150,end angle=30,radius=0.4];
+  % motion
+  \draw[dblmotion] (3.5,2.5) -- (4.6,2.5);
+  \node[lbl] at (4.05,2.72) {$x,y$};
+  \foreach \yy in {1.0,1.6} \draw[heatwave] (4.3,\yy) -- (4.9,\yy);
+  % labels
+  \node[lbl, anchor=west] (f) at (3.2,5.1) {filament (solid)};
+  \node[lbl, anchor=west] (g) at (3.35,4.15) {drive gears};
+  \node[lbl, anchor=west] (n) at (3.35,3.15) {hot end ($\approx$ 200--400\,°C)};
+  \node[lbl, anchor=north] at (2.8,-0.05) {build plate; roads cool and weld to the layer below};
+\end{scope}
+\xfabstate{plastic}{1.2}{plastic}
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,82 @@
+% From the liquid state: sand casting vs vat photopolymerisation (laser SLA)
+\documentclass[tikz,border=6pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\xfabpanels{Sand casting}{the whole part fills a mould at once; solidifies by cooling}
+           {Vat photopolymerisation}{a light spot cures the resin, layer by layer}
+
+% ================= LEFT: sand casting
+\begin{scope}[shift={(0.6,-6.1)}]
+  % flask with sand
+  \draw[sand] (0,0) rectangle (5.4,3.6);
+  \draw[steel, line width=1.6pt] (0,0) rectangle (5.4,3.6);
+  \draw[steel, line width=1pt, dashed] (-0.2,1.8) -- (5.6,1.8);
+  % cavity (part) with molten metal
+  \def\cav{(1.0,0.7) -- (3.6,0.7) -- (3.6,1.6) -- (2.4,1.6) -- (2.4,2.6) -- (1.0,2.6) -- cycle}
+  \fill[white] \cav;
+  \fill[mat=liquid] \cav;
+  \draw[liquid!70!black, line width=0.9pt] \cav;
+  % sprue and riser
+  \fill[mat=liquid] (1.5,2.6) rectangle (1.85,3.6);
+  \draw[liquid!70!black, line width=0.6pt] (1.5,2.6) -- (1.5,3.6) (1.85,2.6) -- (1.85,3.6);
+  \fill[mat=liquid] (3.6,0.7) rectangle (4.15,3.1);
+  \draw[liquid!70!black, line width=0.6pt] (3.6,1.6) -- (3.6,3.1) -- (4.15,3.1) -- (4.15,0.7) -- (3.6,0.7);
+  % ladle
+  \draw[machine] (0.6,4.9) -- (2.0,4.9) -- (1.8,4.0) -- (0.8,4.0) -- cycle;
+  \fill[liquid!60] (0.66,4.7) -- (1.94,4.7) -- (1.81,4.06) -- (0.79,4.06) -- cycle;
+  \draw[steel, line width=1.6pt] (2.0,4.9) -- (2.9,5.3);
+  \draw[liquid, line width=3pt] (1.85,4.3) .. controls (1.95,4.0) and (1.7,3.8) .. (1.68,3.4);
+  % heat out
+  \foreach \yy in {0.9,1.6,2.3} \draw[heatwave] (5.5,\yy) -- (6.2,\yy);
+  % labels
+  \node[lbl, anchor=west] (a) at (2.8,4.4) {ladle, molten metal};
+  \node[lbl, anchor=west] (b) at (4.7,3.95) {riser};
+  \draw[leader] (b.south west) -- (3.9,2.9);
+  \node[lbl, anchor=west] (c) at (0.15,-0.35) {sand mould (lost after one part)};
+  \node[lbl, anchor=east] (d) at (3.4,4.05) {};
+  \node[lbl, fill=white, fill opacity=0.85, text opacity=1] (e) at (2.2,1.15) {cavity = part};
+  \node[lbl, anchor=west] at (5.5,0.45) {heat out};
+\end{scope}
+
+% ================= RIGHT: SLA
+\begin{scope}[shift={(8.4,-6.1)}]
+  % vat
+  \fill[mat=liquid] (0.2,0.25) rectangle (5.2,2.55);
+  \draw[steel, line width=1.4pt] (0.0,2.9) -- (0.0,0.05) -- (5.4,0.05) -- (5.4,2.9);
+  % platform + part (inside resin, top layer at surface)
+  \draw[machinedark] (1.2,0.55) rectangle (4.2,0.75);
+  \draw[machinedark] (2.6,0.75) rectangle (2.8,0.95);
+  \foreach \i in {0,...,10}{
+    \pgfmathsetmacro{\yy}{0.75+\i*0.16}
+    \pgfmathsetmacro{\wl}{\i<6 ? 3.8 : 3.0}
+    \fill[liquid!70!black] (1.6,\yy) rectangle (\wl,\yy+0.16);
+    \draw[white, line width=0.4pt] (1.6,\yy) -- (\wl,\yy);}
+  % platform rod
+  \draw[machine] (4.6,0.55) rectangle (4.8,3.6);
+  \draw[machine] (4.2,0.55) rectangle (4.8,0.75);
+  \draw[motion] (5.05,3.3) -- (5.05,2.7);
+  \node[lbl, anchor=west] at (5.1,3.0) {$-\Delta z$};
+  % recoater blade
+  \draw[machinedark] (0.35,2.55) rectangle (0.55,2.95);
+  \draw[motion] (0.6,3.1) -- (1.3,3.1);
+  % galvo mirror and laser
+  \draw[machine] (-0.1,5.3) rectangle (1.1,5.7);
+  \node[font=\scriptsize, text=steel] at (0.5,5.5) {UV laser};
+  \draw[beamhalo] (1.1,5.5) -- (2.6,5.5) -- (2.25,2.55);
+  \draw[beam] (1.1,5.5) -- (2.6,5.5) -- (2.25,2.55);
+  \draw[machinedark, rotate around={-40:(2.6,5.5)}] (2.35,5.45) rectangle (2.85,5.55);
+  \fill[energy] (2.25,2.55) circle (0.07);
+  \draw[motion] (2.6,4.9) arc[start angle=-60, end angle=-120, radius=1.0];
+  % labels
+  \node[lbl, anchor=west] (m) at (3.0,5.15) {scanning mirror};
+  \draw[leader] (m.west) -- (2.75,5.45);
+  \node[lbl, anchor=west] (r) at (3.55,4.25) {laser spot cures\\one layer of resin};
+  \draw[leader] (r.south west) -- (2.32,2.62);
+  \node[lbl, anchor=west] (k) at (0.15,-0.35) {vat of liquid photopolymer};
+  \node[lbl, fill=white, fill opacity=0.85, text opacity=1, anchor=west] (p) at (0.25,1.15) {part};
+  \node[lbl, anchor=west] at (0.1,3.3) {recoater};
+\end{scope}
+\xfabstate{liquid}{1.1}{liquid}
+\end{tikzpicture}
+\end{document}

@@ -56,6 +56,7 @@ pip install -r tools/requirements.txt
 | Rename a figure and relink every deck | `python tools/xfab.py rename 02_technologies/figures/02_s05_01.png 02_lpbf_schematic.png` |
 | Put the course footer on every slide | `python tools/xfab.py footer DECK [--skip-first]` |
 | List missing and unused figures across all decks | `python tools/xfab.py status` |
+| Rebuild the TikZ schematics (`figures/*.tex` → `.pdf` + `.png`) | `python tools/build_figures.py` |
 
 The footer reads, in 8 pt grey, bottom left:
 *EXED Polytechnique - Additive Manufacturing - 02 Technologies by Andrei Constantinescu 2027*

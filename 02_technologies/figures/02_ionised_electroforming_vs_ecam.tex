@@ -1,0 +1,76 @@
+% From the ionised state: electroforming vs localised electrochemical deposition
+\documentclass[tikz,border=6pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\xfabpanels{Electroforming}{metal ions are reduced over the whole mandrel}
+           {Electrochemical AM}{ions are reduced only under a moving micro-nozzle}
+
+% ================= LEFT: electroforming bath
+\begin{scope}[shift={(0.6,-6.0)}]
+  % power supply
+  \draw[machine, rounded corners=2pt] (2.0,4.6) rectangle (3.6,5.3);
+  \node[font=\scriptsize, text=steel] at (2.8,4.95) {DC supply};
+  \node[font=\bfseries\small, text=energy] at (2.2,4.4) {+};
+  \node[font=\bfseries\small, text=liquid] at (3.4,4.4) {$-$};
+  % tank
+  \fill[ionised!15] (0.1,0.1) rectangle (5.4,3.4);
+  \draw[steel, line width=1.4pt] (0.0,3.8) -- (0.0,0.0) -- (5.5,0.0) -- (5.5,3.8);
+  % anode
+  \fill[heat!80!black] (0.6,0.6) rectangle (1.0,3.8);
+  \draw[energy, line width=0.8pt] (0.8,3.8) |- (2.0,4.75);
+  % mandrel (cathode) with deposit
+  \fill[steellight, draw=steel, line width=0.8pt] (3.5,0.8) rectangle (4.3,3.0);
+  \fill[ionised!70!black] (3.35,0.65) rectangle (3.5,3.0) (4.3,0.65) rectangle (4.45,3.0) (3.35,0.65) rectangle (4.45,0.8);
+  \draw[steel, line width=1.2pt] (3.9,3.0) -- (3.9,3.8);
+  \draw[liquid, line width=0.8pt] (3.9,3.8) |- (3.6,4.75);
+  % ions moving to the cathode
+  \foreach \yy in {1.0,1.8,2.6}{
+    \foreach \xx in {1.5,2.3}{
+      \fill[ionised!35, draw=ionised!80!black, line width=0.4pt] (\xx,\yy) circle (0.11);
+      \node[font=\scriptsize\bfseries, text=ionised!30!black, inner sep=0] at (\xx,\yy) {+};}
+    \draw[flow=ionised] (2.55,\yy) -- (3.25,\yy);}
+  % labels
+  \node[lbl, anchor=north] at (0.8,-0.05) {anode (Ni, Cu)};
+  \node[lbl, anchor=north] at (3.9,-0.05) {mandrel = cathode};
+  \node[lbl, anchor=west] (d) at (5.65,2.0) {deposit};
+  \node[lbl, anchor=west] at (5.65,1.7) {(shell)};
+  \draw[leader] (d.west) -- (4.4,1.6);
+  \node[lbl, anchor=west] at (1.2,3.6) {electrolyte (Ni$^{2+}$, Cu$^{2+}$)};
+\end{scope}
+
+% ================= RIGHT: localised electrodeposition
+\begin{scope}[shift={(8.6,-6.1)}]
+  % substrate (cathode)
+  \fill[steellight, draw=steel, line width=0.8pt] (0.3,0.0) rectangle (5.3,0.4);
+  % deposited voxels: a small arch of pillars
+  \foreach \xx/\hh in {1.0/1.2, 1.35/1.2, 2.95/0.6}{
+    \fill[ionised!70!black] (\xx,0.4) rectangle (\xx+0.3,0.4+\hh);}
+  \foreach \i in {0,...,4}{\fill[ionised!70!black] (1.0+\i*0.3,1.6) rectangle (1.3+\i*0.3,1.9);}
+  % nozzle with electrolyte and anode wire
+  \def\nx{2.95}
+  \fill[ionised!15] (\nx-0.45,4.4) -- (\nx+0.45,4.4) -- (\nx+0.12,1.15) -- (\nx-0.12,1.15) -- cycle;
+  \draw[steel, line width=1.1pt] (\nx-0.5,4.4) -- (\nx-0.14,1.15) (\nx+0.5,4.4) -- (\nx+0.14,1.15);
+  \draw[heat!80!black, line width=1.2pt] (\nx,5.0) -- (\nx,2.0);
+  % meniscus
+  \fill[ionised!25, draw=ionised!60, line width=0.5pt] (\nx-0.14,1.15) .. controls (\nx-0.2,1.05) and (\nx-0.18,1.0) .. (\nx-0.15,1.0) -- (\nx+0.15,1.0) .. controls (\nx+0.18,1.0) and (\nx+0.2,1.05) .. (\nx+0.14,1.15) -- cycle;
+  \foreach \yy in {1.5,2.3,3.1}{
+    \fill[ionised!35, draw=ionised!80!black, line width=0.3pt] (\nx+0.12,\yy) circle (0.07);
+    \draw[flow=ionised] (\nx-0.12,\yy+0.1) -- (\nx-0.12,\yy-0.35);}
+  % supply
+  \draw[machine, rounded corners=2pt] (0.3,4.6) rectangle (1.9,5.3);
+  \node[font=\scriptsize, text=steel] at (1.1,4.95) {DC supply};
+  \draw[energy, line width=0.8pt] (1.9,5.0) -- (\nx,5.0);
+  \draw[liquid, line width=0.8pt] (0.3,4.8) -| (0.1,0.2) -- (0.3,0.2);
+  \draw[dblmotion] (3.7,3.6) -- (4.8,3.6); \node[lbl] at (4.25,3.82) {$x,y,z$};
+  % labels
+  \node[lbl, anchor=west] at (3.6,4.7) {micro-nozzle,};
+  \node[lbl, anchor=west] at (3.6,4.4) {anode wire inside};
+  \node[lbl, anchor=west] (v) at (3.6,1.35) {voxel grows under};
+  \node[lbl, anchor=west] at (3.6,1.05) {the meniscus};
+  \draw[leader] (v.west) -- (3.12,0.95);
+  \node[lbl, anchor=north] at (2.8,-0.05) {substrate = cathode; Cu or Ni, room temperature};
+\end{scope}
+\xfabstate{ionised}{1.7}{ionised}
+\end{tikzpicture}
+\end{document}
