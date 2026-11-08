@@ -1,0 +1,10 @@
+per_kg_removed_from_each_engine,a320neo_737max,a330neo_787
+Extra fuel to carry 1 kg per flight hour (any mass),3.0%,3.5%
+Block hours per year (assumed),"3,500 h","5,000 h"
+Engines per aircraft,2,2
+Fuel saved per aircraft per year,≈210 kg,≈350 kg
+CO₂ avoided per year (3.16 kg / kg fuel),≈660 kg,≈1.1 t
+"Per year, fuel at 2025 avg ($90/bbl)",≈€130,≈€215
+"Per year, IATA 2026 forecast ($152/bbl)",≈€220,≈€365
+"Per year, Oct 2026 weekly ($190/bbl)",≈€275,≈€455
+Over 25 years in service,"€3,200–6,800","€5,400–11,400"

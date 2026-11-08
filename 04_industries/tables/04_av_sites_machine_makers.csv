@@ -1,0 +1,26 @@
+map,number,name,lon,lat,kind
+world,1,"Colibrium Additive · West Chester, US · laser + e-beam",-84.4,39.3,machine maker
+world,2,"Velo3D · Fremont, US · laser powder bed",-121.99,37.55,machine maker
+world,3,"3D Systems · Rock Hill, US · metal and polymer",-81.0,34.9,machine maker
+world,4,"Stratasys · Eden Prairie, US / Rehovot, Israel · polymer",-93.47,44.85,machine maker
+world,4,"Stratasys · Eden Prairie, US / Rehovot, Israel · polymer",34.8,31.9,machine maker
+world,5,"Sciaky · Chicago, US · electron-beam wire DED",-87.75,41.8,machine maker
+world,6,"BLT · Xi’an, China · large laser powder bed",108.9,34.3,machine maker
+world,7,"Farsoon · Changsha, China · laser metal and polymer",112.9,28.2,machine maker
+world,8,"Eplus3D · Hangzhou, China · laser powder bed",120.2,30.3,machine maker
+world,9,"Nikon (owner of SLM) · Tokyo, Japan",139.7,35.7,machine maker
+world,10,"JEOL · Tokyo, Japan · electron beam (JAM-5200EBM)",139.35,35.7,machine maker
+world,11,"InssTek · Daejeon, Korea · DED",127.38,36.35,machine maker
+world,12,"Wipro3D · Bengaluru, India · laser powder bed",77.6,12.97,machine maker
+europe,,EOS,11.4,48.1,machine maker
+europe,,Trumpf,9.07,48.83,machine maker
+europe,,Nikon SLM,10.69,53.87,machine maker
+europe,,Colibrium (laser),11.06,50.14,machine maker
+europe,,Colibrium (e-beam),11.97,57.7,machine maker
+europe,,Renishaw,-2.35,51.64,machine maker
+europe,,AddUp (FR),3.1,45.83,machine maker
+europe,,Prodways (FR),1.91,48.99,machine maker
+europe,,Additive Industries,5.47,51.44,machine maker
+europe,,Prima Additive,7.68,45.07,machine maker
+europe,,Meltio (DED),-3.64,38.1,machine maker
+europe,,BigRep (polymer),13.4,52.52,machine maker

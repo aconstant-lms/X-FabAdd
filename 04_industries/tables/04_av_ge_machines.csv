@@ -1,0 +1,7 @@
+machine,build_volume,beam,type,picture_source
+EOS M290,250 × 250 × 325 mm,"1 laser, 400 W",Laser,eos.info
+EOS M400,400 × 400 × 400 mm,"1 laser, 400 W",Laser,eos.info
+Colibrium M2,250 × 250 × 350 mm,"2 lasers, 400 W",Laser,colibriumadditive.com
+Colibrium M Line,500 × 500 × 450 mm,"4 lasers, 400 W",Laser,colibriumadditive.com
+Colibrium A2X,200 × 200 × 380 mm,"1 electron beam, 3 kW",EBM,colibriumadditive.com
+Colibrium Spectra H,Ø250 × 430 mm,"1 electron beam, 6 kW",EBM,colibriumadditive.com

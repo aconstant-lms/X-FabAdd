@@ -1,0 +1,16 @@
+map,number,name,lon,lat,kind
+world,1,"Global Research · Niskayuna, NY",-73.87,42.83,parts / programme / site
+world,2,"Design · Lynn, MA",-70.95,42.47,parts / programme / site
+world,3,"Design & Materials · Evendale, OH",-84.6,39.2,parts / programme / site
+world,4,"Colibrium Additive + Additive Technology Center · West Chester, OH",-84.4,39.33,machine maker
+world,5,"Production · Auburn, AL (LEAP nozzles)",-85.48,32.6,parts / programme / site
+world,6,"Design & Materials · Querétaro, Mexico",-100.39,20.59,parts / programme / site
+world,7,"Design & Manufacturing · Turkey Technology Center, Istanbul",28.98,41.0,parts / programme / site
+world,8,"Design & Technology · Bangalore, India",77.59,12.97,parts / programme / site
+europe,,Colibrium Additive (Gothenburg),11.97,57.7,machine maker
+europe,,Colibrium Additive (Lichtenfels),11.06,50.14,machine maker
+europe,,Design & Technology (Warsaw),21.0,52.23,parts / programme / site
+europe,,Avio Aero Turin + Rivalta,7.6,45.05,parts / programme / site
+europe,,Production: Cameri,8.66,45.5,parts / programme / site
+europe,,Production: Brindisi,17.94,40.63,parts / programme / site
+europe,,GE Aerospace Czech (Catalyst),14.42,50.08,parts / programme / site

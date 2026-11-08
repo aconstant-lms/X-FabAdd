@@ -1,0 +1,12 @@
+year,technology,application,milestone
+2014,Polymer,CABIN,"A350 first delivery: 1,000+ ULTEM 9085 parts (Stratasys)"
+2015,Laser powder bed,ENGINE,GE T25 housing: first FAA-certified printed engine part
+2015,Electron beam,ENGINE,Rolls-Royce XWB-97: 1.5 m Ti bearing housing flies
+2016,Laser powder bed,ENGINE,CFM LEAP enters service with printed CoCr fuel nozzles
+2017,Polymer,MRO,Etihad: first airline MRO to certify and fly printed cabin parts (powder bed 2019)
+2017,Laser powder bed,AIRFRAME,A350 Ti bracket (Arconic); A380 spoiler valve block (Liebherr)
+2017,DED (wire / powder),AIRFRAME,"Norsk Titanium: first FAA-approved structural Ti parts, 787"
+2020,Electron beam,ENGINE,GE9X certified with printed TiAl turbine blades
+2022,Laser powder bed,ENGINE,Safran AM Campus opens near Bordeaux
+2025,Laser powder bed,ENGINE,GE Catalyst certified: 855 parts → 12 printed
+2026,DED (wire / powder),AIRFRAME,Airbus: wire-DED Ti parts in A350 cargo-door surround

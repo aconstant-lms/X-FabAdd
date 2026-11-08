@@ -1,0 +1,7 @@
+alloy_family,process,example_machines,aviation_parts
+Cobalt-chrome,Laser powder bed,"Colibrium M2 / M Line, EOS M290","LEAP fuel nozzle tip, T25 housing, most GE9X printed parts"
+"Nickel superalloys (IN718, IN625)",Laser powder bed; DED for repair,"EOS M400, Nikon SLM, Velo3D, AddUp","Combustor and heat-exchanger parts, SuperDraco chamber, turbine-part repair"
+Titanium Ti-6Al-4V,"Laser powder bed, electron beam, wire DED","Trumpf, Renishaw, Colibrium A2X, Norsk RPD","A350 bracket, A380 valve block, 787 fittings, A350 cargo-door surround"
+Titanium aluminide (TiAl),Electron beam only,"Colibrium A2X (6 blades), Spectra H (10)",GE9X low-pressure turbine blades
+"Aluminium (AlSi10Mg, AlSi7Mg)",Laser powder bed,"EOS M400, AddUp FormUp 350","Heat exchangers, brackets, Navy depot spares"
+"Steels (17-4PH, 15-5PH, maraging)","Laser powder bed, binder jet","BLT, AddUp, EOS","Tooling, moulds, jigs and fixtures"

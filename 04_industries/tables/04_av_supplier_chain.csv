@@ -1,0 +1,9 @@
+step,oem_ga_asi,supplier_divergent,note
+Mission and requirements,●,,"OEM defines loads, interfaces, payload"
+"Structural design (AI, topology)",○,●,Supplier designs to the OEM’s requirements
+Design review and integration,●,●,"Joint: interfaces, weight targets"
+"Printing, inspection, digital twin",,●,Supplier’s machines and process data
+Robotic assembly of the structure,,●,Supplier delivers an assembled airframe
+"Systems, flight test",●,,OEM integrates and flies
+Airworthiness evidence,●,●,Shared; DAWGS programme for the process
+Variants and rate,●,●,Supplier reprints without new tooling

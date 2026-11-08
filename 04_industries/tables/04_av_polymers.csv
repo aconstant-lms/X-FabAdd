@@ -1,0 +1,4 @@
+technology,materials,machines,aviation_parts
+Extrusion (FDM / FFF),"ULTEM 9085 / 1010 (PEI): flame, smoke, toxicity compliant",Stratasys F900; BigRep ONE (large format),"A350 cabin parts, jigs, fixtures, moulds"
+Powder bed (SLS),"PA12, PA11, flame-retardant PA 2241 FR, PEKK","EOS P 396, 3D Systems, Farsoon, Prodways","Cabin parts made in MRO, ducts, covers"
+Vat photopolymer (SLA / DLP),"Resins, ceramic-filled pastes","Prodways MOVINGLight, 3D Systems","Casting patterns and ceramic moulds for turbine blades, wind-tunnel models"

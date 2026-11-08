@@ -1,0 +1,29 @@
+map,number,name,lon,lat,kind
+world,1,GE · Auburn · LEAP nozzle tips,-85.5,32.6,parts / programme / site
+world,2,"GE · Cincinnati · design, GE9X, Catalyst",-84.4,39.3,parts / programme / site
+world,3,Norsk Titanium · Plattsburgh · 787,-73.45,44.7,parts / programme / site
+world,4,Arconic · Austin · A350 bracket,-97.7,30.3,parts / programme / site
+world,5,Textron · Wichita · Denali,-97.3,37.7,parts / programme / site
+world,6,FRCE · Cherry Point · certified spares,-76.9,34.9,parts / programme / site
+world,7,SpaceX · Hawthorne · SuperDraco,-118.35,33.9,parts / programme / site
+world,8,Divergent · Torrance · DAPS structures,-118.34,33.84,parts / programme / site
+world,9,"GA-ASI · San Diego · MQ-9B, drones",-117.16,32.72,parts / programme / site
+world,10,UEC · Moscow · VK-1600V,37.6,55.75,parts / programme / site
+world,11,Etihad Engineering · Abu Dhabi,54.4,24.45,parts / programme / site
+world,12,COMAC · Shanghai · C919,121.5,31.2,parts / programme / site
+world,13,"BLT · Xi’an · C919, Airbus A320",108.9,34.3,parts / programme / site
+world,14,IHI Aerospace · Tokyo · GE9X partner,139.8,35.65,parts / programme / site
+europe,,Safran AM Campus,-0.68,44.87,parts / programme / site
+europe,,"Toulouse: Airbus, Liebherr, FusiA",1.44,43.6,parts / programme / site
+europe,,Poly-Shape (AddUp),5.1,43.64,parts / programme / site
+europe,,Dassault (AEROPRINT),2.2,48.84,parts / programme / site
+europe,,ArianeGroup (Vernon),1.48,49.09,parts / programme / site
+europe,,Rolls-Royce,-1.47,52.92,parts / programme / site
+europe,,"Airbus, Lufthansa Technik",9.99,53.55,parts / programme / site
+europe,,Liebherr,9.9,47.6,parts / programme / site
+europe,,Avio Aero Turin,7.68,45.07,parts / programme / site
+europe,,Avio Aero Cameri,8.66,45.5,parts / programme / site
+europe,,Avio Aero Brindisi,17.94,40.63,parts / programme / site
+europe,,GE Aerospace Czech,14.42,50.08,parts / programme / site
+europe,,"GE design, Warsaw",21.0,52.23,parts / programme / site
+europe,,Norsk Titanium,10.25,60.17,parts / programme / site

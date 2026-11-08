@@ -1,0 +1,7 @@
+question,in_house_ge,design_and_build_supplier,build_to_print_supplier
+Who designs the part,GE,"Supplier, to OEM requirements",OEM; drawing handed over
+Who owns the process specification,GE,"Supplier, approved with OEM",OEM-approved; supplier only runs it
+"Change machine, powder or parameters",GE requalifies itself,"Supplier, with OEM agreement",Only with OEM requalification
+Part consolidation (the AM benefit),Yes,Yes,No: geometry is frozen
+Qualification effort carried by,GE,Shared,"Supplier: machines, powder, tests"
+Value for the supplier,—,"High, flexible capacity","Low margin, price vs casting and machining"
