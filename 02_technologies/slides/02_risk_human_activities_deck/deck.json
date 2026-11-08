@@ -1,0 +1,75 @@
+{
+ "v": 4,
+ "createdOnFiles": {
+  "v": 1,
+  "at": "2026-11-08T20:50:08Z"
+ },
+ "lists": "css",
+ "title": "Risk for human activities and structures",
+ "order": [
+  "cover",
+  "part-1",
+  "life-hours",
+  "per-hour",
+  "rules",
+  "part-2",
+  "cls-aviation",
+  "cls-cars",
+  "cls-trains",
+  "cls-medical",
+  "cls-space",
+  "cls-synthesis",
+  "part-3",
+  "timeline-cases",
+  "siouxcity-1",
+  "siouxcity-2",
+  "siouxcity-3",
+  "eschede-1",
+  "eschede-2",
+  "ariane-2002",
+  "spain-2026",
+  "shuttle",
+  "qf32-1",
+  "qf32-2",
+  "qf32-3",
+  "undetectable",
+  "lessons",
+  "part-4",
+  "references-1",
+  "references-2"
+ ],
+ "sections": {
+  "s0": {
+   "description": "Cover",
+   "start": "cover"
+  },
+  "s1": {
+   "description": "Part 1: Risk in a human life",
+   "start": "part-1"
+  },
+  "s2": {
+   "description": "Part 2: Four classes of risk",
+   "start": "part-2"
+  },
+  "s3": {
+   "description": "Part 3: Catastrophes with and without a Class A failure",
+   "start": "part-3"
+  },
+  "s4": {
+   "description": "Part 4: References",
+   "start": "part-4"
+  }
+ },
+ "cover": "cover",
+ "faces": {
+  "space-grotesk": {
+   "family": "Space Grotesk",
+   "href": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400..700&display=swap"
+  },
+  "inter": {
+   "family": "Inter",
+   "href": "https://fonts.googleapis.com/css2?family=Inter:wght@400..700&display=swap"
+  }
+ },
+ "designSystems": []
+}

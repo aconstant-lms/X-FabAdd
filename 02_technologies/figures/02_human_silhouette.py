@@ -1,4 +1,4 @@
-"""Woman and man pictograms (original drawing) -> 04_human_silhouette.png"""
+"""Woman and man pictograms (original drawing) -> 02_human_silhouette.png"""
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -24,4 +24,4 @@ ax.add_patch(Circle((xm, 5.12), 0.38, color=c))
 ax.add_patch(FancyBboxPatch((xm - 0.55, 2.45), 1.10, 2.2, boxstyle="round,pad=0,rounding_size=0.26", color=c))
 limb(xm - 0.73, 4.45, xm - 0.86, 2.35, 18, c); limb(xm + 0.73, 4.45, xm + 0.86, 2.35, 18, c)
 limb(xm - 0.29, 2.6, xm - 0.33, 0.3, 26, c); limb(xm + 0.29, 2.6, xm + 0.33, 0.3, 26, c)
-fig.savefig("04_human_silhouette.png", transparent=True)
+fig.savefig("02_human_silhouette.png", transparent=True)
