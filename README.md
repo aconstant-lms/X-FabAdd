@@ -18,6 +18,21 @@ Each chapter folder contains:
 - `figures/index.csv` — one line per figure: file, slides using it, caption, source, credit, licence, notes
 - `tables/` — tabular data (CSV, XLSX, …)
 
+A chapter made of several independent decks gets **one subfolder per deck**, each with the same
+`slides/`, `figures/` (+ `index.csv`), `tables/`:
+
+```
+04_industries/
+  aviation/   slides/04_am_aviation.pptx                 figures/04_av_*   tables/04_av_*
+  repair/     slides/04_am_repair_figures_test.pptx      figures/          tables/
+  risk/       slides/04_risk_human_activities.pptx (+ _deck/ source, PDF)  figures/   tables/
+  space/      slides/04_am_space.pptx                    figures/04_sp_*   tables/
+```
+
+A new topic in such a chapter = a new subfolder (`04_industries/medical/…`). File names still
+start with the chapter number. The toolkit handles both layouts; the footer always shows the
+chapter (“04 Industries”).
+
 ## How figures work
 
 Every picture in a deck carries its repository path in its **alt text**
@@ -65,13 +80,13 @@ New slides made with `add-slide` get the footer automatically.
 
 Every command except `--check` also refreshes the `slides` column of the `index.csv` files.
 
-Presentations kept outside the repository (for example a claude.ai Slides deck) can be listed per chapter in
-`NN_chapter/figures/external_usage.csv` (columns `file,presentation,slides`); the catalogue shows them next to
+Presentations kept outside the repository (for example a claude.ai Slides deck) can be listed per chapter or topic in
+`…/figures/external_usage.csv` (columns `file,presentation,slides`); the catalogue shows them next to
 the repository decks.
 
 ## Typical cycle
 
-1. Put or update pictures in `NN_chapter/figures/`.
+1. Put or update pictures in `NN_chapter/figures/` (or `NN_chapter/<topic>/figures/`).
 2. Add or edit slides (in PowerPoint, or with `add-slide`). When adding a picture by hand
    in PowerPoint, type its repo path in the alt text.
 3. Before teaching: `python tools/xfab.py sync DECK`, then `status`.

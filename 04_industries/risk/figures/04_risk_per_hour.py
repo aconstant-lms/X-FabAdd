@@ -1,6 +1,6 @@
 """Risk of death (or device event) per person per hour of exposure, grouped by the
-categories of the deck (sports, medical, car, train, aviation, space) -> 02_risk_per_hour.png
-Data: ../tables/02_risk_per_hour.csv  (orders of magnitude, see sources there)"""
+categories of the deck (sports, medical, car, train, aviation, space) -> 04_risk_per_hour.png
+Data: ../tables/04_risk_per_hour.csv  (orders of magnitude, see sources there)"""
 import csv, pathlib
 import matplotlib
 matplotlib.use("Agg")
@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Patch
 
 HERE = pathlib.Path(__file__).resolve().parent
-rows = list(csv.DictReader(open(HERE.parent / "tables" / "02_risk_per_hour.csv", encoding="utf-8")))
+rows = list(csv.DictReader(open(HERE.parent / "tables" / "04_risk_per_hour.csv", encoding="utf-8")))
 ORDER = ["Sports", "Medical", "Car", "Train", "Aviation", "Space"]
 LABEL = {"Car": "Car and road"}
 COL = {"Sports": "#2a78d6", "Medical": "#eb6834", "Car": "#1baf7a", "Train": "#eda100", "Aviation": "#e87ba4", "Space": "#008300"}
@@ -50,4 +50,4 @@ ax.set_xlabel("Risk per person per hour of exposure (log scale)", color=INK, fon
 ax.legend(handles=[Patch(facecolor=BG, edgecolor=COL["Medical"], hatch="////", label="device failure event, not a death")],
           loc="lower right", frameon=False, fontsize=14)
 fig.subplots_adjust(left=0.135, right=0.98, top=0.97, bottom=0.11)
-fig.savefig(HERE / "02_risk_per_hour.png", facecolor=BG)
+fig.savefig(HERE / "04_risk_per_hour.png", facecolor=BG)

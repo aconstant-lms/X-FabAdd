@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """X-FabAdd slide/figure toolkit.
 
-Figures live in  NN_chapter/figures/  (the source of truth).
-Decks live in    NN_chapter/slides/*.pptx.
+Figures live in  NN_chapter/figures/  or  NN_chapter/<topic>/figures/  (source of truth).
+Decks live in    NN_chapter/slides/*.pptx  or  NN_chapter/<topic>/slides/*.pptx.
 Each picture in a deck carries its repo path in its *alt text*
 (e.g. "02_technologies/figures/02_lpbf_schematic.png"); that is the link.
 
@@ -15,7 +15,8 @@ Commands (run from anywhere; paths are resolved against the repo root):
   footer     DECK [--chapter "02 Technologies"] [--year 2027]
   status                         missing / unused figures across all decks
 
-Every command (except --check) rewrites the chapter figures/index.csv files.
+Every command (except --check) rewrites the figures/index.csv files.
+A "group" is a folder that holds figures/: "02_technologies" or "04_industries/aviation".
 """
 from __future__ import annotations
 
@@ -35,7 +36,7 @@ from pptx.oxml.ns import qn
 from pptx.util import Emu, Pt
 
 REPO = Path(__file__).resolve().parent.parent
-FIG_RE = re.compile(r"^(\d\d_[^/]+)/figures/[^/]+\.(png|jpe?g|gif|bmp|tiff?|emf|wmf)$", re.I)
+FIG_RE = re.compile(r"^(\d\d_[^/]+)/(?:[^/]+/)?figures/[^/]+\.(png|jpe?g|gif|bmp|tiff?|emf|wmf)$", re.I)
 INDEX_COLS = ["file", "slides", "caption", "source", "credit", "license", "notes"]
 FOOTER_NAME = "XFabAdd footer"
 FOOTER_TEMPLATE = "EXED Polytechnique - Additive Manufacturing - {chapter} by Andrei Constantinescu {year}"
@@ -56,13 +57,39 @@ def chapter_of(path: Path) -> str | None:
 
 
 def chapter_label(chapter: str) -> str:
+    """'04_industries' -> '04 Industries'; '04_industries/aviation' -> '04 Industries - Aviation'."""
+    chapter, _, sub = chapter.partition("/")
     num, _, name = chapter.partition("_")
     name = name.replace("_", " ")
-    return f"{num} {name[:1].upper()}{name[1:]}"
+    label = f"{num} {name[:1].upper()}{name[1:]}"
+    if sub:
+        sub = sub.replace("_", " ")
+        label += f" - {sub[:1].upper()}{sub[1:]}"
+    return label
+
+
+def group_of(fig_path: str) -> str:
+    """'04_industries/aviation/figures/x.png' -> '04_industries/aviation'."""
+    return fig_path.split("/figures/")[0]
+
+
+def figure_groups() -> list[str]:
+    dirs = list(REPO.glob("[0-9][0-9]_*/figures")) + list(REPO.glob("[0-9][0-9]_*/*/figures"))
+    return sorted(rel(d.parent) for d in dirs if d.is_dir())
+
+
+def figure_files() -> set[str]:
+    out = set()
+    for g in figure_groups():
+        for f in (REPO / g / "figures").iterdir():
+            if f.is_file() and f.name not in ("index.csv", "external_usage.csv") and not f.name.startswith("."):
+                out.add(f"{g}/figures/{f.name}")
+    return out
 
 
 def all_decks() -> list[Path]:
-    return sorted(p for p in REPO.glob("[0-9][0-9]_*/slides/*.pptx") if not p.name.startswith("~$"))
+    decks = list(REPO.glob("[0-9][0-9]_*/slides/*.pptx")) + list(REPO.glob("[0-9][0-9]_*/*/slides/*.pptx"))
+    return sorted(p for p in decks if not p.name.startswith("~$"))
 
 
 def iter_pictures(shapes):
@@ -148,7 +175,7 @@ def write_index(chapter: str, rows: dict[str, dict]) -> None:
     f = REPO / chapter / "figures" / "index.csv"
     f.parent.mkdir(parents=True, exist_ok=True)
     with f.open("w", newline="", encoding="utf-8") as fh:
-        w = csv.DictWriter(fh, INDEX_COLS)
+        w = csv.DictWriter(fh, INDEX_COLS, lineterminator="\n")
         w.writeheader()
         for k in sorted(rows):
             w.writerow(rows[k])
@@ -170,15 +197,14 @@ def scan_usage() -> dict[str, list[str]]:
 def refresh_indexes(captions: dict[str, str] | None = None) -> None:
     use = scan_usage()
     captions = captions or {}
-    chapters = {p.parent.name for p in REPO.glob("[0-9][0-9]_*/figures")}
-    for ch in sorted(chapters):
+    for ch in figure_groups():
         rows = read_index(ch)
         figdir = REPO / ch / "figures"
         for f in figdir.iterdir():
-            if f.is_file() and not f.name.startswith(".") and f.name != "index.csv":
+            if f.is_file() and not f.name.startswith(".") and f.name not in ("index.csv", "external_usage.csv"):
                 rows.setdefault(f.name, {c: "" for c in INDEX_COLS} | {"file": f.name})
         for key in list(use) + list(captions):
-            if key.startswith(f"{ch}/figures/"):
+            if group_of(key) == ch:
                 name = key.split("/")[-1]
                 rows.setdefault(name, {c: "" for c in INDEX_COLS} | {"file": name})
         for name, row in rows.items():
@@ -192,14 +218,17 @@ def refresh_indexes(captions: dict[str, str] | None = None) -> None:
 # ---------------------------------------------------------------- commands
 def cmd_extract(a):
     deck = Path(a.deck).resolve()
-    ch = a.chapter or chapter_of(deck)
-    if not ch:
-        sys.exit("Cannot tell the chapter; pass --chapter 02_technologies")
+    if a.chapter:
+        ch = a.chapter.strip("/")
+    elif deck.parent.name == "slides" and chapter_of(deck):
+        ch = rel(deck.parent.parent)
+    else:
+        sys.exit("Cannot tell where the figures go; pass --chapter 04_industries/aviation")
     figdir = REPO / ch / "figures"
     figdir.mkdir(parents=True, exist_ok=True)
     prefix = ch[:2]
     known = {sha1(f.read_bytes()): f for f in figdir.iterdir()
-             if f.is_file() and f.name not in ("index.csv",) and not f.name.startswith(".")}
+             if f.is_file() and f.name not in ("index.csv", "external_usage.csv") and not f.name.startswith(".")}
     prs = Presentation(deck)
     captions, n_new, n_linked = {}, 0, 0
     for i, s in enumerate(prs.slides, 1):
@@ -396,7 +425,7 @@ def cmd_rename(a):
         if hit:
             prs.save(deck)
     # carry the index row over
-    oc, nc = old.split("/")[0], new.split("/")[0]
+    oc, nc = group_of(old), group_of(new)
     orow = read_index(oc)
     row = orow.pop(Path(old).name, None)
     write_index(oc, orow)
@@ -438,8 +467,7 @@ def cmd_footer(a):
 
 def cmd_status(a):
     use = scan_usage()
-    files = {rel(f) for f in REPO.glob("[0-9][0-9]_*/figures/*")
-             if f.is_file() and f.name != "index.csv" and not f.name.startswith(".")}
+    files = figure_files()
     missing = sorted(k for k in use if k not in files)
     unused = sorted(f for f in files if f not in use)
     print(f"{len(all_decks())} deck(s), {len(files)} figure file(s), {len(use)} linked")
@@ -455,7 +483,7 @@ def main(argv=None):
 
     p = sub.add_parser("extract", help="move embedded pictures into figures/ and link them")
     p.add_argument("deck")
-    p.add_argument("--chapter", help="e.g. 02_technologies (default: from the deck's folder)")
+    p.add_argument("--chapter", help="folder holding figures/, e.g. 04_industries/aviation (default: next to the deck's slides/)")
     p.set_defaults(fn=cmd_extract)
 
     p = sub.add_parser("sync", help="refresh deck pictures from figures/")

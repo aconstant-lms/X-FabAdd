@@ -58,8 +58,11 @@ def text_box(slide, x, y, w, h, paragraphs, size=12):
 
 def external_usage() -> dict[str, list[str]]:
     out: dict[str, list[str]] = {}
-    for f in sorted(xfab.REPO.glob("[0-9][0-9]_*/figures/external_usage.csv")):
-        chapter = f.parent.parent.name
+    for g in xfab.figure_groups():
+        f = xfab.REPO / g / "figures" / "external_usage.csv"
+        if not f.exists():
+            continue
+        chapter = g
         for row in csv.DictReader(f.open(encoding="utf-8")):
             path = f"{chapter}/figures/{row['file']}"
             out.setdefault(path, []).append(f"{row['presentation']}: slide {row['slides']}")
@@ -80,10 +83,8 @@ def collect():
     """All figures: files present in figures/ plus rows of index.csv (missing files too)."""
     usage_repo, usage_ext = repo_usage(), external_usage()
     figs = []
-    for chap_dir in sorted(xfab.REPO.glob("[0-9][0-9]_*")):
-        if not (chap_dir / "figures").is_dir():
-            continue
-        chapter = chap_dir.name
+    for chapter in xfab.figure_groups():
+        chap_dir = xfab.REPO / chapter
         index = xfab.read_index(chapter)
         names = set(index) | {f.name for f in (chap_dir / "figures").iterdir() if f.is_file()}
         for name in sorted(names):
