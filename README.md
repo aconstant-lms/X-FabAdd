@@ -56,6 +56,7 @@ pip install -r tools/requirements.txt
 | Rename a figure and relink every deck | `python tools/xfab.py rename 02_technologies/figures/02_s05_01.png 02_lpbf_schematic.png` |
 | Put the course footer on every slide | `python tools/xfab.py footer DECK [--skip-first]` |
 | List missing and unused figures across all decks | `python tools/xfab.py status` |
+| Build a catalogue of every figure (picture, full path, caption, decks and slides using it, source, credit, licence) | `python tools/catalogue.py` → `figures_catalogue.pptx` (not committed) |
 
 The footer reads, in 8 pt grey, bottom left:
 *EXED Polytechnique - Additive Manufacturing - 02 Technologies by Andrei Constantinescu 2027*
@@ -63,6 +64,10 @@ The footer reads, in 8 pt grey, bottom left:
 New slides made with `add-slide` get the footer automatically.
 
 Every command except `--check` also refreshes the `slides` column of the `index.csv` files.
+
+Presentations kept outside the repository (for example a claude.ai Slides deck) can be listed per chapter in
+`NN_chapter/figures/external_usage.csv` (columns `file,presentation,slides`); the catalogue shows them next to
+the repository decks.
 
 ## Typical cycle
 
