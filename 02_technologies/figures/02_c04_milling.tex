@@ -1,0 +1,21 @@
+% 02_c04_milling
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\fill[tool] (-0.4,-0.3) rectangle (4.4,0);
+\fill[ipartlight, dash pattern=on 3pt off 2pt] (0,0) rectangle (4,1.8);
+\fill[ipart] (0,0) -- (4,0) -- (4,0.8) -- (2.3,0.8) -- (2.3,1.8) -- (0,1.8) -- cycle;
+\draw[tool] (2.45,0.85) rectangle (2.95,3.2);
+\foreach \yy in {1.05,1.45,1.85} \draw[cToolD, line width=0.7pt] (2.45,\yy) -- (2.95,\yy+0.3);
+\draw[move] (2.95,3.45) arc[start angle=-20,end angle=200,radius=0.27];
+\draw[force] (3.3,1.2) -- (4.1,1.2);
+\foreach \cx/\cy in {3.4,2.1, 3.75,2.4, 3.5,2.75}{} 
+\foreach \cx/\cy in {3.4/2.05, 3.75/2.35, 3.45/2.7}{\draw[cIPartD, line width=1.1pt] (\cx,\cy) arc[start angle=0,end angle=220,radius=0.09];}
+\node[lab, anchor=west] at (3.35,3.1) {end mill};
+\node[lab, anchor=west] at (3.95,2.5) {chips};
+\node[lab, anchor=west] at (4.2,1.2) {feed};
+\node[lab, anchor=north] at (2.0,-0.35) {stock (pale) minus chips = part};
+
+\end{tikzpicture}
+\end{document}

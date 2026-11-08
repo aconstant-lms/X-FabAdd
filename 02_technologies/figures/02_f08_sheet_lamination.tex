@@ -1,0 +1,21 @@
+% 02_f08_sheet_lamination
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\fill[tool] (0.8,0) rectangle (4.6,0.25);
+\foreach \i in {0,...,4}{\pgfmathsetmacro{\yy}{0.25+\i*0.22}
+  \fill[ipart] (0.9,\yy) rectangle (4.5,\yy+0.2); \fill[cChem!70] (0.9,\yy+0.2) rectangle (4.5,\yy+0.22);}
+\draw[cIPartD, line width=0.6pt, dashed] (1.6,0.25) rectangle (3.8,1.35);
+\fill[ifeed] (-0.4,1.35) -- (5.8,1.35) -- (5.8,1.47) -- (-0.4,1.47) -- cycle;
+\draw[tool] (-0.6,1.41) circle (0.5); \draw[tool] (6.0,1.41) circle (0.5);
+\draw[tool] (3.0,1.9) circle (0.4); \foreach \xx in {3.5,3.7} \draw[heatin] (\xx,2.45) -- (\xx,2.15);
+\draw[lighthalo] (1.6,3.3) -- (1.6,1.47); \draw[light] (1.6,3.3) -- (1.6,1.47);
+\node[lab, anchor=south] at (-0.6,1.95) {sheet roll};
+\node[lab, anchor=south] at (6.0,1.95) {take-up};
+\node[lab, anchor=south] at (3.0,2.6) {heated roller glues};
+\node[lab, anchor=east] at (1.5,3.1) {laser or knife cuts the contour};
+\node[lab, anchor=north] at (2.7,-0.05) {stack of glued sheets; waste cut in cubes};
+
+\end{tikzpicture}
+\end{document}

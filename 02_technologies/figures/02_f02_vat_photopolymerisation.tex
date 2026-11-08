@@ -1,0 +1,23 @@
+% 02_f02_vat_photopolymerisation
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\fill[cIFeed!35] (0.2,0.25) rectangle (5.2,2.55);
+\draw[cToolD, line width=1.3pt] (0.0,2.9) -- (0.0,0.05) -- (5.4,0.05) -- (5.4,2.9);
+\fill[tool] (1.2,0.55) rectangle (4.2,0.75);
+\foreach \i in {0,...,10}{\pgfmathsetmacro{\yy}{0.75+\i*0.16}\pgfmathsetmacro{\wl}{\i<6 ? 3.8 : 3.0}
+  \fill[ipart] (1.6,\yy) rectangle (\wl,\yy+0.16);}
+\fill[tool] (4.6,0.55) rectangle (4.8,3.6); \fill[tool] (4.2,0.55) rectangle (4.8,0.75);
+\draw[move] (5.05,3.3) -- (5.05,2.7);
+\draw[tool] (-0.1,5.3) rectangle (1.1,5.7); \node[font=\scriptsize] at (0.5,5.5) {UV laser};
+\draw[lighthalo] (1.1,5.5) -- (2.6,5.5) -- (2.25,2.55); \draw[light] (1.1,5.5) -- (2.6,5.5) -- (2.25,2.55);
+\fill[cToolD, rotate around={-40:(2.6,5.5)}] (2.35,5.45) rectangle (2.85,5.55);
+\node[lab, anchor=west] at (2.95,5.4) {scanning mirror};
+\node[lab, anchor=west] (r) at (3.0,4.3) {spot cures the resin};
+\draw[lead] (r.south west) -- (2.32,2.62);
+\node[lab, anchor=north] at (2.7,-0.05) {vat of liquid photopolymer};
+\node[lab, anchor=west] at (5.15,3.0) {platform $-\Delta z$};
+
+\end{tikzpicture}
+\end{document}

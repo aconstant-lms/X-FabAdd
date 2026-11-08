@@ -1,0 +1,25 @@
+% 02_e01_material_paths
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\tikzset{st/.style={draw=cToolD, line width=0.7pt, rounded corners=2pt, minimum width=1.9cm, minimum height=0.75cm, font=\small\bfseries, align=center}}
+\foreach \r/\a/\b/\c/\via/\how/\ex in {
+  0/liquid/{}/solid/{}/{cooling · polymerisation · hydration · drying}/{VPP, MJT, concrete, paste extrusion},
+  1/solid/liquid/solid/{}/{short-lived melt pool, fast solidification}/{PBF, DED, wire-arc, FFF (softening)},
+  2/solid/{}/solid/{}/{binder · sintering (diffusion) · plastic deformation}/{binder jetting, LOM, cold spray, friction stir, ultrasonic},
+  3/{gas, ions}/{}/solid/{}/{deposition from vapour · electrochemical reduction}/{laser CVD, electrochemical AM}}{
+  \pgfmathsetmacro{\yy}{-\r*1.35}
+  \node[st, fill=cIFeed!60] (A\r) at (0,\yy) {\a};
+  \node[st, fill=cIPart, text=white] (C\r) at (5.0,\yy) {\c};
+  \node[lab, anchor=west] at (6.3,\yy+0.2) {\how};
+  \node[lab, anchor=west, text=inksoft] at (6.3,\yy-0.2) {\ex};}
+\draw[stepto] (A0) -- (C0); \draw[stepto] (A2) -- (C2); \draw[stepto] (A3) -- (C3);
+\node[st, fill=cIFeed!90, minimum width=1.4cm] (B1) at (2.5,-1.35) {liquid};
+\draw[stepto] (A1) -- (B1); \draw[stepto] (B1) -- (C1);
+\node[lab, text=inksoft, anchor=south] at (0,0.5) {initial};
+\node[lab, text=inksoft, anchor=south] at (5.0,0.5) {final};
+\xfabref{-1.0}{-4.75}{After Kruth (1991), Gebhardt \& Hötter (2016) §2.3, Kruth et al. (2005), Tuncer \& Bose (2020).}
+
+\end{tikzpicture}
+\end{document}

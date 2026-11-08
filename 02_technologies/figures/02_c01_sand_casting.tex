@@ -1,0 +1,22 @@
+% 02_c01_sand_casting
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[sand] (0,0) rectangle (6,3.6); \draw[cToolD, line width=1.4pt] (0,0) rectangle (6,3.6);
+\draw[cToolD, line width=0.8pt, dash pattern=on 4pt off 3pt] (-0.3,1.8) -- (6.3,1.8);
+\def\cav{(1.0,0.7) -- (3.8,0.7) -- (3.8,1.5) -- (2.5,1.5) -- (2.5,2.6) -- (1.0,2.6) -- cycle}
+\fill[ifeed] \cav; \fill[ifeed] (1.55,2.6) rectangle (1.9,3.6); \fill[ifeed] (3.8,0.7) rectangle (4.35,3.0);
+\draw[cIFeedD, line width=0.7pt] (3.8,1.5) -- (3.8,3.0) -- (4.35,3.0) -- (4.35,0.7);
+\draw[tool] (0.8,4.9) -- (2.2,4.9) -- (2.0,4.05) -- (1.0,4.05) -- cycle;
+\draw[cIFeed, line width=3pt] (1.85,4.2) .. controls (1.9,3.95) and (1.75,3.8) .. (1.72,3.55);
+\draw[cToolD, line width=1.6pt] (2.2,4.9) -- (3.0,5.25);
+\foreach \yy in {0.9,1.5,2.1} \draw[heatin] (6.1,\yy) -- (6.8,\yy);
+\node[lab, anchor=west] at (3.1,4.55) {ladle: molten metal};
+\node[lab, anchor=west] (r) at (4.7,3.35) {riser}; \draw[lead] (r.west) -- (4.1,2.8);
+\node[lab, anchor=north] at (3.0,-0.1) {sand mould, destroyed to free the part};
+\node[lab, anchor=west] at (6.2,2.6) {heat out};
+\node[lab, fill=white, fill opacity=0.85, text opacity=1] at (1.75,1.1) {cavity};
+
+\end{tikzpicture}
+\end{document}

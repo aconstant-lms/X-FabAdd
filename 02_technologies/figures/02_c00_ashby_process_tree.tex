@@ -1,0 +1,28 @@
+% 02_c00_ashby_process_tree
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\tikzset{tb/.style={draw=cToolD, fill=white, line width=0.7pt, rounded corners=2pt, minimum height=0.62cm, inner sep=4pt, font=\small},
+         tf/.style={tb, fill=cTool, font=\small\bfseries}}
+\foreach \t [count=\i] in {Casting, Moulding, Deformation, Machining, Powder methods, Composite forming, Additive manufacturing,
+                            Adhesives, Welding, Fasteners, Coating, Heat treatment, Hardening}{
+  \pgfmathsetmacro{\yy}{4.2-\i*0.62-(\i>7)*0.45-(\i>10)*0.45}
+  \ifnum\i=7 \node[tb, anchor=west, draw=cIPartD, line width=1.3pt, font=\small\bfseries] (c\i) at (6.0,\yy) {\t};
+  \else \node[tb, anchor=west] (c\i) at (6.0,\yy) {\t}; \fi}
+\node[tf] (S) at (3.0,1.1) {Shaping};
+\node[tf] (J) at (3.0,-2.08) {Joining};
+\node[tf] (F) at (3.0,-4.4) {Surface treatment};
+\node[tb, fill=cToolD, text=white, font=\bfseries] (K) at (0,-1.6) {Processes};
+\foreach \n in {S,J,F} \draw[link] (K.east) -- ++(0.35,0) |- (\n.west);
+\foreach \i in {1,...,7} \draw[link] (S.east) -- ++(0.4,0) |- (c\i.west);
+\foreach \i in {8,9,10} \draw[link] (J.east) -- ++(0.4,0) |- (c\i.west);
+\foreach \i in {11,12,13} \draw[link] (F.east) -- ++(0.4,0) |- (c\i.west);
+\node[lab, text=inksoft, anchor=south] at (0,-1.15) {kingdom};
+\node[lab, text=inksoft, anchor=south] at (3.0,1.5) {family};
+\node[lab, text=inksoft, anchor=south] at (7.0,3.85) {class};
+\node[lab, anchor=west, text=inksoft] at (8.0,-1.0+2.0) {};
+\xfabref{-0.8}{-5.1}{After M.\,F.~Ashby, \emph{Materials Selection in Mechanical Design}, 5th ed., 2016, ch.~6 (process taxonomy).}
+
+\end{tikzpicture}
+\end{document}

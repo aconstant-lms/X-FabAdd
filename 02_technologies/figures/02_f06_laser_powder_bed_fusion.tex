@@ -1,0 +1,28 @@
+% 02_f06_laser_powder_bed_fusion
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[cToolD, line width=1.2pt] (0.2,2.4) -- (0.2,0.3) -- (2.0,0.3) -- (2.0,2.4);
+\draw[cToolD, line width=1.2pt] (2.3,2.4) -- (2.3,0.0) -- (5.6,0.0) -- (5.6,2.4);
+\fill[tool] (0.25,0.35) rectangle (1.95,0.6);
+\begin{scope}\clip (0.25,0.6) rectangle (1.95,2.4); \xgrains{0.25}{0.6}{1.95}{2.4}{0.07}{220}\end{scope}
+\draw[force] (1.1,-0.35) -- (1.1,0.25);
+\fill[tool] (2.35,0.05) rectangle (5.55,0.3);
+\begin{scope}\clip (2.35,0.3) rectangle (5.55,2.4); \xgrains{2.35}{0.3}{5.55}{2.4}{0.07}{420}\end{scope}
+\fill[ipart] (3.2,0.3) -- (4.7,0.3) -- (4.7,1.2) -- (4.1,1.2) -- (4.1,2.4) -- (3.2,2.4) -- cycle;
+\fill[ifeed] (3.2,2.3) rectangle (3.75,2.4);
+\draw[force] (4.0,-0.1) -- (4.0,-0.6);
+\fill[tool] (1.6,2.4) rectangle (1.95,2.75); \draw[move] (2.05,2.9) -- (2.9,2.9);
+\draw[tool] (0.2,5.0) rectangle (1.6,5.45); \node[font=\scriptsize] at (0.9,5.225) {fibre laser};
+\draw[lighthalo] (1.6,5.225) -- (3.75,5.225) -- (3.7,2.42); \draw[light] (1.6,5.225) -- (3.75,5.225) -- (3.7,2.42);
+\fill[cToolD, rotate around={-40:(3.75,5.225)}] (3.5,5.175) rectangle (4.0,5.275);
+\node[lab, anchor=west] at (4.05,5.5) {scanner};
+\node[lab, anchor=west] (mp) at (4.15,3.5) {melt pool};
+\draw[lead] (mp.west) -- (3.78,2.48);
+\node[lab, anchor=south] at (1.1,2.8) {recoater};
+\node[lab, anchor=north] at (1.1,-0.4) {powder supply};
+\node[lab, anchor=west] at (4.1,-0.45) {build platform};
+
+\end{tikzpicture}
+\end{document}

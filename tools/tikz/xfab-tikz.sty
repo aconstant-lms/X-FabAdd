@@ -161,4 +161,22 @@
 \newcommand{\xfabref}[3]{%
   \node[anchor=north west, inner sep=0, font=\scriptsize, text=inksoft, align=left] at (#1,#2) {#3};}
 
+% ---- industrial materials (kitchen figures keep feed/part above)
+%   ifeed  industrial initial material: melt, powder, wire, resin, slurry
+%   ipart  industrial final material: the metal, polymer or ceramic part
+\definecolor{cIFeed}{HTML}{F2A65A}  \definecolor{cIFeedD}{HTML}{B5651D}
+\definecolor{cIPart}{HTML}{7F93A8}  \definecolor{cIPartD}{HTML}{36475A}
+\tikzset{
+  ifeed/.style={fill=cIFeed!80, draw=cIFeedD, line width=0.7pt},
+  ipart/.style={fill=cIPart, draw=cIPartD, line width=0.7pt},
+  ipartlight/.style={fill=cIPart!45, draw=cIPartD, line width=0.7pt},
+  grain/.style={fill=cIFeed!70, draw=cIFeedD, line width=0.3pt},
+}
+% powder grains in a box: \xgrains{x0}{y0}{x1}{y1}{r}{n}  (seeded, reproducible)
+\newcommand{\xgrains}[6]{%
+  \pgfmathsetseed{52900}%
+  \foreach \i in {1,...,#6}{%
+    \pgfmathsetmacro{\gx}{#1+rnd*(#3-#1)}\pgfmathsetmacro{\gy}{#2+rnd*(#4-#2)}%
+    \fill[grain] (\gx,\gy) circle (#5);}}
+
 \endinput

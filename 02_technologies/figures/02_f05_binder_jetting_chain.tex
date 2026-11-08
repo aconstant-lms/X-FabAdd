@@ -1,0 +1,54 @@
+% 02_f05_binder_jetting_chain
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\foreach \k/\t in {0/{1\enspace print},1/{2\enspace cure},2/{3\enspace depowder},3/{4\enspace debind, sinter},4/{5\enspace part}}{
+  \node[font=\bfseries, anchor=south] at (\k*3.0+1.1,2.6) {\t};}
+\foreach \k in {0,...,3}{\draw[stepto] (\k*3.0+2.25,1.0) -- (\k*3.0+2.85,1.0);}
+% 1 print
+\begin{scope}[shift={(0,0)}]
+  \draw[cToolD, line width=1pt] (0,1.6) -- (0,0) -- (2.2,0) -- (2.2,1.6);
+  \begin{scope}\clip (0.03,0.03) rectangle (2.17,1.5); \xgrains{0.03}{0.03}{2.17}{1.5}{0.06}{170}\end{scope}
+  \fill[cChem!55] (0.5,0.4) rectangle (1.6,1.5);
+  \begin{scope}\clip (0.5,0.4) rectangle (1.6,1.5); \xgrains{0.03}{0.03}{2.17}{1.5}{0.06}{170}\end{scope}
+  \fill[cChem!40, opacity=0.7] (0.5,0.4) rectangle (1.6,1.5);
+  \draw[tool] (0.6,2.0) rectangle (1.6,2.3);
+  \foreach \xx in {0.75,1.0,1.25,1.5}{\fill[cChem] (\xx,1.75) circle (0.05);}
+\end{scope}
+% 2 cure
+\begin{scope}[shift={(3.0,0)}]
+  \draw[tool, rounded corners=2pt] (-0.1,-0.1) rectangle (2.3,1.9);
+  \fill[white] (0.1,0.1) rectangle (2.1,1.7);
+  \fill[cChem!40] (0.5,0.3) rectangle (1.6,1.4);
+  \begin{scope}\clip (0.5,0.3) rectangle (1.6,1.4); \xgrains{0.4}{0.2}{1.7}{1.5}{0.06}{70}\end{scope}
+  \foreach \xx in {0.6,1.1,1.6} \draw[heatin] (\xx,1.65) -- (\xx,1.42);
+  \node[lab, anchor=north] at (1.1,-0.15) {≈ 200\,°C, hours};
+\end{scope}
+% 3 depowder
+\begin{scope}[shift={(6.0,0)}]
+  \fill[cChem!40] (0.5,0.3) rectangle (1.6,1.4);
+  \begin{scope}\clip (0.5,0.3) rectangle (1.6,1.4); \xgrains{0.4}{0.2}{1.7}{1.5}{0.06}{70}\end{scope}
+  \foreach \cx/\cy in {0.2/0.2,0.3/0.5,1.9/0.3,2.0/0.6,0.25/1.0}{\fill[grain] (\cx,\cy) circle (0.06);}
+  \draw[force] (2.15,1.6) -- (1.75,1.3);
+  \node[lab, anchor=north] at (1.1,-0.15) {green part, fragile};
+\end{scope}
+% 4 furnace
+\begin{scope}[shift={(9.0,0)}]
+  \draw[tool, rounded corners=2pt] (-0.1,-0.1) rectangle (2.3,1.9); \fill[white] (0.1,0.1) rectangle (2.1,1.7);
+  \fill[ipart] (0.62,0.3) rectangle (1.48,1.2);
+  \draw[cIPartD, dashed] (0.5,0.3) rectangle (1.6,1.4);
+  \foreach \xx in {0.6,1.1,1.6} \draw[heatin] (\xx,1.68) -- (\xx,1.45);
+  \node[lab, anchor=north] at (1.1,-0.15) {binder burns out,};
+  \node[lab, anchor=north] at (1.1,-0.5) {grains sinter, $-$15--20\,\%};
+\end{scope}
+% 5 part
+\begin{scope}[shift={(12.0,0)}]
+  \fill[ipart] (0.62,0.3) rectangle (1.48,1.2);
+  \node[lab, anchor=north] at (1.1,-0.15) {density 95--99\,\%};
+\end{scope}
+\node[lab, anchor=north] at (1.1,-0.15) {binder jetted on powder};
+\xfabref{0}{-1.2}{One AM step (1) and four conventional powder-metallurgy steps (2--5): the twin of pressing and sintering.}
+
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,44 @@
+% 02_d01_file_layer_voxel
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+% 1 the CAD part
+\begin{scope}
+  \fill[ipartlight] (0,0) -- (2.0,0) -- (2.0,0.8) -- (1.2,0.8) -- (1.2,2.0) -- (0,2.0) -- cycle;
+  \fill[ipartlight] (2.0,0) -- (2.5,0.35) -- (2.5,1.15) -- (2.0,0.8) -- cycle;
+  \fill[ipartlight] (1.2,0.8) -- (2.0,0.8) -- (2.5,1.15) -- (1.7,1.15) -- cycle;
+  \fill[ipartlight] (1.2,0.8) -- (1.7,1.15) -- (1.7,2.35) -- (1.2,2.0) -- cycle;
+  \fill[ipartlight] (0,2.0) -- (1.2,2.0) -- (1.7,2.35) -- (0.5,2.35) -- cycle;
+  \node[lab, anchor=north] at (1.2,-0.15) {1\enspace CAD file};
+\end{scope}
+\draw[stepto] (2.9,1.1) -- (3.7,1.1);
+% 2 sliced
+\begin{scope}[shift={(4.1,0)}]
+  \foreach \i in {0,...,9}{\pgfmathsetmacro{\yy}{\i*0.2}\pgfmathsetmacro{\xr}{\i<4?2.0:1.2}
+    \fill[ipartlight] (0,\yy) rectangle (\xr,\yy+0.16);}
+  \draw[dim] (2.3,0) -- (2.3,0.16); \node[lab, anchor=west] at (2.4,0.1) {$\Delta z$};
+  \node[lab, anchor=north] at (1.1,-0.15) {2\enspace slices};
+\end{scope}
+\draw[stepto] (6.9,1.1) -- (7.7,1.1);
+% 3 one layer: contour + hatch
+\begin{scope}[shift={(8.1,0.3)}]
+  \fill[cIFeed!30] (0,0) rectangle (2.4,1.4);
+  \draw[cIPartD, line width=1.2pt] (0,0) rectangle (2.4,1.4);
+  \foreach \xx in {0.2,0.4,...,2.2} \draw[cIPartD, line width=0.5pt] (\xx,0.1) -- (\xx,1.3);
+  \node[lab, anchor=north] at (1.2,-0.45) {3\enspace one layer:};
+  \node[lab, anchor=north] at (1.2,-0.8) {contour + hatching};
+\end{scope}
+\draw[stepto] (10.8,1.1) -- (11.6,1.1);
+% 4 voxel
+\begin{scope}[shift={(12.2,0.5)}]
+  \fill[ipart] (0,0) rectangle (0.9,0.9);
+  \fill[cIPart!80!white] (0,0.9) -- (0.35,1.2) -- (1.25,1.2) -- (0.9,0.9) -- cycle;
+  \fill[cIPart!60!black] (0.9,0) -- (1.25,0.3) -- (1.25,1.2) -- (0.9,0.9) -- cycle;
+  \node[lab, anchor=north] at (0.6,-0.65) {4\enspace voxel: spot};
+  \node[lab, anchor=north] at (0.6,-1.0) {$\times$ track $\times\,\Delta z$};
+\end{scope}
+\xfabref{0}{-1.6}{The part is no longer stored in a mould but in a file; the machine adds the material where the file says, layer after layer.}
+
+\end{tikzpicture}
+\end{document}

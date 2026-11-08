@@ -5,14 +5,14 @@ cross-sections, pale flat fills, thin dark outlines, a few labels with leader li
 inside the picture (titles go on the slide, with French and German names where useful).
 Slides use the course style (Cambria, EXED footer, picture alt text = repository path).
 
-Figure names carry the step: `02_a…` step (i), `02_b…` step (ii), and so on.
+Figure names carry the part: `02_a` structure, `02_b` kitchen, `02_c` classical machines, `02_d` voxels and addressing, `02_e` paths, clocks, interfaces, `02_f` AM processes.
 
 ## Colour convention (`02_a00_colour_convention.png`)
 
 | Meaning | Colour |
 |---|---|
-| initial material (liquid, paste, powder, wire, sheet, gas) | pale yellow |
-| final material, the part | blue |
+| initial material (liquid, paste, powder, wire, sheet, gas) | kitchen: pale yellow · industry: orange |
+| final material, the part | kitchen: blue · industry: slate |
 | mould or die (carries the shape) | grey hatching |
 | other tools | light grey |
 | carrier fluid (water, electrolyte, gas) | pale cyan |
@@ -24,16 +24,23 @@ Figure names carry the step: `02_a…` step (i), `02_b…` step (ii), and so on.
 
 Defined once in `tools/tikz/xfab-tikz.sty`.
 
-## The path
+## The deck: `slides/02_technologies.pptx` (52 slides)
 
-| Step | Content | Figures |
+Built by `slides/build_02_technologies.py` from the chapter 04 template (same layouts, theme,
+Cambria titles, cards and tables), then `python tools/xfab.py footer … --skip-first`.
+Labels in English; French and German keywords in the speaker notes.
+
+| Part | Content | Figures |
 |---|---|---|
-| (i) | The structuring idea: shape created, shape changed, material changed — what is what (DIN 8580, six groups; cohesion created / kept / reduced / increased) | `02_a01_process_groups` ✔ |
-| (ii) | The six groups in the kitchen, without AM: cake tin, rolling pin, bread knife, gingerbread and icing, glazing, boiled egg — each with its industrial twin | `02_b01` … `02_b06` ✔ |
-| (iii) | Classical machines, a series in the same style: casting, injection moulding, forging/rolling, machining, welding, coating, powder pressing + sintering (Ashby's process classes) | to do — `drafts/` has material |
-| (iv) | AM: adding material voxel by voxel and layer by layer; geometry stored in a file, not in a mould (Gebhardt 2.4: point, line, area, volume) | to do |
-| (v) | The layer philosophy: material paths (liquid→solid, solid→liquid→solid, solid→solid, gas/ions→solid), clocks (setting times) and the interface between layers; Gebhardt's five ideas | to do |
-| (vi) | AM technologies one by one, with internal steps where there are several (binder jetting: print, cure, depowder, debind, sinter); ISO/ASTM 52900 as the map; machines and prices at the end | to do — tables ready |
+| 0 | Materials and traditional technologies: materials through the ages (Ashby), the six DIN 8580 groups — shape created / changed / material changed — the kitchen series with industrial twins, Ashby's process taxonomy, the classical machines (casting, injection moulding, forging, milling, welding, thermal spraying, heat-treatment temperature scales, press + sinter), where the geometry is stored | `02_a…`, `02_b…`, `02_c…` |
+| 1 | AM as layer-wise primary shaping: file → layer → voxel; seven DIN 8580 starting states and their conventional twins; four material paths; each AM process next to its twin (VPP–resin casting, MJT, MEX–injection moulding, paste–slip/concrete casting, BJT–powder metallurgy with its internal steps, PBF and DED–welding/casting, SHL–lamination, cold spray–thermal spraying, laser CVD–CVD, electrochemical AM–electroforming) | `02_d01`, `02_e01`, `02_f…` |
+| 2 | Morphological box: material state × feedstock form × agent × addressing (point, line, area, volume) | `02_d02` + table |
+| 3 | Clocks: setting time vs time between layers | `02_e02` |
+| 4 | The layer interface: what joins layer n to n − 1 | `02_e03` |
+| 5 | From physics to potentials (Gebhardt §2.6) → design rules; machines and prices; references | tables |
+
+Missing picture: `figures/02_ashby_materials_evolution.png` (slide 5 shows a placeholder;
+permission to check before adding it to this public repository; then `xfab.py sync`).
 
 Kitchen examples carry through the chapter (chocolate, jelly, glue gun, icing, sandcastle and
 sugar cube, papier-mâché, frost on a window, electroformed leaf; CandyFab sugar sintering).

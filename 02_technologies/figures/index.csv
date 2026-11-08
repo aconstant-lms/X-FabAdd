@@ -1,25 +1,104 @@
 file,slides,caption,source,credit,license,notes
 02_a00_colour_convention.pdf,,,,Andrei Constantinescu,own drawing,vector export
-02_a00_colour_convention.png,,Colour convention of the course schematics (EN/FR/DE),02_a00_colour_convention.tex,Andrei Constantinescu,own drawing,"TikZ, tools/tikz/xfab-tikz.sty; rebuild with python tools/build_figures.py"
+02_a00_colour_convention.png,02_technologies.pptx:3,"Colour convention: kitchen and industrial materials, mould, tools, fluid, force, heat, radiation, electricity, chemistry",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_a00_colour_convention.tex; build: python tools/build_figures.py
 02_a00_colour_convention.tex,,,,Andrei Constantinescu,own drawing,TikZ source
 02_a01_process_groups.pdf,,,,Andrei Constantinescu,own drawing,vector export
-02_a01_process_groups.png,,"Step (i): shape created, changed, material changed — the six DIN 8580 groups (EN/FR/DE)","after DIN 8580 and Ashby, Materials Selection in Mechanical Design, 5th ed. 2016, ch. 6",Andrei Constantinescu,own drawing,"TikZ, tools/tikz/xfab-tikz.sty; rebuild with python tools/build_figures.py"
+02_a01_process_groups.png,02_technologies.pptx:6,"Shape created, changed, material changed: the six DIN 8580 groups (EN/FR/DE)",after DIN 8580; Ashby 2016 ch. 6,Andrei Constantinescu,own drawing,source: 02_a01_process_groups.tex; build: python tools/build_figures.py
 02_a01_process_groups.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_ashby_materials_evolution.png,02_technologies.pptx:5,Evolution of engineering materials with time,"M. F. Ashby, Materials Selection in Mechanical Design (Butterworth-Heinemann)",M. F. Ashby,to check: permission needed before adding to the public repo,missing: placeholder on the slide
 02_b01_kitchen_primary_shaping.pdf,,,,Andrei Constantinescu,own drawing,vector export
-02_b01_kitchen_primary_shaping.png,,"Step (ii) kitchen 1, primary shaping: batter in a tin becomes a cake (twin: casting)",02_b01_kitchen_primary_shaping.tex,Andrei Constantinescu,own drawing,"TikZ, tools/tikz/xfab-tikz.sty; rebuild with python tools/build_figures.py"
+02_b01_kitchen_primary_shaping.png,02_technologies.pptx:8,"Kitchen 1, primary shaping: batter in a tin becomes a cake (twin: casting)",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_b01_kitchen_primary_shaping.tex; build: python tools/build_figures.py
 02_b01_kitchen_primary_shaping.tex,,,,Andrei Constantinescu,own drawing,TikZ source
 02_b02_kitchen_forming.pdf,,,,Andrei Constantinescu,own drawing,vector export
-02_b02_kitchen_forming.png,,"Step (ii) kitchen 2, forming: rolling pin and dough (twin: rolling, forging)",02_b02_kitchen_forming.tex,Andrei Constantinescu,own drawing,"TikZ, tools/tikz/xfab-tikz.sty; rebuild with python tools/build_figures.py"
+02_b02_kitchen_forming.png,02_technologies.pptx:9,"Kitchen 2, forming: rolling pin and dough (twin: rolling, forging)",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_b02_kitchen_forming.tex; build: python tools/build_figures.py
 02_b02_kitchen_forming.tex,,,,Andrei Constantinescu,own drawing,TikZ source
 02_b03_kitchen_separating.pdf,,,,Andrei Constantinescu,own drawing,vector export
-02_b03_kitchen_separating.png,,"Step (ii) kitchen 3, separating: slicing bread (twin: machining)",02_b03_kitchen_separating.tex,Andrei Constantinescu,own drawing,"TikZ, tools/tikz/xfab-tikz.sty; rebuild with python tools/build_figures.py"
+02_b03_kitchen_separating.png,02_technologies.pptx:10,"Kitchen 3, separating: slicing bread (twin: machining)",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_b03_kitchen_separating.tex; build: python tools/build_figures.py
 02_b03_kitchen_separating.tex,,,,Andrei Constantinescu,own drawing,TikZ source
 02_b04_kitchen_joining.pdf,,,,Andrei Constantinescu,own drawing,vector export
-02_b04_kitchen_joining.png,,"Step (ii) kitchen 4, joining: gingerbread walls and icing (twin: welding, gluing)",02_b04_kitchen_joining.tex,Andrei Constantinescu,own drawing,"TikZ, tools/tikz/xfab-tikz.sty; rebuild with python tools/build_figures.py"
+02_b04_kitchen_joining.png,02_technologies.pptx:11,"Kitchen 4, joining: gingerbread walls and icing (twin: welding, gluing)",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_b04_kitchen_joining.tex; build: python tools/build_figures.py
 02_b04_kitchen_joining.tex,,,,Andrei Constantinescu,own drawing,TikZ source
 02_b05_kitchen_coating.pdf,,,,Andrei Constantinescu,own drawing,vector export
-02_b05_kitchen_coating.png,,"Step (ii) kitchen 5, coating: glazing a cake (twin: painting, plating, spraying)",02_b05_kitchen_coating.tex,Andrei Constantinescu,own drawing,"TikZ, tools/tikz/xfab-tikz.sty; rebuild with python tools/build_figures.py"
+02_b05_kitchen_coating.png,02_technologies.pptx:12,"Kitchen 5, coating: glazing a cake (twin: painting, plating, spraying)",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_b05_kitchen_coating.tex; build: python tools/build_figures.py
 02_b05_kitchen_coating.tex,,,,Andrei Constantinescu,own drawing,TikZ source
 02_b06_kitchen_properties.pdf,,,,Andrei Constantinescu,own drawing,vector export
-02_b06_kitchen_properties.png,,"Step (ii) kitchen 6, changing properties: boiling an egg (twin: heat treatment)",02_b06_kitchen_properties.tex,Andrei Constantinescu,own drawing,"TikZ, tools/tikz/xfab-tikz.sty; rebuild with python tools/build_figures.py"
+02_b06_kitchen_properties.png,02_technologies.pptx:13,"Kitchen 6, changing properties: boiling an egg (twin: heat treatment)",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_b06_kitchen_properties.tex; build: python tools/build_figures.py
 02_b06_kitchen_properties.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_c00_ashby_process_tree.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_c00_ashby_process_tree.png,02_technologies.pptx:14,"Process taxonomy: kingdom, family, class",after Ashby 2016 ch. 6,Andrei Constantinescu,own drawing,source: 02_c00_ashby_process_tree.tex; build: python tools/build_figures.py
+02_c00_ashby_process_tree.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_c01_sand_casting.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_c01_sand_casting.png,02_technologies.pptx:15,Sand casting,own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_c01_sand_casting.tex; build: python tools/build_figures.py
+02_c01_sand_casting.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_c02_injection_moulding.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_c02_injection_moulding.png,02_technologies.pptx:16,Injection moulding,own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_c02_injection_moulding.tex; build: python tools/build_figures.py
+02_c02_injection_moulding.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_c03_closed_die_forging.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_c03_closed_die_forging.png,02_technologies.pptx:17,Closed-die forging,own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_c03_closed_die_forging.tex; build: python tools/build_figures.py
+02_c03_closed_die_forging.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_c04_milling.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_c04_milling.png,02_technologies.pptx:18,Milling,own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_c04_milling.tex; build: python tools/build_figures.py
+02_c04_milling.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_c05_arc_welding.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_c05_arc_welding.png,02_technologies.pptx:19,Arc welding,own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_c05_arc_welding.tex; build: python tools/build_figures.py
+02_c05_arc_welding.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_c06_thermal_spray.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_c06_thermal_spray.png,02_technologies.pptx:20,Thermal spraying,own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_c06_thermal_spray.tex; build: python tools/build_figures.py
+02_c06_thermal_spray.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_c07_heat_treatment_scales.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_c07_heat_treatment_scales.png,02_technologies.pptx:21,"Changing properties: temperature ranges and phenomena (egg, curing, tempering, quench hardening, stress relief, HIP)","after Ashby, Shercliff & Cebon 2013 ch. 19; ASTM F3301",Andrei Constantinescu,own drawing,source: 02_c07_heat_treatment_scales.tex; build: python tools/build_figures.py
+02_c07_heat_treatment_scales.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_c08_press_and_sinter.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_c08_press_and_sinter.png,02_technologies.pptx:22,Powder metallurgy: pressing and sintering,own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_c08_press_and_sinter.tex; build: python tools/build_figures.py
+02_c08_press_and_sinter.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_c09_four_routes.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_c09_four_routes.png,02_technologies.pptx:23,"Where the geometry is stored: mould, dies, tool path, layer file",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_c09_four_routes.tex; build: python tools/build_figures.py
+02_c09_four_routes.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_d01_file_layer_voxel.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_d01_file_layer_voxel.png,02_technologies.pptx:25,"From CAD file to slices, layer and voxel",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_d01_file_layer_voxel.tex; build: python tools/build_figures.py
+02_d01_file_layer_voxel.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_d02_point_line_area_volume.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_d02_point_line_area_volume.png,02_technologies.pptx:40,"Addressing: point, line, area, volume",after Gebhardt & Hötter 2016 §2.4,Andrei Constantinescu,own drawing,source: 02_d02_point_line_area_volume.tex; build: python tools/build_figures.py
+02_d02_point_line_area_volume.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_e01_material_paths.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_e01_material_paths.png,02_technologies.pptx:27,Four material paths to a solid,after Kruth 1991; Gebhardt & Hötter 2016 §2.3; Kruth et al. 2005; Tuncer & Bose 2020,Andrei Constantinescu,own drawing,source: 02_e01_material_paths.tex; build: python tools/build_figures.py
+02_e01_material_paths.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_e02_clocks.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_e02_clocks.png,02_technologies.pptx:43,"Clocks: time for the material to set, log scale",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_e02_clocks.tex; build: python tools/build_figures.py
+02_e02_clocks.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_e03_layer_interfaces.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_e03_layer_interfaces.png,02_technologies.pptx:45,Six layer interfaces: what joins layer n to n−1,own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_e03_layer_interfaces.tex; build: python tools/build_figures.py
+02_e03_layer_interfaces.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_f02_vat_photopolymerisation.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_f02_vat_photopolymerisation.png,02_technologies.pptx:28,Vat photopolymerisation (laser SLA),own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_f02_vat_photopolymerisation.tex; build: python tools/build_figures.py
+02_f02_vat_photopolymerisation.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_f03_material_extrusion.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_f03_material_extrusion.png,02_technologies.pptx:30,Material extrusion (FFF),own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_f03_material_extrusion.tex; build: python tools/build_figures.py
+02_f03_material_extrusion.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_f04_material_jetting.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_f04_material_jetting.png,02_technologies.pptx:29,Material jetting,own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_f04_material_jetting.tex; build: python tools/build_figures.py
+02_f04_material_jetting.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_f05_binder_jetting_chain.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_f05_binder_jetting_chain.png,02_technologies.pptx:32,"Binder jetting: print, cure, depowder, debind and sinter",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_f05_binder_jetting_chain.tex; build: python tools/build_figures.py
+02_f05_binder_jetting_chain.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_f06_laser_powder_bed_fusion.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_f06_laser_powder_bed_fusion.png,02_technologies.pptx:33,Laser powder bed fusion,own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_f06_laser_powder_bed_fusion.tex; build: python tools/build_figures.py
+02_f06_laser_powder_bed_fusion.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_f07_directed_energy_deposition.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_f07_directed_energy_deposition.png,02_technologies.pptx:34,"Directed energy deposition (laser, powder)",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_f07_directed_energy_deposition.tex; build: python tools/build_figures.py
+02_f07_directed_energy_deposition.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_f08_sheet_lamination.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_f08_sheet_lamination.png,02_technologies.pptx:35,Sheet lamination,own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_f08_sheet_lamination.tex; build: python tools/build_figures.py
+02_f08_sheet_lamination.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_f09_cold_spray.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_f09_cold_spray.png,02_technologies.pptx:36,Cold spray,own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_f09_cold_spray.tex; build: python tools/build_figures.py
+02_f09_cold_spray.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_f10_laser_cvd.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_f10_laser_cvd.png,02_technologies.pptx:37,Laser CVD,own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_f10_laser_cvd.tex; build: python tools/build_figures.py
+02_f10_laser_cvd.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_f11_electrochemical_am.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_f11_electrochemical_am.png,02_technologies.pptx:38,Electrochemical AM (localised electrodeposition),own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_f11_electrochemical_am.tex; build: python tools/build_figures.py
+02_f11_electrochemical_am.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_f12_paste_extrusion.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_f12_paste_extrusion.png,02_technologies.pptx:31,"Paste extrusion (ceramics, concrete)",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_f12_paste_extrusion.tex; build: python tools/build_figures.py
+02_f12_paste_extrusion.tex,,,,Andrei Constantinescu,own drawing,TikZ source

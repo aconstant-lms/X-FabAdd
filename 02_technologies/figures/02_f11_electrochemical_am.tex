@@ -1,0 +1,25 @@
+% 02_f11_electrochemical_am
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\fill[ipartlight] (0.3,0.0) rectangle (5.3,0.4);
+\foreach \xx/\hh in {1.0/1.2, 1.35/1.2}{\fill[ipart] (\xx,0.4) rectangle (\xx+0.3,0.4+\hh);}
+\foreach \i in {0,...,4}{\fill[ipart] (1.0+\i*0.3,1.6) rectangle (1.3+\i*0.3,1.9);}
+\fill[ipart] (2.95,0.4) rectangle (3.25,1.0);
+\def\nx{3.1}
+\fill[fluid] (\nx-0.45,4.4) -- (\nx+0.45,4.4) -- (\nx+0.12,1.15) -- (\nx-0.12,1.15) -- cycle;
+\draw[cToolD, line width=1.1pt] (\nx-0.5,4.4) -- (\nx-0.14,1.15) (\nx+0.5,4.4) -- (\nx+0.14,1.15);
+\draw[cIFeedD, line width=1.2pt] (\nx,5.0) -- (\nx,2.0);
+\fill[fluid] (\nx-0.16,1.15) -- (\nx+0.16,1.15) -- (\nx+0.17,1.0) -- (\nx-0.17,1.0) -- cycle;
+\draw[tool, rounded corners=2pt] (0.3,4.6) rectangle (1.9,5.3); \node[font=\scriptsize] at (1.1,4.95) {DC};
+\draw[elec] (1.9,5.0) -- (\nx,5.0); \draw[elec] (0.3,4.8) -| (0.1,0.2) -- (0.3,0.2);
+\draw[move] (3.8,3.6) -- (4.9,3.6); \node[lab] at (4.35,3.82) {$x,y,z$};
+\node[lab, anchor=west] at (3.7,4.6) {micro-nozzle, anode inside};
+\node[lab, anchor=west] (v) at (3.7,1.25) {metal ions reduced};
+\node[lab, anchor=west] at (3.7,0.92) {under the meniscus};
+\draw[lead] (v.west) -- (3.27,1.0);
+\node[lab, anchor=north] at (2.8,-0.05) {substrate = cathode; Cu, Ni at room temperature};
+
+\end{tikzpicture}
+\end{document}

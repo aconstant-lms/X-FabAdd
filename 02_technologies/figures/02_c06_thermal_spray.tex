@@ -1,0 +1,23 @@
+% 02_c06_thermal_spray
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\fill[ipart] (5.6,0) rectangle (6.4,3.4);
+\fill[ifeed] (5.45,0.6) rectangle (5.6,2.8);
+\draw[tool] (0,1.2) rectangle (1.6,2.2); \draw[tool] (1.6,1.45) rectangle (2.0,1.95);
+\draw[elec] (0.3,2.2) -- (0.3,2.6); \draw[elec] (1.1,2.2) -- (1.1,2.6);
+\fill[cHeat!30] (2.0,1.45) -- (4.9,1.0) -- (4.9,2.4) -- (2.0,1.95) -- cycle;
+\draw[tool] (2.3,2.9) -- (2.3,2.1); \fill[grain] (2.3,2.85) circle (0.07); \fill[grain] (2.3,2.55) circle (0.07);
+\pgfmathsetseed{17}\foreach \i in {1,...,16}{\fill[grain] (2.6+2.7*rnd, 1.35+0.7*rnd) circle (0.06);}
+\draw[force] (4.6,1.7) -- (5.35,1.7);
+\node[lab, anchor=north] at (0.8,1.1) {plasma or flame gun};
+\node[lab, anchor=south] at (2.3,2.95) {powder};
+\node[lab, anchor=north west] at (2.3,0.55) {molten droplets,\\100--1000 m/s};
+\node[lab, anchor=west] (c) at (6.55,2.6) {splats build};
+\node[lab, anchor=west] at (6.55,2.3) {a coating};
+\draw[lead] (c.west) -- (5.52,2.4);
+\node[lab, anchor=west] at (6.55,0.5) {substrate};
+
+\end{tikzpicture}
+\end{document}
