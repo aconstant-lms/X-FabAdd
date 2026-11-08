@@ -1,31 +1,25 @@
 file,slides,caption,source,credit,license,notes
-02_create_form_cut_add.pdf,,,,Andrei Constantinescu,own drawing,vector export of the .png
-02_create_form_cut_add.png,,"One part, four routes (casting, forging, milling, AM): where the geometry is stored, tooling, material use, batch size","02_create_form_cut_add.tex (TikZ, tools/tikz/xfab-tikz.sty)",Andrei Constantinescu,own drawing,rebuild with python tools/build_figures.py
-02_create_form_cut_add.tex,,,,Andrei Constantinescu,own drawing,TikZ source
-02_din8580_main_groups.pdf,,,,Andrei Constantinescu,own drawing,vector export of the .png
-02_din8580_main_groups.png,,DIN 8580: the six main groups of manufacturing processes and their link with AM,"02_din8580_main_groups.tex (TikZ, tools/tikz/xfab-tikz.sty)",Andrei Constantinescu,own drawing,rebuild with python tools/build_figures.py
-02_din8580_main_groups.tex,,,,Andrei Constantinescu,own drawing,TikZ source
-02_fibrous_pressing_vs_cff.pdf,,,,Andrei Constantinescu,own drawing,vector export of the .png
-02_fibrous_pressing_vs_cff.png,,From chips or fibres: hot pressing of boards vs continuous-fibre extrusion,"02_fibrous_pressing_vs_cff.tex (TikZ, tools/tikz/xfab-tikz.sty)",Andrei Constantinescu,own drawing,rebuild with python tools/build_figures.py
-02_fibrous_pressing_vs_cff.tex,,,,Andrei Constantinescu,own drawing,TikZ source
-02_gas_cvd_vs_lcvd.pdf,,,,Andrei Constantinescu,own drawing,vector export of the .png
-02_gas_cvd_vs_lcvd.png,,From the gas state: chemical vapour deposition vs laser CVD,"02_gas_cvd_vs_lcvd.tex (TikZ, tools/tikz/xfab-tikz.sty)",Andrei Constantinescu,own drawing,rebuild with python tools/build_figures.py
-02_gas_cvd_vs_lcvd.tex,,,,Andrei Constantinescu,own drawing,TikZ source
-02_ionised_electroforming_vs_ecam.pdf,,,,Andrei Constantinescu,own drawing,vector export of the .png
-02_ionised_electroforming_vs_ecam.png,,From the ionised state: electroforming vs electrochemical AM,"02_ionised_electroforming_vs_ecam.tex (TikZ, tools/tikz/xfab-tikz.sty)",Andrei Constantinescu,own drawing,rebuild with python tools/build_figures.py
-02_ionised_electroforming_vs_ecam.tex,,,,Andrei Constantinescu,own drawing,TikZ source
-02_liquid_casting_vs_vat.pdf,,,,Andrei Constantinescu,own drawing,vector export of the .png
-02_liquid_casting_vs_vat.png,,From the liquid state: sand casting vs vat photopolymerisation,"02_liquid_casting_vs_vat.tex (TikZ, tools/tikz/xfab-tikz.sty)",Andrei Constantinescu,own drawing,rebuild with python tools/build_figures.py
-02_liquid_casting_vs_vat.tex,,,,Andrei Constantinescu,own drawing,TikZ source
-02_pasty_slipcasting_vs_robocasting.pdf,,,,Andrei Constantinescu,own drawing,vector export of the .png
-02_pasty_slipcasting_vs_robocasting.png,,"From the pasty state: slip casting vs paste extrusion (robocasting, concrete)","02_pasty_slipcasting_vs_robocasting.tex (TikZ, tools/tikz/xfab-tikz.sty)",Andrei Constantinescu,own drawing,rebuild with python tools/build_figures.py
-02_pasty_slipcasting_vs_robocasting.tex,,,,Andrei Constantinescu,own drawing,TikZ source
-02_plastic_injection_vs_extrusion.pdf,,,,Andrei Constantinescu,own drawing,vector export of the .png
-02_plastic_injection_vs_extrusion.png,,From the plastic state: injection moulding vs material extrusion (FFF),"02_plastic_injection_vs_extrusion.tex (TikZ, tools/tikz/xfab-tikz.sty)",Andrei Constantinescu,own drawing,rebuild with python tools/build_figures.py
-02_plastic_injection_vs_extrusion.tex,,,,Andrei Constantinescu,own drawing,TikZ source
-02_powder_pressing_vs_pbf.pdf,,,,Andrei Constantinescu,own drawing,vector export of the .png
-02_powder_pressing_vs_pbf.png,,From the powder state: pressing and sintering vs laser powder bed fusion,"02_powder_pressing_vs_pbf.tex (TikZ, tools/tikz/xfab-tikz.sty)",Andrei Constantinescu,own drawing,rebuild with python tools/build_figures.py
-02_powder_pressing_vs_pbf.tex,,,,Andrei Constantinescu,own drawing,TikZ source
-02_primary_shaping_states.pdf,,,,Andrei Constantinescu,own drawing,vector export of the .png
-02_primary_shaping_states.png,,"DIN 8580 primary shaping by state of the starting material (1.1–1.7): conventional processes, AM counterparts, everyday analogues","02_primary_shaping_states.tex (TikZ, tools/tikz/xfab-tikz.sty)",Andrei Constantinescu,own drawing,rebuild with python tools/build_figures.py
-02_primary_shaping_states.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_a00_colour_convention.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_a00_colour_convention.png,,Colour convention of the course schematics (EN/FR/DE),02_a00_colour_convention.tex,Andrei Constantinescu,own drawing,"TikZ, tools/tikz/xfab-tikz.sty; rebuild with python tools/build_figures.py"
+02_a00_colour_convention.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_a01_process_groups.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_a01_process_groups.png,,"Step (i): shape created, changed, material changed — the six DIN 8580 groups (EN/FR/DE)","after DIN 8580 and Ashby, Materials Selection in Mechanical Design, 5th ed. 2016, ch. 6",Andrei Constantinescu,own drawing,"TikZ, tools/tikz/xfab-tikz.sty; rebuild with python tools/build_figures.py"
+02_a01_process_groups.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_b01_kitchen_primary_shaping.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_b01_kitchen_primary_shaping.png,,"Step (ii) kitchen 1, primary shaping: batter in a tin becomes a cake (twin: casting)",02_b01_kitchen_primary_shaping.tex,Andrei Constantinescu,own drawing,"TikZ, tools/tikz/xfab-tikz.sty; rebuild with python tools/build_figures.py"
+02_b01_kitchen_primary_shaping.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_b02_kitchen_forming.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_b02_kitchen_forming.png,,"Step (ii) kitchen 2, forming: rolling pin and dough (twin: rolling, forging)",02_b02_kitchen_forming.tex,Andrei Constantinescu,own drawing,"TikZ, tools/tikz/xfab-tikz.sty; rebuild with python tools/build_figures.py"
+02_b02_kitchen_forming.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_b03_kitchen_separating.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_b03_kitchen_separating.png,,"Step (ii) kitchen 3, separating: slicing bread (twin: machining)",02_b03_kitchen_separating.tex,Andrei Constantinescu,own drawing,"TikZ, tools/tikz/xfab-tikz.sty; rebuild with python tools/build_figures.py"
+02_b03_kitchen_separating.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_b04_kitchen_joining.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_b04_kitchen_joining.png,,"Step (ii) kitchen 4, joining: gingerbread walls and icing (twin: welding, gluing)",02_b04_kitchen_joining.tex,Andrei Constantinescu,own drawing,"TikZ, tools/tikz/xfab-tikz.sty; rebuild with python tools/build_figures.py"
+02_b04_kitchen_joining.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_b05_kitchen_coating.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_b05_kitchen_coating.png,,"Step (ii) kitchen 5, coating: glazing a cake (twin: painting, plating, spraying)",02_b05_kitchen_coating.tex,Andrei Constantinescu,own drawing,"TikZ, tools/tikz/xfab-tikz.sty; rebuild with python tools/build_figures.py"
+02_b05_kitchen_coating.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_b06_kitchen_properties.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_b06_kitchen_properties.png,,"Step (ii) kitchen 6, changing properties: boiling an egg (twin: heat treatment)",02_b06_kitchen_properties.tex,Andrei Constantinescu,own drawing,"TikZ, tools/tikz/xfab-tikz.sty; rebuild with python tools/build_figures.py"
+02_b06_kitchen_properties.tex,,,,Andrei Constantinescu,own drawing,TikZ source

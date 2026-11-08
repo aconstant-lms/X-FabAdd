@@ -1,0 +1,85 @@
+% Step (i): the structuring idea. Shape created, shape changed, material changed.
+% The six main groups of DIN 8580, each as one generic before -> after.
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\def\w{2.7}\def\g{0.2}\def\p{2.9}
+
+% ---- top bands
+\node[box=steel, minimum width=\w cm, minimum height=0.75cm, font=\bfseries] at (\w/2,4.6) {shape created};
+\node[box=steel, minimum width=4*\w cm+3*\g cm, minimum height=0.75cm, font=\bfseries] at (2.5*\p+\w/2,4.6) {shape changed};
+\node[box=steel, minimum width=\w cm, minimum height=0.75cm, font=\bfseries] at (5*\p+\w/2,4.6) {material changed};
+
+% ---- names: number, EN, FR, DE
+\foreach \k/\n/\en/\fr/\de in {0/1/primary shaping/mise en forme primaire/Urformen,
+    1/2/forming/formage/Umformen, 2/3/separating/séparation/Trennen,
+    3/4/joining/assemblage/Fügen, 4/5/coating/revêtement/Beschichten,
+    5/6/properties/modification des propriétés/Stoffeigenschaft ändern}{
+  \pgfmathsetmacro{\x}{\k*\p}
+  \node[anchor=north, text width=\w cm, align=center, inner sep=0] at (\x+\w/2,3.95)
+    {{\bfseries\large\n\enspace\en}\\[2pt]{\small\itshape\color{inksoft}\fr}\\{\small\itshape\color{inksoft}\de}};
+}
+
+% ---- before -> after, cell origin (x, 0.4), height 1.4
+\foreach \k in {0,...,5}{\pgfmathsetmacro{\x}{\k*\p}
+  \draw[stepto] (\x+1.15,1.1) -- (\x+1.6,1.1);}
+% 1 primary shaping: shapeless -> part
+\begin{scope}[shift={(0,0.4)}]
+  \pgfmathsetseed{4}
+  \foreach \i in {1,...,26}{\fill[feed, line width=0.3pt] (0.25+0.7*rnd,0.05+0.55*rnd*rnd) circle (0.07);}
+  \fill[feed] (0.6,0.95) .. controls (0.35,0.75) and (0.45,0.6) .. (0.6,0.6) .. controls (0.75,0.6) and (0.85,0.75) .. cycle;
+  \fill[part] (1.8,0.05) -- (2.55,0.05) -- (2.55,0.55) -- (2.2,0.55) -- (2.2,1.25) -- (1.8,1.25) -- cycle;
+\end{scope}
+% 2 forming: same volume, new shape
+\begin{scope}[shift={(\p,0.4)}]
+  \fill[part] (0.35,0.05) rectangle (0.85,1.35);
+  \fill[part] (1.75,0.05) rectangle (2.6,0.45);
+  \draw[force] (0.6,1.85) -- (0.6,1.45);
+\end{scope}
+% 3 separating: material removed
+\begin{scope}[shift={(2*\p,0.4)}]
+  \fill[part] (0.25,0.05) rectangle (1.0,1.25);
+  \fill[part] (1.75,0.05) -- (2.5,0.05) -- (2.5,0.7) -- (2.15,0.7) -- (2.15,1.25) -- (1.75,1.25) -- cycle;
+  \foreach \cx/\cy in {2.33/1.0, 2.55/1.18, 2.4/1.42}
+    \draw[cPartD, line width=1pt] (\cx,\cy) arc[start angle=0,end angle=210,radius=0.07];
+\end{scope}
+% 4 joining: two parts become one
+\begin{scope}[shift={(3*\p,0.4)}]
+  \fill[part] (0.1,0.05) rectangle (0.5,0.95);
+  \fill[part] (0.65,0.05) rectangle (1.05,0.95);
+  \fill[part] (1.65,0.05) rectangle (2.05,0.95);
+  \fill[part] (2.15,0.05) rectangle (2.55,0.95);
+  \fill[feed] (2.05,0.05) rectangle (2.15,0.95);
+  \fill[feed] (1.98,0.95) .. controls (2.03,1.07) and (2.17,1.07) .. (2.22,0.95) -- cycle;
+\end{scope}
+% 5 coating: a layer is added
+\begin{scope}[shift={(4*\p,0.4)}]
+  \fill[part] (0.25,0.05) rectangle (1.0,0.85);
+  \fill[part] (1.75,0.05) rectangle (2.5,0.85);
+  \fill[feed] (1.7,0.85) rectangle (2.55,1.0);
+  \fill[feed] (1.7,0.05) rectangle (1.75,1.0) (2.5,0.05) rectangle (2.55,1.0);
+\end{scope}
+% 6 properties: same shape, new microstructure
+\begin{scope}[shift={(5*\p,0.4)}]
+  \fill[part] (0.25,0.05) rectangle (1.0,0.85);
+  \fill[part] (1.75,0.05) rectangle (2.5,0.85);
+  \begin{scope}\clip (1.75,0.05) rectangle (2.5,0.85);
+    \foreach \gx in {1.75,1.95,...,2.55}{\foreach \gy in {0.05,0.22,...,0.9}{
+      \draw[white, line width=0.5pt] (\gx,\gy) -- ++(0.12,0.1) -- ++(0.08,-0.02);}}
+  \end{scope}
+  \draw[part, fill=none] (1.75,0.05) rectangle (2.5,0.85);
+  \draw[heatin] (2.12,1.6) -- (2.12,1.0);
+\end{scope}
+
+% ---- cohesion line
+\node[anchor=east, font=\small\bfseries, text=inksoft] at (-0.15,-0.2) {cohesion};
+\foreach \k/\t in {0/created,1/kept,2/reduced,3/increased,4/increased,5/{atoms rearranged}}{
+  \pgfmathsetmacro{\x}{\k*\p}
+  \node[font=\small, text=ink] at (\x+\w/2,-0.2) {\t};}
+\draw[steellight, line width=0.6pt] (0,0.15) -- (6*\p-\g,0.15);
+
+\xfabref{0}{-0.75}{After DIN 8580 (manufacturing processes: terms and definitions, division) and
+M.\,F.~Ashby, \emph{Materials Selection in Mechanical Design}, 5th ed., Butterworth-Heinemann 2016, ch.~6.}
+\end{tikzpicture}
+\end{document}

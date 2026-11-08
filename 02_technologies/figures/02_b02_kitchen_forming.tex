@@ -1,0 +1,21 @@
+% Step (ii) kitchen 2 — forming: a rolling pin spreads the dough
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\fill[tool] (-0.2,-0.15) rectangle (4.4,0);
+\fill[part] (1.1,0) .. controls (0.9,1.3) and (3.1,1.3) .. (2.9,0) -- cycle;
+\node[lab, anchor=south] at (2.0,1.15) {ball of dough};
+\draw[stepto] (4.8,0.6) -- (6.0,0.6);
+% after
+\fill[tool] (6.3,-0.15) rectangle (11.6,0);
+\fill[part] (6.6,0) -- (11.3,0) .. controls (11.4,0.12) and (11.35,0.22) .. (11.2,0.25) -- (6.7,0.25) .. controls (6.55,0.22) and (6.5,0.12) .. cycle;
+\draw[tool] (8.9,0.75) circle (0.5);
+\fill[tool] (7.2,0.68) rectangle (8.4,0.82); \fill[tool] (9.4,0.68) rectangle (10.6,0.82);
+\draw[force] (8.9,2.1) -- (8.9,1.35);
+\draw[move] (9.6,1.55) -- (10.6,1.55);
+\node[lab, anchor=west] at (9.1,2.0) {press and roll};
+\node[lab, anchor=north] at (9.0,-0.25) {sheet: same volume, new shape, still one piece};
+\xfabref{0}{-1.0}{\textbf{industrial twin:} rolling and forging \textemdash\ hot or cold metal pressed between rolls or dies}
+\end{tikzpicture}
+\end{document}

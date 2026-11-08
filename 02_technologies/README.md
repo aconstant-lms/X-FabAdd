@@ -1,72 +1,68 @@
 # 02 Technologies — chapter plan
 
-Guiding line: **classify AM by what happens to the material**, following the
-physical-principles approach of Gebhardt (*Additive Manufacturing*, Hanser,
-ch. 2: physical principles → machine elements → classification → potentials),
-and place every AM process next to its conventional "twin" in DIN 8580.
-Slides follow the course style (Cambria, EXED footer, picture alt text = repo path).
+A growing path, one idea per slide. Figures follow M. F. Ashby's drawing style: plain
+cross-sections, pale flat fills, thin dark outlines, a few labels with leader lines, no title
+inside the picture (titles go on the slide, with French and German names where useful).
+Slides use the course style (Cambria, EXED footer, picture alt text = repository path).
 
-## 0. The starting material (introduction)
+Figure names carry the step: `02_a…` step (i), `02_b…` step (ii), and so on.
 
-- Materials through history: Ashby's chart of the relative importance of material
-  families (*Materials Selection in Mechanical Design*) — a figure to request permission for
-  if the repository stays public.
-- Seven starting states (DIN 8580 primary shaping 1.1–1.7): liquid, plastic, pasty,
-  granular/powder, chips/fibres, gas/vapour, ionised.
-- Kitchen examples, one per state: ice cube and jelly, hot-glue gun, icing and cake batter
-  (baking = irreversible chemistry, like a thermoset), sandcastle and sugar cube, papier-mâché,
-  frost on a window, electroformed leaf. Live demos: chocolate, UV nail gel, sugar sintered with
-  hot air (CandyFab).
+## Colour convention (`02_a00_colour_convention.png`)
 
-## 1. AM among the manufacturing processes (DIN 8580)
+| Meaning | Colour |
+|---|---|
+| initial material (liquid, paste, powder, wire, sheet, gas) | pale yellow |
+| final material, the part | blue |
+| mould or die (carries the shape) | grey hatching |
+| other tools | light grey |
+| carrier fluid (water, electrolyte, gas) | pale cyan |
+| force, motion | dark arrow |
+| heat | orange wavy arrow |
+| radiation (laser, UV, electrons) | magenta beam |
+| electricity | blue wire |
+| chemistry (binder, reaction) | green |
 
-- Six main groups; AM = primary shaping done selectively, layer by layer, without a mould.
-  Figure `02_din8580_main_groups.png`, table `tables/02_din8580_main_groups.csv`.
-- One part, four routes — where is the geometry stored (mould, die, tool path, layer path)?
-  Figure `02_create_form_cut_add.png`.
-- Conventional twins by state of the starting material: figure `02_primary_shaping_states.png`,
-  table `tables/02_primary_shaping_states.csv`, and the seven pair schematics
-  `02_<state>_<conventional>_vs_<additive>.png`.
+Defined once in `tools/tikz/xfab-tikz.sty`.
 
-## 2. Material paths (the physics of consolidation)
+## The path
 
-| Path | Mechanism | Processes |
+| Step | Content | Figures |
 |---|---|---|
-| liquid → solid | cooling; polymerisation; hydration; drying | VPP, MJT, concrete, paste extrusion |
-| solid → liquid → solid | transient melt pool | PBF, DED, wire-arc, FFF (softening) |
-| solid → solid | binder; sintering (diffusion); plastic deformation | binder jetting, LOM, cold spray, friction stir, ultrasonic AM |
-| gas or ions → solid | deposition from vapour; electrochemical reduction | laser CVD, aerosol jet, electrochemical AM |
+| (i) | The structuring idea: shape created, shape changed, material changed — what is what (DIN 8580, six groups; cohesion created / kept / reduced / increased) | `02_a01_process_groups` ✔ |
+| (ii) | The six groups in the kitchen, without AM: cake tin, rolling pin, bread knife, gingerbread and icing, glazing, boiled egg — each with its industrial twin | `02_b01` … `02_b06` ✔ |
+| (iii) | Classical machines, a series in the same style: casting, injection moulding, forging/rolling, machining, welding, coating, powder pressing + sintering (Ashby's process classes) | to do — `drafts/` has material |
+| (iv) | AM: adding material voxel by voxel and layer by layer; geometry stored in a file, not in a mould (Gebhardt 2.4: point, line, area, volume) | to do |
+| (v) | The layer philosophy: material paths (liquid→solid, solid→liquid→solid, solid→solid, gas/ions→solid), clocks (setting times) and the interface between layers; Gebhardt's five ideas | to do |
+| (vi) | AM technologies one by one, with internal steps where there are several (binder jetting: print, cure, depowder, debind, sinter); ISO/ASTM 52900 as the map; machines and prices at the end | to do — tables ready |
 
-References: Kruth (CIRP 1991, 1998) state of the material; Kruth et al. RPJ 2005 binding
-mechanisms; Tuncer & Bose JOM 2020 solid-state AM; Gebhardt ch. 2.3.
+Kitchen examples carry through the chapter (chocolate, jelly, glue gun, icing, sandcastle and
+sugar cube, papier-mâché, frost on a window, electroformed leaf; CandyFab sugar sintering).
 
-## 3. Machine elements and addressing (Gebhardt 2.4)
+## Tables (`tables/`)
 
-Moving element (plotter, scanner, robot) × generating element (laser, nozzle, extruder, knife)
-→ point / line / area / volume. Morphological box: each process is one path through it;
-empty cells = new processes (area-wise PBF, volumetric printing).
+- `02_din8580_main_groups.csv` — six groups, DE/EN/FR, cohesion, link with AM
+- `02_primary_shaping_states.csv` — seven starting states, DE/EN/FR, conventional and AM processes
+- `02_machines_lpbf_metal.csv`, `02_machines_binder_jetting_metal.csv`, `02_machines_microprinting.csv`
 
-## 4. Clocks and interfaces
+## References
 
-- Setting time on a log scale: photopolymer ms, melt pool µs–ms, FFF s, concrete min–h,
-  sintering h, cake ≈ 30 min.
-- What joins layer *n* to *n−1*: over-cure, remelting, polymer interdiffusion, plastic
-  deformation, binder bridges + sintering necks, glue → anisotropy and Z-weakness.
-
-## 5. Theoretical potentials (Gebhardt 2.6)
-
-Physics → consequence → design rule: smallest detail (spot, droplet, particle), accuracy
-(shrinkage of the transformation), surface (layer + attached particles), residual stress.
-Bridge to chapter 03 *Materials in design*. Inspiration: Ashby's process-selection charts
-(material compatibility, size, tolerance, roughness, economic batch size), with AM added.
-
-## 6. The standard and the market
-
-- ISO/ASTM 52900 seven categories as a map over sections 2–3.
-- Machines, sizes and prices (end of chapter): `tables/02_machines_lpbf_metal.csv`,
-  `tables/02_machines_binder_jetting_metal.csv`, `tables/02_machines_microprinting.csv`.
-- Source deck: *03_Technologies* (Keynote, 2025) — scales and materials, microprinting,
-  maturity, pricing, acting companies.
+- DIN 8580, *Fertigungsverfahren — Begriffe, Einteilung*. Beuth.
+- M. F. Ashby, *Materials Selection in Mechanical Design*, 5th ed., Butterworth-Heinemann, 2016,
+  ch. 6–7 (classifying processes, process selection).
+- M. F. Ashby, H. Shercliff, D. Cebon, *Materials: Engineering, Science, Processing and Design*,
+  3rd ed., Butterworth-Heinemann, 2013, ch. 18–19.
+- M. F. Ashby, K. Johnson, *Materials and Design*, 3rd ed., Butterworth-Heinemann, 2014, ch. 5.
+- A. Gebhardt, J.-S. Hötter, *Additive Manufacturing: 3D Printing for Prototyping and
+  Manufacturing*, Hanser, 2016, ch. 2.
+- I. Gibson, D. Rosen, B. Stucker, M. Khorasani, *Additive Manufacturing Technologies*, 3rd ed.,
+  Springer, 2021.
+- J.-P. Kruth, *Material incress manufacturing by rapid prototyping techniques*, CIRP Annals 40
+  (1991); J.-P. Kruth, M. C. Leu, T. Nakagawa, *Progress in additive manufacturing and rapid
+  prototyping*, CIRP Annals 47 (1998).
+- J.-P. Kruth et al., *Binding mechanisms in selective laser sintering and selective laser
+  melting*, Rapid Prototyping Journal 11 (2005).
+- N. Tuncer, A. Bose, *Solid-state metal additive manufacturing: a review*, JOM 72 (2020).
+- ISO/ASTM 52900:2021, *Additive manufacturing — General principles — Fundamentals and vocabulary*.
 
 ## Building the figures
 
@@ -74,4 +70,5 @@ Bridge to chapter 03 *Materials in design*. Inspiration: Ashby's process-selecti
 python tools/build_figures.py          # every NN_*/figures/*.tex -> .pdf + .png (300 dpi)
 ```
 Needs XeLaTeX (TeX Live / MacTeX), poppler (`pdftoppm`) and the Caladea font.
-Shared style: `tools/tikz/xfab-tikz.sty` (one colour per DIN 8580 state).
+`figures/drafts/` holds the first, denser schematics, kept as material for steps (iii) and (vi);
+they are not built or indexed.
