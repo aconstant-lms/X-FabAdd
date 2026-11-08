@@ -102,3 +102,21 @@ file,slides,caption,source,credit,license,notes
 02_f12_paste_extrusion.pdf,,,,Andrei Constantinescu,own drawing,vector export
 02_f12_paste_extrusion.png,02_technologies.pptx:31,"Paste extrusion (ceramics, concrete)",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_f12_paste_extrusion.tex; build: python tools/build_figures.py
 02_f12_paste_extrusion.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_g01_twin_casting.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_g01_twin_casting.png,,"Industrial twin, primary shaping: sand casting in three steps",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_g01_twin_casting.tex
+02_g01_twin_casting.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_g02_twin_forging.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_g02_twin_forging.png,,"Industrial twin, forming: closed-die forging in three steps",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_g02_twin_forging.tex
+02_g02_twin_forging.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_g03_twin_milling.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_g03_twin_milling.png,,"Industrial twin, separating: milling in three steps",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_g03_twin_milling.tex
+02_g03_twin_milling.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_g04_twin_welding.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_g04_twin_welding.png,,"Industrial twin, joining: arc welding in three steps",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_g04_twin_welding.tex
+02_g04_twin_welding.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_g05_twin_thermal_spraying.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_g05_twin_thermal_spraying.png,,"Industrial twin, coating: thermal spraying in three steps",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_g05_twin_thermal_spraying.tex
+02_g05_twin_thermal_spraying.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_g06_twin_quench_hardening.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_g06_twin_quench_hardening.png,,"Industrial twin, changing properties: quench hardening and tempering in four steps",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_g06_twin_quench_hardening.tex
+02_g06_twin_quench_hardening.tex,,,,Andrei Constantinescu,own drawing,TikZ source

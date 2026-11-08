@@ -24,7 +24,12 @@ Figure names carry the part: `02_a` structure, `02_b` kitchen, `02_c` classical 
 
 Defined once in `tools/tikz/xfab-tikz.sty`.
 
-## The deck: `slides/02_technologies.pptx` (52 slides)
+## The decks
+
+- **claude.ai Slides: "AM technologies"**, https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk (45 slides, course style: Caladea, navy part slides, EXED footer, picture boxes labelled with the repo path; slide numbers in `figures/external_usage.csv`). Part 1 *Traditional technologies* shows six cases, one per DIN 8580 group, each titled by its operation with the kitchen steps above and the industrial twin's steps below (`02_b…` + `02_g…`).
+- **`slides/02_technologies.pptx`** (first version, 52 slides) — to be regenerated from the claude.ai structure once the story is reworked.
+
+### First PowerPoint version
 
 Built by `slides/build_02_technologies.py` from the chapter 04 template (same layouts, theme,
 Cambria titles, cards and tables), then `python tools/xfab.py footer … --skip-first`.

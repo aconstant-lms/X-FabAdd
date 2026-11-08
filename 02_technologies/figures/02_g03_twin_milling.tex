@@ -1,0 +1,30 @@
+% 02_g03_twin_milling
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\begin{scope}[shift={(0,0)}]
+  \fill[tool] (-0.2,-0.2) rectangle (2.8,0); \fill[ipart] (0,0) rectangle (2.6,1.5);
+  \fill[cToolD] (-0.2,0) rectangle (0,0.6); \fill[cToolD] (2.6,0) rectangle (2.8,0.6);
+  \node[lab, anchor=north] at (1.3,-0.3) {1\enspace clamp the stock};
+\end{scope}
+\draw[stepto] (3.1,0.8) -- (3.9,0.8);
+\begin{scope}[shift={(4.3,0)}]
+  \fill[tool] (-0.2,-0.2) rectangle (2.8,0);
+  \fill[ipartlight] (0,0) rectangle (2.6,1.5);
+  \fill[ipart] (0,0) -- (2.6,0) -- (2.6,0.7) -- (1.5,0.7) -- (1.5,1.5) -- (0,1.5) -- cycle;
+  \draw[tool] (1.6,0.75) rectangle (1.95,2.6);
+  \foreach \yy in {0.95,1.3,1.65} \draw[cToolD, line width=0.6pt] (1.6,\yy) -- (1.95,\yy+0.25);
+  \draw[move] (1.95,2.8) arc[start angle=-20,end angle=200,radius=0.2];
+  \foreach \cx/\cy in {2.3/1.6, 2.55/1.9, 2.25/2.15}{\draw[cIPartD, line width=1pt] (\cx,\cy) arc[start angle=0,end angle=220,radius=0.08];}
+  \draw[force] (2.1,1.05) -- (2.9,1.05);
+  \node[lab, anchor=north] at (1.3,-0.3) {2\enspace mill: chips leave};
+\end{scope}
+\draw[stepto] (7.4,0.8) -- (8.2,0.8);
+\begin{scope}[shift={(8.6,0)}]
+  \fill[ipart] (0,0) -- (2.6,0) -- (2.6,0.7) -- (1.5,0.7) -- (1.5,1.5) -- (0,1.5) -- cycle;
+  \node[lab, anchor=north] at (1.3,-0.3) {3\enspace part, chips recycled};
+\end{scope}
+
+\end{tikzpicture}
+\end{document}

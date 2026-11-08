@@ -1,0 +1,36 @@
+% 02_g06_twin_quench_hardening
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\def\gear{(0,0) rectangle (1.4,0.9)}
+\begin{scope}[shift={(0,0.3)}]
+  \fill[ipart] \gear;
+  \node[lab, anchor=north] at (0.7,-0.4) {1\enspace soft steel part};
+\end{scope}
+\draw[stepto] (1.7,0.75) -- (2.4,0.75);
+\begin{scope}[shift={(2.7,0)}]
+  \draw[tool, rounded corners=2pt] (0,0) rectangle (2.2,1.9); \fill[white] (0.2,0.2) rectangle (2.0,1.7);
+  \fill[fill=cHeat!55, draw=cIPartD, line width=0.7pt] (0.4,0.5) rectangle (1.8,1.4);
+  \foreach \xx in {0.6,1.1,1.6} \draw[heatin] (\xx,1.68) -- (\xx,1.43);
+  \node[lab, anchor=north] at (1.1,-0.1) {2\enspace austenitise ≈ 850\,°C};
+\end{scope}
+\draw[stepto] (5.2,0.75) -- (5.9,0.75);
+\begin{scope}[shift={(6.2,0)}]
+  \fill[fluid] (0.1,0.1) rectangle (2.1,1.3); \draw[cToolD, line width=1.2pt] (0,1.7) -- (0,0) -- (2.2,0) -- (2.2,1.7);
+  \fill[ipart] (0.4,0.3) rectangle (1.8,1.0);
+  \foreach \xx in {0.6,1.1,1.6} \draw[heatin] (\xx,1.05) -- (\xx,1.6);
+  \node[lab, anchor=north] at (1.1,-0.1) {3\enspace quench in water:};
+  \node[lab, anchor=north] at (1.1,-0.45) {martensite, hard, brittle};
+\end{scope}
+\draw[stepto] (8.7,0.75) -- (9.4,0.75);
+\begin{scope}[shift={(9.7,0)}]
+  \draw[tool, rounded corners=2pt] (0,0) rectangle (2.2,1.9); \fill[white] (0.2,0.2) rectangle (2.0,1.7);
+  \fill[fill=cHeat!25, draw=cIPartD, line width=0.7pt] (0.4,0.5) rectangle (1.8,1.4);
+  \draw[heatin] (1.1,1.68) -- (1.1,1.43);
+  \node[lab, anchor=north] at (1.1,-0.1) {4\enspace temper 200--600\,°C:};
+  \node[lab, anchor=north] at (1.1,-0.45) {hard and tough};
+\end{scope}
+
+\end{tikzpicture}
+\end{document}
