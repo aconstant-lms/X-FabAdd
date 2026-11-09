@@ -120,3 +120,7 @@ file,slides,caption,source,credit,license,notes
 02_g06_twin_quench_hardening.pdf,,,,Andrei Constantinescu,own drawing,vector export
 02_g06_twin_quench_hardening.png,,"Industrial twin, changing properties: quench hardening and tempering in four steps",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_g06_twin_quench_hardening.tex
 02_g06_twin_quench_hardening.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_h01_sla_animation.gif,,"Animation: SLA, a laser spot traces each layer, platform steps down, blade recoats (700×438, 12 s, loops)","own animation (pycairo), style of the multiphoton polymerisation GIF",Andrei Constantinescu,own drawing,source: 02_h01_sla_animation.py; helper tools/iso_anim.py
+02_h01_sla_animation.py,,,,Andrei Constantinescu,own drawing,animation source
+02_h02_dlp_animation.gif,,"Animation: bottom-up DLP, the projector flashes the whole layer, platform peels and rises (700×438, 10 s, loops)","own animation (pycairo), style of the multiphoton polymerisation GIF",Andrei Constantinescu,own drawing,source: 02_h02_dlp_animation.py; helper tools/iso_anim.py
+02_h02_dlp_animation.py,,,,Andrei Constantinescu,own drawing,animation source
