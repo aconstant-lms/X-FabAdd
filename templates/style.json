@@ -16,19 +16,23 @@
     ]
   },
   "fonts": {
-    "pptx_major": "Cambria",
-    "pptx_minor": "Cambria",
-    "web": "Caladea, Georgia, serif",
+    "pptx_major": "Space Grotesk",
+    "pptx_minor": "Inter",
+    "web_titles": "'Space Grotesk', Inter, sans-serif",
+    "web_body": "Inter, Arial, sans-serif",
+    "title_min_pt": 28,
     "replace_in_runs": [
       "Calibri",
+      "Cambria",
       "Arial",
       "Helvetica",
-      "Inter",
-      "Space Grotesk",
       "IBM Plex Sans",
       "Caladea",
-      "Georgia"
-    ]
+      "Georgia",
+      "Times New Roman"
+    ],
+    "_note": "Space Grotesk and Inter are free (SIL OFL) from fonts.google.com; install the static TTFs and embed fonts when saving in PowerPoint.",
+    "title_font_lacks": "≈≠≤≥→←↑↓±×⁰¹²³⁴⁵⁶⁷⁸⁹⁻₀₁₂₃ΔΣΩαβγδεηλμνπρστφω●○ṁ"
   },
   "colors": {
     "dk1": "1F2933",
@@ -54,5 +58,10 @@
   },
   "dark_layouts": [
     "SECTION"
-  ]
+  ],
+  "fit": {
+    "min_scale": 0.8,
+    "line_height": 1.2,
+    "metrics_dir": "templates/font-metrics"
+  }
 }

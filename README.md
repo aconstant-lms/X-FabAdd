@@ -81,7 +81,14 @@ The style lives in **`templates/style.json`**: footer text and position, fonts, 
 `templates/exed_am_template.pptx` is the PowerPoint template built from it (layouts `DEFAULT`,
 `TITLE_ONLY`, `OVERVIEW`, `SECTION`).
 
-- Fonts: Cambria for titles and body (theme fonts; Caladea is its metric twin on the web).
+- Fonts: **Space Grotesk** for titles and large numbers, **Inter** for body text (theme fonts).
+  Both are free (SIL OFL): install the `static` TTFs from fonts.google.com on every machine you
+  present or export from, and tick *PowerPoint › Preferences › Save › Embed fonts in the file*.
+  Characters Space Grotesk lacks (Greek, ≈, superscripts, arrows) stay in Inter.
+- Fit: after a font change, boxes whose text wraps onto too many lines are shrunk (never below 80 %
+  of the original size, kept in the shape name `… [fit 3200]`); `restyle` lists them, and those
+  still too long must be shortened by hand. `templates/font-metrics/` holds latin-only copies used
+  for measuring only — do not install them.
 - Footer: *EXED Polytechnique - Additive Manufacturing - 04 Industries by Andrei Constantinescu 2027*,
   8 pt grey, bottom left, **in the slide master** (one text box, not one per slide); the chapter label
   comes from the folder. Hidden on a cover slide (slide 1 with layout `SECTION`).
@@ -90,8 +97,8 @@ The style lives in **`templates/style.json`**: footer text and position, fonts, 
 To change the style: edit `style.json`, then `python tools/xfab.py restyle --all` and
 `python tools/xfab.py template`. Never style slides one by one.
 
-claude.ai Slides decks use the **EXED Additive Manufacturing** design system (same fonts, colours
-and footer). The PowerPoint deck in this repository is the reference; a claude.ai deck is a draft or
+claude.ai Slides decks use the **EXED Additive Manufacturing** design system (Space Grotesk / Inter,
+same colours and footer). The PowerPoint deck in this repository is the reference; a claude.ai deck is a draft or
 a presentation copy.
 
 Every command except `--check` also refreshes the `slides` column of the `index.csv` files.

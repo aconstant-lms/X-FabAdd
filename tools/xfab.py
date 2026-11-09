@@ -543,6 +543,231 @@ def _lighten_on_dark(slide, light: str) -> int:
     return n
 
 
+def _set_run_fonts(slide, style) -> int:
+    """Title placeholders and large runs (>= title_min_pt) get the title face; other runs that
+    name a font of the 'replace' list get the body face. Runs naming the style's faces stay."""
+    from lxml import etree
+    f = style["fonts"]
+    swap, big = set(f["replace_in_runs"]), int(f.get("title_min_pt", 28)) * 100
+    lacks = set(f.get("title_font_lacks", ""))
+    n = 0
+
+    def set_face(rpr, want):
+        nonlocal n
+        latin = rpr.find(qn("a:latin"))
+        if latin is None:
+            latin = etree.SubElement(rpr, qn("a:latin"))
+            for nxt in ("a:ea", "a:cs", "a:sym", "a:hlinkClick", "a:hlinkMouseOver", "a:rtl", "a:extLst"):
+                e = rpr.find(qn(nxt))
+                if e is not None:
+                    e.addprevious(latin)
+                    break
+        if latin.get("typeface") != want:
+            latin.set("typeface", want)
+            n += 1
+
+    for sp in slide._element.iter(qn("p:sp"), qn("p:graphicFrame")):
+        ph = sp.find(".//" + qn("p:nvPr") + "/" + qn("p:ph"))
+        is_title = ph is not None and ph.get("type") in ("title", "ctrTitle")
+        for para in sp.iter(qn("a:p")):
+            ppr = para.find(qn("a:pPr"))
+            dflt = ppr.find(qn("a:defRPr")) if ppr is not None else None
+            psz = int(dflt.get("sz", "0")) if dflt is not None else 0
+            for rpr in para.iter(qn("a:rPr"), qn("a:endParaRPr")):
+                latin = rpr.find(qn("a:latin"))
+                face = latin.get("typeface") if latin is not None else None
+                sz = int(rpr.get("sz", "0")) or psz
+                title = is_title or sz >= big
+                t = rpr.getparent().find(qn("a:t")) if rpr.tag == qn("a:rPr") else None
+                if title and t is not None and t.text and set(t.text) & lacks:
+                    title = False  # the title face has no glyph for it
+                if face in swap or (face is None and title):
+                    set_face(rpr, f["pptx_major"] if title else f["pptx_minor"])
+                elif face == f["pptx_minor"] and title:
+                    set_face(rpr, f["pptx_major"])
+                elif face == f["pptx_major"] and not title:
+                    set_face(rpr, f["pptx_minor"])
+    return n
+
+# ---------------------------------------------------------------- text fitting
+_FONT_CACHE: dict = {}
+
+
+def _metric_font(face: str, bold: bool, size_pt: float, style):
+    from PIL import ImageFont
+    mdir = REPO / style.get("fit", {}).get("metrics_dir", "templates/font-metrics")
+    name = face.replace(" ", "") + ("-Bold" if bold else "-Regular") + ".ttf"
+    key = (name, round(size_pt * 4))
+    if key not in _FONT_CACHE:
+        path = mdir / name
+        if not path.exists():
+            return None
+        _FONT_CACHE[key] = ImageFont.truetype(str(path), max(1, round(size_pt * 4)))  # quarter-point units
+    return _FONT_CACHE[key]
+
+
+def _inherited(sp, slide, prs, attr, title):
+    """Value of attr (sz, b) for level 1 from the shape, its layout / master placeholder, the master."""
+    def from_lst(el):
+        if el is None:
+            return None
+        lvl = el.find(".//" + qn("a:lvl1pPr") + "/" + qn("a:defRPr"))
+        return lvl.get(attr) if lvl is not None else None
+    v = from_lst(sp.find(qn("p:txBody")))
+    if v is not None:
+        return v
+    ph = sp.find(".//" + qn("p:nvPr") + "/" + qn("p:ph"))
+    if ph is not None:
+        typ, idx = ph.get("type", "body"), ph.get("idx")
+        for owner in (slide.slide_layout, slide.slide_layout.slide_master):
+            for cand in owner.placeholders:
+                cph = cand._element.find(".//" + qn("p:nvPr") + "/" + qn("p:ph"))
+                ctyp = cph.get("type", "body")
+                if ctyp == typ or (typ in ("title", "ctrTitle") and ctyp in ("title", "ctrTitle")) \
+                        or (idx is not None and cph.get("idx") == idx):
+                    v = from_lst(cand._element.find(qn("p:txBody")))
+                    if v is not None:
+                        return v
+                    break
+        txs = slide.slide_layout.slide_master._element.find(qn("p:txStyles"))
+        st = txs.find(qn("p:titleStyle") if title else qn("p:bodyStyle")) if txs is not None else None
+        return from_lst(st)
+    txs = slide.slide_layout.slide_master._element.find(qn("p:txStyles"))
+    st = txs.find(qn("p:otherStyle")) if txs is not None else None
+    return from_lst(st)
+
+
+def _needed_height(sp, slide, prs, style, scale=1.0, dims=None):
+    """(needed height, available height, height if every paragraph were one line), in pt."""
+    f = style["fonts"]
+    body = sp.find(qn("p:txBody"))
+    bpr = body.find(qn("a:bodyPr"))
+    ph = sp.find(".//" + qn("p:nvPr") + "/" + qn("p:ph"))
+    is_title = ph is not None and ph.get("type") in ("title", "ctrTitle")
+    if not dims or not dims[0] or not dims[1]:
+        return None, None, None
+    lins = int(bpr.get("lIns", 91440)) + int(bpr.get("rIns", 91440))
+    tins = int(bpr.get("tIns", 45720)) + int(bpr.get("bIns", 45720))
+    width = (dims[0] - lins) / 12700
+    avail = (dims[1] - tins) / 12700
+    nowrap = bpr.get("wrap") == "none"
+    base_sz = _inherited(sp, slide, prs, "sz", is_title)
+    base_sz = int(base_sz) / 100 if base_sz else 18.0
+    base_b = _inherited(sp, slide, prs, "b", is_title) == "1"
+    lh = style.get("fit", {}).get("line_height", 1.2)
+    total = one_line = 0.0
+    for para in body.findall(qn("a:p")):
+        ppr = para.find(qn("a:pPr"))
+        dflt = ppr.find(qn("a:defRPr")) if ppr is not None else None
+        psz = int(dflt.get("sz")) / 100 if dflt is not None and dflt.get("sz") else base_sz
+        pb = (dflt.get("b") == "1") if dflt is not None and dflt.get("b") else base_b
+        spc = 1.0
+        if ppr is not None:
+            pct = ppr.find(qn("a:lnSpc") + "/" + qn("a:spcPct"))
+            if pct is not None:
+                spc = int(pct.get("val")) / 100000
+        extra = 0.0
+        for tag in ("a:spcBef", "a:spcAft"):
+            e = ppr.find(qn(tag) + "/" + qn("a:spcPts")) if ppr is not None else None
+            if e is not None:
+                extra += int(e.get("val")) / 100
+        lines, cur, maxsz = 1, 0.0, 0.0
+        for child in para:
+            if child.tag == qn("a:br"):
+                lines += 1
+                cur = 0.0
+                continue
+            if child.tag not in (qn("a:r"), qn("a:fld")):
+                continue
+            rpr = child.find(qn("a:rPr"))
+            sz = (int(rpr.get("sz")) / 100 if rpr is not None and rpr.get("sz") else psz) * scale
+            b = (rpr.get("b") == "1") if rpr is not None and rpr.get("b") else pb
+            lat = rpr.find(qn("a:latin")) if rpr is not None else None
+            face = lat.get("typeface") if lat is not None else (f["pptx_major"] if is_title else f["pptx_minor"])
+            font = _metric_font(face, b or is_title, sz, style)
+            if font is None:
+                return None, None, None
+            maxsz = max(maxsz, sz)
+            text = (child.find(qn("a:t")).text or "") if child.find(qn("a:t")) is not None else ""
+            for k, word in enumerate(re.split(r"(\s+)", text)):
+                if not word:
+                    continue
+                w = font.getlength(word) / 4
+                if nowrap or word.isspace() or cur + w <= width or cur == 0:
+                    cur += w
+                else:
+                    lines += 1
+                    cur = w
+        maxsz = maxsz or psz * scale
+        total += lines * maxsz * lh * spc + extra
+        one_line += (1 + sum(1 for c in para if c.tag == qn("a:br"))) * maxsz * lh * spc + extra
+    return total, avail, one_line
+
+
+def _fit_text(slide, prs, style) -> list[str]:
+    """Shrink text boxes whose text now wraps onto more lines than the box holds,
+    never below fit.min_scale. Boxes drawn tight around their lines are left alone."""
+    from lxml import etree
+    notes = []
+    lo = style.get("fit", {}).get("min_scale", 0.8)
+
+    def shapes(coll):
+        for sh in coll:
+            if sh._element.tag == qn("p:grpSp"):
+                yield from shapes(sh.shapes)
+            elif sh._element.tag == qn("p:sp"):
+                yield sh
+
+    for sh in shapes(slide.shapes):
+        sp = sh._element
+        body = sp.find(qn("p:txBody"))
+        if body is None or sh.name == FOOTER_NAME or not "".join(t.text or "" for t in body.iter(qn("a:t"))).strip():
+            continue
+        dims = (sh.width, sh.height)
+
+        def too_long(scale):
+            need, avail, one = _needed_height(sp, slide, prs, style, scale, dims)
+            if need is None:
+                return False
+            room = max(avail, _needed_height(sp, slide, prs, style, 1.0, dims)[2])
+            return need > room * 1.03 + 2
+
+        if not too_long(1.0):
+            continue
+        ph = sp.find(".//" + qn("p:nvPr") + "/" + qn("p:ph"))
+        is_title = ph is not None and ph.get("type") in ("title", "ctrTitle")
+        base = _inherited(sp, slide, prs, "sz", is_title)
+        first = next((r for r in body.iter(qn("a:rPr")) if r.get("sz")), None)
+        cur_first = int(first.get("sz")) if first is not None else (int(base) if base else 1800)
+        cnv = sp.find(".//" + qn("p:cNvPr"))
+        m = re.search(r" \[fit (\d+)\]$", cnv.get("name", ""))
+        orig = int(m.group(1)) if m else cur_first
+        floor = max(lo, orig * lo / cur_first) if cur_first else 1.0
+        if floor >= 0.995:
+            notes.append(f"--- {sh.name!r} already at {int(round(100 * cur_first / orig))}%: STILL TOO LONG, shorten the text")
+            continue
+        scale = 1.0
+        while scale > floor and too_long(scale):
+            scale = round(scale - 0.02, 2)
+        scale = max(scale, floor)
+        if not m:
+            cnv.set("name", f"{cnv.get('name', '')} [fit {orig}]")
+        for para in body.findall(qn("a:p")):
+            ppr = para.find(qn("a:pPr"))
+            dflt = ppr.find(qn("a:defRPr")) if ppr is not None else None
+            psz = int(dflt.get("sz")) if dflt is not None and dflt.get("sz") else (int(base) if base else 1800)
+            for r in para.findall(qn("a:r")):
+                if r.find(qn("a:rPr")) is None:
+                    r.insert(0, etree.Element(qn("a:rPr")))
+            for rpr in para.iter(qn("a:rPr"), qn("a:endParaRPr")):
+                cur = int(rpr.get("sz")) if rpr.get("sz") else psz
+                rpr.set("sz", str(max(800, int(round(cur * scale / 50.0)) * 50)))
+        still = too_long(1.0)
+        txt = "".join(t.text or "" for t in body.iter(qn("a:t")))[:40]
+        notes.append(f"{int(round(100 * cur_first * scale / orig))}% {sh.name!r} “{txt}”" + ("  STILL TOO LONG: shorten the text" if still else ""))
+    return notes
+
+
 def restyle_deck(deck: Path, chapter_label_text: str | None = None, cover: str = "auto",
                  year: str | None = None) -> str:
     style = load_style()
@@ -553,7 +778,7 @@ def restyle_deck(deck: Path, chapter_label_text: str | None = None, cover: str =
     _restyle_theme(prs, style)
     _master_footer(prs, text, style)
     removed = fonts = lit = 0
-    swap = set(style["fonts"]["replace_in_runs"])
+    fitted: list[str] = []
     dark_layouts = set(style.get("dark_layouts", []))
     for i, s in enumerate(prs.slides, 1):
         if s.slide_layout.name in dark_layouts:
@@ -562,10 +787,18 @@ def restyle_deck(deck: Path, chapter_label_text: str | None = None, cover: str =
             if sh.name == FOOTER_NAME:
                 sh._element.getparent().remove(sh._element)
                 removed += 1
-        for el in s._element.iter(qn("a:latin")):
-            if el.get("typeface") in swap:
-                el.set("typeface", style["fonts"]["pptx_minor"])
-                fonts += 1
+        fonts += _set_run_fonts(s, style)
+        first_pass, last = None, []
+        for _ in range(3):  # sizes are rounded to 0.5 pt: a second pass settles them
+            last = _fit_text(s, prs, style)
+            first_pass = last if first_pass is None else first_pass
+            if not last or all(x.startswith("---") for x in last):
+                break
+        still = any("STILL" in x for x in last)
+        for x in first_pass:
+            if not still:
+                x = x.replace("  STILL TOO LONG: shorten the text", "")
+            fitted.append(f"slide {i}: {x}")
         if "showMasterSp" in s._element.attrib:
             del s._element.attrib["showMasterSp"]
     if len(prs.slides) and style["footer"]["hide_on_cover"]:
@@ -574,7 +807,8 @@ def restyle_deck(deck: Path, chapter_label_text: str | None = None, cover: str =
         if is_cover:
             first._element.set("showMasterSp", "0")
     prs.save(deck)
-    return f'{deck.name}: footer "{text}" in the master, {removed} per-slide footer(s) removed, {fonts} run font(s) set to {style["fonts"]["pptx_minor"]}, {lit} dark text run(s) lightened on dark slides'
+    fit_txt = "".join(f"\n   shrunk {x}" for x in fitted)
+    return f'{deck.name}: footer "{text}" in the master, {removed} per-slide footer(s) removed, {fonts} run font(s) set to {style["fonts"]["pptx_major"]} / {style["fonts"]["pptx_minor"]}, {lit} dark text run(s) lightened on dark slides, {len(fitted)} box(es) shrunk to fit' + fit_txt
 
 
 def cmd_restyle(a):
