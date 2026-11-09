@@ -1,0 +1,45 @@
+% 02_g07_twin_sheet_rolling  (industrial twin of rolling the dough; replaces closed-die forging)
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+% ---- 1 heat the slab
+\begin{scope}[shift={(0,0)}]
+  \draw[tool, rounded corners=2pt] (0,0) rectangle (2.6,2.2); \fill[white] (0.2,0.2) rectangle (2.4,2.0);
+  \fill[ipart] (0.45,0.45) rectangle (2.15,1.05);
+  \foreach \xx in {0.7,1.3,1.9} \draw[heatin] (\xx,1.9) -- (\xx,1.3);
+  \node[lab, anchor=north] at (1.3,-0.1) {1\enspace heat the slab};
+  \node[lab, anchor=north] at (1.3,-0.45) {(steel ≈ 1200\,°C)};
+\end{scope}
+\draw[stepto] (2.9,1.1) -- (3.6,1.1);
+% ---- 2 two roll stands: thickness 0.6 -> 0.36 -> 0.2
+\begin{scope}[shift={(3.9,0)}]
+  \def\ya{0.75}  % strip centre line
+  % strip: thick in, reduced at stand 1, reduced again at stand 2
+  \fill[ipart] (0,\ya-0.3) -- (1.25,\ya-0.3) .. controls (1.45,\ya-0.3) and (1.55,\ya-0.18) .. (1.75,\ya-0.18)
+       -- (3.25,\ya-0.18) .. controls (3.45,\ya-0.18) and (3.55,\ya-0.1) .. (3.75,\ya-0.1) -- (5.0,\ya-0.1)
+       -- (5.0,\ya+0.1) -- (3.75,\ya+0.1) .. controls (3.55,\ya+0.1) and (3.45,\ya+0.18) .. (3.25,\ya+0.18)
+       -- (1.75,\ya+0.18) .. controls (1.55,\ya+0.18) and (1.45,\ya+0.3) .. (1.25,\ya+0.3) -- (0,\ya+0.3) -- cycle;
+  % stand 1 rolls (radius 0.65) and stand 2 rolls (radius 0.5)
+  \foreach \cx/\r/\g in {1.7/0.65/0.18, 3.7/0.5/0.1}{
+    \draw[tool] (\cx,\ya+\g+\r) circle (\r); \draw[tool] (\cx,\ya-\g-\r) circle (\r);
+    \fill[cToolD] (\cx,\ya+\g+\r) circle (0.06); \fill[cToolD] (\cx,\ya-\g-\r) circle (0.06);
+    % rotation arrows: top roll clockwise, bottom roll anticlockwise
+    \draw[move] ([shift={(140:\r+0.18)}]\cx,\ya+\g+\r) arc[start angle=140, end angle=40, radius=\r+0.18];
+    \draw[move] ([shift={(-140:\r+0.18)}]\cx,\ya-\g-\r) arc[start angle=-140, end angle=-40, radius=\r+0.18];
+  }
+  \draw[move] (4.3,\ya-0.45) -- (4.95,\ya-0.45);
+  \node[lab, anchor=north] at (2.5,-1.05) {2\enspace roll passes: thickness down,};
+  \node[lab, anchor=north] at (2.5,-1.4) {length up, volume kept};
+\end{scope}
+\draw[stepto] (9.2,1.1) -- (9.9,1.1);
+% ---- 3 coil the strip
+\begin{scope}[shift={(10.2,0)}]
+  \fill[ipart] (0,0.55) -- (1.2,0.55) -- (1.2,0.75) -- (0,0.75) -- cycle;
+  \foreach \r in {0.25,0.37,...,0.86} \draw[cIPartD, line width=2.4pt] (1.9,1.15) circle (\r);
+  \draw[cIPart, line width=1.6pt] (1.9,1.15) circle (0.86);
+  \node[lab, anchor=north] at (1.3,-0.1) {3\enspace coil the strip};
+  \node[lab, anchor=north] at (1.3,-0.45) {(sheet 1--20\,mm, foil < 0.2\,mm)};
+\end{scope}
+\end{tikzpicture}
+\end{document}

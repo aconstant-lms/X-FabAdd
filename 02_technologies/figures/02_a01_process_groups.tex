@@ -3,6 +3,7 @@
 \documentclass[tikz,border=8pt]{standalone}
 \usepackage{xfab-tikz}
 \begin{document}
+\def\energyname{energy}
 \begin{tikzpicture}[x=1cm,y=1cm]
 \def\w{2.7}\def\g{0.2}\def\p{2.9}
 
@@ -73,10 +74,10 @@
 \end{scope}
 
 % ---- cohesion line
-\node[anchor=east, font=\small\bfseries, text=inksoft] at (-0.15,-0.2) {cohesion};
-\foreach \k/\t in {0/created,1/kept,2/reduced,3/increased,4/increased,5/{atoms rearranged}}{
+\node[anchor=east, font=\small\bfseries, text=ink] at (-0.15,-0.2) {COHESION};
+\foreach \k/\t/\c in {0/created/energy,1/kept/ink,2/reduced/ink,3/increased/energy,4/increased/energy,5/{atoms rearranged}/energy}{
   \pgfmathsetmacro{\x}{\k*\p}
-  \node[font=\small, text=ink] at (\x+\w/2,-0.2) {\t};}
+  \ifx\c\energyname\node[font=\small\bfseries, text=energy] at (\x+\w/2,-0.2) {\t};\else\node[font=\small, text=ink] at (\x+\w/2,-0.2) {\t};\fi}
 \draw[steellight, line width=0.6pt] (0,0.15) -- (6*\p-\g,0.15);
 
 \xfabref{0}{-0.75}{After DIN 8580 (manufacturing processes: terms and definitions, division) and
