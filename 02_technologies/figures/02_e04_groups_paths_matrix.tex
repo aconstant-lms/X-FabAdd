@@ -6,7 +6,7 @@
 \def\p{2.9}\def\w{2.7}\def\L{5.2}   % column pitch, column width, left column width
 \def\rh{1.25}                        % row height
 % ---------------- column heads: icon + name (English only)
-\foreach \k/\n/\en in {0/1/primary shaping,1/2/forming,2/3/separating,3/4/joining,4/5/coating,5/6/properties}{
+\foreach \k/\n/\en in {0/1/shaping,1/2/forming,2/3/separating,3/4/joining,4/5/coating,5/6/properties}{
   \pgfmathsetmacro{\x}{\L+\k*\p}
   \node[anchor=south, font=\bfseries] at (\x+\w/2,2.05) {\n\enspace\en};}
 \foreach \k in {0,...,5}{\pgfmathsetmacro{\x}{\L+\k*\p}\draw[stepto] (\x+1.15,0.95) -- (\x+1.6,0.95);}
@@ -49,40 +49,37 @@
 % ---------------- grid
 \pgfmathsetmacro{\R}{\L+6*\p-0.2}
 \draw[steellight, line width=0.8pt] (0,0) -- (\R,0);
-\foreach \i in {1,...,4}{\draw[steellight, line width=0.6pt] (0,-\i*\rh) -- (\R,-\i*\rh);}
-\foreach \k in {1,...,5}{\pgfmathsetmacro{\x}{\L+\k*\p-0.1}\draw[steellight, line width=0.6pt] (\x,0.1) -- (\x,-4*\rh);}
-\draw[steellight, line width=0.6pt] (\L-0.1,0.1) -- (\L-0.1,-4*\rh);
+\foreach \i in {1,...,5}{\draw[steellight, line width=0.6pt] (0,-\i*\rh) -- (\R,-\i*\rh);}
+\foreach \k in {1,...,5}{\pgfmathsetmacro{\x}{\L+\k*\p-0.1}\draw[steellight, line width=0.6pt] (\x,0.1) -- (\x,-5*\rh);}
+\draw[steellight, line width=0.6pt] (\L-0.1,0.1) -- (\L-0.1,-5*\rh);
 
+% ---------------- first row: cohesion (as in 02_a01, changed cohesion in red)
+\node[font=\small\bfseries, text=ink, anchor=west] at (0.1,-\rh/2) {COHESION};
+\foreach \k/\t/\c in {0/created/r,1/kept/k,2/reduced/k,3/increased/r,4/increased/r,5/{atoms rearranged}/r}{
+  \pgfmathsetmacro{\x}{\L+\k*\p+\w/2-0.1}
+  \if r\c\node[font=\small\bfseries, text=energy] at (\x,-\rh/2) {\t};\else\node[font=\small, text=ink] at (\x,-\rh/2) {\t};\fi}
 % ---------------- row heads: material paths (as in 02_e01)
 \tikzset{sbox/.style={draw=cIPartD, line width=0.6pt, rounded corners=2pt, minimum height=0.55cm, inner sep=2pt, font=\footnotesize\bfseries},
          sfeed/.style={sbox, fill=cIFeed!55}, sliq/.style={sbox, fill=cIFeed}, spart/.style={sbox, fill=cIPart, text=white}}
 \foreach \i/\a in {1/liquid,3/solid,4/{gas, ions}}{
-  \node[sfeed, minimum width=1.5cm] (a\i) at (0.85,-\i*\rh+\rh/2) {\a};
-  \node[spart, minimum width=1.3cm] (b\i) at (4.25,-\i*\rh+\rh/2) {solid};
+  \node[sfeed, minimum width=1.5cm] (a\i) at (0.85,{-(\i+1)*\rh+\rh/2}) {\a};
+  \node[spart, minimum width=1.3cm] (b\i) at (4.25,{-(\i+1)*\rh+\rh/2}) {solid};
   \draw[stepto, line width=1.2pt] (a\i) -- (b\i);}
-\node[sfeed, minimum width=1.5cm] (a2) at (0.85,-1.5*\rh) {solid};
-\node[sliq, minimum width=1.2cm] (m2) at (2.55,-1.5*\rh) {liquid};
-\node[spart, minimum width=1.3cm] (b2) at (4.25,-1.5*\rh) {solid};
+\node[sfeed, minimum width=1.5cm] (a2) at (0.85,-2.5*\rh) {solid};
+\node[sliq, minimum width=1.2cm] (m2) at (2.55,-2.5*\rh) {liquid};
+\node[spart, minimum width=1.3cm] (b2) at (4.25,-2.5*\rh) {solid};
 \draw[stepto, line width=1.2pt] (a2) -- (m2); \draw[stepto, line width=1.2pt] (m2) -- (b2);
 \node[font=\footnotesize\itshape, text=inksoft] at (0.85,0.35) {initial};
 \node[font=\footnotesize\itshape, text=inksoft] at (4.25,0.35) {final};
 
-% ---------------- dots: (column k, row i, example)
-\def\dot(#1,#2)#3{\pgfmathsetmacro{\x}{\L+#1*\p+\w/2-0.1}
-  \fill[ink] (\x,-#2*\rh+\rh/2+0.15) circle (0.13);
-  \node[font=\footnotesize, text=inksoft] at (\x,-#2*\rh+\rh/2-0.25) {#3};}
-\dot(0,1){casting, VPP}
-\dot(3,1){gluing}
-\dot(5,1){curing}
-\dot(0,2){PBF, DED}
-\dot(3,2){welding}
-\dot(4,2){thermal spray}
-\dot(4,3){cold spray}
-% open circle: to confirm (solid-state primary shaping)
+% ---------------- dots: (column k, path row i); process names are in the slide notes
+\def\dot(#1,#2){\pgfmathsetmacro{\x}{\L+#1*\p+\w/2-0.1}\fill[ink] (\x,{-(#2+1)*\rh+\rh/2}) circle (0.15);}
+\dot(0,1) \dot(3,1) \dot(5,1)
+\dot(0,2) \dot(3,2) \dot(4,2)
+\dot(4,3)
 \pgfmathsetmacro{\x}{\L+\w/2-0.1}
-\draw[ink, line width=0.8pt] (\x,-3*\rh+\rh/2+0.15) circle (0.13);
-\node[font=\footnotesize, text=inksoft] at (\x,-3*\rh+\rh/2-0.25) {sintering, BJT (?)};
+\draw[ink, line width=0.9pt] (\x,{-4*\rh+\rh/2}) circle (0.15);   % to confirm
 
-\xfabref{0}{-5.55}{Main groups after DIN 8580:2022, \emph{Fertigungsverfahren -- Begriffe, Einteilung} (Beuth); material paths after Kruth (1991) and Gebhardt \& Hötter (2016) §2.3.}
+\xfabref{0}{-6.75}{Main groups after DIN 8580:2022, \emph{Fertigungsverfahren -- Begriffe, Einteilung} (Beuth); material paths after Kruth (1991) and Gebhardt \& Hötter (2016) §2.3.}
 \end{tikzpicture}
 \end{document}

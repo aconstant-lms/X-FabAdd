@@ -3,7 +3,7 @@ file,slides,caption,source,credit,license,notes
 02_a00_colour_convention.png,02_technologies.pptx:3,"Colour convention: kitchen and industrial materials, mould, tools, fluid, force, heat, radiation, electricity, chemistry",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_a00_colour_convention.tex; build: python tools/build_figures.py
 02_a00_colour_convention.tex,,,,Andrei Constantinescu,own drawing,TikZ source
 02_a01_process_groups.pdf,,,,Andrei Constantinescu,own drawing,vector export
-02_a01_process_groups.png,02_technologies.pptx:6,Six ways of making: the DIN 8580 groups (EN/FR/DE); COHESION created / increased / atoms rearranged in red,after DIN 8580; Ashby 2016 ch. 6,Andrei Constantinescu,own drawing,source: 02_a01_process_groups.tex; build: python tools/build_figures.py
+02_a01_process_groups.png,02_technologies.pptx:6,"Six ways of making: the DIN 8580 groups, 1 shaping (EN/FR/DE); COHESION created / increased / atoms rearranged in red",after DIN 8580; Ashby 2016 ch. 6,Andrei Constantinescu,own drawing,source: 02_a01_process_groups.tex; build: python tools/build_figures.py
 02_a01_process_groups.tex,,,,Andrei Constantinescu,own drawing,TikZ source
 02_ashby_materials_evolution.png,02_technologies.pptx:5,Evolution of engineering materials with time,"M. F. Ashby, Materials Selection in Mechanical Design (Butterworth-Heinemann)",M. F. Ashby,to check: permission needed before adding to the public repo,missing: placeholder on the slide
 02_b01_kitchen_primary_shaping.pdf,,,,Andrei Constantinescu,own drawing,vector export
@@ -46,7 +46,7 @@ file,slides,caption,source,credit,license,notes
 02_c06_thermal_spray.png,02_technologies.pptx:20,Thermal spraying,own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_c06_thermal_spray.tex; build: python tools/build_figures.py
 02_c06_thermal_spray.tex,,,,Andrei Constantinescu,own drawing,TikZ source
 02_c07_heat_treatment_scales.pdf,,,,Andrei Constantinescu,own drawing,vector export
-02_c07_heat_treatment_scales.png,02_technologies.pptx:21,"Changing properties: temperature ranges and phenomena (egg, curing, tempering, quench hardening, stress relief, HIP)","after Ashby, Shercliff & Cebon 2013 ch. 19; ASTM F3301",Andrei Constantinescu,own drawing,source: 02_c07_heat_treatment_scales.tex; build: python tools/build_figures.py; HIP bar in the hot-material colour
+02_c07_heat_treatment_scales.png,02_technologies.pptx:21,"Changing properties: temperature (x) and time (y, log: s, min, h, day) of egg, curing, tempering, quench hardening, stress relief, HIP","after Ashby, Shercliff & Cebon 2013 ch. 19; ASTM F3301",Andrei Constantinescu,own drawing,source: 02_c07_heat_treatment_scales.tex; build: python tools/build_figures.py; HIP bar in the hot-material colour
 02_c07_heat_treatment_scales.tex,,,,Andrei Constantinescu,own drawing,TikZ source
 02_c08_press_and_sinter.pdf,,,,Andrei Constantinescu,own drawing,vector export
 02_c08_press_and_sinter.png,02_technologies.pptx:22,Powder metallurgy: pressing and sintering,own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_c08_press_and_sinter.tex; build: python tools/build_figures.py
@@ -55,7 +55,7 @@ file,slides,caption,source,credit,license,notes
 02_c09_four_routes.png,02_technologies.pptx:23,"Where the geometry is stored: mould, dies, tool path, layer file",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_c09_four_routes.tex; build: python tools/build_figures.py
 02_c09_four_routes.tex,,,,Andrei Constantinescu,own drawing,TikZ source
 02_d01_file_layer_voxel.pdf,,,,Andrei Constantinescu,own drawing,vector export
-02_d01_file_layer_voxel.png,02_technologies.pptx:25,"Part: from shape (CAD file, STL facets) to layer, to path (contour + hatching), to voxel (spot)",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_d01_file_layer_voxel.tex; build: python tools/build_figures.py
+02_d01_file_layer_voxel.png,02_technologies.pptx:25,"Part: from voxel to path to layer to part; printing strategy vs shape (digital CAD file, NURBS control points)",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_d01_file_layer_voxel.tex; build: python tools/build_figures.py
 02_d01_file_layer_voxel.tex,,,,Andrei Constantinescu,own drawing,TikZ source
 02_d02_point_line_area_volume.pdf,,,,Andrei Constantinescu,own drawing,vector export
 02_d02_point_line_area_volume.png,02_technologies.pptx:40,"Addressing: point, line, area, volume",after Gebhardt & Hötter 2016 §2.4,Andrei Constantinescu,own drawing,source: 02_d02_point_line_area_volume.tex; build: python tools/build_figures.py
@@ -150,4 +150,7 @@ _printers_common.py,,,,Andrei Constantinescu,own drawing,shared palette and data
 02_i04_map_europe_labels.png,,"Europe and Israel panel, labelled rings coloured by technology",tables/02_printers_price_voxel.csv; Natural Earth 1:110m (public domain),Andrei Constantinescu,own drawing,
 02_i04_map_europe_labels.svg,,,,Andrei Constantinescu,own drawing,vector export
 02_i04_map_slide.py,,,,Andrei Constantinescu,own drawing,map source (matplotlib + geopandas<1.0)
-02_h03_mpp_animation.gif (not in repo),,"Multi-photon polymerisation animation, used on the photopolymerisation slide",provided by the author,—,licence to check,kept out of the public repository until the licence is clear
+02_e05_material_paths_physics.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_e05_material_paths_physics.png,,"Four material paths, physical phenomena only (compact layout)",after Kruth 1991; Gebhardt & Hötter 2016 §2.3; Kruth et al. 2005; Tuncer & Bose 2020,Andrei Constantinescu,own drawing,source: 02_e05_material_paths_physics.tex; build: python tools/build_figures.py
+02_e05_material_paths_physics.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_h03_mpp_animation.gif,,Multi-photon polymerisation: femtosecond focus cures inside the resin (animation),"Femtika, femtika.lt",Femtika,courtesy of Femtika (as provided by A. Constantinescu),credited on the slide: Animation: Femtika (femtika.lt)

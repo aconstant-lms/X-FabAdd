@@ -1,0 +1,22 @@
+% 02_e05_material_paths_physics  four material paths, physics only (compact, for the shape-process slide)
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\tikzset{st/.style={draw=cToolD, line width=0.7pt, rounded corners=2pt, minimum width=1.7cm, minimum height=0.7cm, font=\small\bfseries, align=center}}
+\foreach \r/\a/\how in {
+  0/liquid/{cooling, polymerisation,\\ hydration, drying},
+  1/solid/{short-lived melt pool,\\ fast solidification},
+  2/solid/{binder, sintering (diffusion),\\ plastic deformation},
+  3/{gas, ions}/{deposition from vapour,\\ electrochemical reduction}}{
+  \pgfmathsetmacro{\yy}{-\r*1.75}
+  \node[st, fill=cIFeed!60] (A\r) at (0,\yy) {\a};
+  \node[st, fill=cIPart, text=white] (C\r) at (4.6,\yy) {solid};
+  \node[lab, align=center, anchor=north] at (2.3,\yy-0.42) {\how};}
+\draw[stepto] (A0) -- (C0); \draw[stepto] (A2) -- (C2); \draw[stepto] (A3) -- (C3);
+\node[st, fill=cIFeed!90, minimum width=1.3cm] (B1) at (2.3,-1.75) {liquid};
+\draw[stepto] (A1) -- (B1); \draw[stepto] (B1) -- (C1);
+\node[lab, text=inksoft, anchor=south] at (0,0.45) {initial};
+\node[lab, text=inksoft, anchor=south] at (4.6,0.45) {final};
+\end{tikzpicture}
+\end{document}
