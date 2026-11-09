@@ -2,7 +2,7 @@
  "v": 4,
  "createdOnFiles": {
   "v": 1,
-  "at": "2026-11-08T20:50:08Z"
+  "at": "2026-11-07T23:04:49Z"
  },
  "lists": "css",
  "title": "Risk for human activities and structures",
@@ -62,13 +62,9 @@
  },
  "cover": "cover",
  "faces": {
-  "space-grotesk": {
-   "family": "Space Grotesk",
-   "href": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400..700&display=swap"
-  },
-  "inter": {
-   "family": "Inter",
-   "href": "https://fonts.googleapis.com/css2?family=Inter:wght@400..700&display=swap"
+  "caladea": {
+   "family": "Caladea",
+   "href": "https://fonts.googleapis.com/css2?family=Caladea:ital,wght@0,400;0,700;1,400;1,700&display=swap"
   }
  },
  "designSystems": []
