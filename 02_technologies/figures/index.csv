@@ -1,4 +1,5 @@
 file,slides,caption,source,credit,license,notes
+(not in repo) carbon_clip_animation.gif,,"CLIP continuous printing, 7x speed",carbon3d.com,Carbon Inc.,third party - kept out of the public repo,uploaded as deck asset 1a36628206234ecf69db55524ea00f26
 02_a00_colour_convention.pdf,,,,Andrei Constantinescu,own drawing,vector export
 02_a00_colour_convention.png,02_technologies.pptx:3,"Colour convention: kitchen and industrial materials, mould, tools, fluid, force, heat, radiation, electricity, chemistry",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_a00_colour_convention.tex; build: python tools/build_figures.py
 02_a00_colour_convention.tex,,,,Andrei Constantinescu,own drawing,TikZ source
@@ -54,6 +55,9 @@ file,slides,caption,source,credit,license,notes
 02_c09_four_routes.pdf,,,,Andrei Constantinescu,own drawing,vector export
 02_c09_four_routes.png,02_technologies.pptx:23,"Where the geometry is stored: mould, dies, tool path, layer file",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_c09_four_routes.tex; build: python tools/build_figures.py
 02_c09_four_routes.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_c10_hip.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_c10_hip.png,,"Hot isostatic pressing: pressure vessel, furnace, argon 100-200 MPa, pore closure",after ASTM F3301; Atkinson & Rickinson 1991,Andrei Constantinescu,own drawing,source: 02_c10_hip.tex; build: python tools/build_figures.py
+02_c10_hip.tex,,,,Andrei Constantinescu,own drawing,TikZ source
 02_d01_file_layer_voxel.pdf,,,,Andrei Constantinescu,own drawing,vector export
 02_d01_file_layer_voxel.png,02_technologies.pptx:25,"Part: from voxel to path to layer to part; printing strategy vs shape (digital CAD file, NURBS control points)",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_d01_file_layer_voxel.tex; build: python tools/build_figures.py
 02_d01_file_layer_voxel.tex,,,,Andrei Constantinescu,own drawing,TikZ source
@@ -69,6 +73,12 @@ file,slides,caption,source,credit,license,notes
 02_e03_layer_interfaces.pdf,,,,Andrei Constantinescu,own drawing,vector export
 02_e03_layer_interfaces.png,02_technologies.pptx:45,Six layer interfaces: what joins layer n to n−1,own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_e03_layer_interfaces.tex; build: python tools/build_figures.py
 02_e03_layer_interfaces.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_e04_groups_paths_matrix.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_e04_groups_paths_matrix.png,,Six DIN 8580 groups x four material paths: where each path is used (one open dot to confirm),after DIN 8580:2022; Kruth 1991; Gebhardt & Hötter 2016 §2.3,Andrei Constantinescu,own drawing,source: 02_e04_groups_paths_matrix.tex; build: python tools/build_figures.py
+02_e04_groups_paths_matrix.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_e05_material_paths_physics.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_e05_material_paths_physics.png,,"Four material paths, physical phenomena only (compact layout)",after Kruth 1991; Gebhardt & Hötter 2016 §2.3; Kruth et al. 2005; Tuncer & Bose 2020,Andrei Constantinescu,own drawing,source: 02_e05_material_paths_physics.tex; build: python tools/build_figures.py
+02_e05_material_paths_physics.tex,,,,Andrei Constantinescu,own drawing,TikZ source
 02_f02_vat_photopolymerisation.pdf,,,,Andrei Constantinescu,own drawing,vector export
 02_f02_vat_photopolymerisation.png,02_technologies.pptx:28,Vat photopolymerisation (laser SLA),own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_f02_vat_photopolymerisation.tex; build: python tools/build_figures.py
 02_f02_vat_photopolymerisation.tex,,,,Andrei Constantinescu,own drawing,TikZ source
@@ -120,52 +130,42 @@ file,slides,caption,source,credit,license,notes
 02_g06_twin_quench_hardening.pdf,,,,Andrei Constantinescu,own drawing,vector export
 02_g06_twin_quench_hardening.png,,"Industrial twin, changing properties: quench hardening and tempering in four steps",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_g06_twin_quench_hardening.tex
 02_g06_twin_quench_hardening.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_g07_twin_sheet_rolling.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_g07_twin_sheet_rolling.png,,"Industrial twin of rolling the dough: heat the slab, roll passes, coil the strip",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_g07_twin_sheet_rolling.tex; build: python tools/build_figures.py
+02_g07_twin_sheet_rolling.tex,,,,Andrei Constantinescu,own drawing,TikZ source
 02_h01_sla_animation.gif,,"Animation: SLA, a laser spot traces each layer, platform steps down, blade recoats (700×438, 12 s, loops)","own animation (pycairo), style of the multiphoton polymerisation GIF",Andrei Constantinescu,own drawing,source: 02_h01_sla_animation.py; helper tools/iso_anim.py
 02_h01_sla_animation.py,,,,Andrei Constantinescu,own drawing,animation source
 02_h02_dlp_animation.gif,,"Animation: bottom-up DLP, the projector flashes the whole layer, platform peels and rises (700×438, 10 s, loops)","own animation (pycairo), style of the multiphoton polymerisation GIF",Andrei Constantinescu,own drawing,source: 02_h02_dlp_animation.py; helper tools/iso_anim.py
 02_h02_dlp_animation.py,,,,Andrei Constantinescu,own drawing,animation source
-02_i01_price_vs_voxel.png,,"Photopolymer printers: machine price vs voxel size (log-log), one colour per technology (2PP/MPP, PµSL, DLP, MSLA, CLIP/DLS, laser SLA), Ashby-style envelopes",tables/02_printers_price_voxel.csv,Andrei Constantinescu,own drawing,prices list/launch; Carbon = 3-year subscription totals
+02_h03_mpp_animation.gif,,Multi-photon polymerisation: femtosecond focus cures inside the resin (animation),"Femtika, femtika.lt",Femtika,courtesy of Femtika (as provided by A. Constantinescu),credited on the slide: Animation: Femtika (femtika.lt)
 02_i01_price_vs_voxel.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_i01_price_vs_voxel.png,,"Photopolymer printers: machine price vs voxel size (log-log), one colour per technology (2PP/MPP, PµSL, DLP, MSLA, CLIP/DLS, laser SLA), Ashby-style envelopes",tables/02_printers_price_voxel.csv,Andrei Constantinescu,own drawing,prices list/launch; Carbon = 3-year subscription totals
 02_i01_price_vs_voxel.py,,,,Andrei Constantinescu,own drawing,chart source (matplotlib)
-02_i02_map_world.png,,"Head offices of photopolymer printer makers, ring colour = technology (aviation-map style)",tables/02_printers_price_voxel.csv; coastlines Natural Earth 1:110m (public domain),Andrei Constantinescu,own drawing,co-located HQs nudged
-02_i02_map_world.svg,,,,Andrei Constantinescu,own drawing,vector export
+02_i02_manufacturers_map.py,,,,Andrei Constantinescu,own drawing,map source (matplotlib + geopandas<1.0)
 02_i02_map_europe.png,,"Photopolymer printer makers in Europe and Israel, ring colour = technology",tables/02_printers_price_voxel.csv; coastlines Natural Earth 1:110m (public domain),Andrei Constantinescu,own drawing,co-located HQs nudged
 02_i02_map_europe.svg,,,,Andrei Constantinescu,own drawing,vector export
-02_i02_manufacturers_map.py,,,,Andrei Constantinescu,own drawing,map source (matplotlib + geopandas<1.0)
-02_i03_price_vs_build_volume.png,,"Photopolymer printers: machine price vs build volume (log-log) with constant price-per-litre guide lines, Ashby-style technology envelopes",tables/02_printers_price_voxel.csv,Andrei Constantinescu,own drawing,prices list/launch; Carbon = 3-year subscription totals
+02_i02_map_world.png,,"Head offices of photopolymer printer makers, ring colour = technology (aviation-map style)",tables/02_printers_price_voxel.csv; coastlines Natural Earth 1:110m (public domain),Andrei Constantinescu,own drawing,co-located HQs nudged
+02_i02_map_world.svg,,,,Andrei Constantinescu,own drawing,vector export
 02_i03_price_vs_build_volume.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_i03_price_vs_build_volume.png,,"Photopolymer printers: machine price vs build volume (log-log) with constant price-per-litre guide lines, Ashby-style technology envelopes",tables/02_printers_price_voxel.csv,Andrei Constantinescu,own drawing,prices list/launch; Carbon = 3-year subscription totals
 02_i03_price_vs_build_volume.py,,,,Andrei Constantinescu,own drawing,chart source (matplotlib)
-_printers_common.py,,,,Andrei Constantinescu,own drawing,shared palette and data loader for 02_i01-02_i03
-02_g07_twin_sheet_rolling.pdf,,,,Andrei Constantinescu,own drawing,vector export
-02_g07_twin_sheet_rolling.png,,"Industrial twin of rolling the dough: heat the slab, roll passes, coil the strip",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_g07_twin_sheet_rolling.tex; build: python tools/build_figures.py
-02_g07_twin_sheet_rolling.tex,,,,Andrei Constantinescu,own drawing,TikZ source
-02_c10_hip.pdf,,,,Andrei Constantinescu,own drawing,vector export
-02_c10_hip.png,,"Hot isostatic pressing: pressure vessel, furnace, argon 100-200 MPa, pore closure",after ASTM F3301; Atkinson & Rickinson 1991,Andrei Constantinescu,own drawing,source: 02_c10_hip.tex; build: python tools/build_figures.py
-02_c10_hip.tex,,,,Andrei Constantinescu,own drawing,TikZ source
-02_e04_groups_paths_matrix.pdf,,,,Andrei Constantinescu,own drawing,vector export
-02_e04_groups_paths_matrix.png,,Six DIN 8580 groups x four material paths: where each path is used (one open dot to confirm),after DIN 8580:2022; Kruth 1991; Gebhardt & Hötter 2016 §2.3,Andrei Constantinescu,own drawing,source: 02_e04_groups_paths_matrix.tex; build: python tools/build_figures.py
-02_e04_groups_paths_matrix.tex,,,,Andrei Constantinescu,own drawing,TikZ source
-02_i04_map_world_numbered.png,,"World strip, numbered rings coloured by technology (aviation map-slide layout)",tables/02_printers_price_voxel.csv; Natural Earth 1:110m (public domain),Andrei Constantinescu,own drawing,
-02_i04_map_world_numbered.svg,,,,Andrei Constantinescu,own drawing,vector export
 02_i04_map_europe_labels.png,,"Europe and Israel panel, labelled rings coloured by technology",tables/02_printers_price_voxel.csv; Natural Earth 1:110m (public domain),Andrei Constantinescu,own drawing,
 02_i04_map_europe_labels.svg,,,,Andrei Constantinescu,own drawing,vector export
 02_i04_map_slide.py,,,,Andrei Constantinescu,own drawing,map source (matplotlib + geopandas<1.0)
-02_e05_material_paths_physics.pdf,,,,Andrei Constantinescu,own drawing,vector export
-02_e05_material_paths_physics.png,,"Four material paths, physical phenomena only (compact layout)",after Kruth 1991; Gebhardt & Hötter 2016 §2.3; Kruth et al. 2005; Tuncer & Bose 2020,Andrei Constantinescu,own drawing,source: 02_e05_material_paths_physics.tex; build: python tools/build_figures.py
-02_e05_material_paths_physics.tex,,,,Andrei Constantinescu,own drawing,TikZ source
-02_h03_mpp_animation.gif,,Multi-photon polymerisation: femtosecond focus cures inside the resin (animation),"Femtika, femtika.lt",Femtika,courtesy of Femtika (as provided by A. Constantinescu),credited on the slide: Animation: Femtika (femtika.lt)
+02_i04_map_world_numbered.png,,"World strip, numbered rings coloured by technology (aviation map-slide layout)",tables/02_printers_price_voxel.csv; Natural Earth 1:110m (public domain),Andrei Constantinescu,own drawing,
+02_i04_map_world_numbered.svg,,,,Andrei Constantinescu,own drawing,vector export
 02_j01_polymer_pyramid.pdf,,,,Andrei Constantinescu,own drawing,vector export
 02_j01_polymer_pyramid.png,,Printable thermoplastics by continuous-use temperature: amorphous (filament) vs semicrystalline (filament and powder),"after BCG exhibit ""A wide variety of plastics can be used for AM""",Andrei Constantinescu,own drawing,redrawn in course style; source: 02_j01_polymer_pyramid.tex
 02_j01_polymer_pyramid.tex,,,,Andrei Constantinescu,own drawing,TikZ source
-02_j02_polymer_ashby_E_strength.png,,"Ashby chart of printable polymers: Young's modulus vs tensile strength, colour = process, with rigid-polymer zoom","tables/02_polymers_ashby.csv (combined Ashby table, makers' data sheets, papers)",Andrei Constantinescu,own drawing,chart
 02_j02_polymer_ashby_E_strength.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_j02_polymer_ashby_E_strength.png,,"Ashby chart of printable polymers: Young's modulus vs tensile strength, colour = process, with rigid-polymer zoom","tables/02_polymers_ashby.csv (combined Ashby table, makers' data sheets, papers)",Andrei Constantinescu,own drawing,chart
 02_j02_polymer_ashby_E_strength.py,,,,Andrei Constantinescu,own drawing,chart source (matplotlib)
-02_j03_polymer_prices.png,,"Typical price per kg of printable polymer feedstocks (filament, powder, resin)",tables/02_polymer_prices_makers.csv,Andrei Constantinescu,own drawing,chart
 02_j03_polymer_prices.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_j03_polymer_prices.png,,"Typical price per kg of printable polymer feedstocks (filament, powder, resin)",tables/02_polymer_prices_makers.csv,Andrei Constantinescu,own drawing,chart
 02_j03_polymer_prices.py,,,,Andrei Constantinescu,own drawing,chart source (matplotlib)
-02_j04_map_world_numbered.png,,"Polymer and feedstock makers, world strip, numbered rings by role",Natural Earth 1:110m (public domain),Andrei Constantinescu,own drawing,map
-02_j04_map_world_numbered.svg,,,,Andrei Constantinescu,own drawing,vector export
 02_j04_map_europe_labels.png,,"Polymer and feedstock makers in Europe, labelled rings by role",Natural Earth 1:110m (public domain),Andrei Constantinescu,own drawing,map
 02_j04_map_europe_labels.svg,,,,Andrei Constantinescu,own drawing,vector export
+02_j04_map_world_numbered.png,,"Polymer and feedstock makers, world strip, numbered rings by role",Natural Earth 1:110m (public domain),Andrei Constantinescu,own drawing,map
+02_j04_map_world_numbered.svg,,,,Andrei Constantinescu,own drawing,vector export
 02_j04_polymer_makers_map.py,,,,Andrei Constantinescu,own drawing,map source
-(not in repo) carbon_clip_animation.gif,deck only (vpp-example-carbon),"CLIP continuous printing, 7x speed",carbon3d.com,Carbon Inc.,third party - kept out of the public repo,uploaded as deck asset 1a36628206234ecf69db55524ea00f26
+_printers_common.py,,,,Andrei Constantinescu,own drawing,shared palette and data loader for 02_i01-02_i03

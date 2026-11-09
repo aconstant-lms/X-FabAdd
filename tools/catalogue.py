@@ -28,7 +28,7 @@ from pptx.util import Emu, Inches, Pt
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import xfab  # noqa: E402  (shared helpers: REPO, scan_usage, read_index, placeholder_png, image_size)
 
-FONT = "Cambria"
+FONT = "Inter"
 GREY = RGBColor(0x59, 0x59, 0x59)
 DARK = RGBColor(0x1B, 0x24, 0x33)
 ACCENT = RGBColor(0xA8, 0x48, 0x0F)

@@ -13,7 +13,7 @@ next to the source:
 
 Then run  python tools/xfab.py sync DECK  to refresh the slides.
 Needs: xelatex (TeX Live with pgf, standalone, fontspec), pdftoppm (poppler),
-       the Caladea font (fonts-crosextra-caladea).
+       the Inter font (full version, fonts.google.com or fonts-inter).
 """
 from __future__ import annotations
 

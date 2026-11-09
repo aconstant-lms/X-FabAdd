@@ -4,7 +4,7 @@
     python 02_technologies/slides/build_02_technologies.py
     python tools/xfab.py footer 02_technologies/slides/02_technologies.pptx --skip-first
 
-The template is the chapter 04 deck (layouts, theme, Cambria titles); its slides
+The template is the chapter 04 deck (layouts, theme; fonts come from templates/style.json via xfab.py restyle); its slides
 are removed and the chapter 02 slides are written. Every picture carries its
 repository path in the alt text, so `xfab.py sync` refreshes it later.
 Speaker notes carry the French and German keywords.
@@ -103,7 +103,7 @@ def card(s, x, y, w, h, heading, lines, size=13.5):
     sh.line.fill.background()
     sh.shadow.inherit = False
     sh.name = "card"
-    text(s, x + 0.2, y + 0.12, w - 0.4, 0.45, heading, size=17, font="Cambria", color=INK)
+    text(s, x + 0.2, y + 0.12, w - 0.4, 0.45, heading, size=17, font="Inter", color=INK)
     text(s, x + 0.2, y + 0.62, w - 0.4, h - 0.7, lines, size=size)
     return sh
 
@@ -196,7 +196,7 @@ for i, (n, h, b) in enumerate(steps):
     o.fill.solid(); o.fill.fore_color.rgb = ACCENT; o.line.fill.background()
     o.text_frame.text = n; o.text_frame.paragraphs[0].font.size = Pt(18); o.text_frame.paragraphs[0].font.bold = True
     o.text_frame.paragraphs[0].alignment = PP_ALIGN.CENTER
-    text(s, x + 0.95, y + 0.22, 2.85, 0.9, h, size=17, font="Cambria")
+    text(s, x + 0.95, y + 0.22, 2.85, 0.9, h, size=17, font="Inter")
     text(s, x + 0.25, y + 1.2, 3.5, 1.2, b, size=13.5, color=SOFT)
 source(s, "Structure after Gebhardt & Hötter, Additive Manufacturing (Hanser 2016), ch. 2; figures in the style of M. F. Ashby.")
 

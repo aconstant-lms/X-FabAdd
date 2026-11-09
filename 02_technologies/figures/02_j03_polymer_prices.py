@@ -53,7 +53,7 @@ for p, c in [(k, v) for k, v in COL.items() if k != "2PP / MPP"]:
     y -= 0.07
 lx.text(0, 0.0, "Retail and bulk prices 2025-2026 from\nmakers and resellers; resins at\n1.1 kg/L; EUR and GBP at par with USD\n"
         "on this log scale. 2PP photoresins\n(IP-S, OrmoComp, SU-8): small bottles,\nprice on request.\n\n"
-        "Data: tables/02_polymer_prices_makers.csv", va="bottom", fontsize=10.5, color=GREY,
+        "Data: tables/\n02_polymer_prices_makers.csv", va="bottom", fontsize=10.5, color=GREY,
         transform=lx.transAxes, linespacing=1.3)
 for ext in ("png", "pdf"):
     fig.savefig(HERE / f"02_j03_polymer_prices.{ext}", dpi=200, facecolor="white")

@@ -569,6 +569,12 @@ def _set_run_fonts(slide, style) -> int:
     for sp in slide._element.iter(qn("p:sp"), qn("p:graphicFrame")):
         ph = sp.find(".//" + qn("p:nvPr") + "/" + qn("p:ph"))
         is_title = ph is not None and ph.get("type") in ("title", "ctrTitle")
+        # paragraph and list defaults (a:defRPr) can name a font too
+        for d in sp.iter(qn("a:defRPr")):
+            lat = d.find(qn("a:latin"))
+            if lat is not None and lat.get("typeface") in swap:
+                big_d = is_title or int(d.get("sz", "0")) >= big
+                set_face(d, f["pptx_major"] if big_d else f["pptx_minor"])
         for para in sp.iter(qn("a:p")):
             ppr = para.find(qn("a:pPr"))
             dflt = ppr.find(qn("a:defRPr")) if ppr is not None else None
@@ -777,6 +783,10 @@ def restyle_deck(deck: Path, chapter_label_text: str | None = None, cover: str =
     text = style["footer"]["text"].format(chapter=label, year=year or style["footer"]["year"])
     _restyle_theme(prs, style)
     _master_footer(prs, text, style)
+    for master in prs.slide_masters:  # layouts and masters can name fonts too
+        _set_run_fonts(master, style)
+        for lay in master.slide_layouts:
+            _set_run_fonts(lay, style)
     removed = fonts = lit = 0
     fitted: list[str] = []
     dark_layouts = set(style.get("dark_layouts", []))

@@ -14,7 +14,7 @@ LABEL = {"Car": "Car and road"}
 COL = {"Sports": "#2a78d6", "Medical": "#eb6834", "Car": "#1baf7a", "Train": "#eda100", "Aviation": "#e87ba4", "Space": "#008300"}
 INK, INK2, GRID, BG, BAND = "#1B2433", "#566170", "#DDD6C6", "#FBFAF7", "#F1EEE6"  # deck palette
 
-plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 12})
+plt.rcParams.update({"font.family": "Inter", "font.size": 12})
 fig, ax = plt.subplots(figsize=(15.5, 7.4), dpi=200, facecolor=BG)
 ax.set_facecolor(BG)
 ax.set_xscale("log"); ax.set_xlim(5e-9, 3e-1)

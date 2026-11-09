@@ -29,7 +29,7 @@ def rows():
     return list(csv.DictReader(open(CSV, encoding="utf-8")))
 
 
-def use_font(name="Caladea", size=13):
+def use_font(name="Inter", size=13):
     for f in font_manager.findSystemFonts():
         if name.split()[0] in Path(f).name:
             try:

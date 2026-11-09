@@ -1,11 +1,14 @@
 % xfab-tikz.sty — shared look for all X-FabAdd schematics
-% Compile with XeLaTeX (fontspec + Caladea, metric twin of Cambria).
+% Compile with XeLaTeX (fontspec + Inter, the course text font; see templates/style.json).
 % Build every figure:  python tools/build_figures.py [paths…]
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{xfab-tikz}[2026/11/08 X-FabAdd TikZ style]
 
 \RequirePackage{fontspec}
-\setmainfont{Caladea}
+\setmainfont{Inter}[UprightFont={* Regular},BoldFont={* SemiBold},
+  ItalicFont={* Italic},BoldItalicFont={* SemiBold Italic}]
+\setsansfont{Inter}[UprightFont={* Regular},BoldFont={* SemiBold},
+  ItalicFont={* Italic},BoldItalicFont={* SemiBold Italic}]
 \RequirePackage{xcolor}
 \RequirePackage{tikz}
 \usetikzlibrary{arrows.meta,calc,positioning,patterns,patterns.meta,

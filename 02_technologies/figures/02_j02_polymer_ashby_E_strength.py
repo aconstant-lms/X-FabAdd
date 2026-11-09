@@ -110,10 +110,11 @@ for i, (p, c) in enumerate(PROC):
             va="center", fontsize=12.5, color=INK, transform=lx.transAxes)
 lx.plot([0.0, 0.06], [0.36, 0.36], ls=(0, (5, 4)), color="#b9b4a8", transform=lx.transAxes)
 lx.text(0.08, 0.36, "constant strain $\\sigma$/E", va="center", fontsize=12, color=GREY, transform=lx.transAxes)
-lx.text(0, 0.0, "Ellipses span published ranges (2PP resins: compressive yield of micropillars);\n"
-        "printed Z values often 10-50 % lower. SZ2080/OrmoComp: strength not published.\n"
+lx.text(0, 0.0, "Ellipses span published ranges (2PP resins: compressive\n"
+        "yield of micropillars); printed Z values often 10-50 % lower.\n"
+        "SZ2080/OrmoComp: strength not published.\n"
         "Data: tables/02_polymers_ashby.csv; makers' data sheets; Ashby (2016).",
-        va="bottom", fontsize=9.5, color=GREY, transform=lx.transAxes, linespacing=1.3)
+        va="bottom", fontsize=9, color=GREY, transform=lx.transAxes, linespacing=1.25)
 for ext in ("png", "pdf"):
     fig.savefig(HERE / f"02_j02_polymer_ashby_E_strength.{ext}", dpi=200, facecolor="white")
 print("ok")
