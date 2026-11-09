@@ -1,0 +1,58 @@
+{
+  "_about": "Single source of the course style. PowerPoint decks: python tools/xfab.py restyle --all. claude.ai decks: the 'EXED Additive Manufacturing' design system mirrors these values.",
+  "footer": {
+    "text": "EXED Polytechnique - Additive Manufacturing - {chapter} by Andrei Constantinescu {year}",
+    "year": "2027",
+    "size_pt": 8,
+    "color": "7F7F7F",
+    "left_in": 0.27,
+    "top_in": 7.21,
+    "width_in": 9.33,
+    "height_in": 0.22,
+    "hide_on_cover": true,
+    "cover_layouts": [
+      "SECTION",
+      "Title Slide"
+    ]
+  },
+  "fonts": {
+    "pptx_major": "Cambria",
+    "pptx_minor": "Cambria",
+    "web": "Caladea, Georgia, serif",
+    "replace_in_runs": [
+      "Calibri",
+      "Arial",
+      "Helvetica",
+      "Inter",
+      "Space Grotesk",
+      "IBM Plex Sans",
+      "Caladea",
+      "Georgia"
+    ]
+  },
+  "colors": {
+    "dk1": "1F2933",
+    "lt1": "FFFFFF",
+    "dk2": "2B3440",
+    "lt2": "EEF1F4",
+    "accent1": "B03A2E",
+    "accent2": "D9822B",
+    "accent3": "C9A227",
+    "accent4": "6B8F71",
+    "accent5": "2A78D6",
+    "accent6": "5B6B7B",
+    "hlink": "2A78D6",
+    "folHlink": "6250D6",
+    "text": "52606D",
+    "section_bg": "0F1B2D",
+    "card_bg": "F3F1EC",
+    "text_on_dark": "C9D2DE"
+  },
+  "slide": {
+    "width_in": 13.333,
+    "height_in": 7.5
+  },
+  "dark_layouts": [
+    "SECTION"
+  ]
+}

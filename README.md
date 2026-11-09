@@ -69,14 +69,30 @@ pip install -r tools/requirements.txt
 | Refresh the slides from `figures/` (new versions, placeholders filled) | `python tools/xfab.py sync DECK` |
 | Just check, change nothing (exit code 1 if a figure is missing) | `python tools/xfab.py sync DECK --check` |
 | Rename a figure and relink every deck | `python tools/xfab.py rename 02_technologies/figures/02_s05_01.png 02_lpbf_schematic.png` |
-| Put the course footer on every slide | `python tools/xfab.py footer DECK [--skip-first]` |
+| Start a new deck in the course style | `python tools/xfab.py new 05_economics/slides/05_economics.pptx --title "…"` |
+| Apply the course style (fonts, colours, footer) to every deck | `python tools/xfab.py restyle --all` |
+| Rebuild the template after changing the style | `python tools/xfab.py template` |
 | List missing and unused figures across all decks | `python tools/xfab.py status` |
 | Build a catalogue of every figure (picture, full path, caption, decks and slides using it, source, credit, licence) | `python tools/catalogue.py` → `figures_catalogue.pptx` (not committed) |
 
-The footer reads, in 8 pt grey, bottom left:
-*EXED Polytechnique - Additive Manufacturing - 02 Technologies by Andrei Constantinescu 2027*
-(the chapter label comes from the folder name; `--chapter`, `--year`, `--size`, `--template` override it).
-New slides made with `add-slide` get the footer automatically.
+## Course style: one place
+
+The style lives in **`templates/style.json`**: footer text and position, fonts, theme colours.
+`templates/exed_am_template.pptx` is the PowerPoint template built from it (layouts `DEFAULT`,
+`TITLE_ONLY`, `OVERVIEW`, `SECTION`).
+
+- Fonts: Cambria for titles and body (theme fonts; Caladea is its metric twin on the web).
+- Footer: *EXED Polytechnique - Additive Manufacturing - 04 Industries by Andrei Constantinescu 2027*,
+  8 pt grey, bottom left, **in the slide master** (one text box, not one per slide); the chapter label
+  comes from the folder. Hidden on a cover slide (slide 1 with layout `SECTION`).
+- Dark section slides: dark text is turned into the light text colour.
+
+To change the style: edit `style.json`, then `python tools/xfab.py restyle --all` and
+`python tools/xfab.py template`. Never style slides one by one.
+
+claude.ai Slides decks use the **EXED Additive Manufacturing** design system (same fonts, colours
+and footer). The PowerPoint deck in this repository is the reference; a claude.ai deck is a draft or
+a presentation copy.
 
 Every command except `--check` also refreshes the `slides` column of the `index.csv` files.
 

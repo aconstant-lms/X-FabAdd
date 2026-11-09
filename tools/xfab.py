@@ -12,7 +12,11 @@ Commands (run from anywhere; paths are resolved against the repo root):
   sync       DECK... [--check]   refresh pictures from figures/, fill placeholders
   add-slide  DECK --title T --figure PATH [--notes N] [--caption C] [--after K]
   rename     OLD NEW             rename a figure, update every deck + index
-  footer     DECK [--chapter "02 Technologies"] [--year 2027]
+  restyle    DECK... | --all     apply templates/style.json: theme fonts and colours,
+                                 EXED footer in the slide master (hidden on the cover)
+  footer     DECK                same as restyle (kept for old instructions)
+  template                       rebuild templates/exed_am_template.pptx
+  new        DECK --title T      start a deck from the template
   status                         missing / unused figures across all decks
 
 Every command (except --check) rewrites the figures/index.csv files.
@@ -25,6 +29,8 @@ import copy
 import csv
 import hashlib
 import io
+import json
+import shutil
 import re
 import subprocess
 import sys
@@ -39,7 +45,18 @@ REPO = Path(__file__).resolve().parent.parent
 FIG_RE = re.compile(r"^(\d\d_[^/]+)/(?:[^/]+/)?figures/[^/]+\.(png|jpe?g|gif|bmp|tiff?|emf|wmf)$", re.I)
 INDEX_COLS = ["file", "slides", "caption", "source", "credit", "license", "notes"]
 FOOTER_NAME = "XFabAdd footer"
-FOOTER_TEMPLATE = "EXED Polytechnique - Additive Manufacturing - {chapter} by Andrei Constantinescu {year}"
+STYLE_FILE = REPO / "templates" / "style.json"
+TEMPLATE = REPO / "templates" / "exed_am_template.pptx"
+A_NS = "http://schemas.openxmlformats.org/drawingml/2006/main"
+RT_THEME = "http://schemas.openxmlformats.org/officeDocument/2006/relationships/theme"
+
+
+def load_style() -> dict:
+    return json.loads(STYLE_FILE.read_text(encoding="utf-8"))
+
+
+FOOTER_TEMPLATE = load_style()["footer"]["text"] if STYLE_FILE.exists() else \
+    "EXED Polytechnique - Additive Manufacturing - {chapter} by Andrei Constantinescu {year}"
 
 
 # ---------------------------------------------------------------- helpers
@@ -390,7 +407,6 @@ def cmd_add_slide(a):
         p.font.italic = True
     if a.notes:
         s.notes_slide.notes_text_frame.text = a.notes
-    _copy_footer(prs, s)
     if a.after is not None:
         _move_slide(prs, s, a.after)
     prs.save(deck)
@@ -437,32 +453,172 @@ def cmd_rename(a):
     print(f"{old} -> {new}: {n} picture(s) relinked")
 
 
-def cmd_footer(a):
-    deck = Path(a.deck).resolve()
-    ch = chapter_of(deck)
-    label = a.chapter or (chapter_label(ch) if ch else None)
-    if not label:
-        sys.exit('Pass --chapter "02 Technologies"')
-    text = (a.template or FOOTER_TEMPLATE).format(chapter=label, year=a.year)
-    prs = Presentation(deck)
-    W, H = prs.slide_width, prs.slide_height
-    for i, s in enumerate(prs.slides, 1):
-        if a.skip_first and i == 1:
-            continue
-        sh = next((x for x in s.shapes if x.name == FOOTER_NAME), None)
-        if sh is None:
-            sh = s.shapes.add_textbox(Emu(int(W * 0.02)), Emu(H - Emu(Pt(a.size * 2.6))),
-                                      Emu(int(W * 0.7)), Emu(Pt(a.size * 2)))
-            sh.name = FOOTER_NAME
-        tf = sh.text_frame
-        tf.clear()
+def _restyle_theme(prs, style) -> None:
+    from lxml import etree
+    part = prs.slide_master.part.part_related_by(RT_THEME)
+    root = etree.fromstring(part.blob)
+    ns = {"a": A_NS}
+    for tag, face in (("majorFont", style["fonts"]["pptx_major"]), ("minorFont", style["fonts"]["pptx_minor"])):
+        for latin in root.iterfind(f".//a:fontScheme/a:{tag}/a:latin", ns):
+            latin.set("typeface", face)
+    scheme = root.find(".//a:clrScheme", ns)
+    if scheme is not None:
+        for name, hexv in style["colors"].items():
+            el = scheme.find(f"a:{name}", ns)
+            if el is None:
+                continue
+            for child in list(el):
+                el.remove(child)
+            etree.SubElement(el, f"{{{A_NS}}}srgbClr").set("val", hexv)
+    part._blob = etree.tostring(root, xml_declaration=True, encoding="UTF-8", standalone=True)
+
+
+def _master_footer(prs, text, style) -> None:
+    """One footer text box in each slide master: it shows on every slide."""
+    f = style["footer"]
+    for master in prs.slide_masters:
+        tree = master.shapes._spTree
+        for sp in list(tree):
+            if sp.tag == qn("p:sp") and sp.find(qn("p:nvSpPr")).find(qn("p:cNvPr")).get("name") == FOOTER_NAME:
+                tree.remove(sp)
+        # build the box on a scratch slide, then move its XML into the master
+        scratch = prs.slides.add_slide(prs.slide_layouts[0])
+        tb = scratch.shapes.add_textbox(Emu(int(f["left_in"] * 914400)), Emu(int(f["top_in"] * 914400)),
+                                        Emu(int(f["width_in"] * 914400)), Emu(int(f["height_in"] * 914400)))
+        tb.name = FOOTER_NAME
+        tf = tb.text_frame
         tf.margin_left = tf.margin_right = tf.margin_top = tf.margin_bottom = 0
         p = tf.paragraphs[0]
         p.text = text
-        p.font.size = Pt(a.size)
-        p.font.color.rgb = RGBColor.from_string(a.color)
+        p.font.size = Pt(f["size_pt"])
+        p.font.name = style["fonts"]["pptx_minor"]
+        p.font.color.rgb = RGBColor.from_string(f["color"])
+        el = tb._element
+        el.getparent().remove(el)
+        ids = [int(x.get("id")) for x in tree.iter(qn("p:cNvPr")) if x.get("id", "").isdigit()]
+        el.find(qn("p:nvSpPr")).find(qn("p:cNvPr")).set("id", str(max(ids + [1]) + 1))
+        tree.append(el)
+        _delete_slide(prs, scratch)
+
+
+def _delete_slide(prs, slide) -> None:
+    lst = prs.slides._sldIdLst
+    for sid in list(lst):
+        if prs.part.related_part(sid.rId) is slide.part:
+            prs.part.drop_rel(sid.rId)
+            lst.remove(sid)
+            return
+
+
+def _lum(hexv: str) -> float:
+    r, g, b = (int(hexv[i:i + 2], 16) / 255 for i in (0, 2, 4))
+    return 0.299 * r + 0.587 * g + 0.114 * b
+
+
+def _lighten_on_dark(slide, light: str) -> int:
+    """Dark text set explicitly on a dark slide becomes the light text colour,
+    except inside boxes that have their own light fill (cards)."""
+    n = 0
+
+    def walk(shapes):
+        nonlocal n
+        for sh in shapes:
+            if sh._element.tag == qn("p:grpSp"):
+                walk(sh.shapes)
+                continue
+            if not getattr(sh, "has_text_frame", False) or not sh.has_text_frame or sh.name == FOOTER_NAME:
+                continue
+            fill = sh._element.find(".//" + qn("p:spPr") + "/" + qn("a:solidFill"))
+            if fill is not None:
+                c = fill.find(qn("a:srgbClr"))
+                if c is not None and _lum(c.get("val")) > 0.5:
+                    continue
+            for rpr in sh._element.iter(qn("a:rPr"), qn("a:defRPr"), qn("a:endParaRPr")):
+                sf = rpr.find(qn("a:solidFill"))
+                c = sf.find(qn("a:srgbClr")) if sf is not None else None
+                if c is not None and _lum(c.get("val")) < 0.35:
+                    c.set("val", light)
+                    n += 1
+    walk(slide.shapes)
+    return n
+
+
+def restyle_deck(deck: Path, chapter_label_text: str | None = None, cover: str = "auto",
+                 year: str | None = None) -> str:
+    style = load_style()
+    prs = Presentation(deck)
+    ch = chapter_of(deck)
+    label = chapter_label_text or (chapter_label(ch) if ch else "NN Chapter")
+    text = style["footer"]["text"].format(chapter=label, year=year or style["footer"]["year"])
+    _restyle_theme(prs, style)
+    _master_footer(prs, text, style)
+    removed = fonts = lit = 0
+    swap = set(style["fonts"]["replace_in_runs"])
+    dark_layouts = set(style.get("dark_layouts", []))
+    for i, s in enumerate(prs.slides, 1):
+        if s.slide_layout.name in dark_layouts:
+            lit += _lighten_on_dark(s, style["colors"]["text_on_dark"])
+        for sh in list(s.shapes):
+            if sh.name == FOOTER_NAME:
+                sh._element.getparent().remove(sh._element)
+                removed += 1
+        for el in s._element.iter(qn("a:latin")):
+            if el.get("typeface") in swap:
+                el.set("typeface", style["fonts"]["pptx_minor"])
+                fonts += 1
+        if "showMasterSp" in s._element.attrib:
+            del s._element.attrib["showMasterSp"]
+    if len(prs.slides) and style["footer"]["hide_on_cover"]:
+        first = prs.slides[0]
+        is_cover = cover == "yes" or (cover == "auto" and first.slide_layout.name in style["footer"]["cover_layouts"])
+        if is_cover:
+            first._element.set("showMasterSp", "0")
     prs.save(deck)
-    print(f'{deck.name}: footer "{text}" on {len(prs.slides) - (1 if a.skip_first else 0)} slide(s)')
+    return f'{deck.name}: footer "{text}" in the master, {removed} per-slide footer(s) removed, {fonts} run font(s) set to {style["fonts"]["pptx_minor"]}, {lit} dark text run(s) lightened on dark slides'
+
+
+def cmd_restyle(a):
+    decks = all_decks() if a.all else [Path(d).resolve() for d in a.decks]
+    if not decks:
+        sys.exit("Give one or more decks, or --all")
+    for d in decks:
+        print(restyle_deck(d, a.chapter, a.cover, a.year))
+
+
+def cmd_template(a):
+    src = Path(a.source).resolve() if a.source else REPO / "04_industries/risk/slides/04_risk_human_activities.pptx"
+    TEMPLATE.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy(src, TEMPLATE)
+    prs = Presentation(TEMPLATE)
+    for s in list(prs.slides):
+        _delete_slide(prs, s)
+    prs.save(TEMPLATE)
+    print(restyle_deck(TEMPLATE, "NN Chapter"))
+    print(f"template: {rel(TEMPLATE)} with layouts {[l.name for l in Presentation(TEMPLATE).slide_layouts]}")
+
+
+def cmd_new(a):
+    deck = Path(a.deck).resolve()
+    if deck.exists():
+        sys.exit(f"{deck} exists")
+    if not TEMPLATE.exists():
+        sys.exit("No template yet: run `xfab.py template`")
+    deck.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy(TEMPLATE, deck)
+    prs = Presentation(deck)
+    lay = next((l for l in prs.slide_layouts if l.name == "SECTION"), prs.slide_layouts[0])
+    s = prs.slides.add_slide(lay)
+    if s.shapes.title is not None:
+        s.shapes.title.text = a.title
+    else:
+        tb = s.shapes.add_textbox(Emu(int(prs.slide_width * 0.05)), Emu(int(prs.slide_height * 0.35)),
+                                  Emu(int(prs.slide_width * 0.9)), Emu(int(prs.slide_height * 0.2)))
+        tb.text_frame.text = a.title
+        tb.text_frame.paragraphs[0].font.size = Pt(40)
+        tb.text_frame.paragraphs[0].font.bold = True
+        tb.text_frame.paragraphs[0].font.color.rgb = RGBColor.from_string("F6F3EC")
+    prs.save(deck)
+    print(restyle_deck(deck, a.chapter))
 
 
 def cmd_status(a):
@@ -508,15 +664,26 @@ def main(argv=None):
     p.add_argument("new", help="new path, or just a new file name")
     p.set_defaults(fn=cmd_rename)
 
-    p = sub.add_parser("footer", help="put the EXED footer on every slide")
+    for name in ("restyle", "footer"):
+        p = sub.add_parser(name, help="apply templates/style.json (fonts, colours, footer in the master)")
+        p.add_argument("decks", nargs="*")
+        p.add_argument("--all", action="store_true", help="every deck in the repository")
+        p.add_argument("--chapter", help='footer label, e.g. "02 Technologies" (default: from the folder)')
+        p.add_argument("--year", help="default: style.json")
+        p.add_argument("--cover", choices=["auto", "yes", "no"], default="auto",
+                       help="hide the footer on slide 1 (auto: when its layout is a cover layout)")
+        p.add_argument("--skip-first", dest="cover", action="store_const", const="yes", help="= --cover yes")
+        p.set_defaults(fn=cmd_restyle)
+
+    p = sub.add_parser("template", help="rebuild templates/exed_am_template.pptx")
+    p.add_argument("--source", help="deck whose layouts to keep (default: the risk deck)")
+    p.set_defaults(fn=cmd_template)
+
+    p = sub.add_parser("new", help="start a deck from the template")
     p.add_argument("deck")
-    p.add_argument("--chapter", help='label, e.g. "02 Technologies" (default: from folder)')
-    p.add_argument("--year", default="2027")
-    p.add_argument("--template", help="default: " + FOOTER_TEMPLATE)
-    p.add_argument("--size", type=float, default=8, help="font size in pt (default 8)")
-    p.add_argument("--color", default="7F7F7F")
-    p.add_argument("--skip-first", action="store_true", help="leave the title slide alone")
-    p.set_defaults(fn=cmd_footer)
+    p.add_argument("--title", required=True)
+    p.add_argument("--chapter", help="footer label (default: from the folder)")
+    p.set_defaults(fn=cmd_new)
 
     p = sub.add_parser("status", help="missing and unused figures")
     p.set_defaults(fn=cmd_status)
