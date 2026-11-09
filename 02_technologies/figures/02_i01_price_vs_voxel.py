@@ -6,47 +6,27 @@ rows with plotted == 'quote' are drawn in a strip "price on request" above the c
 Family envelopes are drawn as soft bubbles in log space, after Ashby's material charts.
 Usage: python 02_i01_price_vs_voxel.py
 """
-import csv
-from pathlib import Path
-
 import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib import font_manager
 from matplotlib.patches import Polygon
 from scipy.spatial import ConvexHull
 
-HERE = Path(__file__).resolve().parent
-CSV = HERE.parent / "tables" / "02_printers_price_voxel.csv"
+from _printers_common import HERE, INK, GREY, GRID, TECH, COL, MRK, rows as load_rows, use_font, usd, is_lease
 
-for f in font_manager.findSystemFonts():
-    if "Caladea" in f:
-        font_manager.fontManager.addfont(f)
-plt.rcParams.update({"font.family": "Caladea", "font.size": 13,
-                     "axes.edgecolor": "#566170", "axes.labelcolor": "#1b2433",
-                     "xtick.color": "#566170", "ytick.color": "#566170"})
-INK, GREY, GRID = "#1b2433", "#566170", "#e3e1db"
-
-# fixed categorical order (smallest voxel first), validated with dataviz validate_palette.js
-FAMILIES = [
-    ("TPP / multiphoton",   "#2a78d6", "o"),
-    ("PµSL (micro-DLP)",    "#eb6834", "s"),
-    ("DLP / MSLA",          "#1baf7a", "D"),
-    ("CLIP / DLS (Carbon)", "#eda100", "^"),
-    ("laser SLA",           "#e87ba4", "v"),
-]
-COL = {f: c for f, c, _ in FAMILIES}
-MRK = {f: m for f, _, m in FAMILIES}
-
-rows = list(csv.DictReader(open(CSV, encoding="utf-8")))
-pts = [r for r in rows if r["plotted"] == "yes"]
-quotes = [r for r in rows if r["plotted"] == "quote"]
+use_font()
+FAMILIES = TECH
+rows = load_rows()
+pts = [r for r in rows if r["price_usd_low"]]
+quotes = [r for r in rows if not r["price_usd_low"]]
+NUDGE = {"Microlight3D Altraspin": 1.3}   # co-located with µFAB-3D at 0.2 µm: drawn slightly right
 
 # label offsets (points) to avoid collisions; default right of the marker
 OFF = {
-    "Nanoscribe Quantum X": (10, 4), "Microlight3D µFAB-3D": (10, -4),
-    "BMF microArch": (10, 0), "Elegoo Saturn 4 Ultra 16K": (10, -2),
+    "Nanoscribe Quantum X": (10, 8), "Femtika Laser Nanofactory": (10, -8),
+    "Microlight3D µFAB-3D": (6, -16), "Microlight3D Altraspin": (10, 0),
+    "BMF microArch S240": (10, 0), "Carbon L1": (10, 0), "Formlabs Form 3L": (-10, 0, "right"), "Elegoo Saturn 4 Ultra 16K": (10, -2),
     "Prusa SL1S Speed": (-10, 0, "right"), "Formlabs Form 4": (10, -6),
     "Formlabs Form 4L": (-10, -9, "right"), "Asiga MAX 2": (10, -10),
     "Asiga MAX X35": (-10, 10, "right"), "Stratasys Origin One": (-10, 0, "right"),
@@ -78,7 +58,7 @@ ax.text(245, 1.35e6, "≥ 0.1 mm", color=GREY, ha="center", style="italic")
 
 
 def logxy(r):
-    x = float(r["voxel_xy_um"])
+    x = float(r["voxel_xy_um"]) * NUDGE.get(r["printer"], 1.0)
     lo, hi = float(r["price_usd_low"]), float(r["price_usd_high"])
     return x, lo, hi, np.sqrt(lo * hi)
 
@@ -87,7 +67,7 @@ def logxy(r):
 for fam, c, _ in FAMILIES:
     P = []
     for r in pts:
-        if r["family"] != fam:
+        if r["technology"] != fam:
             continue
         x, lo, hi, _m = logxy(r)
         P += [(np.log10(x), np.log10(lo)), (np.log10(x), np.log10(hi))]
@@ -100,9 +80,9 @@ for fam, c, _ in FAMILIES:
     ax.add_patch(Polygon(10 ** hull, closed=True, fc="none", ec=c, alpha=0.7, lw=1.2, zorder=1))
 
 for r in pts:
-    fam = r["family"]; c = COL[fam]
+    fam = r["technology"]; c = COL[fam]
     x, lo, hi, m = logxy(r)
-    lease = "lease" in r["price_basis"] or "subscription" in r["price_basis"]
+    lease = is_lease(r)
     if hi > lo * 1.01:
         ax.plot([x, x], [lo, hi], color=c, lw=2, solid_capstyle="round", zorder=3)
     ax.scatter([x], [m], s=70, marker=MRK[fam], zorder=4,
@@ -120,10 +100,9 @@ for s in ("top", "right", "left"):
 axq.tick_params(axis="x", labelbottom=False)
 axq.text(0.0, 1.25, "Price on request (not plotted below)", transform=axq.transAxes,
          color=GREY, fontsize=12, style="italic")
-QOFF = {"UpNano NanoOne": (0.25, "left"), "Femtika Laser Nanofactory": (0.75, "left"),
-        "Nano Dimension Fabrica Tera": (0.5, "left"), "Carbon L1": (0.5, "right")}
+QOFF = {"UpNano NanoOne 1000": (0.45, "left"), "Nano Dimension Fabrica Tera 250": (0.45, "left")}
 for r in quotes:
-    x = float(r["voxel_xy_um"]); fam = r["family"]
+    x = float(r["voxel_xy_um"]); fam = r["technology"]
     axq.scatter([x], [QOFF[r["printer"]][0]], s=60, marker=MRK[fam], facecolor="white",
                 edgecolor=COL[fam], linewidth=1.8, zorder=3)
     dx = 8 if QOFF[r["printer"]][1] == "left" else -8
@@ -137,13 +116,13 @@ ax.set_xticks([0.1, 1, 10, 100])
 # legend + notes on the right
 lx = fig.add_axes([0.73, 0.09, 0.26, 0.81]); lx.axis("off")
 lx.text(0, 1.0, "Photopolymer printers", fontsize=16, color=INK, weight="bold", va="top")
-lx.text(0, 0.955, "price vs voxel size", fontsize=14, color=GREY, va="top")
+lx.text(0, 0.955, "machine price vs voxel size", fontsize=14, color=GREY, va="top")
 y = 0.88
 for fam, c, mk in FAMILIES:
     lx.scatter([0.03], [y], s=80, marker=mk, color=c, edgecolor="white", transform=lx.transAxes)
     lx.text(0.09, y, fam, va="center", fontsize=13, color=INK, transform=lx.transAxes)
-    y -= 0.05
-y -= 0.02
+    y -= 0.048
+y -= 0.015
 lx.plot([0.03, 0.03], [y - 0.02, y + 0.02], color=GREY, lw=2, transform=lx.transAxes)
 lx.text(0.09, y, "price range", va="center", fontsize=12, color=GREY, transform=lx.transAxes)
 y -= 0.05
@@ -152,7 +131,7 @@ lx.scatter([0.03], [y], s=70, marker="^", facecolor="white", edgecolor=GREY, lin
 lx.text(0.09, y, "open marker: lease / subscription,\n3-year total", va="center",
         fontsize=12, color=GREY, transform=lx.transAxes)
 y -= 0.08
-lx.text(0, y, "Shaded bubbles: family envelopes,\nafter Ashby's material-property charts.",
+lx.text(0, y, "Bubbles: technology envelopes,\nafter Ashby's material-property charts.",
         va="top", fontsize=12, color=GREY, transform=lx.transAxes)
 lx.text(0, 0.0,
         "Voxel size = smallest lateral feature:\n"
@@ -160,9 +139,9 @@ lx.text(0, 0.0,
         "MSLA: projected pixel; laser SLA: beam spot\n"
         "(UnionTech: min. layer as proxy).\n\n"
         "Prices: list/launch prices (USD) as published\n"
-        "by vendors, dealers and all3dp, 2023-2025;\n"
-        "EUR at 1.16 USD. Metal micro-AM rows of the\n"
-        "all3dp table are kept in the CSV, not plotted.\n\n"
+        "by vendors, dealers, all3dp and aniwaa;\n"
+        "EUR at 1.16 USD. Altraspin nudged right\n"
+        "(same 0.2 µm as µFAB-3D).\n\n"
         "Data: tables/02_printers_price_voxel.csv\n"
         "Micro rows after all3dp, Micro 3D printing guide.",
         va="bottom", fontsize=10.5, color=GREY, transform=lx.transAxes, linespacing=1.3)

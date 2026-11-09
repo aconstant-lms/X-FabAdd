@@ -1,110 +1,118 @@
-"""02_i02 - Where the photopolymer (and micro-metal) printer makers are.
+"""02_i02 - Where the photopolymer printer makers are (world + Europe/Israel maps).
 
-Reads ../tables/02_printers_price_voxel.csv (one marker per manufacturer HQ),
-world map + Europe/Israel inset. Coastlines: Natural Earth 1:110m (public domain)
-bundled with geopandas < 1.0.  Usage: python 02_i02_manufacturers_map.py
+Same visual language as the aviation maps (04_av_map_*): sea #dfe6ee, land #cbc4b4,
+coast #b3ab98, white ring markers, dark Inter labels with a light halo.
+Ring colour = technology (same palette as the 02_i01 / 02_i03 charts); a maker with two
+technologies (Formlabs) gets two markers side by side.
+Reads ../tables/02_printers_price_voxel.csv. Coastlines: Natural Earth 1:110m (public
+domain) bundled with geopandas < 1.0.
+Writes 02_i02_map_world.{png,svg} and 02_i02_map_europe.{png,svg}.
+Usage: python 02_i02_manufacturers_map.py
 """
-import csv, warnings
-from pathlib import Path
+import warnings
+from collections import OrderedDict
 
+import numpy as np
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-from matplotlib import font_manager
+import matplotlib.patheffects as pe
+from matplotlib.lines import Line2D
 import geopandas as gpd
 
+from _printers_common import HERE, TECH, COL, rows, use_font
+
 warnings.filterwarnings("ignore")
-HERE = Path(__file__).resolve().parent
-CSV = HERE.parent / "tables" / "02_printers_price_voxel.csv"
-for f in font_manager.findSystemFonts():
-    if "Caladea" in f:
-        font_manager.fontManager.addfont(f)
-plt.rcParams.update({"font.family": "Caladea", "font.size": 12})
-INK, GREY = "#1b2433", "#566170"
-LAND, EDGE, SEA = "#ece9e2", "#c9c4b8", "#ffffff"
-
-FAMILIES = [
-    ("TPP / multiphoton",   "#2a78d6", "o"),
-    ("PµSL (micro-DLP)",    "#eb6834", "s"),
-    ("DLP / MSLA",          "#1baf7a", "D"),
-    ("CLIP / DLS (Carbon)", "#eda100", "^"),
-    ("laser SLA",           "#e87ba4", "v"),
-    ("metal (micro; for reference)", "#8d949b", "X"),
-]
-COL = {f: c for f, c, _ in FAMILIES}; MRK = {f: m for f, _, m in FAMILIES}
-
-rows = list(csv.DictReader(open(CSV, encoding="utf-8")))
-makers = {}
-for r in rows:  # one entry per manufacturer (first family listed)
-    makers.setdefault(r["manufacturer"], r)
+use_font("Inter", 14)
+matplotlib.rcParams["svg.fonttype"] = "none"
+SEA, LAND, COAST, INK, HALO, FILL = "#dfe6ee", "#cbc4b4", "#b3ab98", "#1b2433", "#eef2f6", "#fbfaf7"
+HALO_FX = [pe.withStroke(linewidth=4, foreground=HALO)]
 
 world = gpd.read_file(gpd.datasets.get_path("naturalearth_lowres"))
 world = world[world["continent"] != "Antarctica"]
 
 SHORT = {"Boston Micro Fabrication (BMF)": "BMF", "Nano Dimension (ex Nanofabrica)": "Nano Dimension",
          "Prusa Research": "Prusa"}
-# label offsets in points (dx, dy, ha) for the world map; Europe/Israel names go in the inset
-W_OFF = {"Carbon": (-8, 0, "right"), "Formlabs": (8, 4, "left"), "Stratasys": (-8, 6, "right"),
-         "3D Systems": (8, -6, "left"), "Boston Micro Fabrication (BMF)": (10, -4, "left"),
-         "Elegoo": (-8, -8, "right"), "UnionTech": (8, 2, "left"), "Asiga": (-8, 0, "right")}
-E_OFF = {"Nanoscribe": (-8, -4, "right"), "UpNano": (10, 2, "left"), "Incus": (8, -8, "left"),
-         "Microlight3D": (8, 0, "left"), "Femtika": (8, 0, "left"), "Prusa Research": (6, 13, "left"),
-         "3D MicroPrint": (-8, 8, "right"), "Exaddon": (-8, -8, "right"),
-         "Nano Dimension (ex Nanofabrica)": (-8, 8, "right"), "Stratasys": (-8, -8, "right")}
+# one entry per (maker, technology); HQ position from the table
+makers = OrderedDict()
+for r in rows():
+    makers.setdefault(r["manufacturer"], {"lat": float(r["lat"]), "lon": float(r["lon"]), "tech": []})
+    if r["technology"] not in makers[r["manufacturer"]]["tech"]:
+        makers[r["manufacturer"]]["tech"].append(r["technology"])
+# Stratasys is dual-HQ (Eden Prairie MN + Rehovot)
+makers["Stratasys (Rehovot)"] = {"lat": 31.894, "lon": 34.811, "tech": ["DLP"]}
 
-fig = plt.figure(figsize=(14, 6.4))
-ax = fig.add_axes([0.0, 0.0, 0.66, 0.88])
-world.plot(ax=ax, color=LAND, edgecolor=EDGE, linewidth=0.5)
-ax.set_xlim(-145, 160); ax.set_ylim(-45, 68); ax.set_aspect("equal"); ax.axis("off")
-
-ins = fig.add_axes([0.665, 0.28, 0.325, 0.60])
-world.plot(ax=ins, color=LAND, edgecolor=EDGE, linewidth=0.6)
-ins.set_xlim(-2, 38); ins.set_ylim(29, 58); ins.set_aspect("equal")
-ins.set_xticks([]); ins.set_yticks([])
-for s in ins.spines.values():
-    s.set_edgecolor(GREY); s.set_linewidth(0.8)
-ins.set_title("Europe and Israel", fontsize=13, color=GREY, loc="left", style="italic")
-ax.add_patch(plt.Rectangle((-2, 29), 39, 29, fill=False, ec=GREY, lw=0.8, ls="--"))
+# display nudges for co-located HQs (degrees) - documented in the caption
+NUDGE = {"Elegoo": (-1.6, -1.0), "Boston Micro Fabrication (BMF)": (1.6, 1.0),
+         "Nano Dimension (ex Nanofabrica)": (-0.35, 0.45), "Stratasys (Rehovot)": (0.35, -0.45)}
 
 
-def mark(a, r, off):
-    fam = r["family"]; lon, lat = float(r["lon"]), float(r["lat"])
-    a.scatter([lon], [lat], s=90, marker=MRK[fam], color=COL[fam], edgecolor="white",
-              linewidth=1.2, zorder=4)
-    if off:
+def draw_base(ax, xlim, ylim, aspect):
+    ax.set_facecolor(SEA)
+    world.plot(ax=ax, color=LAND, edgecolor=COAST, linewidth=0.6)
+    ax.set_xlim(*xlim); ax.set_ylim(*ylim); ax.set_aspect(aspect)
+    ax.set_xticks([]); ax.set_yticks([])
+    for s in ax.spines.values():
+        s.set_visible(False)
+
+
+def draw_maker(ax, name, m, label, off, step):
+    lon, lat = m["lon"], m["lat"]
+    dlon, dlat = NUDGE.get(name, (0, 0))
+    lon, lat = lon + dlon, lat + dlat
+    n = len(m["tech"])
+    for i, t in enumerate(m["tech"]):
+        x = lon + (i - (n - 1) / 2) * step
+        ax.scatter([x], [lat], s=150, facecolor=FILL, edgecolor=COL[t], linewidth=2.6, zorder=5)
+    if label:
         dx, dy, ha = off
-        name = SHORT.get(r["manufacturer"], r["manufacturer"])
-        a.annotate(name, (lon, lat), xytext=(dx, dy), textcoords="offset points",
-                   ha=ha, va="center", fontsize=12, color=INK, zorder=5)
+        dx = dx + np.sign(dx) * (n - 1) * 7
+        ax.annotate(label, (lon, lat), xytext=(dx, dy), textcoords="offset points", ha=ha,
+                    va="center", fontsize=14, fontweight="semibold", color=INK, zorder=6,
+                    path_effects=HALO_FX)
 
 
-JIT = {"Boston Micro Fabrication (BMF)": (2.5, 2.0), "Incus": (0.9, -0.5)}
-for m, (dlon, dlat) in JIT.items():
-    makers[m] = dict(makers[m], lon=str(float(makers[m]["lon"]) + dlon), lat=str(float(makers[m]["lat"]) + dlat))
-in_box = lambda r: -2 <= float(r["lon"]) <= 37 and 29 <= float(r["lat"]) <= 58
-for m, r in makers.items():
-    mark(ax, r, None if in_box(r) else W_OFF.get(m, (8, 0, "left")))
-    if in_box(r):
-        mark(ins, r, E_OFF.get(m, (8, 0, "left")))
-# Stratasys is dual-HQ: also mark Rehovot in the inset
-st = dict(makers["Stratasys"]); st.update(lat="31.40", lon="34.811")
-mark(ins, st, E_OFF["Stratasys"]); mark(ax, st, None)
+def legend(fig, rect, ncol):
+    lx = fig.add_axes(rect); lx.axis("off")
+    h = [Line2D([], [], ls="", marker="o", ms=10, mfc=FILL, mec=c, mew=2.4, label=t) for t, c, _ in TECH]
+    lx.legend(handles=h, loc="center", ncol=ncol, frameon=False, fontsize=13,
+              handletextpad=0.4, columnspacing=1.4)
 
-fig.text(0.015, 0.94, "Who makes vat-photopolymerisation and multiphoton printers - and where",
-         fontsize=17, color=INK, weight="bold")
-# legend
-lx = fig.add_axes([0.67, 0.01, 0.32, 0.24]); lx.axis("off")
-for i, (fam, c, mk) in enumerate(FAMILIES):
-    col, row = i // 3, i % 3
-    x, y = 0.02 + col * 0.5, 0.93 - row * 0.17
-    lx.scatter([x], [y], s=80, marker=mk, color=c, edgecolor="white", transform=lx.transAxes)
-    lx.text(x + 0.05, y, fam.replace(" (micro; for reference)", " micro-AM (ref.)"),
-            va="center", fontsize=11.5, color=INK, transform=lx.transAxes)
-lx.text(0.0, 0.0, "Head offices, one marker per company (Stratasys: Eden Prairie + Rehovot);\n"
-        "co-located markers nudged apart. Data: tables/02_printers_price_voxel.csv.\n"
-        "Coastlines: Natural Earth 1:110m (public domain).",
-        fontsize=9.5, color=GREY, transform=lx.transAxes, va="bottom")
 
-for ext in ("png", "pdf"):
-    fig.savefig(HERE / f"02_i02_manufacturers_map.{ext}", dpi=200, facecolor="white")
+EUROPE = (-2.0, 37.0, 29.5, 57.5)
+in_eu = lambda m: EUROPE[0] <= m["lon"] <= EUROPE[1] and EUROPE[2] <= m["lat"] <= EUROPE[3]
+
+# ---------------- world ----------------
+W_OFF = {"Carbon": (12, 0, "left"), "Formlabs": (12, 4, "left"), "Stratasys": (-12, 4, "right"),
+         "3D Systems": (12, -4, "left"), "Boston Micro Fabrication (BMF)": (12, 4, "left"),
+         "Elegoo": (-12, -4, "right"), "UnionTech": (12, 0, "left"), "Asiga": (-12, 0, "right")}
+fig = plt.figure(figsize=(10.4, 4.0))
+ax = fig.add_axes([0, 0.16, 1, 0.84])
+draw_base(ax, (-134, 158), (-42, 70), "auto")
+for name, m in makers.items():
+    eu = in_eu(m)
+    draw_maker(ax, name, m, None if eu else SHORT.get(name, name), W_OFF.get(name, (12, 0, "left")), 2.6)
+x0, x1, y0, y1 = EUROPE
+ax.plot([x0, x1, x1, x0, x0], [y0, y0, y1, y1, y0], ls=(0, (4, 3)), color="#6b7480", lw=1, zorder=4)
+ax.annotate("Europe and Israel: see detail", (x1, y0), xytext=(6, -2), textcoords="offset points",
+            fontsize=12, color=INK, path_effects=HALO_FX, va="top")
+legend(fig, [0, 0, 1, 0.15], 6)
+for ext in ("png", "svg"):
+    fig.savefig(HERE / f"02_i02_map_world.{ext}", dpi=200, facecolor="white")
+plt.close(fig)
+
+# ---------------- Europe + Israel ----------------
+E_OFF = {"Nanoscribe": (-12, 0, "right"), "UpNano": (12, 6, "left"), "Microlight3D": (12, 0, "left"),
+         "Femtika": (12, 0, "left"), "Prusa Research": (12, 4, "left"),
+         "Nano Dimension (ex Nanofabrica)": (-12, 4, "right"), "Stratasys (Rehovot)": (-12, -6, "right")}
+fig = plt.figure(figsize=(6.48, 7.2))
+ax = fig.add_axes([0, 0.1, 1, 0.9])
+draw_base(ax, EUROPE[:2], EUROPE[2:], 1 / np.cos(np.radians(44)))
+for name, m in makers.items():
+    if in_eu(m):
+        lab = "Stratasys" if name.startswith("Stratasys") else SHORT.get(name, name)
+        draw_maker(ax, name, m, lab, E_OFF.get(name, (12, 0, "left")), 0.6)
+legend(fig, [0, 0, 1, 0.09], 3)
+for ext in ("png", "svg"):
+    fig.savefig(HERE / f"02_i02_map_europe.{ext}", dpi=200, facecolor="white")
 print("ok")
