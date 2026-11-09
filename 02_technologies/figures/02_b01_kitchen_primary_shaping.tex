@@ -1,0 +1,24 @@
+% Step (ii) kitchen 1 — primary shaping: batter in a tin becomes a cake
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+% before: bowl pours batter into the tin, in the oven
+\fill[mouldx] (0.4,0) -- (3.6,0) -- (3.8,1.6) -- (3.55,1.6) -- (3.38,0.25) -- (0.62,0.25) -- (0.45,1.6) -- (0.2,1.6) -- cycle;
+\fill[feed] (0.62,0.25) -- (3.38,0.25) -- (3.48,1.05) -- (0.52,1.05) -- cycle;
+\fill[tool] (2.2,3.3) .. controls (2.3,2.5) and (3.6,2.5) .. (3.8,3.3) -- cycle;
+\fill[feed] (2.35,3.05) .. controls (2.2,2.7) and (2.05,2.0) .. (2.0,1.05) -- (2.15,1.05) .. controls (2.2,1.9) and (2.4,2.6) .. (2.6,2.95) -- cycle;
+\node[lab, anchor=west] (b) at (4.0,3.1) {batter: flour, eggs, sugar, butter};
+\node[lab, anchor=east] (t) at (-0.05,0.5) {tin = mould};
+% step
+\draw[stepto] (5.0,0.9) -- (6.2,0.9);
+\foreach \xx in {5.25,5.6,5.95} \draw[heatin] (\xx,2.0) -- (\xx,1.2);
+\node[labc] at (5.6,2.45) {oven, 180\,°C};
+% after: the cake
+\fill[part] (6.7,0.25) -- (9.3,0.25) -- (9.38,1.0) .. controls (9.2,1.75) and (6.8,1.75) .. (6.62,1.0) -- cycle;
+\node[lab, anchor=west] at (9.5,1.0) {cake: keeps the};
+\node[lab, anchor=west] at (9.5,0.65) {shape of the tin};
+\node[lab, anchor=north west, text=inksoft] at (6.5,0.05) {the batter sets (proteins, starch)};
+\xfabref{0}{-0.75}{\textbf{industrial twin:} casting \textemdash\ molten metal fills a sand or steel mould and solidifies}
+\end{tikzpicture}
+\end{document}

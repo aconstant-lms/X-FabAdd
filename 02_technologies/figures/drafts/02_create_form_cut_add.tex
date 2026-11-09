@@ -1,0 +1,112 @@
+% One part, four routes: cast, forge, machine, build.
+% Where is the geometry stored, and how much material is used?
+\documentclass[tikz,border=6pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+% the part profile (stepped block), origin bottom-left, 2.0 x 1.4
+\def\partpath{(0,0) -- (2.0,0) -- (2.0,0.6) -- (1.2,0.6) -- (1.2,1.4) -- (0,1.4) -- cycle}
+\def\pw{3.7}\def\pg{0.35}
+
+\foreach \k/\tag/\title/\sub/\c in {0/conv/Casting/{primary shaping, from liquid}/liquid,
+                                  1/conv/Forging/{forming, cohesion kept}/plastic,
+                                  2/conv/Milling/{separating, cohesion reduced}/powder,
+                                  3/am/Additive/{primary shaping, layer by layer}/amaccent}{
+  \pgfmathsetmacro{\x}{\k*(\pw+\pg)}
+  \draw[panelframe] (\x,-0.2) rectangle (\x+\pw,4.25);
+  \node[font=\bfseries\large, anchor=north west] at (\x+0.15,4.15) {\title};
+  \node[font=\itshape\footnotesize, text=inksoft, anchor=north west] at (\x+0.15,3.65) {\sub};
+}
+
+% ---------------- 1 casting
+\begin{scope}[shift={(0.85,0.35)}]
+  \draw[mould] (-0.45,-0.3) rectangle (2.45,1.75);
+  \fill[mat=liquid] \partpath;
+  \draw[liquid!70!black, line width=0.9pt] \partpath;
+  % gate and riser
+  \fill[mat=liquid] (0.45,1.4) rectangle (0.75,1.75);
+  \fill[mat=liquid] (1.5,0.6) rectangle (1.85,1.25);
+  \draw[liquid!70!black, line width=0.6pt] (1.5,0.6) -- (1.5,1.25) -- (1.85,1.25) -- (1.85,0.6);
+  \draw[steel, line width=1pt] (-0.45,0.7) -- (2.45,0.7);
+  \draw[machine] (0.2,2.55) -- (1.0,2.55) -- (0.85,2.05) -- (0.35,2.05) -- cycle;
+  \draw[liquid, line width=2.4pt] (0.6,2.05) -- (0.6,1.75);
+  \node[lbl, anchor=west] (r) at (2.0,2.2) {riser};
+  \draw[leader] (r.west) -- (1.75,1.2);
+\end{scope}
+
+% ---------------- 2 forging
+\begin{scope}[shift={(\pw+\pg+0.85,0.35)}]
+  % lower die with cavity = lower part of the step
+  \fill[machinedark] (-0.45,-0.35) -- (2.45,-0.35) -- (2.45,0.6) -- (2.0,0.6) -- (2.0,0) -- (0,0) -- (0,1.4) -- (-0.45,1.4) -- cycle;
+  % upper die
+  \filldraw[fill=steel!72, draw=white, line width=1pt] (-0.45,2.3) -- (2.45,2.3) -- (2.45,0.75) -- (2.0,0.75) -- (2.0,0.6) -- (1.2,0.6) -- (1.2,1.4) -- (0,1.4) -- (0,1.55) -- (-0.45,1.55) -- cycle;
+  \fill[matsolid=plastic] \partpath;
+  % flash
+  \fill[matsolid=plastic] (2.0,0.6) -- (2.45,0.6) -- (2.45,0.75) -- (2.0,0.75) -- cycle;
+  \fill[matsolid=plastic] (-0.45,1.4) -- (0,1.4) -- (0,1.55) -- (-0.45,1.55) -- cycle;
+  \draw[flow=steel] (1.0,2.85) -- (1.0,2.4);
+  \node[lbl, text=white] (f) at (1.95,1.35) {flash};
+  \draw[leader, draw=white] (f.south east) -- (2.3,0.7);
+  \draw[leader, draw=white] (f.west) -- (-0.25,1.48);
+\end{scope}
+
+% ---------------- 3 milling
+\begin{scope}[shift={(2*\pw+2*\pg+0.85,0.35)}]
+  \fill[matlight=powder] (-0.2,0) rectangle (2.2,1.6);
+  \draw[powder!70, dashed, line width=0.6pt] (-0.2,0) rectangle (2.2,1.6);
+  \fill[matsolid=powder] \partpath;
+  % end mill in the corner
+  \draw[machine] (1.25,0.65) rectangle (1.6,2.6);
+  \foreach \yy in {0.8,1.1,1.4} \draw[steel, line width=0.6pt] (1.25,\yy) -- (1.6,\yy+0.22);
+  \draw[motion] (1.75,2.35) arc[start angle=-30,end angle=210,radius=0.2];
+  % chips
+  \foreach \cx/\cy/\a in {1.9/1.75/20, 2.25/1.95/-40, 2.05/2.25/70, 2.45/1.6/10}
+    \draw[powder!80!black, line width=1pt, rotate around={\a:(\cx,\cy)}] (\cx,\cy) arc[start angle=0,end angle=200,radius=0.09];
+  \node[lbl, anchor=west] (s) at (2.25,0.95) {stock};
+  \draw[leader] (s.west) -- (2.05,0.95);
+  \node[lbl, anchor=west] (ch) at (2.35,2.35) {chips};
+\end{scope}
+
+% ---------------- 4 additive
+\begin{scope}[shift={(3*\pw+3*\pg+0.85,0.35)}]
+  \draw[machine] (-0.45,-0.3) rectangle (2.45,0);
+  \foreach \i in {0,...,8}{
+    \pgfmathsetmacro{\yy}{\i*0.14}
+    \pgfmathsetmacro{\xx}{\i<5 ? 2.0 : 1.2}
+    \fill[amaccent!55] (0,\yy) rectangle (\xx,\yy+0.14);
+    \draw[white, line width=0.5pt] (0,\yy+0.14) -- (\xx,\yy+0.14);}
+  \draw[amaccent!80!black, line width=0.7pt] (0,0) -- (2.0,0) -- (2.0,0.7) -- (1.2,0.7) -- (1.2,1.26) -- (0,1.26) -- cycle;
+  \draw[amaccent!60, dashed, line width=0.6pt] (0,1.26) -- (0,1.4) -- (1.2,1.4) -- (1.2,1.26);
+  % head writing the current layer
+  \draw[machine] (0.55,2.3) -- (1.05,2.3) -- (0.88,1.6) -- (0.72,1.6) -- cycle;
+  \draw[beamhalo] (0.8,1.6) -- (0.8,1.3);
+  \draw[beam] (0.8,1.6) -- (0.8,1.3);
+  \draw[motion] (0.3,1.85) -- (-0.2,1.85);
+  \draw[motion] (1.3,1.85) -- (1.8,1.85);
+  \node[lbl, anchor=west] (l) at (2.15,1.55) {layer $n$};
+  \draw[leader] (l.west) -- (1.15,1.2);
+\end{scope}
+
+% ---------------- comparison rows
+\def\row#1#2#3#4#5#6{%
+  \node[font=\bfseries\scriptsize, text=#6, anchor=east, align=right] at (-0.15,#1) {#2};
+  \foreach \k/\t in {0/{#3},1/{#4},2/{#5}}{}%
+}
+\foreach \y/\lab in {-0.75/{geometry\\stored in}, -1.75/{tooling}, -2.65/{material used\\per part}, -3.55/{economic\\batch}}{
+  \node[font=\bfseries\scriptsize, text=inksoft, anchor=east, align=right] at (-0.15,\y) {\lab};}
+
+\foreach \k/\a/\b/\c/\d in {
+   0/{the mould and pattern}/{patterns, moulds:\\medium to high}/{part + gates, risers;\\recycled}/{tens to millions},
+   1/{the dies}/{hardened dies:\\high}/{part + flash;\\near net shape}/{thousands and more},
+   2/{the tool path\\(CNC program)}/{fixtures and tools:\\low}/{stock $\gg$ part: up to\\10--20$\times$ in aerospace}/{one to thousands},
+   3/{the layer path\\(sliced CAD file)}/{none specific\\to the part}/{part + supports;\\powder largely reused}/{one to hundreds}}{
+  \pgfmathsetmacro{\x}{\k*(\pw+\pg)+\pw/2}
+  \ifnum\k=3 \def\cc{amaccent}\else\def\cc{ink}\fi
+  \node[lblc, font=\footnotesize\bfseries, text=\cc] at (\x,-0.75) {\a};
+  \node[lblc, font=\footnotesize] at (\x,-1.75) {\b};
+  \node[lblc, font=\footnotesize] at (\x,-2.65) {\c};
+  \node[lblc, font=\footnotesize] at (\x,-3.55) {\d};
+}
+\foreach \y in {-1.25,-2.2,-3.1}{\draw[steellight, line width=0.5pt] (0,\y) -- (4*\pw+3*\pg,\y);}
+\end{tikzpicture}
+\end{document}

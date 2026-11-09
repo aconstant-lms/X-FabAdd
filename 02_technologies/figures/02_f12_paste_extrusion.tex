@@ -1,0 +1,26 @@
+% 02_f12_paste_extrusion
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\fill[tool] (0,0) rectangle (5.6,0.25);
+\foreach \l in {0,...,3}{\foreach \b in {0,...,2}{
+  \pgfmathsetmacro{\cx}{1.2+\b*0.62}\pgfmathsetmacro{\cy}{0.52+\l*0.52}
+  \ifnum\l=3 \ifnum\b=2 \else \fill[ipart] (\cx,\cy) ellipse (0.31 and 0.27); \fi
+  \else \fill[ipart] (\cx,\cy) ellipse (0.31 and 0.27); \fi}}
+\def\nx{2.44}
+\draw[tool] (\nx-0.55,2.95) rectangle (\nx+0.55,5.0);
+\fill[cIFeed!50] (\nx-0.5,2.95) rectangle (\nx+0.5,4.3);
+\fill[cToolD] (\nx-0.5,4.3) rectangle (\nx+0.5,4.5); \fill[cToolD] (\nx-0.08,4.5) rectangle (\nx+0.08,5.6);
+\draw[force] (\nx+0.4,5.6) -- (\nx+0.4,5.05);
+\fill[tool] (\nx-0.55,2.95) -- (\nx+0.55,2.95) -- (\nx+0.1,2.4) -- (\nx-0.1,2.4) -- cycle;
+\fill[ifeed] (\nx,2.1) ellipse (0.31 and 0.2); \fill[ifeed] (\nx-0.1,2.4) rectangle (\nx+0.1,2.25);
+\node[lab, anchor=west] at (3.1,5.35) {piston or screw};
+\node[lab, anchor=west] at (3.1,3.9) {paste: ceramic slurry,};
+\node[lab, anchor=west] at (3.1,3.6) {clay, mortar};
+\node[lab, anchor=west] at (3.6,1.5) {beads set by drying};
+\node[lab, anchor=west] at (3.6,1.2) {or hydration};
+\node[lab, anchor=north] at (2.8,-0.05) {each bead must carry the next layer};
+
+\end{tikzpicture}
+\end{document}

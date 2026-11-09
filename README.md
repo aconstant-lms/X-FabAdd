@@ -74,6 +74,7 @@ pip install -r tools/requirements.txt
 | Rebuild the template after changing the style | `python tools/xfab.py template` |
 | List missing and unused figures across all decks | `python tools/xfab.py status` |
 | Build a catalogue of every figure (picture, full path, caption, decks and slides using it, source, credit, licence) | `python tools/catalogue.py` → `figures_catalogue.pptx` (not committed) |
+| Rebuild the TikZ schematics (`figures/*.tex` → `.pdf` + `.png`) | `python tools/build_figures.py` |
 
 ## Course style: one place
 

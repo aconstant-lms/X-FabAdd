@@ -1,0 +1,134 @@
+% DIN 8580 primary shaping, subdivided by the state of the starting material,
+% with conventional processes and their additive counterparts
+\documentclass[tikz,border=6pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\def\w{2.15}\def\p{2.35}
+\node[boxstrong=amaccent, minimum width=7cm, minimum height=0.8cm, font=\bfseries\normalsize]
+  (root) at (3*\p+\w/2, 5.25) {1\quad Primary shaping \,{\mdseries\itshape(Urformen)}: from a shapeless material to a solid};
+
+\foreach \k/\c/\n/\en/\de in {0/liquid/1.1/liquid/flüssig, 1/plastic/1.2/plastic/plastisch,
+    2/pasty/1.3/pasty/breiig, 3/powder/1.4/powder/{körnig oder\\pulverförmig},
+    4/fibrous/1.5/fibres/{span- oder\\faserförmig}, 5/gas/1.6/gas/{gas- oder\\dampfförmig},
+    6/ionised/1.7/ionised/ionisiert}{
+  \pgfmathsetmacro{\x}{\k*\p}
+  \node[boxstrong=\c, minimum width=\w cm, minimum height=1.3cm, text width=\w cm-8pt, font=\scriptsize]
+    (h\k) at (\x+\w/2, 3.75) {{\normalsize\bfseries\n\enspace\en}\\[1pt]{\mdseries\itshape\de}};
+  \draw[link] (root.south) -- ++(0,-0.35) -| (h\k.north);
+  % frame of the column
+  \draw[draw=\c!40, line width=0.6pt, rounded corners=3pt] (\x,3.1) rectangle (\x+\w,-6.25);
+}
+
+% ------------------------------------------------ state pictograms, cell y in [1.35, 2.95]
+% liquid: beaker
+\begin{scope}[shift={(0,1.35)}]
+  \fill[mat=liquid] (0.5,0.15) -- (1.65,0.15) -- (1.7,0.95)
+     .. controls (1.5,1.05) and (1.35,0.85) .. (1.1,0.95) .. controls (0.9,1.05) and (0.7,0.85) .. (0.45,0.95) -- cycle;
+  \draw[steel, line width=0.9pt] (0.4,1.35) -- (0.5,0.15) -- (1.65,0.15) -- (1.75,1.35);
+\end{scope}
+% plastic: ribbon squeezed from a nozzle
+\begin{scope}[shift={(\p,1.35)}]
+  \draw[machine] (0.75,1.55) -- (1.4,1.55) -- (1.2,1.15) -- (0.95,1.15) -- cycle;
+  \draw[plastic!80!black, line width=6.2pt] (1.075,1.15) .. controls (1.075,0.6) and (0.4,0.7) .. (0.5,0.35)
+     .. controls (0.6,0.05) and (1.6,0.1) .. (1.75,0.35);
+  \draw[plastic!45, line width=4.2pt] (1.075,1.15) .. controls (1.075,0.6) and (0.4,0.7) .. (0.5,0.35)
+     .. controls (0.6,0.05) and (1.6,0.1) .. (1.75,0.35);
+\end{scope}
+% pasty: particles in a liquid, heaped
+\begin{scope}[shift={(2*\p,1.35)}]
+  \begin{scope}
+    \clip (0.3,0.15) .. controls (0.5,1.25) and (1.65,1.25) .. (1.85,0.15) -- cycle;
+    \fill[pasty!25] (0,0) rectangle (2.2,1.4);
+    \xfabgrains{0.3}{0.15}{1.85}{1.1}{0.045}{70}{pasty}
+  \end{scope}
+  \draw[pasty!80!black, line width=0.8pt] (0.3,0.15) .. controls (0.5,1.25) and (1.65,1.25) .. (1.85,0.15);
+  \draw[steel, line width=0.9pt] (0.15,0.15) -- (2.0,0.15);
+\end{scope}
+% powder: heap of grains
+\begin{scope}[shift={(3*\p,1.35)}]
+  \begin{scope}
+    \clip (0.25,0.15) -- (1.075,1.2) -- (1.9,0.15) -- cycle;
+    \xfabgrains{0.2}{0.12}{1.95}{1.25}{0.07}{120}{powder}
+  \end{scope}
+  \draw[steel, line width=0.9pt] (0.15,0.15) -- (2.0,0.15);
+\end{scope}
+% fibrous: random fibres
+\begin{scope}[shift={(4*\p,1.35)}]
+  \pgfmathsetseed{42}
+  \foreach \i in {1,...,34}{
+    \pgfmathsetmacro{\fx}{0.35+1.45*rnd}\pgfmathsetmacro{\fy}{0.25+0.95*rnd}
+    \pgfmathsetmacro{\fa}{360*rnd}
+    \draw[fibrous!75!black, line width=0.9pt] (\fx,\fy) -- ++(\fa:0.32);}
+  \draw[steel, line width=0.9pt] (0.15,0.15) -- (2.0,0.15);
+\end{scope}
+% gas: sparse molecules with velocity
+\begin{scope}[shift={(5*\p,1.35)}]
+  \pgfmathsetseed{7}
+  \foreach \i in {1,...,13}{
+    \pgfmathsetmacro{\gx}{0.35+1.45*rnd}\pgfmathsetmacro{\gy}{0.3+1.0*rnd}
+    \pgfmathsetmacro{\ga}{360*rnd}
+    \draw[gas!60, line width=0.5pt, -{Stealth[length=3pt]}] (\gx,\gy) -- ++(\ga:0.22);
+    \fill[gas!45, draw=gas!80!black, line width=0.4pt] (\gx,\gy) circle (0.06);}
+\end{scope}
+% ionised: cations and electrons
+\begin{scope}[shift={(6*\p,1.35)}]
+  \foreach \gx/\gy in {0.5/0.45, 1.05/0.3, 1.65/0.5, 0.75/0.95, 1.4/1.0, 1.0/1.4, 1.75/1.3}{
+    \fill[ionised!35, draw=ionised!80!black, line width=0.4pt] (\gx,\gy) circle (0.11);
+    \node[font=\scriptsize\bfseries, text=ionised!30!black, inner sep=0] at (\gx,\gy) {+};}
+  \foreach \gx/\gy in {0.45/1.25, 1.3/0.6, 0.85/0.6, 1.7/0.85}{
+    \fill[ink] (\gx,\gy) circle (0.035);
+    \node[font=\tiny, inner sep=0, anchor=west] at (\gx+0.04,\gy+0.05) {e\textsuperscript{\,–}};}
+\end{scope}
+
+% ------------------------------------------------ text rows
+\def\rowlabel#1#2{\node[font=\bfseries\scriptsize, text=inksoft, anchor=west] at (0.08,#1) {#2};}
+\foreach \k/\t in {0/{cooling and\\solidification;\\curing of resins},
+                   1/{viscous flow,\\then cooling or\\vulcanisation},
+                   2/{drying, hydration,\\gelation;\\firing (ceramics)},
+                   3/{sintering (diffusion),\\binder, or\\melting},
+                   4/{binder cured\\under pressure;\\fibre bonding},
+                   5/{condensation or\\reaction on a\\hot surface},
+                   6/{reduction of\\ions on a\\cathode}}{
+  \pgfmathsetmacro{\x}{\k*\p}
+  \node[lblc, anchor=north, text width=\w cm-4pt, font=\scriptsize] at (\x+\w/2,1.05) {\t};}
+\foreach \k in {0,...,6}{\pgfmathsetmacro{\x}{\k*\p}
+  \draw[steellight, line width=0.5pt] (\x+0.1,-0.05) -- (\x+\w-0.1,-0.05);
+  \draw[steellight, line width=0.5pt] (\x+0.1,-2.3) -- (\x+\w-0.1,-2.3);}
+
+\foreach \k/\t in {0/{sand casting\\die casting\\investment casting\\continuous casting\\resin casting},
+                   1/{injection moulding\\extrusion\\blow moulding\\thixomoulding\\(semi-solid metal)},
+                   2/{slip casting\\clay extrusion\\concrete casting\\tape casting},
+                   3/{pressing + sintering\\metal injection\\moulding\\HIP of powder\\sand moulds},
+                   4/{particle board,\\MDF pressing\\papermaking\\felting},
+                   5/{CVD, PVD\\free-standing\\CVD parts (SiC,\\diamond, Ni shells)},
+                   6/{electroforming:\\Ni mould shells,\\foils, waveguides,\\micro-parts}}{
+  \pgfmathsetmacro{\x}{\k*\p}
+  \node[lblc, anchor=north, text width=\w cm-4pt, font=\scriptsize, text=conv!90!black] at (\x+\w/2,-0.15) {\t};}
+
+\foreach \k/\t in {0/{vat photo-\\polymerisation\\(SLA, DLP, 2PP)\\material jetting},
+                   1/{material extrusion:\\filament (FFF),\\pellets, large-area},
+                   2/{paste extrusion:\\robocasting, clay,\\concrete;\\ceramic slurry\\photopoly-\\merisation},
+                   3/{powder bed fusion\\(laser, electron\\beam, SLS)\\binder jetting\\powder DED\\cold spray},
+                   4/{sheet lamination\\(paper LOM)\\continuous-fibre\\extrusion},
+                   5/{laser CVD\\beam-induced\\deposition\\aerosol jet},
+                   6/{electrochemical AM:\\localised electro-\\deposition through\\a micro-nozzle}}{
+  \pgfmathsetmacro{\x}{\k*\p}
+  \node[box=amaccent, anchor=north, minimum width=\w cm-6pt, minimum height=2.45cm,
+        text width=\w cm-12pt, font=\scriptsize] at (\x+\w/2,-2.45) {\t};}
+
+\foreach \k/\t in {0/{ISO/ASTM: VPP, MJT},1/{MEX},2/{MEX, VPP},3/{PBF, BJT, DED},4/{SHL, MEX},5/{(no category)},6/{(no category)}}{
+  \pgfmathsetmacro{\x}{\k*\p}
+  \node[font=\scriptsize\itshape, text=amaccent, anchor=north] at (\x+\w/2,-5.0) {\t};}
+
+\foreach \k/\t in {0/{ice cube, jelly},1/{hot-glue gun},2/{icing, cake batter},3/{sandcastle,\\sugar cube},
+                   4/{papier-mâché},5/{frost on a window},6/{electroformed leaf}}{
+  \pgfmathsetmacro{\x}{\k*\p}
+  \node[lblc, anchor=north, text width=\w cm-4pt, font=\scriptsize\itshape, text=inksoft] at (\x+\w/2,-5.45) {\t};}
+
+% row labels on the left
+\foreach \y/\t/\c in {1.85/state of the\\starting material/ink, 0.5/becomes solid by/ink,
+                      -1.3/conventional/conv, -3.65/additive/amaccent, -5.15/standard/amaccent, -5.65/at home/inksoft}{
+  \node[font=\bfseries\scriptsize, text=\c, align=right, anchor=east] at (-0.15,\y) {\t};}
+\end{tikzpicture}
+\end{document}

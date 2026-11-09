@@ -1,0 +1,33 @@
+% 02_g02_twin_forging
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\begin{scope}[shift={(0,0)}]
+  \draw[tool, rounded corners=2pt] (0,0) rectangle (2.6,2.2); \fill[white] (0.2,0.2) rectangle (2.4,2.0);
+  \fill[ipart] (0.9,0.4) rectangle (1.7,1.5);
+  \foreach \xx in {0.7,1.3,1.9} \draw[heatin] (\xx,1.95) -- (\xx,1.6);
+  \node[lab, anchor=north] at (1.3,-0.1) {1\enspace heat the billet};
+  \node[lab, anchor=north] at (1.3,-0.45) {(steel ≈ 1200\,°C)};
+\end{scope}
+\draw[stepto] (2.9,1.1) -- (3.7,1.1);
+\begin{scope}[shift={(4.5,0.1)}]
+  \fill[mouldx] (-0.4,-0.3) -- (2.4,-0.3) -- (2.4,0.55) -- (2.0,0.55) -- (2.0,0) -- (0,0) -- (0,1.3) -- (-0.4,1.3) -- cycle;
+  \draw[cToolD] (-0.4,-0.3) -- (2.4,-0.3) -- (2.4,0.55) -- (2.0,0.55) -- (2.0,0) -- (0,0) -- (0,1.3) -- (-0.4,1.3) -- cycle;
+  \fill[mouldx] (-0.4,2.2) -- (2.4,2.2) -- (2.4,0.7) -- (2.0,0.7) -- (2.0,0.55) -- (1.2,0.55) -- (1.2,1.3) -- (0,1.3) -- (0,1.45) -- (-0.4,1.45) -- cycle;
+  \draw[cToolD] (-0.4,2.2) -- (2.4,2.2) -- (2.4,0.7) -- (2.0,0.7) -- (2.0,0.55) -- (1.2,0.55) -- (1.2,1.3) -- (0,1.3) -- (0,1.45) -- (-0.4,1.45) -- cycle;
+  \fill[ipart] (0,0) -- (2.0,0) -- (2.0,0.55) -- (1.2,0.55) -- (1.2,1.3) -- (0,1.3) -- cycle;
+  \fill[ipart] (2.0,0.55) rectangle (2.4,0.7); \fill[ipart] (-0.4,1.3) rectangle (0,1.45);
+  \draw[force] (1.0,3.0) -- (1.0,2.3);
+  \node[lab, anchor=north] at (1.0,-0.4) {2\enspace blows between dies};
+\end{scope}
+\draw[stepto] (7.3,1.1) -- (8.1,1.1);
+\begin{scope}[shift={(8.8,0.1)}]
+  \fill[ipart] (0,0) -- (2.0,0) -- (2.0,0.55) -- (1.2,0.55) -- (1.2,1.3) -- (0,1.3) -- cycle;
+  \fill[ipartlight, dash pattern=on 2pt off 2pt] (2.0,0.55) rectangle (2.4,0.7);
+  \fill[ipartlight, dash pattern=on 2pt off 2pt] (-0.4,1.3) rectangle (0,1.45);
+  \node[lab, anchor=north] at (1.0,-0.4) {3\enspace trim the flash};
+\end{scope}
+
+\end{tikzpicture}
+\end{document}

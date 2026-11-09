@@ -1,0 +1,69 @@
+% From the gas or vapour state: chemical vapour deposition vs laser CVD
+\documentclass[tikz,border=6pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\xfabpanels{Chemical vapour deposition}{the deposit grows on every hot surface}
+           {Laser CVD}{the solid grows only at the laser focus}
+
+% ================= LEFT: CVD reactor
+\begin{scope}[shift={(0.3,-5.4)}]
+  % furnace shells
+  \fill[heat!35, draw=heat!70!black, line width=0.6pt] (1.3,2.75) rectangle (5.4,3.25);
+  \fill[heat!35, draw=heat!70!black, line width=0.6pt] (1.3,0.35) rectangle (5.4,0.85);
+  % quartz tube
+  \fill[gas!6] (0.2,0.9) rectangle (6.6,2.7);
+  \draw[steel, line width=1.2pt] (0.2,0.9) -- (6.6,0.9) (0.2,2.7) -- (6.6,2.7);
+  % substrate with coating
+  \fill[machinedark] (2.3,1.1) rectangle (4.4,1.45);
+  \fill[gas!70!black] (2.25,1.45) rectangle (4.45,1.58);
+  \fill[gas!70!black] (2.25,1.1) rectangle (2.3,1.58) (4.4,1.1) rectangle (4.45,1.58);
+  % gas molecules flowing
+  \pgfmathsetseed{5}
+  \foreach \i in {1,...,22}{
+    \pgfmathsetmacro{\gx}{0.4+6.0*rnd}\pgfmathsetmacro{\gy}{1.75+0.8*rnd}
+    \fill[gas!45, draw=gas!80!black, line width=0.3pt] (\gx,\gy) circle (0.055);}
+  \draw[flow=gas] (-0.6,1.8) -- (0.15,1.8);
+  \draw[flow=inksoft] (6.65,1.8) -- (7.1,1.8);
+  % labels
+  \node[lbl, anchor=south, align=center] at (-0.25,2.0) {precursor\\+ carrier};
+  \node[lbl, anchor=south] at (6.85,2.0) {exhaust};
+  \node[lbl, anchor=south] at (3.35,3.3) {furnace 500--1200\,°C};
+  \node[lbl, anchor=north] at (3.35,0.3) {coating on every hot surface ($\mu$m/h)};
+  \node[lbl, anchor=west] (sub) at (4.75,1.2) {substrate};
+\end{scope}
+
+% ================= RIGHT: LCVD
+\begin{scope}[shift={(8.4,-6.1)}]
+  % chamber
+  \draw[steel, line width=1.2pt, rounded corners=4pt] (0.2,0.2) rectangle (5.4,4.3);
+  \fill[gas!6, rounded corners=4pt] (0.25,0.25) rectangle (5.35,4.25);
+  \pgfmathsetseed{9}
+  \foreach \i in {1,...,30}{
+    \pgfmathsetmacro{\gx}{0.5+4.6*rnd}\pgfmathsetmacro{\gy}{0.6+3.4*rnd}
+    \fill[gas!45, draw=gas!80!black, line width=0.3pt] (\gx,\gy) circle (0.055);}
+  % substrate and growing rod
+  \fill[machinedark] (1.8,0.25) rectangle (3.8,0.6);
+  \fill[gas!70!black] (2.68,0.6) rectangle (2.92,2.4);
+  \fill[gas!70!black] (2.8,2.4) ellipse (0.12 and 0.06);
+  % laser through window, focused at the tip
+  \fill[white] (2.3,4.25) rectangle (3.3,4.35);
+  \draw[liquid!50, line width=1pt] (2.3,4.3) -- (3.3,4.3);
+  \fill[liquid!20, draw=liquid!60, line width=0.6pt] (2.8,5.15) ellipse (0.6 and 0.12);
+  \fill[energy!18] (2.25,5.15) -- (3.35,5.15) -- (2.8,2.45) -- cycle;
+  \draw[energy, line width=0.8pt] (2.25,5.15) -- (2.8,2.45) -- (3.35,5.15);
+  \draw[energy, line width=1.2pt] (2.25,5.7) -- (2.25,5.15) (3.35,5.7) -- (3.35,5.15);
+  \fill[energy] (2.8,2.45) circle (0.07);
+  \draw[flow=steel] (4.2,0.4) -- (4.2,-0.15);
+  % labels
+  \node[lbl, anchor=west] at (3.55,5.25) {lens};
+  \node[lbl, anchor=west, fill=gas!6] (t) at (3.5,2.9) {hot spot: the gas};
+  \node[lbl, anchor=west, fill=gas!6] at (3.5,2.6) {decomposes here only};
+  \draw[leader] (t.west) -- (2.9,2.5);
+  \node[lbl, anchor=east] at (2.55,1.4) {rod or fibre};
+  \node[lbl, anchor=west] at (4.3,0.0) {substrate drawn back};
+  \node[lbl, anchor=north west, fill=white, fill opacity=0.8, text opacity=1] at (0.35,4.15) {precursor gas\\(CH$_4$, WF$_6$, Ni(CO)$_4$)};
+\end{scope}
+\xfabstate{gas}{1.6}{gas or vapour}
+\end{tikzpicture}
+\end{document}

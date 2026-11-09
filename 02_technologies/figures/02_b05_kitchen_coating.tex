@@ -1,0 +1,23 @@
+% Step (ii) kitchen 5 — coating: a chocolate glaze poured over a cake
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\fill[tool] (-0.2,-0.15) rectangle (4.4,0);
+\fill[part] (0.6,0) rectangle (3.6,1.2);
+% jug
+\fill[tool] (2.6,3.3) -- (3.9,3.3) -- (3.7,2.3) -- (2.9,2.3) -- (2.6,2.6) -- cycle;
+\fill[feed] (2.62,2.55) .. controls (2.3,2.4) and (2.2,1.8) .. (2.15,1.2) -- (2.35,1.2) .. controls (2.4,1.8) and (2.5,2.3) .. (2.75,2.45) -- cycle;
+\node[lab, anchor=west] at (4.0,3.0) {warm glaze};
+\node[lab, anchor=north] at (2.1,-0.25) {cake};
+\draw[stepto] (4.8,0.8) -- (6.0,0.8);
+\fill[tool] (6.3,-0.15) rectangle (10.5,0);
+\fill[part] (6.9,0) rectangle (9.9,1.2);
+\fill[feed] (6.8,1.2) -- (10.0,1.2) -- (10.0,0.6) .. controls (10.05,0.45) and (9.95,0.4) .. (9.9,0.5) -- (9.9,1.1) -- (6.9,1.1) -- (6.9,0.7) .. controls (6.85,0.5) and (6.75,0.55) .. (6.8,0.7) -- cycle;
+\fill[feed] (6.8,1.2) rectangle (10.0,1.32);
+\node[lab, anchor=west] (g) at (10.2,1.6) {thin layer};
+\draw[lead] (g.west) -- (9.8,1.28);
+\node[lab, anchor=north] at (8.4,-0.25) {same shape, new surface};
+\xfabref{0}{-1.0}{\textbf{industrial twin:} painting, electroplating, thermal spraying, PVD and CVD}
+\end{tikzpicture}
+\end{document}

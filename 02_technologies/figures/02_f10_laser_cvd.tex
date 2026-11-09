@@ -1,0 +1,25 @@
+% 02_f10_laser_cvd
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[cToolD, line width=1.2pt, rounded corners=4pt] (0.2,0.2) rectangle (5.4,4.3);
+\fill[fluid, rounded corners=4pt] (0.25,0.25) rectangle (5.35,4.25);
+\pgfmathsetseed{9}\foreach \i in {1,...,26}{\fill[fill=cFluidD!60, draw=none] (0.5+4.6*rnd,0.6+3.4*rnd) circle (0.05);}
+\fill[tool] (1.8,0.25) rectangle (3.8,0.6);
+\fill[ipart] (2.68,0.6) rectangle (2.92,2.4);
+\fill[cLight!15] (2.25,5.15) -- (3.35,5.15) -- (2.8,2.45) -- cycle;
+\draw[cLight, line width=0.8pt] (2.25,5.15) -- (2.8,2.45) -- (3.35,5.15);
+\draw[cLight, line width=1.4pt] (2.25,5.7) -- (2.25,5.15) (3.35,5.7) -- (3.35,5.15);
+\fill[fill=cFluid, draw=cFluidD] (2.8,5.15) ellipse (0.6 and 0.12);
+\fill[cLight] (2.8,2.45) circle (0.07);
+\draw[force] (4.2,0.4) -- (4.2,-0.2);
+\node[lab, anchor=west] at (3.55,5.25) {lens};
+\node[lab, anchor=west, fill=cFluid] (t) at (3.4,2.9) {hot spot: gas decomposes};
+\draw[lead] (t.west) -- (2.9,2.5);
+\node[lab, anchor=east, fill=cFluid] at (2.55,1.4) {fibre or rod};
+\node[lab, anchor=west] at (4.3,-0.1) {pulled back};
+\node[lab, anchor=north west, fill=cFluid] at (0.35,4.15) {precursor gas};
+
+\end{tikzpicture}
+\end{document}

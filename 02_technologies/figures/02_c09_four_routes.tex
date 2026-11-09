@@ -1,0 +1,28 @@
+% 02_c09_four_routes
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\def\pp{(0,0) -- (1.6,0) -- (1.6,0.5) -- (0.95,0.5) -- (0.95,1.1) -- (0,1.1) -- cycle}
+\foreach \k/\t/\g in {0/casting/the mould, 1/forging/the dies, 2/machining/the tool path, 3/additive/the layer file}{
+  \node[font=\bfseries, anchor=south] at (\k*3.6+1.3,2.3) {\t};
+  \node[lab, anchor=north, text=inksoft] at (\k*3.6+1.3,-0.75) {geometry stored in};
+  \node[lab, anchor=north, font=\footnotesize\bfseries] at (\k*3.6+1.3,-1.1) {\g};}
+\begin{scope}[shift={(0.5,0)}]
+  \fill[mouldx] (-0.3,-0.3) rectangle (1.9,1.4); \draw[cToolD] (-0.3,-0.3) rectangle (1.9,1.4);
+  \fill[ifeed] \pp; \end{scope}
+\begin{scope}[shift={(4.1,0)}]
+  \fill[mouldx] (-0.3,-0.4) -- (1.9,-0.4) -- (1.9,0.5) -- (1.6,0.5) -- (1.6,0) -- (0,0) -- (0,1.1) -- (-0.3,1.1) -- cycle;
+  \fill[mouldx] (-0.3,2.0) -- (1.9,2.0) -- (1.9,0.6) -- (1.6,0.6) -- (1.6,0.5) -- (0.95,0.5) -- (0.95,1.1) -- (0,1.1) -- (0,1.2) -- (-0.3,1.2) -- cycle;
+  \fill[ipart] \pp; \end{scope}
+\begin{scope}[shift={(7.7,0)}]
+  \fill[ipartlight] (0,0) rectangle (1.6,1.1); \fill[ipart] \pp;
+  \draw[tool] (1.05,0.55) rectangle (1.35,1.9); \end{scope}
+\begin{scope}[shift={(11.3,0)}]
+  \fill[tool] (-0.3,-0.2) rectangle (1.9,0);
+  \foreach \i in {0,...,6}{\pgfmathsetmacro{\yy}{\i*0.14}\pgfmathsetmacro{\xr}{\i<4?1.6:0.95}
+    \fill[ipart] (0,\yy) rectangle (\xr,\yy+0.14);}
+  \draw[lighthalo] (0.5,1.9) -- (0.5,0.98); \draw[light] (0.5,1.9) -- (0.5,0.98); \end{scope}
+
+\end{tikzpicture}
+\end{document}

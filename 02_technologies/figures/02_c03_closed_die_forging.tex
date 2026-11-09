@@ -1,0 +1,24 @@
+% 02_c03_closed_die_forging
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\fill[mouldx] (-0.5,-0.4) -- (2.5,-0.4) -- (2.5,0.6) -- (2.0,0.6) -- (2.0,0) -- (0,0) -- (0,1.4) -- (-0.5,1.4) -- cycle;
+\draw[cToolD, line width=0.9pt] (-0.5,-0.4) -- (2.5,-0.4) -- (2.5,0.6) -- (2.0,0.6) -- (2.0,0) -- (0,0) -- (0,1.4) -- (-0.5,1.4) -- cycle;
+\fill[mouldx] (-0.5,2.3) -- (2.5,2.3) -- (2.5,0.75) -- (2.0,0.75) -- (2.0,0.6) -- (1.2,0.6) -- (1.2,1.4) -- (0,1.4) -- (0,1.55) -- (-0.5,1.55) -- cycle;
+\draw[cToolD, line width=0.9pt] (-0.5,2.3) -- (2.5,2.3) -- (2.5,0.75) -- (2.0,0.75) -- (2.0,0.6) -- (1.2,0.6) -- (1.2,1.4) -- (0,1.4) -- (0,1.55) -- (-0.5,1.55) -- cycle;
+\fill[ipart] (0,0) -- (2.0,0) -- (2.0,0.6) -- (1.2,0.6) -- (1.2,1.4) -- (0,1.4) -- cycle;
+\fill[ipart] (2.0,0.6) rectangle (2.5,0.75); \fill[ipart] (-0.5,1.4) rectangle (0,1.55);
+\draw[force] (1.0,3.1) -- (1.0,2.4);
+% before: the billet
+\fill[ipart] (-3.6,0) rectangle (-2.6,1.6);
+\foreach \yy in {0.5,1.1} \draw[heatin] (-4.3,\yy) -- (-3.7,\yy);
+\draw[stepto] (-2.3,0.8) -- (-1.0,0.8);
+\node[lab, anchor=north] at (-3.1,-0.1) {hot billet};
+\node[lab, anchor=west] at (2.7,1.9) {upper die};
+\node[lab, anchor=west] at (2.7,-0.1) {lower die};
+\node[lab, anchor=west] (f) at (2.7,1.0) {flash}; \draw[lead] (f.west) -- (2.4,0.68);
+\node[lab, anchor=west] at (1.2,3.0) {blow or press};
+
+\end{tikzpicture}
+\end{document}

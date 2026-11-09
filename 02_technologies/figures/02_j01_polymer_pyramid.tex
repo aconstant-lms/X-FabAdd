@@ -1,0 +1,52 @@
+% 02_j01_polymer_pyramid  printable thermoplastics: amorphous vs semicrystalline, by continuous-use temperature
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+% pyramid: base 0..12 at y=0, apex (6,7.2); tier lines at y=2.0 (100 C) and y=4.2 (150 C)
+\def\H{7.2}
+\coordinate (L) at (0,0); \coordinate (R) at (12,0); \coordinate (T) at (6,\H);
+\colorlet{amor}{cPart!45}\colorlet{semi}{cIPart}
+\fill[amor] (L) -- (6,0) -- (T) -- cycle;
+\fill[semi] (6,0) -- (R) -- (T) -- cycle;
+% tier separators (white gaps)
+\foreach \yy in {2.0,4.2}{\pgfmathsetmacro{\hw}{6*(1-\yy/\H)}
+  \draw[white, line width=3pt] ({6-\hw},\yy) -- ({6+\hw},\yy);}
+\draw[white, line width=2pt] (6,0) -- (T);
+\draw[cPartD, line width=0.8pt] (L) -- (R) -- (T) -- cycle;
+% polymers in each tier
+\node[font=\small\bfseries, align=center] at (4.4,1.0) {ABS, ASA, PS};
+\node[font=\small\bfseries, align=center, text=white] at (7.6,1.0) {PP};
+\node[font=\small\bfseries, align=center] at (4.7,3.1) {PC, PLA};
+\node[font=\small\bfseries, align=center, text=white] at (7.3,3.1) {PA 6, PA 11,\\PA 12, TPE, TPU};
+\node[font=\small\bfseries, align=center] at (5.25,5.3) {PEI,\\PPSU,\\PPSE};
+\node[font=\small\bfseries, align=center, text=white] at (6.75,5.3) {PPS,\\PEEK,\\PAEK,\\PEKK};
+% tier names and temperature limits on the left
+\foreach \yy/\t in {1.0/Commodity thermoplastics, 3.1/Engineering thermoplastics, 5.3/High-temperature thermoplastics}
+  \node[lab, anchor=east, font=\small] at (-2.0,\yy) {\t};
+\foreach \yy/\t in {2.0/100\,°C, 4.2/150\,°C}{
+  \draw[steellight, line width=0.6pt, dash pattern=on 3pt off 2pt] (-1.9,\yy) -- ({6-6*(1-\yy/\H)},\yy);
+  \node[lab, anchor=south west, font=\footnotesize\bfseries] at (-1.9,\yy) {\t};}
+% thermometer
+\begin{scope}[shift={(-8.4,0)}]
+  \draw[cToolD, line width=0.8pt, fill=white, rounded corners=0.18cm] (-0.18,0.35) rectangle (0.18,6.9);
+  \fill[cHeat] (-0.08,0.4) rectangle (0.08,5.9);
+  \draw[cToolD, line width=0.8pt, fill=cHeat] (0,0.2) circle (0.36);
+  \foreach \yy in {1,1.5,...,6.5} \draw[cToolD, line width=0.4pt] (0.18,\yy) -- (0.32,\yy);
+  \node[lab, anchor=south, align=center, font=\small\bfseries] at (0,7.0) {continuous-use\\temperature};
+\end{scope}
+% amorphous / semicrystalline headers
+\draw[cPartD, line width=0.6pt] (0.6,8.0) -- (5.9,8.0); \draw[cIPartD, line width=0.6pt] (6.1,8.0) -- (11.4,8.0);
+\node[font=\small\bfseries, fill=white, text=cPartD] at (3.25,8.0) {amorphous};
+\node[font=\small\bfseries, fill=white, text=cIPartD] at (8.75,8.0) {semicrystalline};
+\node[lab, align=center, text=cPartD, anchor=north] at (2.2,7.4) {filament printing\\(MEX)};
+\node[lab, align=center, text=cIPartD, anchor=north] at (9.8,7.4) {filament and\\powder printing\\(MEX, PBF)};
+% production volume arrow
+\draw[cToolD, line width=0.7pt, {Stealth[length=5pt]}-{Stealth[length=5pt]}] (0,-0.5) -- (12,-0.5);
+\node[lab, anchor=north, align=center] at (6,-0.6) {production volume in conventional manufacturing grows towards the base};
+\xfabref{-8.8}{-1.4}{After BCG, exhibit ``A wide variety of plastics can be used for AM''. List not exhaustive.
+ABS acrylonitrile butadiene styrene; ASA acrylonitrile styrene acrylate; PA polyamide; PAEK polyaryletherketone;\\
+PEEK polyether ether ketone; PEKK polyetherketoneketone; PC polycarbonate; PEI polyetherimide; PLA polylactic acid; PP polypropylene;
+PPS polyphenylene sulfide; PPSU/PPSE polyphenylsulfone; PS polystyrene; TPE/TPU thermoplastic elastomers.}
+\end{tikzpicture}
+\end{document}

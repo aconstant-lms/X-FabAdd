@@ -1,0 +1,37 @@
+% 02_c07_heat_treatment_scales  temperature (x) x time (y, log: s, min, h, day)
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+% x: 0..1300 C -> 0..13 cm ; y: log10(t/s), 0 (1 s) .. 5.3 (2 days) -> 0..1.5 cm per decade
+\def\T#1{#1*0.01}
+\def\Y#1{1.5*(log10(#1)+1.778151)}% argument in minutes; 0 at 1 s
+\pgfmathsetmacro{\ytop}{\Y{2880}}
+% grid: s, min, h, day
+\foreach \t/\lab in {0.0166667/1 s, 1/1 min, 60/1 h, 1440/1 day}{
+  \pgfmathsetmacro{\yy}{\Y{\t}}
+  \draw[steellight, line width=0.5pt] (0,\yy) -- (13.2,\yy);
+  \node[lab, anchor=east] at (-0.1,\yy) {\lab};}
+\foreach \t in {0.166667,10,600}{\pgfmathsetmacro{\yy}{\Y{\t}}\draw[steellight, line width=0.3pt, dash pattern=on 1pt off 2pt] (0,\yy) -- (13.2,\yy);}
+\draw[cToolD, line width=0.8pt] (0,0) -- (13.2,0);
+\draw[cToolD, line width=0.8pt] (0,0) -- (0,\ytop);
+\foreach \t in {0,200,...,1200}{\draw[cToolD] (\T{\t},0) -- (\T{\t},-0.1); \node[font=\footnotesize, anchor=north] at (\T{\t},-0.1) {\t};}
+\node[lab, anchor=north] at (6.5,-0.55) {temperature (°C)};
+\node[lab, anchor=south, rotate=90] at (-1.55,{\ytop/2}) {time (log scale)};
+% processes: T1, T2 (C), t1, t2 (s), colour, label, label anchor position
+\def\proc#1#2#3#4#5#6#7#8{%
+  \pgfmathsetmacro{\ya}{\Y{#3}}\pgfmathsetmacro{\yb}{\Y{#4}}
+  \fill[fill=#5!60, fill opacity=0.75, draw=#5!60!black, line width=0.6pt, rounded corners=3pt] (\T{#1},\ya) rectangle (\T{#2},\yb);
+  \node[lab, font=\small, #8] at #7 {#6};}
+\proc{60}{100}{5}{15}{cFeed}{\textbf{boiled egg}\\{\color{inksoft}proteins unfold and bond}}{(\T{110},{\Y{8.66667}})}{anchor=west}
+\proc{120}{180}{60}{480}{cChem}{\textbf{curing of thermosets}\\{\color{inksoft}chains cross-link}}{(\T{110},{\Y{480}})}{anchor=south west}
+\proc{150}{650}{30}{240}{cIPart}{\textbf{tempering of steel}\\{\color{inksoft}carbides precipitate}}{(\T{400},{\Y{83.3333}})}{anchor=center}
+\proc{800}{900}{0.0166667}{1}{cHeat}{\textbf{quench hardening}\\{\color{inksoft}austenite → martensite}}{(\T{910},{\Y{0.133333}})}{anchor=west}
+\proc{600}{900}{60}{360}{cIPart}{\textbf{stress relief}\\{\color{inksoft}of AM metal parts}}{(\T{750},{\Y{360}})}{anchor=south}
+\proc{900}{1250}{120}{240}{cHeat}{\textbf{HIP}\\{\color{inksoft}100--200 MPa, pores close}}{(\T{1075},{\Y{105}})}{anchor=north}
+% room temperature
+\draw[steellight, dashed] (\T{20},0) -- (\T{20},\ytop);
+\node[lab, text=inksoft, anchor=south] at (\T{20},\ytop) {room};
+\xfabref{-1.6}{-1.2}{Typical ranges, after Ashby, Shercliff \& Cebon, \emph{Materials}, 3rd ed., 2013, ch.~19, and ASTM F3301 (thermal post-processing of PBF metal parts).}
+\end{tikzpicture}
+\end{document}

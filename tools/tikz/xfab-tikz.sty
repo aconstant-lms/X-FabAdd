@@ -1,0 +1,182 @@
+% xfab-tikz.sty — shared look for all X-FabAdd schematics
+% Compile with XeLaTeX (fontspec + Caladea, metric twin of Cambria).
+% Build every figure:  python tools/build_figures.py [paths…]
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{xfab-tikz}[2026/11/08 X-FabAdd TikZ style]
+
+\RequirePackage{fontspec}
+\setmainfont{Caladea}
+\RequirePackage{xcolor}
+\RequirePackage{tikz}
+\usetikzlibrary{arrows.meta,calc,positioning,patterns,patterns.meta,
+  decorations.pathmorphing,decorations.pathreplacing,shapes.geometric,
+  shapes.misc,fit,backgrounds,shadings,fadings}
+
+% ------------------------------------------------------------ palette
+% one colour per DIN 8580 state of the starting material
+\definecolor{liquid}{HTML}{2F6DB5}
+\definecolor{plastic}{HTML}{D9822B}
+\definecolor{pasty}{HTML}{9A6A3A}
+\definecolor{powder}{HTML}{6E6E6E}
+\definecolor{fibrous}{HTML}{3F8F4A}
+\definecolor{gas}{HTML}{8C6BBE}
+\definecolor{ionised}{HTML}{1E9690}
+% machine, energy, text
+\definecolor{steel}{HTML}{56636D}
+\definecolor{steellight}{HTML}{DCE1E5}
+\definecolor{energy}{HTML}{D1342F}
+\definecolor{heat}{HTML}{E8A33D}
+\definecolor{ink}{HTML}{1E2A36}
+\definecolor{inksoft}{HTML}{5F6B76}
+\definecolor{amaccent}{HTML}{1F3A5F}
+\definecolor{conv}{HTML}{6B5B4B}
+\definecolor{paper}{HTML}{FFFFFF}
+
+\tikzset{
+  every picture/.style={line join=round, line cap=round, font=\small, color=ink},
+  % --- headings
+  heading/.style={font=\bfseries\large, text=ink, anchor=south},
+  subheading/.style={font=\itshape\small, text=inksoft, anchor=north},
+  tag conv/.style={font=\bfseries\footnotesize, text=white, fill=conv,
+    rounded corners=2pt, inner sep=3pt},
+  tag am/.style={font=\bfseries\footnotesize, text=white, fill=amaccent,
+    rounded corners=2pt, inner sep=3pt},
+  % --- labels with leader lines
+  lbl/.style={font=\footnotesize, text=ink, inner sep=1.5pt, align=left},
+  lblc/.style={lbl, align=center},
+  leader/.style={draw=inksoft, line width=0.4pt, -{Circle[length=2.2pt]}},
+  % --- matter
+  mat/.style={fill=#1!25, draw=#1!80!black, line width=0.6pt},
+  matsolid/.style={fill=#1!70!black!85, draw=#1!50!black, line width=0.6pt},
+  matlight/.style={fill=#1!12, draw=#1!60, line width=0.5pt},
+  % --- machine parts
+  machine/.style={fill=steellight, draw=steel, line width=0.8pt},
+  machinedark/.style={fill=steel, draw=steel!70!black, line width=0.8pt},
+  mould/.style={pattern={Lines[angle=45,distance=3pt,line width=0.5pt]},
+    pattern color=steel!70, draw=steel, line width=0.8pt},
+  sand/.style={pattern={Dots[distance=2.6pt,radius=0.45pt]},
+    pattern color=pasty!80, draw=pasty!70!black, line width=0.8pt},
+  plaster/.style={pattern={Dots[distance=3pt,radius=0.5pt]},
+    pattern color=steel!50, fill=steellight!60, draw=steel, line width=0.8pt},
+  % --- flows and energy
+  flow/.style={-{Stealth[length=5pt,width=4pt]}, line width=1.1pt, draw=#1},
+  flow/.default=ink,
+  motion/.style={-{Stealth[length=4pt]}, line width=0.7pt, draw=inksoft},
+  dblmotion/.style={{Stealth[length=4pt]}-{Stealth[length=4pt]}, line width=0.7pt, draw=inksoft},
+  beam/.style={draw=energy, line width=1.4pt},
+  beamhalo/.style={draw=energy!25, line width=4pt},
+  heatwave/.style={draw=heat, line width=0.9pt, -{Stealth[length=4pt]},
+    decorate, decoration={snake, amplitude=1.2pt, segment length=5pt, post length=4pt}},
+  dim/.style={{Stealth[length=3pt]}-{Stealth[length=3pt]}, draw=inksoft, line width=0.4pt},
+  % --- panels
+  panelframe/.style={draw=steellight, line width=0.6pt, rounded corners=4pt},
+  divider/.style={draw=steellight, line width=0.8pt, dash pattern=on 3pt off 3pt},
+  % --- boxes for overview diagrams
+  box/.style={draw=#1!80!black, fill=#1!12, line width=0.7pt, rounded corners=3pt,
+    align=center, inner sep=4pt, font=\small},
+  boxstrong/.style={draw=#1!80!black, fill=#1, text=white, line width=0.7pt,
+    rounded corners=3pt, align=center, inner sep=4pt, font=\bfseries\small},
+  link/.style={draw=inksoft, line width=0.6pt},
+}
+
+% \xfabpanels{left title}{left sub}{right title}{right sub}
+% draws two panel headers over x in [0,7] and [8,15]; schematics go below y=0
+\newcommand{\xfabpanels}[4]{%
+  \node[tag conv, anchor=west] at (0.0,1.45) {CONVENTIONAL};
+  \node[font=\bfseries\large, anchor=west, inner sep=0] at (0.0,0.85) {#1};
+  \node[font=\itshape\small, text=inksoft, anchor=west, inner sep=0] at (0.0,0.35) {#2};
+  \node[tag am, anchor=west] at (8.0,1.45) {ADDITIVE};
+  \node[font=\bfseries\large, anchor=west, inner sep=0] at (8.0,0.85) {#3};
+  \node[font=\itshape\small, text=inksoft, anchor=west, inner sep=0] at (8.0,0.35) {#4};
+  \draw[divider] (7.5,1.6) -- (7.5,-6.6);
+}
+
+% \xfabstate{colour}{DIN number}{state}: band at the bottom of a pair figure
+\newcommand{\xfabstate}[3]{%
+  \fill[#1] (0,-7.0) rectangle (15,-6.85);
+  \node[anchor=north west, font=\footnotesize\bfseries, text=#1!80!black] at (0,-7.05)
+    {DIN 8580 primary shaping #2 \,·\, from the #3 state};
+}
+
+% powder grains: \xfabgrains{x0}{y0}{x1}{y1}{radius}{n}{colour}
+\newcommand{\xfabgrains}[7]{%
+  \pgfmathsetseed{8580}%
+  \foreach \i in {1,...,#6}{%
+    \pgfmathsetmacro{\gx}{#1+rnd*(#3-#1)}%
+    \pgfmathsetmacro{\gy}{#2+rnd*(#4-#2)}%
+    \pgfmathsetmacro{\gr}{#5*(0.75+0.5*rnd)}%
+    \fill[#7!35, draw=#7!75!black, line width=0.25pt] (\gx,\gy) circle (\gr);
+  }%
+}
+
+% ================================================================ CONVENTION
+% Course colour convention (one meaning per colour, used in every schematic)
+%   feedstock  initial material (liquid, paste, powder, wire, sheet, gas)
+%   part       final material = the part being made
+%   mould      mould or die: carries the shape (hatched)
+%   tool       every other tool: punch, roller, knife, nozzle, platform
+%   force      mechanical action: force, motion            -> dark arrows
+%   heat       heat in or out                               -> orange wavy arrows
+%   light      radiation: laser, UV, electron beam          -> magenta beam
+%   elec       electricity: current, wires, poles           -> blue
+%   chem       chemistry: binder, reaction, curing agent    -> green
+%   fluid      a carrier medium: water, electrolyte, gas    -> pale cyan
+\definecolor{cFeed}{HTML}{E9C46A}  \definecolor{cFeedD}{HTML}{A8781E}
+\definecolor{cPart}{HTML}{6E98C4}  \definecolor{cPartD}{HTML}{2E5179}
+\definecolor{cMould}{HTML}{8D949B}
+\definecolor{cTool}{HTML}{D5D9DD}  \definecolor{cToolD}{HTML}{4A5259}
+\definecolor{cForce}{HTML}{23282D}
+\definecolor{cHeat}{HTML}{E76F2E}
+\definecolor{cLight}{HTML}{C2185B}
+\definecolor{cElec}{HTML}{1E78D6}
+\definecolor{cChem}{HTML}{3C9D4E}
+\definecolor{cFluid}{HTML}{D8EEF5}  \definecolor{cFluidD}{HTML}{6FA8BC}
+\tikzset{
+  feed/.style={fill=cFeed!70, draw=cFeedD, line width=0.7pt},
+  part/.style={fill=cPart, draw=cPartD, line width=0.7pt},
+  partlight/.style={fill=cPart!45, draw=cPartD, line width=0.7pt},
+  mouldx/.style={pattern={Lines[angle=45,distance=3.2pt,line width=0.45pt]},
+    pattern color=cMould, draw=cToolD, line width=0.8pt},
+  tool/.style={fill=cTool, draw=cToolD, line width=0.8pt},
+  fluid/.style={fill=cFluid, draw=cFluidD, line width=0.6pt},
+  force/.style={-{Stealth[length=6pt,width=5pt]}, line width=1.4pt, draw=cForce},
+  move/.style={-{Stealth[length=4.5pt]}, line width=0.8pt, draw=cForce},
+  heatin/.style={draw=cHeat, line width=1.1pt, -{Stealth[length=5pt]},
+    decorate, decoration={snake, amplitude=1.5pt, segment length=6pt, post length=5pt}},
+  light/.style={draw=cLight, line width=1.6pt},
+  lighthalo/.style={draw=cLight!20, line width=5pt},
+  elec/.style={draw=cElec, line width=1pt},
+  chem/.style={fill=cChem!60, draw=cChem!70!black, line width=0.6pt},
+  stepto/.style={-{Stealth[length=7pt,width=6pt]}, line width=1.8pt, draw=inksoft!60},
+  lab/.style={font=\footnotesize, text=ink, inner sep=1.5pt, align=left},
+  labc/.style={lab, align=center},
+  lead/.style={draw=inksoft, line width=0.4pt, -{Circle[length=2pt]}},
+}
+% three-language title used on every figure: \xfabtitle{x}{y}{EN}{FR}{DE}
+\newcommand{\xfabtitle}[5]{%
+  \node[anchor=south west, inner sep=0, font=\bfseries\Large] at (#1,#2) {#3};
+  \node[anchor=north west, inner sep=0, font=\itshape\small, text=inksoft] at (#1,#2-0.15)
+    {#4 \enspace·\enspace #5};}
+% reference line, bottom left: \xfabref{x}{y}{text}
+\newcommand{\xfabref}[3]{%
+  \node[anchor=north west, inner sep=0, font=\scriptsize, text=inksoft, align=left] at (#1,#2) {#3};}
+
+% ---- industrial materials (kitchen figures keep feed/part above)
+%   ifeed  industrial initial material: melt, powder, wire, resin, slurry
+%   ipart  industrial final material: the metal, polymer or ceramic part
+\definecolor{cIFeed}{HTML}{F2A65A}  \definecolor{cIFeedD}{HTML}{B5651D}
+\definecolor{cIPart}{HTML}{7F93A8}  \definecolor{cIPartD}{HTML}{36475A}
+\tikzset{
+  ifeed/.style={fill=cIFeed!80, draw=cIFeedD, line width=0.7pt},
+  ipart/.style={fill=cIPart, draw=cIPartD, line width=0.7pt},
+  ipartlight/.style={fill=cIPart!45, draw=cIPartD, line width=0.7pt},
+  grain/.style={fill=cIFeed!70, draw=cIFeedD, line width=0.3pt},
+}
+% powder grains in a box: \xgrains{x0}{y0}{x1}{y1}{r}{n}  (seeded, reproducible)
+\newcommand{\xgrains}[6]{%
+  \pgfmathsetseed{52900}%
+  \foreach \i in {1,...,#6}{%
+    \pgfmathsetmacro{\gx}{#1+rnd*(#3-#1)}\pgfmathsetmacro{\gy}{#2+rnd*(#4-#2)}%
+    \fill[grain] (\gx,\gy) circle (#5);}}
+
+\endinput

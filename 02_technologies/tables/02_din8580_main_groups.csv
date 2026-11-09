@@ -1,0 +1,7 @@
+group,name_de,name_en,name_fr,cohesion,shape,conventional_examples,link_with_am
+1,Urformen,Primary shaping,Mise en forme primaire,created,created,"sand casting; die casting; injection moulding; pressing and sintering; electroforming","every AM process: primary shaping done selectively, layer by layer, without a mould"
+2,Umformen,Forming,Formage (déformation plastique),kept,changed,"forging; rolling; extrusion of billets; deep drawing; bending","incremental sheet forming (tool-path defined, no die); plastic deformation is the bonding mechanism of cold spray, friction stir deposition and ultrasonic AM"
+3,Trennen,Separating (cutting),Séparation (enlèvement de matière),reduced,changed,"turning; milling; drilling; grinding; laser and water-jet cutting; EDM","support removal and finish machining; sheet lamination cuts each layer; hybrid DED + milling machines"
+4,Fügen,Joining,Assemblage,increased (between parts),changed,"welding; brazing; soldering; adhesive bonding; riveting","DED and wire-arc AM come from welding; AM consolidates assemblies and removes joints"
+5,Beschichten,Coating,Revêtement,increased (layer on a part),changed,"painting; thermal spraying; PVD and CVD; electroplating; laser cladding","cold spray and laser cladding grow from coatings into parts; the basis of AM repair"
+6,Stoffeigenschaft ändern,Changing material properties,Modification des propriétés du matériau,changed at particle level,kept,"heat treatment; quench hardening; hot isostatic pressing; shot peening","post-processing of AM parts: stress relief, HIP, ageing, peening"

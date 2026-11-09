@@ -1,0 +1,84 @@
+% 02_d01  part: from voxel to path to layer to part (half-ring part, oblique view)
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+% oblique projection of the xy-plane: x -> (1,0), y -> (0.45,0.32)
+\tikzset{plane/.style={cm={1,0,0.45,0.32,(0,#1)}},
+  topf/.style={fill=cPart!22, draw=cPartD, line width=0.7pt},
+  innerf/.style={fill=cPart!70, draw=cPartD, line width=0.7pt},
+  endf/.style={fill=cPart!48, draw=cPartD, line width=0.7pt}}
+\def\Ro{1.25}\def\Ri{0.62}
+% half ring in its plane: angles 0..180, open side towards the viewer
+\def\Cpath{(\Ro,0) arc[start angle=0,end angle=180,radius=\Ro] -- (-\Ri,0) arc[start angle=180,end angle=0,radius=\Ri] -- cycle}
+% \halfring{height}: inner (concave) cylindrical wall, two end faces, top face
+\newcommand{\halfring}[1]{%
+  \fill[innerf] plot[domain=0:180, samples=40] ({\Ri*cos(\x)+0.45*\Ri*sin(\x)},{0.32*\Ri*sin(\x)})
+     -- plot[domain=180:0, samples=40] ({\Ri*cos(\x)+0.45*\Ri*sin(\x)},{0.32*\Ri*sin(\x)+#1}) -- cycle;
+  \fill[endf] plot[domain=0:24.2, samples=12] ({\Ro*cos(\x)+0.45*\Ro*sin(\x)},{0.32*\Ro*sin(\x)})
+     -- plot[domain=24.2:0, samples=12] ({\Ro*cos(\x)+0.45*\Ro*sin(\x)},{0.32*\Ro*sin(\x)+#1}) -- cycle;
+  \fill[endf] (\Ri,0) rectangle (\Ro,#1);
+  \fill[endf] (-\Ro,0) rectangle (-\Ri,#1);
+  \begin{scope}[plane=#1] \fill[topf] \Cpath; \end{scope}}
+\begin{tikzpicture}[x=1cm,y=1cm]
+
+% ---------- 1 voxel
+\begin{scope}[shift={(0.6,0.9)}]
+  \def\s{0.5}
+  \fill[fill=cPart, draw=cPartD, line width=0.7pt] (0,0) rectangle (\s,\s);
+  \fill[fill=cPart!60, draw=cPartD, line width=0.7pt] (0,\s) -- ++(0.45*\s,0.32*\s) -- ++(\s,0) -- (\s,\s) -- cycle;
+  \fill[fill=cPartD!80, draw=cPartD, line width=0.7pt] (\s,0) -- ++(0.45*\s,0.32*\s) -- ++(0,\s) -- (\s,\s) -- cycle;
+  \node[labc, anchor=north] at (0.35,-0.75) {1\enspace voxel\\spot $\times$ track $\times$ $\Delta z$};
+\end{scope}
+\draw[stepto] (1.9,1.2) -- (2.6,1.2);
+
+% ---------- 2 path: contour + hatching on one layer
+\begin{scope}[shift={(4.3,0.85)}]
+  \def\H{0.25}
+  \halfring{\H}
+  \begin{scope}[plane=\H]
+    \fill[white] \Cpath;
+    \draw[cLight, line width=0.9pt] (\Ro-0.1,0) arc[start angle=0,end angle=180,radius=\Ro-0.1] -- (-\Ri-0.1,0)
+          arc[start angle=180,end angle=0,radius=\Ri+0.1] -- cycle;
+    \begin{scope}
+      \clip (\Ro-0.2,0) arc[start angle=0,end angle=180,radius=\Ro-0.2] -- (-\Ri-0.2,0)
+            arc[start angle=180,end angle=0,radius=\Ri+0.2] -- cycle;
+      \foreach \xx in {-1.3,-1.2,...,1.3} \draw[cLight, line width=0.5pt] (\xx,-0.1) -- (\xx,1.4);
+    \end{scope}
+    \draw[cPartD, line width=0.7pt] \Cpath;
+  \end{scope}
+  \node[labc, anchor=north] at (0.25,-0.7) {2\enspace path\\contour + layer hatching};
+\end{scope}
+\draw[stepto] (6.4,1.2) -- (7.1,1.2);
+
+% ---------- 3 layer, thickness dz
+\begin{scope}[shift={(8.8,0.85)}]
+  \def\H{0.25}
+  \halfring{\H}
+  \draw[dim] (-1.55,0) -- (-1.55,\H); \draw[cPartD, line width=0.3pt] (-1.6,0) -- (-1.3,0) (-1.6,\H) -- (-1.3,\H);
+  \node[lab, anchor=east] at (-1.6,0.12) {$\Delta z$};
+  \node[labc, anchor=north] at (0.25,-0.7) {3\enspace layer\\slice of thickness $\Delta z$};
+\end{scope}
+\draw[stepto] (10.9,1.2) -- (11.6,1.2);
+
+% ---------- 4 part: the shape, carried by NURBS
+\begin{scope}[shift={(13.5,0.2)}]
+  \def\H{2.3}
+  \halfring{\H}
+  % NURBS control polygons of the top arcs (rational quadratic quarter arcs) and fat nodes
+  \begin{scope}[plane=\H]
+    \draw[cPartD, line width=0.5pt, dash pattern=on 2pt off 1.5pt] (\Ro,0) -- (\Ro,\Ro) -- (-\Ro,\Ro) -- (-\Ro,0);
+    \draw[cPartD, line width=0.5pt, dash pattern=on 2pt off 1.5pt] (\Ri,0) -- (\Ri,\Ri) -- (-\Ri,\Ri) -- (-\Ri,0);
+  \end{scope}
+  \foreach \px/\py in {\Ro/0,\Ro/\Ro,0/\Ro,-\Ro/\Ro,-\Ro/0,\Ri/0,\Ri/\Ri,0/\Ri,-\Ri/\Ri,-\Ri/0}
+    \fill[cPartD] ({\px+0.45*\py},{0.32*\py+\H}) circle (0.075);
+  \foreach \px in {\Ro,-\Ro,\Ri,-\Ri} \fill[cPartD] (\px,0) circle (0.075);
+  \node[labc, anchor=north] at (0.25,-0.3) {4\enspace part\\NURBS surfaces, control points};
+\end{scope}
+
+% ---------- what is shape, what is strategy
+\draw[cToolD, line width=0.7pt] (0.2,3.55) -- (0.2,3.7) -- (10.3,3.7) -- (10.3,3.55);
+\node[font=\small\bfseries, anchor=south] at (5.25,3.75) {printing strategy};
+\draw[cToolD, line width=0.7pt] (12.1,3.55) -- (12.1,3.7) -- (15.4,3.7) -- (15.4,3.55);
+\node[font=\small\bfseries, anchor=south] at (13.75,3.75) {shape: digital CAD file};
+\end{tikzpicture}
+\end{document}

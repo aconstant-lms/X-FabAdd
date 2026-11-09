@@ -1,0 +1,42 @@
+% 02_d02_point_line_area_volume
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\foreach \k/\t/\e in {0/point/{laser or electron spot, nozzle (SLA, PBF, FFF, DED)},
+                    1/line/{row of nozzles or lamps (binder and material jetting, MJF)},
+                    2/area/{projected mask (DLP, LCD, area-wise PBF)},
+                    3/volume/{whole volume at once (tomographic, volumetric printing)}}{
+  \begin{scope}[shift={(\k*3.6,0)}]
+    \fill[cIFeed!25] (0,0) -- (2.4,0) -- (2.9,0.5) -- (0.5,0.5) -- cycle;
+    \draw[cIFeedD, line width=0.5pt] (0,0) -- (2.4,0) -- (2.9,0.5) -- (0.5,0.5) -- cycle;
+    \node[font=\bfseries\large, anchor=south] at (1.45,2.6) {\t};
+    \node[lab, anchor=north, text width=3.1cm, align=center] at (1.45,-0.15) {\e};
+  \end{scope}}
+% point
+\draw[lighthalo] (1.45,2.3) -- (1.3,0.25); \draw[light] (1.45,2.3) -- (1.3,0.25); \fill[cLight] (1.3,0.25) circle (0.06);
+\draw[ipart, fill=none, line width=1pt] (0.6,0.1) .. controls (0.9,0.35) and (1.0,0.2) .. (1.3,0.25);
+% line
+\begin{scope}[shift={(3.6,0)}]
+  \fill[tool] (0.3,1.7) rectangle (2.6,2.0);
+  \foreach \xx in {0.45,0.7,...,2.5} \draw[cChem!80!black, line width=0.8pt, dash pattern=on 2pt off 2pt] (\xx,1.7) -- (\xx-0.05,0.3);
+  \draw[move] (2.75,1.85) -- (3.2,1.85);
+\end{scope}
+% area
+\begin{scope}[shift={(7.2,0)}]
+  \fill[cLight!15] (0.6,2.2) -- (2.3,2.2) -- (2.65,0.45) -- (0.25,0.05) -- cycle;
+  \draw[cLight, line width=0.8pt] (0.6,2.2) -- (0.25,0.05) (2.3,2.2) -- (2.65,0.45);
+  \fill[tool] (0.5,2.2) rectangle (2.4,2.4);
+\end{scope}
+% volume
+\begin{scope}[shift={(10.8,0)}]
+  \draw[cToolD, line width=0.8pt] (0.95,0.5) rectangle (1.95,2.1);
+  \fill[cIFeed!25] (0.97,0.52) rectangle (1.93,2.0);
+  \fill[ipart] (1.2,0.8) rectangle (1.7,1.7);
+  \foreach \a in {0,30,...,150}{\draw[cLight!70, line width=0.8pt] ($(1.45,1.25)+(\a:1.15)$) -- ($(1.45,1.25)+(\a:0.65)$);}
+
+\end{scope}
+\xfabref{0}{-1.35}{Point, line and area follow Gebhardt's vector, raster and mask exposure (Gebhardt \& Hötter 2016, §2.4); volume is the next step.}
+
+\end{tikzpicture}
+\end{document}

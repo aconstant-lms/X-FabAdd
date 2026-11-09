@@ -1,0 +1,21 @@
+% 02_f04_material_jetting
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+\fill[tool] (0,0) rectangle (6,0.25);
+\foreach \i in {0,...,4}{\pgfmathsetmacro{\yy}{0.25+\i*0.18}\fill[ipart] (1.0,\yy) rectangle (3.4,\yy+0.18);}
+\fill[fill=cChem!25, draw=cChem!70!black, line width=0.5pt] (3.4,0.25) rectangle (4.6,1.15);
+\fill[ipart] (3.4,1.15) rectangle (4.6,1.33); \fill[ipart] (1.0,1.15) rectangle (3.4,1.33);
+\draw[tool] (1.2,2.4) rectangle (3.4,2.8);
+\foreach \xx in {1.4,1.7,...,3.3}{\fill[ifeed] (\xx,2.05) circle (0.06); \fill[ifeed] (\xx,1.7) circle (0.06);}
+\draw[tool] (3.7,2.4) rectangle (4.7,2.8);
+\fill[cLight!15] (3.75,2.4) -- (4.65,2.4) -- (4.9,1.4) -- (3.5,1.4) -- cycle;
+\draw[move] (4.9,2.6) -- (5.7,2.6);
+\node[lab, anchor=south east] at (3.4,2.85) {print head: resin droplets};
+\node[lab, anchor=south west] at (3.75,2.85) {UV lamp};
+\node[lab, anchor=west] (s) at (4.8,0.7) {support (gel)};
+\node[lab, anchor=north] at (3.0,-0.05) {each droplet cures in place};
+
+\end{tikzpicture}
+\end{document}

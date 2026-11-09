@@ -1,0 +1,28 @@
+% 02_e02_clocks
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+% log10 time from -6 (1 us) to 5 (~1 day), 1.2 cm per decade
+\def\X#1{(#1+6)*1.2}
+\draw[cToolD, line width=0.8pt] (0,0) -- (13.4,0);
+\foreach \d/\t in {-6/1 µs,-3/1 ms,0/1 s,2/100 s,3.556/1 h,4.936/1 day}{
+  \draw[cToolD] ({\X{\d}},0) -- ({\X{\d}},-0.12);
+  \node[font=\footnotesize, anchor=north] at ({\X{\d}},-0.12) {\t};}
+\node[lab, anchor=north] at (6.6,-0.55) {time for the material to set (log scale)};
+\foreach \y/\a/\b/\name/\c in {
+  5.2/-5.5/-3.0/{metal melt pool}/cIFeed,
+  4.4/-3.3/-1.0/{photopolymer layer}/cLight,
+  3.6/-0.3/1.0/{filament road (FFF)}/cIFeed,
+  2.8/2.9/3.9/{a cake in the oven}/cFeed,
+  2.0/2.3/4.3/{concrete: open time, setting}/cTool,
+  1.2/4.0/4.9/{binder jetting: cure, then sinter}/cChem}{
+  \fill[fill=\c!70, draw=\c!60!black, line width=0.5pt, rounded corners=2pt] ({\X{\a}},\y-0.2) rectangle ({\X{\b}},\y+0.2);
+  \node[lab, font=\small, anchor=west] at ({\X{\b}+0.15},\y) {\name};}
+\draw[cToolD, dashed] ({\X{1}},0) -- ({\X{1}},5.7);
+\draw[cToolD, dashed] ({\X{2}},0) -- ({\X{2}},5.7);
+\node[lab, text=inksoft, anchor=south, align=center] at ({\X{1.5}},5.75) {time between\\two layers};
+\xfabref{0}{-1.15}{Order-of-magnitude values. If the material sets much faster than the next layer comes, layers are welded or bonded; if slower, the stack must carry itself.}
+
+\end{tikzpicture}
+\end{document}
