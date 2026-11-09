@@ -168,3 +168,4 @@ _printers_common.py,,,,Andrei Constantinescu,own drawing,shared palette and data
 02_j04_map_europe_labels.png,,"Polymer and feedstock makers in Europe, labelled rings by role",Natural Earth 1:110m (public domain),Andrei Constantinescu,own drawing,map
 02_j04_map_europe_labels.svg,,,,Andrei Constantinescu,own drawing,vector export
 02_j04_polymer_makers_map.py,,,,Andrei Constantinescu,own drawing,map source
+(not in repo) carbon_clip_animation.gif,deck only (vpp-example-carbon),"CLIP continuous printing, 7x speed",carbon3d.com,Carbon Inc.,third party - kept out of the public repo,uploaded as deck asset 1a36628206234ecf69db55524ea00f26
