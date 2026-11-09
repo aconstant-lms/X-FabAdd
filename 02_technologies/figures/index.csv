@@ -124,3 +124,9 @@ file,slides,caption,source,credit,license,notes
 02_h01_sla_animation.py,,,,Andrei Constantinescu,own drawing,animation source
 02_h02_dlp_animation.gif,,"Animation: bottom-up DLP, the projector flashes the whole layer, platform peels and rises (700×438, 10 s, loops)","own animation (pycairo), style of the multiphoton polymerisation GIF",Andrei Constantinescu,own drawing,source: 02_h02_dlp_animation.py; helper tools/iso_anim.py
 02_h02_dlp_animation.py,,,,Andrei Constantinescu,own drawing,animation source
+02_i01_price_vs_voxel.png,,"Photopolymer printers: machine price vs voxel size (log-log), Ashby-style family envelopes: TPP/multiphoton, PµSL, DLP/MSLA, CLIP/DLS (Carbon), laser SLA",tables/02_printers_price_voxel.csv (all3dp micro 3D printing guide; vendor/dealer prices),Andrei Constantinescu,own drawing,"data chart; prices list/launch 2023-2025, Carbon = 3-year lease totals"
+02_i01_price_vs_voxel.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_i01_price_vs_voxel.py,,,,Andrei Constantinescu,own drawing,chart source (matplotlib)
+02_i02_manufacturers_map.png,,"Head-office locations of vat-photopolymerisation, multiphoton and micro-metal AM printer makers, with Europe/Israel inset",tables/02_printers_price_voxel.csv; coastlines Natural Earth 1:110m (public domain),Andrei Constantinescu,own drawing,map
+02_i02_manufacturers_map.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_i02_manufacturers_map.py,,,,Andrei Constantinescu,own drawing,"map source (matplotlib + geopandas<1.0 bundled Natural Earth)"
