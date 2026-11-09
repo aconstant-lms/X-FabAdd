@@ -1,0 +1,13 @@
+material,form,process,price_low,price_high,unit,currency,price_basis,source
+PLA filament,filament,MEX,10,25,kg,USD/EUR,"generic 10-20 USD; Prusament 25 EUR",https://www.fabbaloo.com/news/fff-filament-prices-continue-to-fall-as-competition-pushes-pla-into-commodity-range ; https://www.cnckitchen.com/blog/comparing-pla-petg-amp-asa-feat-prusament
+PETG / ASA filament,filament,MEX,11,35,kg,USD/EUR,"11-40 USD; Prusament PETG 30 EUR, ASA 35 EUR",https://qidi3d.com/en-br/blogs/news/3d-printer-filament-pricing-cost-factors ; https://www.cnckitchen.com/blog/comparing-pla-petg-amp-asa-feat-prusament
+TPU filament,filament,MEX,18,42,kg,USD,retail spools,https://qidi3d.com/en-br/blogs/news/3d-printer-filament-pricing-cost-factors
+PA (nylon) filament,filament,MEX,35,60,kg,USD,retail spools,https://qidi3d.com/en-br/blogs/news/3d-printer-filament-pricing-cost-factors
+CF-reinforced filament,filament,MEX,60,150,kg,USD,"specialty and continuous-fibre grades 150 USD and more",https://qidi3d.com/en-br/blogs/news/3d-printer-filament-pricing-cost-factors
+PEI (ULTEM 9085) filament,filament,MEX,230,340,kg,EUR/GBP,"Sabic AM9085F 192 GBP/kg ex VAT; Fiberlogy 313 EUR/kg; PrimaSelect 340 EUR/kg",https://fiberlogy.com/en/fiberlogy-filaments/pei-9085/ ; https://www.3dprima.com/ ; https://3dgbire.com/
+PEEK filament,filament,MEX,150,700,kg,USD/EUR,"150-300 USD (JLC); 350-700 EUR (3Dnatives); Sunlu 500 USD",https://jlc3dp.com/blog/peek-price-per-kg ; https://www.3dnatives.com/en/peek-3d-printing-060420204/ ; https://store.sunlu.com/
+PA 12 powder,powder,PBF,45,120,kg,USD,"Formlabs bulk 45 USD; 70-120 USD typical; recycled 15 EUR",https://formlabs.com/store/materials/nylon-12-tough-powder ; https://store.sinterit.com/blogs/sls-3d-printing/sls-powder-price-guide-how-much-does-sls-powder-cost-1
+PA 11 powder,powder,PBF,90,160,kg,USD,typical,https://store.sinterit.com/blogs/sls-3d-printing/sls-powder-price-guide-how-much-does-sls-powder-cost-1
+SLA / MSLA resin,resin,VPP,29,170,L,USD/EUR,"Formlabs Alpha 29-42 USD/L; bulk 35 USD/L; Form 4 resin 120 EUR/L; Form 3 resin 169 EUR/L",https://all3dp.com/4/formlabs-form-studio-1/ ; https://www.engineering.com/?p=132916 ; https://www.makerpoint.nl/
+Dental / engineering resins,resin,VPP,80,850,L,USD,Formlabs dental resins,https://learn.voxeldental.com/blog/how-much-does-formlabs-dental-resin-cost
+2PP photoresins (IP-S),resin,2PP / MPP,,,,,"sold in small cartridges on quote",https://www.nanoscribe.com/

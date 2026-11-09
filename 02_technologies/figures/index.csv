@@ -154,3 +154,17 @@ _printers_common.py,,,,Andrei Constantinescu,own drawing,shared palette and data
 02_e05_material_paths_physics.png,,"Four material paths, physical phenomena only (compact layout)",after Kruth 1991; Gebhardt & Hötter 2016 §2.3; Kruth et al. 2005; Tuncer & Bose 2020,Andrei Constantinescu,own drawing,source: 02_e05_material_paths_physics.tex; build: python tools/build_figures.py
 02_e05_material_paths_physics.tex,,,,Andrei Constantinescu,own drawing,TikZ source
 02_h03_mpp_animation.gif,,Multi-photon polymerisation: femtosecond focus cures inside the resin (animation),"Femtika, femtika.lt",Femtika,courtesy of Femtika (as provided by A. Constantinescu),credited on the slide: Animation: Femtika (femtika.lt)
+02_j01_polymer_pyramid.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_j01_polymer_pyramid.png,,Printable thermoplastics by continuous-use temperature: amorphous (filament) vs semicrystalline (filament and powder),"after BCG exhibit ""A wide variety of plastics can be used for AM""",Andrei Constantinescu,own drawing,redrawn in course style; source: 02_j01_polymer_pyramid.tex
+02_j01_polymer_pyramid.tex,,,,Andrei Constantinescu,own drawing,TikZ source
+02_j02_polymer_ashby_E_strength.png,,"Ashby chart of printable polymers: Young's modulus vs tensile strength, colour = process, with rigid-polymer zoom","tables/02_polymers_ashby.csv (combined Ashby table, makers' data sheets, papers)",Andrei Constantinescu,own drawing,chart
+02_j02_polymer_ashby_E_strength.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_j02_polymer_ashby_E_strength.py,,,,Andrei Constantinescu,own drawing,chart source (matplotlib)
+02_j03_polymer_prices.png,,"Typical price per kg of printable polymer feedstocks (filament, powder, resin)",tables/02_polymer_prices_makers.csv,Andrei Constantinescu,own drawing,chart
+02_j03_polymer_prices.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_j03_polymer_prices.py,,,,Andrei Constantinescu,own drawing,chart source (matplotlib)
+02_j04_map_world_numbered.png,,"Polymer and feedstock makers, world strip, numbered rings by role",Natural Earth 1:110m (public domain),Andrei Constantinescu,own drawing,map
+02_j04_map_world_numbered.svg,,,,Andrei Constantinescu,own drawing,vector export
+02_j04_map_europe_labels.png,,"Polymer and feedstock makers in Europe, labelled rings by role",Natural Earth 1:110m (public domain),Andrei Constantinescu,own drawing,map
+02_j04_map_europe_labels.svg,,,,Andrei Constantinescu,own drawing,vector export
+02_j04_polymer_makers_map.py,,,,Andrei Constantinescu,own drawing,map source

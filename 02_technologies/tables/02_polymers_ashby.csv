@@ -1,0 +1,14 @@
+material,family,process,E_GPa_low,E_GPa_high,sigma_MPa_low,sigma_MPa_high,density_g_cm3,note,source
+Hydrogel (PEGDA),hydrogel,2PP / MPP,0.00001,0.00045,0.02,0.06,1.00-1.10,"E 10-450 kPa, UTS 22-61 kPa (bulk, photocured)",PDF ashby_diagramm_kombiniert; PMC5766039 table 3; PMC6711618 table 3
+IP-PDMS,elastomer,2PP / MPP,0.00035,0.0178,2,7,1.00-1.05,"E 0.35-17.8 MPa (2PP, print-dependent), 15.3 MPa nominal; strength taken from silicone elastomers (to verify)",Nanoscribe IP-PDMS page; Polymers 15 (2023) 1816; Ashby elastomer range for strength
+TPU / TPE (85A-64D),elastomer,MEX / PBF,0.012,0.2,4,37,1.10-1.25,"Shore 85A to 64D",PDF; 3DXFLEX TPU 85A TDS; Nexeo linecard (Ultrafuse TPU 64D)
+PA 12 (SLS),thermoplastic,PBF,1.65,1.8,42,52,0.93-1.01,"EOS PA 2200, X-Y and Z",EOS PA 2200 data sheets
+ABS / ASA (FFF),thermoplastic,MEX,1.36,2.4,30,49,1.04-1.07,"printed specimens, Z lower",PDF; Innofil3D comparison sheet; MatterHackers ASA PRO TDS
+PETG (FFF),thermoplastic,MEX,1.5,2.5,34,50,1.27,"printed specimens",PDF; Prusament PETG TDS; Push Plastic PETG TDS
+PLA (FFF),thermoplastic,MEX,2.3,3.3,50,60,1.24,"printed specimens",PDF; Prusament PLA TDS; UltiMaker PLA via 3dmag
+PEEK / PEI (FFF),thermoplastic,MEX,3.2,4.5,65,100,1.27-1.45,"high-temperature filaments",PDF; Ashby (CES) PEEK and PEI ranges (to verify for printed parts)
+CF-PA / CF-PEEK (FFF),composite,MEX,6,12,70,140,1.15-1.40,"short carbon fibre, X-Y",PDF; all3dp TDS guide (CF nylon ~100 MPa)
+SLA standard resins,thermoset,VPP,1.6,2.8,38,65,1.12-1.18,"green to post-cured",PDF; Formlabs Standard resin data sheet
+IP-S / IP-Dip,thermoset,2PP / MPP,2.0,4.6,60,80,1.20,"compressive yield of micropillars (IP-Dip 68 MPa quasi-static)",PDF; PMC6070906; Materials & Design 2020 (IP-Dip); Adv. Eng. Mater. 2025 (IP-Q 75 MPa)
+SU-8 (2PP),thermoset,2PP / MPP,2.0,4.4,60,89,1.20,"hard-baked films",PDF; Kayaku SU-8 2000/3000 TDS; EPFL SU-8 3000 TDS
+SZ2080 / OrmoComp,hybrid,2PP / MPP,1.5,3.0,,,1.30-1.40,"strength not published: not plotted",PDF
