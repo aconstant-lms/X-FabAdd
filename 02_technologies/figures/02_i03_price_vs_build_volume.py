@@ -24,14 +24,14 @@ quotes = [r for r in R if r["plotted"] == "quote"]
 # label offsets in points: (dx, dy[, ha])
 OFF = {
     "Nanoscribe Quantum X": (10, 0), "Microlight3D µFAB-3D": (10, 0),
-    "Microlight3D Altraspin": (10, 0), "BMF microArch S240": (-12, 0, "right"),
+    "Microlight3D Altraspin": (6, -22), "BMF microArch S240": (-12, 0, "right"),
     "Asiga MAX X35": (-10, 0, "right"), "Asiga MAX 2": (10, 0),
     "Stratasys Origin One": (-10, 0, "right"), "Elegoo Saturn 4 Ultra 16K": (10, 0),
     "Prusa SL1S Speed": (-10, 0, "right"), "Formlabs Form 4": (-10, 0, "right"),
     "Formlabs Form 4L": (10, -2), "Formlabs Form 3L": (-10, 0, "right"),
     "Carbon M1": (-10, 0, "right"), "Carbon M3": (10, -7),
     "Carbon M3 Max": (-10, 10, "right"), "Carbon L1": (10, 4),
-    "UnionTech RSPro 600": (10, -2), "3D Systems SLA 750": (-10, 6, "right"),
+    "UnionTech RSPro 600": (4, -40, "right"), "3D Systems SLA 750": (-10, 6, "right"),
 }
 
 fig = plt.figure(figsize=(13, 8.6))

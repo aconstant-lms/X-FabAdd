@@ -6,7 +6,7 @@
 \foreach \k/\t/\s in {0/photopolymer/{over-cure into the layer below},1/PBF and DED/{remelting of the layer below},
                      2/filament (FFF)/{chains interdiffuse, often incompletely},3/cold spray/{plastic deformation at impact},
                      4/binder jetting/{binder bridges, then sinter necks},5/sheet lamination/{a glue line}}{
-  \pgfmathsetmacro{\x}{mod(\k,3)*4.4}\pgfmathsetmacro{\y}{-floor(\k/3)*3.2}
+  \pgfmathsetmacro{\x}{mod(\k,3)*4.9}\pgfmathsetmacro{\y}{-floor(\k/3)*3.2}
   \begin{scope}[shift={(\x,\y)}]
     \node[font=\bfseries, anchor=south west] at (0,1.75) {\t};
     \node[lab, anchor=north west, text=inksoft] at (0,-0.2) {\s};
@@ -16,12 +16,12 @@
   \fill[cLight!35] (0,0.45) rectangle (3.6,1.2); \draw[cIPartD, dashed] (0,0.6) -- (3.6,0.6);
   \draw[lighthalo] (1.8,1.7) -- (1.8,1.2); \draw[light] (1.8,1.7) -- (1.8,1.2); \end{scope}
 % 1 PBF: melt pool reaching into previous layer
-\begin{scope}[shift={(4.4,0)}] \fill[ipart] (0,0) rectangle (3.6,1.0);
+\begin{scope}[shift={(4.9,0)}] \fill[ipart] (0,0) rectangle (3.6,1.0);
   \begin{scope}\clip (0,1.0) rectangle (3.6,1.45); \xgrains{0}{1.0}{3.6}{1.45}{0.07}{60}\end{scope}
   \fill[ifeed] (1.3,1.45) arc[start angle=180,end angle=360,radius=0.55] -- cycle;
   \draw[lighthalo] (1.85,1.68) -- (1.85,1.45); \draw[light] (1.85,1.68) -- (1.85,1.45); \end{scope}
 % 2 FFF: roads with necks
-\begin{scope}[shift={(8.8,0)}] \foreach \j in {0,1}{\foreach \i in {0,...,4}{
+\begin{scope}[shift={(9.8,0)}] \foreach \j in {0,1}{\foreach \i in {0,...,4}{
     \fill[ipart] (0.4+\i*0.7,0.3+\j*0.55) ellipse (0.36 and 0.29);}}
   \foreach \i in {0,...,4}{\fill[cHeat!60] (0.4+\i*0.7,0.575) ellipse (0.18 and 0.05);} \end{scope}
 % 3 cold spray: flattened particles, jetting
@@ -29,12 +29,12 @@
   \foreach \i in {0,...,5}{\fill[ipart] (0.3+\i*0.55,0.5) ellipse (0.3 and 0.12);}
   \fill[ifeed] (2.0,1.4) circle (0.15); \draw[force] (2.0,1.2) -- (2.0,0.75); \end{scope}
 % 4 binder jetting: grains with bridges
-\begin{scope}[shift={(4.4,-3.2)}]
+\begin{scope}[shift={(4.9,-3.2)}]
   \foreach \i in {0,...,6}{\foreach \j in {0,1,2}{\fill[ipartlight] (0.3+\i*0.5,0.25+\j*0.45) circle (0.2);}}
   \foreach \i in {0,...,5}{\foreach \j in {0,1,2}{\fill[cChem] (0.55+\i*0.5,0.25+\j*0.45) circle (0.06);}}
   \foreach \i in {0,...,6}{\foreach \j in {0,1}{\fill[cChem] (0.3+\i*0.5,0.475+\j*0.45) circle (0.06);}} \end{scope}
 % 5 sheet lamination
-\begin{scope}[shift={(8.8,-3.2)}] \fill[ipart] (0,0) rectangle (3.6,0.45); \fill[ipart] (0,0.55) rectangle (3.6,1.0);
+\begin{scope}[shift={(9.8,-3.2)}] \fill[ipart] (0,0) rectangle (3.6,0.45); \fill[ipart] (0,0.55) rectangle (3.6,1.0);
   \fill[cChem!70] (0,0.45) rectangle (3.6,0.55); \fill[ipart] (0,1.1) rectangle (3.6,1.55); \fill[cChem!70] (0,1.0) rectangle (3.6,1.1); \end{scope}
 \xfabref{0}{-4.4}{What joins layer $n$ to layer $n-1$ sets the strength along $z$: the origin of anisotropy in AM parts.}
 

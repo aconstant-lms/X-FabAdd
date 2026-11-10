@@ -1,5 +1,4 @@
 file,slides,caption,source,credit,license,notes
-(not in repo) carbon_clip_animation.gif,,"CLIP continuous printing, 7x speed",carbon3d.com,Carbon Inc.,third party - kept out of the public repo,uploaded as deck asset 1a36628206234ecf69db55524ea00f26
 02_a00_colour_convention.pdf,,,,Andrei Constantinescu,own drawing,vector export
 02_a00_colour_convention.png,02_technologies.pptx:3,"Colour convention: kitchen and industrial materials, mould, tools, fluid, force, heat, radiation, electricity, chemistry",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_a00_colour_convention.tex; build: python tools/build_figures.py
 02_a00_colour_convention.tex,,,,Andrei Constantinescu,own drawing,TikZ source
@@ -138,6 +137,7 @@ file,slides,caption,source,credit,license,notes
 02_h02_dlp_animation.gif,,"Animation: bottom-up DLP, the projector flashes the whole layer, platform peels and rises (700×438, 10 s, loops)","own animation (pycairo), style of the multiphoton polymerisation GIF",Andrei Constantinescu,own drawing,source: 02_h02_dlp_animation.py; helper tools/iso_anim.py
 02_h02_dlp_animation.py,,,,Andrei Constantinescu,own drawing,animation source
 02_h03_mpp_animation.gif,,Multi-photon polymerisation: femtosecond focus cures inside the resin (animation),"Femtika, femtika.lt",Femtika,courtesy of Femtika (as provided by A. Constantinescu),credited on the slide: Animation: Femtika (femtika.lt)
+02_h04_carbon_clip_animation.gif,,"CLIP / Carbon DLS: the part is pulled continuously out of the resin above an oxygen-permeable window (animation, 7x speed, 800x450, 47 frames)","Carbon, Inc., carbon3d.com; process: J. R. Tumbleston et al., Continuous liquid interface production of 3D objects, Science 347, 1349-1352 (2015), doi:10.1126/science.aaa2397; reviewed in M. Zastrow, The new 3D printing, Nature 578, 20-23 (2020), doi:10.1038/d41586-020-00271-6","Carbon, Inc.","Carbon, Inc. - reproduced for teaching (as provided by A. Constantinescu); check permission before public distribution","claude.ai deck slide vpp-example-carbon; credited on the slide: Animation: Carbon, Inc. (carbon3d.com) - CLIP after Tumbleston et al. 2015 (ref. 3 of Zastrow 2020)"
 02_i01_price_vs_voxel.pdf,,,,Andrei Constantinescu,own drawing,vector export
 02_i01_price_vs_voxel.png,,"Photopolymer printers: machine price vs voxel size (log-log), one colour per technology (2PP/MPP, PµSL, DLP, MSLA, CLIP/DLS, laser SLA), Ashby-style envelopes",tables/02_printers_price_voxel.csv,Andrei Constantinescu,own drawing,prices list/launch; Carbon = 3-year subscription totals
 02_i01_price_vs_voxel.py,,,,Andrei Constantinescu,own drawing,chart source (matplotlib)

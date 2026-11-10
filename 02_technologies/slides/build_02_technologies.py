@@ -273,7 +273,7 @@ machines = [
       "Twin in AM: powder bed fusion, DED (melt and solidify)."]),
      "FR : fonderie, moulage en sable, masselotte. DE: Gießen, Sandguss, Speiser."),
     ("02_c02_injection_moulding.png", "Injection moulding: plastic flow into a steel mould",
-     ("Primary shaping from the plastic state", ["Pellets melt in a heated barrel, a screw pushes the melt.",
+     ("Shaping from the plastic state", ["Pellets melt in a heated barrel, a screw pushes the melt.",
       "The mould is clamped, cooled, opened: seconds per part.", "Moulds cost 10⁴–10⁵ €: large batches only.",
       "Twin in AM: material extrusion."]),
      "FR : moulage par injection. DE: Spritzgießen."),
