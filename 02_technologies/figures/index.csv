@@ -176,3 +176,7 @@ file,slides,caption,source,credit,license,notes
 02_k01_maturity_index.png,,"Technology readiness of polymer AM: AMPOWER Maturity Index 2022 (open markers) and indicative 2026 positions (filled markers, course estimate, not an AMPOWER rating)","AMPOWER Insights Vol. 11 (Nov. 2022) pp. 11, 70, digitised; 2026 status from company sites and trade press (tables/02_ampower_maturity_2022_2026.csv)",Andrei Constantinescu,own drawing,chart source: 02_k01_maturity_index.py
 02_k01_maturity_index.py,,,,Andrei Constantinescu,own drawing,chart source (matplotlib)
 _printers_common.py,,,,Andrei Constantinescu,own drawing,shared palette and data loader for 02_i01-02_i03
+02_h06_tomographic_animation.gif,vpp-volumetric-two,"Tomographic volumetric printing (CAL): projector, rotating vial, dose builds up until the part gels","own drawing (pycairo isometric) after Kelly et al., Science 363, 1075 (2019) and Loterie et al., Nat. Commun. 11, 852 (2020)",Andrei Constantinescu,own drawing,156 frames
+02_h06_tomographic_animation.py,,,,Andrei Constantinescu,own drawing,animation source (tools/iso_anim.py)
+02_h07_lightsheet_animation.gif,vpp-volumetric-two,"Light-sheet volumetric printing (xolography): UV sheet sweeps the vat, projected slice image cures where they cross","own drawing (pycairo isometric) after Regehly et al., Nature 588, 620 (2020) and Hahn et al., Nat. Photonics 16, 784 (2022)",Andrei Constantinescu,own drawing,148 frames
+02_h07_lightsheet_animation.py,,,,Andrei Constantinescu,own drawing,animation source (tools/iso_anim.py)

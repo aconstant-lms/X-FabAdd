@@ -33,6 +33,9 @@ WORLD = [
     (7, "UnionTech", "Shanghai, China", ["laser SLA"], 121.47, 31.23, (6, 5)),
     (8, "Asiga", "Sydney, Australia", ["DLP"], 151.20, -33.91, (0, 0)),
     (9, "Supernova", "Austin, US / Barcelona, Spain", ["high-viscosity film"], -97.74, 30.27, (0, 0)),
+    # added Nov 2026: volumetric start-ups (light sheet, tomographic)
+    (10, "Quadratic 3D", "Charlestown, US", ["volumetric"], -71.06, 42.38, (10, -11)),
+    (11, "Manifest", "Boulder, US", ["volumetric"], -105.27, 40.01, (0, 0)),
 ]
 EUROPE = [  # name, technologies, lon, lat, label offset (points), ha
     ("Nanoscribe", ["2PP / MPP"], 8.40, 49.09, (-14, 0), "right"),
@@ -48,6 +51,7 @@ EUROPE = [  # name, technologies, lon, lat, label offset (points), ha
     ("Cubicure", ["high-viscosity film"], 16.30, 48.14, (14, -6), "left"),
     ("Spectroplast", ["DLP"], 11.58, 48.14, (0, -17), "center"),
     ("Supernova", ["high-viscosity film"], 2.17, 41.39, (14, 0), "left"),
+    ("PERFI", ["volumetric"], 12.52, 55.79, (14, 0), "left"),
 ]
 
 # ---------------- world strip, numbered rings
