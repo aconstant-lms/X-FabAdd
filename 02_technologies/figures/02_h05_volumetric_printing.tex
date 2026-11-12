@@ -1,0 +1,72 @@
+% 02_h05_volumetric_printing
+% Two volumetric photopolymerisation principles, top views.
+% Left: xolography (xolo; Regehly et al., Nature 588, 620-624, 2020): a UV light sheet switches a
+%   dual-colour photoinitiator into a latent state; a projected visible image cures the resin only
+%   where it meets the sheet; the sheet sweeps through the resin, no layers, no supports.
+% Right: tomographic printing (Readily3D; Kelly et al., Science 363, 1075, 2019;
+%   Loterie et al., Nat. Commun. 11, 852, 2020): the vial rotates, the projector sends the matching
+%   image at every angle, the light dose adds up and the resin cures where it passes a threshold.
+\documentclass[tikz,border=8pt]{standalone}
+\usepackage{xfab-tikz}
+\begin{document}
+\begin{tikzpicture}[x=1cm,y=1cm]
+% ---------------------------------------------------------------- xolography
+\node[font=\bfseries] at (2,5.15) {xolography};
+\node[font=\footnotesize, text=inksoft] at (2,4.72) {two lights cross};
+% cuvette, top view
+\fill[cIFeed!30] (0,0) rectangle (4,4);
+\draw[cToolD, line width=1.2pt] (0,0) rectangle (4,4);
+% printed part (far side, already swept)
+\fill[ipart] (1.0,2.35) rectangle (3.0,3.35);
+\fill[cIFeed!30] (1.6,2.35) rectangle (2.4,2.95);
+\draw[cIPartD, line width=0.7pt] (1.6,2.35) -- (1.6,2.95) -- (2.4,2.95) -- (2.4,2.35);
+% projected visible image: cone from the projector below
+\fill[cLight!12] (1.55,-1.15) -- (2.45,-1.15) -- (3.0,2.2) -- (1.0,2.2) -- cycle;
+\draw[cLight!55, line width=0.6pt, dash pattern=on 3pt off 2pt] (1.55,-1.15) -- (1.0,2.2);
+\draw[cLight!55, line width=0.6pt, dash pattern=on 3pt off 2pt] (2.45,-1.15) -- (3.0,2.2);
+\fill[tool] (1.3,-1.75) rectangle (2.7,-1.15);
+\node[font=\scriptsize] at (2,-1.45) {projector};
+% UV light sheet from the left
+\fill[tool] (-1.9,1.98) rectangle (-0.9,2.42);
+\node[font=\scriptsize, align=center] at (-1.4,2.75) {UV line\\[-1pt]laser};
+\draw[lighthalo] (-0.9,2.2) -- (4,2.2);
+\draw[light] (-0.9,2.2) -- (4,2.2);
+% curing slice where both lights meet
+\draw[cIPartD, line width=2.4pt] (1.0,2.2) -- (1.6,2.2);
+\draw[cIPartD, line width=2.4pt] (2.4,2.2) -- (3.0,2.2);
+% sweep of the sheet
+\draw[move] (4.35,2.55) -- (4.35,1.55);
+\node[lab, anchor=west] at (4.45,2.05) {sheet\\sweeps};
+% labels
+\node[lab, anchor=west] (a) at (4.45,3.45) {printed part,\\held by the resin};
+\draw[lead] (a.west) -- (2.95,3.2);
+\node[lab, anchor=west] (b) at (4.45,0.75) {resin cures only\\where image\\and sheet meet};
+\draw[lead] (b.west) -- (2.75,2.2);
+\node[lab, anchor=north] at (2,-1.9) {$\lambda_1$ UV sheet switches the initiator on,\\$\lambda_2$ visible image cures the slice};
+
+% ---------------------------------------------------------------- tomographic
+\begin{scope}[shift={(10.2,0)}]
+\node[font=\bfseries] at (2,5.15) {tomographic};
+\node[font=\footnotesize, text=inksoft] at (2,4.72) {one light, all angles};
+% vial, top view
+\fill[cIFeed!30] (2,2) circle (1.6);
+\draw[cToolD, line width=1.2pt] (2,2) circle (1.6);
+% part in the centre
+\fill[ipart] (1.45,1.4) rectangle (2.55,2.6);
+\fill[cIFeed!30] (1.85,1.4) rectangle (2.55,2.15);
+\draw[cIPartD, line width=0.7pt] (1.85,1.4) -- (1.85,2.15) -- (2.55,2.15);
+% projected pattern from the left: parallel rays with gaps
+\fill[tool] (-1.9,1.25) rectangle (-1.2,2.75);
+\node[font=\scriptsize, rotate=90] at (-1.55,2.0) {projector};
+\foreach \y/\x in {1.45/3.55, 1.65/3.6, 1.85/3.6, 2.35/3.6, 2.55/3.55}{
+  \draw[cLight!70, line width=1.1pt] (-1.2,\y) -- (\x,\y);}
+% rotation
+\draw[move, line width=1pt] (2,2) ++(40:1.95) arc (40:140:1.95);
+\node[lab, anchor=south] at (2,3.95) {vial rotates $360^\circ$};
+% labels
+\node[lab, anchor=west] (c) at (4.0,0.55) {dose adds up:\\cured where it\\passes a threshold};
+\draw[lead] (c.west) -- (1.65,1.75);
+\node[lab, anchor=north] at (2,-1.9) {the projector shows the matching\\image at every angle};
+\end{scope}
+\end{tikzpicture}
+\end{document}

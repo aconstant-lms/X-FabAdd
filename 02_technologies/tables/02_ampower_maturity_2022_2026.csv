@@ -1,0 +1,28 @@
+name,level,material,tech_2022,ind_2022,time_to_industrial_2022,tech_2026_est,ind_2026_est,status_2026,sources_2026
+Filament Material Extrusion,class,thermoplastic,4.22,4.81,index reached,,,,
+Powder Bed Fusion,class,thermoplastic,4.51,4.62,index reached,,,,
+Vat Polymerization,class,thermoset,4.47,4.53,index reached,,,,
+Area-wise Vat Polymerization,class,thermoset,4.62,4.44,index reached,,,,
+Material Jetting,class,thermoset,3.96,3.79,index reached,,,,
+Thermal Powder Bed Fusion,class,thermoplastic,4.32,3.60,index reached,,,,
+Pellet Material Extrusion,class,thermoplastic,2.99,3.03,less than 2 years,,,,
+Thermoset Deposition,class,thermoset,2.94,2.91,less than 2 years,,,,
+Continuous Fiber Material Extrusion,class,thermoplastic,2.93,2.76,less than 2 years,,,,
+Continuous Fiber Sheet Lamination,class,thermoplastic,2.40,2.44,2 to 5 years,,,,
+Elastomer Deposition,class,elastomer,2.62,2.51,2 to 5 years,,,,
+Continuous Fiber Thermoplastic Deposition,class,thermoplastic,2.46,2.31,2 to 5 years,,,,
+Area-wise Film Polymerization,class,thermoset,2.62,2.31,2 to 5 years,,,,
+Electrophotography Lamination,class,thermoplastic,2.30,2.16,2 to 5 years,,,,
+Vat Vulcanization,class,elastomer,2.38,1.98,more than 5 years,,,,
+Continuous Fiber Thermoset Deposition,class,thermoset,1.99,1.69,more than 5 years,,,,
+Volumetric Vat Polymerization,class,thermoset,1.99,1.44,more than 5 years,,,,
+XOLO (volumetric),company,thermoset,1.77,1.40,more than 5 years,2.4,1.9,"Xube (2021), Xube² (2024: up to 30 x 50 x 80 mm, 5-15 µm), Xell bioprinter (2024); research instruments for optics and bioprinting; 27 papers since 2020; €8M series A (2023)",https://xolo3d.com/xube/ ; https://xolo3d.com/publications/ ; https://www.adlershof.de/en/news/eight-million-euros-for-the-3d-printing-revolution-by-xolo
+READILY3D (volumetric),company,thermoset,2.38,1.98,more than 5 years,2.6,2.1,"Tomolite 2.0 bioprinter (up to diam. 12.5 x 25 mm); READYGEL INX resin with BIO INX (2024); EU grants, Innosuisse certificate (2025); life-science niche",https://www.fabbaloo.com/?p=223325 ; https://www.cbinsights.com/company/readily3d
+CUBICURE (area-wise film),company,thermoset,3.00,2.49,2 to 5 years,3.4,3.0,"Caligma and Cerion (1000 x 280 x 300 mm) Hot Lithography; series parts at HARTING and 1zu1; flame-retardant connector resin; Cerion stated up to 10 million parts per year; Hot Lithography also offered on UpNano 2PP printers",https://3dprintingindustry.com/?p=200214 ; https://3printr.com/series-production-in-3d-printing-1zu1-expands-portfolio-with-hot-lithography-3074187 ; https://www.digitalengineering247.com/topic/tag/Cubicure
+BCN3D -> SUPERNOVA (area-wise film),company,thermoset,1.94,1.66,more than 5 years,2.6,1.9,"VLM carved out of BCN3D into Supernova (Austin / Barcelona, 2023-24); Pulse One (350 x 200 x 300 mm, 46 µm, two materials) and Viscogels; shipping announced for 2026; BCN3D itself filed for voluntary bankruptcy (2025)",https://www.additivemanufacturing.media/news/bcn3d-spins-off-vlm-business-unit-creates-supernova-3d-company ; https://supernova3d.com/blog/advancing-to-the-next-stage-toward-commercialization-industrializing-vlm-into-a-final-product/ ; https://3dprintingindustry.com/news/new-details-emerge-as-bcn3d-files-for-voluntary-bankruptcy-supernova-addresses-rumors-239985/
+INKBIT (material jetting),company,thermoset,2.48,2.62,2 to 5 years,3.1,2.8,"Vision-Controlled Jetting (Nature 2023 with ETH Zurich); Inkbit Digital Factory parts service; TEPU elastomers, cyclic olefin thermoset for RF lenses up to 100 GHz (2026); services extended to Canada (2026)",https://www.inkbit3d.com/news ; https://doi.org/10.1038/s41586-023-06684-3
+MASSIVIT (thermoset deposition),company,thermoset,2.94,2.91,less than 2 years,3.1,3.0,"Gel Dispensing Printing and Cast-In-Motion moulds; refocus on aerospace and defence: RapidWings platform (June 2026), service centres Barcelona (July 2026) and Portland (Sept 2026)",https://www.massivit3d.com/about-us/news/
+SPECTROPLAST (vat vulcanization),company,elastomer,2.38,1.98,more than 5 years,3.0,2.6,"true silicone by DLP sold as a parts service (Munich); TrueSil A20-A60, ISO 9001, 120 000+ parts shipped, 700+ customers; Protolabs partnership; materials on Axtra3D printers",https://www.spectroplast.com/en ; https://all3dp.com/2/silicone-3d-printer-all-you-need-to-know/
+3DEUS DYNAMICS (elastomer deposition),company,elastomer,1.77,1.51,more than 5 years,2.3,1.9,"Dynamic Molding of silicone in a granular bed; USD 10 M raised, EIC Fund; partnership with Lynxter S300X (Jan 2025); mass production targeted end 2025 / early 2026",https://www.voxelmatters.com/lynxter-and-3deus-dynamics-parnter-to-advance-silicone-3d-printing/ ; https://ec.europa.eu/newsroom/eismea/redirection/item/832032
+IMPOSSIBLE OBJECTS (CF sheet lamination),company,thermoplastic,2.40,2.44,2 to 5 years,2.9,2.7,"CBAM 25 (2023, Europe 2024), five orders; USD 20 M government contracts; USD 40 M series B (Sept 2026)",https://www.startupresearcher.com/news/impossible-objects-raises-40m-series-b ; https://www.digitalengineering247.com/article/impossible-objects-announces-european-availability-of-3d-printer/Additive-Manufacturing
+EVOLVE (electrophotography lamination),company,thermoplastic,2.30,2.16,2 to 5 years,,,"wound down; STEP assets auctioned Sept-Oct 2026",https://www.voxelmatters.com/evolve-additive-solutions-winds-down-puts-step-printing-assets-up-for-auction/

@@ -35,8 +35,8 @@ OFF = {
 }
 
 fig = plt.figure(figsize=(13, 8.6))
-ax = fig.add_axes([0.085, 0.09, 0.615, 0.72])
-axq = fig.add_axes([0.085, 0.83, 0.615, 0.07], sharex=ax)
+ax = fig.add_axes([0.085, 0.09, 0.615, 0.66])
+axq = fig.add_axes([0.085, 0.775, 0.615, 0.125], sharex=ax)
 ax.set_xscale("log"); ax.set_yscale("log")
 XL, YL = (0.05, 2e6), (250, 3e6)
 ax.set_xlim(*XL); ax.set_ylim(*YL)
@@ -80,6 +80,8 @@ for tech, c, _ in TECH:
     if not P:
         continue
     P = np.array(P)
+    if len(P) == 0:          # family known only from price-on-request machines
+        continue
     ang = np.linspace(0, 2 * np.pi, 24, endpoint=False)
     ring = np.c_[0.2 * np.cos(ang), 0.17 * np.sin(ang)]
     cloud = (P[:, None, :] + ring[None, :, :]).reshape(-1, 2)
@@ -107,7 +109,9 @@ for s in ("top", "right", "left"):
 axq.tick_params(axis="x", labelbottom=False)
 axq.text(0, 1.25, "Price on request (build volume known)", transform=axq.transAxes,
          color=GREY, fontsize=12, style="italic")
-QPOS = {"Nano Dimension Fabrica Tera 250": (0.7, -8, "right"), "UpNano NanoOne 1000": (0.25, 8, "left")}
+QPOS = {"Nano Dimension Fabrica Tera 250": (0.82, -8, "right"), "UpNano NanoOne 1000": (0.82, 8, "left"),
+        "Readily3D Tomolite 2.0": (0.16, 8, "left"), "xolo Xube²": (0.5, -8, "right"),
+        "Supernova Pulse One": (0.5, -8, "right"), "Cubicure Cerion": (0.16, -8, "right")}
 for r in quotes:
     v = float(r["build_volume_cm3"]); t = r["technology"]
     yq, dxq, haq = QPOS.get(r["printer"], (0.45, 8, "left"))
@@ -126,7 +130,7 @@ y = 0.88
 for t, c, mk in TECH:
     lx.scatter([0.03], [y], s=80, marker=mk, color=c, edgecolor="white", transform=lx.transAxes)
     lx.text(0.09, y, t, va="center", fontsize=13, color=INK, transform=lx.transAxes)
-    y -= 0.048
+    y -= 0.042
 y -= 0.015
 lx.plot([0.03, 0.03], [y - 0.02, y + 0.02], color=GREY, lw=2, transform=lx.transAxes)
 lx.text(0.09, y, "price range", va="center", fontsize=12, color=GREY, transform=lx.transAxes)

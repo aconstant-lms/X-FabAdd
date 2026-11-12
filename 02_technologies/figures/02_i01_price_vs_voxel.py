@@ -19,7 +19,7 @@ use_font()
 FAMILIES = TECH
 rows = load_rows()
 pts = [r for r in rows if r["price_usd_low"]]
-quotes = [r for r in rows if not r["price_usd_low"]]
+quotes = [r for r in rows if r["plotted"] == "quote" and r["voxel_xy_um"]]
 NUDGE = {"Microlight3D Altraspin": 1.3}   # co-located with µFAB-3D at 0.2 µm: drawn slightly right
 
 # label offsets (points) to avoid collisions; default right of the marker
@@ -35,8 +35,8 @@ OFF = {
 }
 
 fig = plt.figure(figsize=(13, 8.6))
-ax = fig.add_axes([0.08, 0.09, 0.62, 0.72])
-axq = fig.add_axes([0.08, 0.83, 0.62, 0.07], sharex=ax)
+ax = fig.add_axes([0.08, 0.09, 0.62, 0.66])
+axq = fig.add_axes([0.08, 0.775, 0.62, 0.125], sharex=ax)
 
 ax.set_xscale("log"); ax.set_yscale("log")
 ax.set_xlim(0.05, 600); ax.set_ylim(250, 2e6)
@@ -72,6 +72,8 @@ for fam, c, _ in FAMILIES:
         x, lo, hi, _m = logxy(r)
         P += [(np.log10(x), np.log10(lo)), (np.log10(x), np.log10(hi))]
     P = np.array(P)
+    if len(P) == 0:          # family known only from price-on-request machines
+        continue
     ang = np.linspace(0, 2 * np.pi, 24, endpoint=False)
     ring = np.c_[0.17 * np.cos(ang), 0.19 * np.sin(ang)]
     cloud = (P[:, None, :] + ring[None, :, :]).reshape(-1, 2)
@@ -100,7 +102,8 @@ for s in ("top", "right", "left"):
 axq.tick_params(axis="x", labelbottom=False)
 axq.text(0.0, 1.25, "Price on request (not plotted below)", transform=axq.transAxes,
          color=GREY, fontsize=12, style="italic")
-QOFF = {"UpNano NanoOne 1000": (0.45, "left"), "Nano Dimension Fabrica Tera 250": (0.45, "left")}
+QOFF = {"UpNano NanoOne 1000": (0.82, "left"), "Nano Dimension Fabrica Tera 250": (0.82, "left"),
+        "xolo Xube²": (0.5, "left"), "Supernova Pulse One": (0.5, "left"), "Readily3D Tomolite 2.0": (0.16, "right")}
 for r in quotes:
     x = float(r["voxel_xy_um"]); fam = r["technology"]
     axq.scatter([x], [QOFF[r["printer"]][0]], s=60, marker=MRK[fam], facecolor="white",
@@ -121,7 +124,7 @@ y = 0.88
 for fam, c, mk in FAMILIES:
     lx.scatter([0.03], [y], s=80, marker=mk, color=c, edgecolor="white", transform=lx.transAxes)
     lx.text(0.09, y, fam, va="center", fontsize=13, color=INK, transform=lx.transAxes)
-    y -= 0.048
+    y -= 0.042
 y -= 0.015
 lx.plot([0.03, 0.03], [y - 0.02, y + 0.02], color=GREY, lw=2, transform=lx.transAxes)
 lx.text(0.09, y, "price range", va="center", fontsize=12, color=GREY, transform=lx.transAxes)
@@ -130,20 +133,17 @@ lx.scatter([0.03], [y], s=70, marker="^", facecolor="white", edgecolor=GREY, lin
            transform=lx.transAxes)
 lx.text(0.09, y, "open marker: lease / subscription,\n3-year total", va="center",
         fontsize=12, color=GREY, transform=lx.transAxes)
-y -= 0.08
-lx.text(0, y, "Bubbles: technology envelopes,\nafter Ashby's material-property charts.",
-        va="top", fontsize=12, color=GREY, transform=lx.transAxes)
 lx.text(0, 0.0,
+        "Bubbles: technology envelopes (after Ashby).\n"
         "Voxel size = smallest lateral feature:\n"
         "2PP/MPP: focal-spot resolution; PµSL, DLP,\n"
         "MSLA: projected pixel; laser SLA: beam spot\n"
-        "(UnionTech: min. layer as proxy).\n\n"
+        "(UnionTech: min. layer as proxy); volumetric,\n"
+        "high-viscosity film: projected pixel.\n\n"
         "Prices: list/launch prices (USD) as published\n"
         "by vendors, dealers, all3dp and aniwaa;\n"
-        "EUR at 1.16 USD. Altraspin nudged right\n"
-        "(same 0.2 µm as µFAB-3D).\n\n"
-        "Data: tables/02_printers_price_voxel.csv\n"
-        "Micro rows after all3dp, Micro 3D printing guide.",
+        "EUR at 1.16 USD.\n\n"
+        "Data: tables/02_printers_price_voxel.csv",
         va="bottom", fontsize=10.5, color=GREY, transform=lx.transAxes, linespacing=1.3)
 
 for ext in ("png", "pdf"):

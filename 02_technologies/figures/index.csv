@@ -1,4 +1,5 @@
 file,slides,caption,source,credit,license,notes
+(not in repo) 02_k02_ampower_polymer_landscape.jpg,,Polymer AM landscape: 17 technology principles by feedstock and polymer class,"AMPOWER Insights Vol. 11, Additive Manufacturing: new polymer technologies, Nov. 2022, p. 9 (www.ampower.eu); extracted at 400 dpi",AMPOWER GmbH & Co. KG,"to check: AMPOWER material, permission needed before adding to the public repo",uploaded to the claude.ai deck only
 02_a00_colour_convention.pdf,,,,Andrei Constantinescu,own drawing,vector export
 02_a00_colour_convention.png,02_technologies.pptx:3,"Colour convention: kitchen and industrial materials, mould, tools, fluid, force, heat, radiation, electricity, chemistry",own drawing (TikZ),Andrei Constantinescu,own drawing,source: 02_a00_colour_convention.tex; build: python tools/build_figures.py
 02_a00_colour_convention.tex,,,,Andrei Constantinescu,own drawing,TikZ source
@@ -138,6 +139,9 @@ file,slides,caption,source,credit,license,notes
 02_h02_dlp_animation.py,,,,Andrei Constantinescu,own drawing,animation source
 02_h03_mpp_animation.gif,,Multi-photon polymerisation: femtosecond focus cures inside the resin (animation),"Femtika, femtika.lt",Femtika,courtesy of Femtika (as provided by A. Constantinescu),credited on the slide: Animation: Femtika (femtika.lt)
 02_h04_carbon_clip_animation.gif,,"CLIP / Carbon DLS: the part is pulled continuously out of the resin above an oxygen-permeable window (animation, 7x speed, 800x450, 47 frames)","Carbon, Inc., carbon3d.com; process: J. R. Tumbleston et al., Continuous liquid interface production of 3D objects, Science 347, 1349-1352 (2015), doi:10.1126/science.aaa2397; reviewed in M. Zastrow, The new 3D printing, Nature 578, 20-23 (2020), doi:10.1038/d41586-020-00271-6","Carbon, Inc.","Carbon, Inc. - reproduced for teaching (as provided by A. Constantinescu); check permission before public distribution","claude.ai deck slide vpp-example-carbon; credited on the slide: Animation: Carbon, Inc. (carbon3d.com) - CLIP after Tumbleston et al. 2015 (ref. 3 of Zastrow 2020)"
+02_h05_volumetric_printing.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_h05_volumetric_printing.png,,"Volumetric photopolymerisation, top views: xolography (UV light sheet crossed by a projected visible image) and tomographic printing (rotating vial, images from all angles)","own drawing (TikZ) after Regehly et al., Nature 588, 620-624 (2020) and Loterie et al., Nat. Commun. 11, 852 (2020)",Andrei Constantinescu,own drawing,source: 02_h05_volumetric_printing.tex; build: python tools/build_figures.py
+02_h05_volumetric_printing.tex,,,,Andrei Constantinescu,own drawing,TikZ source
 02_i01_price_vs_voxel.pdf,,,,Andrei Constantinescu,own drawing,vector export
 02_i01_price_vs_voxel.png,,"Photopolymer printers: machine price vs voxel size (log-log), one colour per technology (2PP/MPP, PµSL, DLP, MSLA, CLIP/DLS, laser SLA), Ashby-style envelopes",tables/02_printers_price_voxel.csv,Andrei Constantinescu,own drawing,prices list/launch; Carbon = 3-year subscription totals
 02_i01_price_vs_voxel.py,,,,Andrei Constantinescu,own drawing,chart source (matplotlib)
@@ -168,4 +172,7 @@ file,slides,caption,source,credit,license,notes
 02_j04_map_world_numbered.png,,"Polymer and feedstock makers, world strip, numbered rings by role",Natural Earth 1:110m (public domain),Andrei Constantinescu,own drawing,map
 02_j04_map_world_numbered.svg,,,,Andrei Constantinescu,own drawing,vector export
 02_j04_polymer_makers_map.py,,,,Andrei Constantinescu,own drawing,map source
+02_k01_maturity_index.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_k01_maturity_index.png,,"Technology readiness of polymer AM: AMPOWER Maturity Index 2022 (open markers) and indicative 2026 positions (filled markers, course estimate, not an AMPOWER rating)","AMPOWER Insights Vol. 11 (Nov. 2022) pp. 11, 70, digitised; 2026 status from company sites and trade press (tables/02_ampower_maturity_2022_2026.csv)",Andrei Constantinescu,own drawing,chart source: 02_k01_maturity_index.py
+02_k01_maturity_index.py,,,,Andrei Constantinescu,own drawing,chart source (matplotlib)
 _printers_common.py,,,,Andrei Constantinescu,own drawing,shared palette and data loader for 02_i01-02_i03

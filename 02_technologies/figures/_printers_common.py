@@ -11,7 +11,7 @@ CSV = HERE.parent / "tables" / "02_printers_price_voxel.csv"
 INK, GREY, GRID = "#1b2433", "#566170", "#e3e1db"
 
 # One colour per technology, fixed order (finest voxel first).
-# Validated with the dataviz validate_palette.js (light surface): all checks pass;
+# Validated with the dataviz validate_palette.js (light surface, 8 hues, Nov 2026): all checks pass;
 # contrast < 3:1 for three hues -> every point carries a direct label.
 TECH = [
     ("2PP / MPP",        "#2a78d6", "o"),   # two-/multiphoton polymerisation
@@ -20,6 +20,8 @@ TECH = [
     ("MSLA (LCD)",       "#008300", "P"),
     ("CLIP / DLS",       "#eda100", "^"),   # Carbon
     ("laser SLA",        "#e87ba4", "v"),
+    ("volumetric",       "#7b52c7", "h"),   # xolography, tomographic (AMPOWER Insights 11)
+    ("high-viscosity film", "#a0522d", "p"),  # Cubicure Hot Lithography, Supernova VLM
 ]
 COL = {t: c for t, c, _ in TECH}
 MRK = {t: m for t, _, m in TECH}

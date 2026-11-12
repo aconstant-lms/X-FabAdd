@@ -32,15 +32,22 @@ WORLD = [
     (6, "Elegoo", "Shenzhen, China", ["MSLA (LCD)"], 113.95, 22.55, (-9, -7)),
     (7, "UnionTech", "Shanghai, China", ["laser SLA"], 121.47, 31.23, (6, 5)),
     (8, "Asiga", "Sydney, Australia", ["DLP"], 151.20, -33.91, (0, 0)),
+    (9, "Supernova", "Austin, US / Barcelona, Spain", ["high-viscosity film"], -97.74, 30.27, (0, 0)),
 ]
 EUROPE = [  # name, technologies, lon, lat, label offset (points), ha
     ("Nanoscribe", ["2PP / MPP"], 8.40, 49.09, (-14, 0), "right"),
-    ("UpNano", ["2PP / MPP"], 16.37, 48.21, (14, -6), "left"),
+    ("UpNano", ["2PP / MPP"], 16.37, 48.21, (14, 4), "left"),
     ("Microlight3D", ["2PP / MPP"], 5.72, 45.19, (14, 0), "left"),
     ("Femtika", ["2PP / MPP"], 25.28, 54.69, (14, 0), "left"),
     ("Prusa", ["MSLA (LCD)"], 14.44, 50.08, (14, 6), "left"),
     ("Nano Dimension", ["PµSL (micro-DLP)"], 34.80, 31.93, (-14, 8), "right"),
     ("Stratasys", ["DLP"], 34.81, 31.89, (-14, -10), "right"),
+    # added Nov 2026 from AMPOWER Insights Vol. 11 (2022), status checked 2026
+    ("xolo", ["volumetric"], 13.53, 52.43, (14, 0), "left"),
+    ("Readily3D", ["volumetric"], 6.57, 46.52, (-14, 4), "right"),
+    ("Cubicure", ["high-viscosity film"], 16.30, 48.14, (14, -6), "left"),
+    ("Spectroplast", ["DLP"], 11.58, 48.14, (0, -17), "center"),
+    ("Supernova", ["high-viscosity film"], 2.17, 41.39, (14, 0), "left"),
 ]
 
 # ---------------- world strip, numbered rings
@@ -71,8 +78,10 @@ asp = 1 / np.cos(np.radians(44))
 lon0, lon1 = -3.0, 39.0
 h = (lon1 - lon0) / asp * 7.05 / 6.0
 ax.set_xlim(lon0, lon1); ax.set_ylim(43.5 - h / 2 - 1.5, 43.5 + h / 2 - 1.5); ax.set_aspect(asp); ax.axis("off")
+RING = {"Nano Dimension": (0, 0.25), "Stratasys": (0, -0.25), "UpNano": (0, 0.45), "Cubicure": (0.5, -0.75)}
 for name, techs, lon, lat, (ox, oy), ha in EUROPE:
-    ax.scatter([lon], [lat + (0.25 if name == "Nano Dimension" else -0.25 if name == "Stratasys" else 0)],
+    dlon, dlat = RING.get(name, (0, 0)); lon, lat = lon + dlon, lat + dlat
+    ax.scatter([lon], [lat],
                s=135, facecolor=FILL, edgecolor=COL[techs[0]], linewidth=2.2, zorder=5)
     ax.annotate(name, (lon, lat), xytext=(ox, oy), textcoords="offset points", ha=ha, va="center",
                 fontsize=14, fontweight="semibold", color=INK, zorder=6,
