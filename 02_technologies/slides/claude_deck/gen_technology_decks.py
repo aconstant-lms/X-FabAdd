@@ -1,5 +1,6 @@
 """Build the two chapter-02 decks that replace "AM technologies" (Nov 2026):
 
+  technology_metal    the metal session: processes, prices, five physical laws for metals
   technology_polymer  the polymer session: processes, six physical laws, maturity index,
                       the exercise "Polymer AM 2022 -> 2026" and its debrief
   technology_unused   everything set aside for now: traditional technologies, metals,
@@ -41,13 +42,22 @@ POLY_SECTIONS = {"s0": ("Cover", "cover-polymer"), "s2": ("Part 2: AM processes 
                  "s9": ("Part 9: Debrief, 2022 to 2026", "part-debrief"), "s10": ("Part 10: References", "part-refs")}
 UNUSED = """cover-unused
 part-1 materials groups convention case-1 case-2 case-3 case-4 case-5 case-6 heat-scales hip
-part-2-metals metal-processes lpbf-prices bj-machines micro references-metals
-part-other paste bjt ded cold lcvd ecam vpp-example-template
+part-other paste micro lcvd ecam vpp-example-template
 part-8 ashby-tree pm geometry twins vpp part-6 part-7""".split()
 UNUSED_SECTIONS = {"s0": ("Cover", "cover-unused"), "s1": ("Part 1: Traditional technologies", "part-1"),
-                   "s2": ("Metals", "part-2-metals"), "s3": ("Other AM processes", "part-other"),
+                   "s3": ("Other AM processes", "part-other"),
                    "s4": ("Parked slides", "part-8")}
+METAL = """cover-metal
+part-2-metals shape-process groups-paths metal-processes pbf ded cold bjt pm lpbf-prices bj-machines
+part-3 addressing box part-4 clocks part-5 interfaces
+part-mlaws mlaw-melt mlaw-stress mlaw-fatigue mlaw-post mlaw-rate mlaw-questions potentials
+part-mrefs references-metals references-mphysics""".split()
+METAL_SECTIONS = {"s0": ("Cover", "cover-metal"), "s2": ("Part 2: AM processes for metals", "part-2-metals"),
+                  "s3": ("Part 3: A morphological box", "part-3"), "s4": ("Part 4: Clocks", "part-4"),
+                  "s5": ("Part 5: The layer interface", "part-5"), "s6": ("Part 6: Five physical laws for metals", "part-mlaws"),
+                  "s7": ("Part 7: References", "part-mrefs")}
 DECKS = {"technology_polymer": ("AM technologies: polymers", POLY, POLY_SECTIONS, "cover-polymer"),
+         "technology_metal": ("AM technologies: metals", METAL, METAL_SECTIONS, "cover-metal"),
          "technology_unused": ("AM technologies: slides set aside", UNUSED, UNUSED_SECTIONS, "cover-unused")}
 
 
@@ -64,6 +74,7 @@ def run_generators(k02):
     for f in ("twins.html",):
         (all_dir / "slides" / f).write_text((HERE / "raw" / f).read_text())
     exec(compile((HERE / "slides_polymer_new.py").read_text(), "slides_polymer_new.py", "exec"), ns)
+    exec(compile((HERE / "slides_metal_new.py").read_text(), "slides_metal_new.py", "exec"), ns)
     return ns, all_dir
 
 

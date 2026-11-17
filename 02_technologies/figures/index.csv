@@ -209,3 +209,12 @@ _printers_common.py,,,,Andrei Constantinescu,own drawing,shared palette and data
 02_l00_physics_laws.py,,,,Andrei Constantinescu,own drawing,chart source (matplotlib) for 02_l01-02_l06
 02_k03_maturity_2022.py,,,,Andrei Constantinescu,own drawing,chart source (matplotlib)
 02_k03_maturity_2022_wall.pdf,,,,Andrei Constantinescu,own drawing,A1 wall poster for the polymer exercise
+02_m01_melt_cool.png,,"Cooling and crystallisation: G-R solidification map with process boxes, and cell or dendrite spacing vs cooling rate",Kurz & Fisher (1998); DebRoy et al. (2018),Andrei Constantinescu,own drawing,
+02_m01_melt_cool.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_m02_residual_stress.png,,"Internal stresses: two-bar model (hot layer on cold part) and E alpha dT vs as-built yield strength, four alloys (estimates)",Mercelis & Kruth (2006),Andrei Constantinescu,own drawing,
+02_m02_residual_stress.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_m03_murakami_fatigue.png,,"Cycles, defects and fatigue: schematic S-N curves (wrought, AM HIP + machined, AM as built) and Murakami sqrt(area) fatigue limit",Murakami (2002); Beretta & Romano (2017),Andrei Constantinescu,own drawing,
+02_m03_murakami_fatigue.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_m04_rate_resolution.png,,"Metal AM build rate vs smallest feature: laser PBF, binder jetting, DED powder, cold spray, WAAM","metal process slide, makers data sheets",Andrei Constantinescu,own drawing,
+02_m04_rate_resolution.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_m00_metal_physics.py,,,,Andrei Constantinescu,own drawing,chart source (matplotlib) for 02_m01-02_m04

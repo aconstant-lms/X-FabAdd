@@ -45,7 +45,7 @@ def cover(i, kicker, title, lead, k):
 cover('cover-polymer', 'ADDITIVE MANUFACTURING · TECHNOLOGIES', 'AM technologies: polymers',
       'How polymer parts are printed, the six physical laws that limit every process, how ready a technology is, and an exercise: ten new technologies of 2022, where are they today?', 'f02')
 cover('cover-unused', 'ADDITIVE MANUFACTURING · TECHNOLOGIES', 'AM technologies: slides set aside',
-      'Traditional technologies, metal AM and the other processes, kept for later sessions. The polymer session is the deck "AM technologies: polymers".', 'f06')
+      'Traditional technologies, other processes and parked slides, kept for later sessions. Polymers and metals have their own decks.', 'f06')
 
 # ---------------------------------------------------------------- pre-exercise price slide
 _s = (R / 'slides' / 'vpp-prices.html').read_text()
@@ -332,5 +332,5 @@ write('references-physics', sec_open('references-physics') + head('REFERENCES', 
             'H. Takeuchi, I. Nonaka, The New New Product Development Game, Harvard Business Review, Jan.–Feb. 1986.'], 24)
       + foot() + notes('Bibliographic details to check against the originals before publication (page numbers, article numbers).') + '</section>')
 
-part('part-other', 'X', 'Other AM processes', 'Paste, binder jetting, DED, cold spray, laser CVD, electrochemical AM: kept for the metals and ceramics sessions.',
-     ['Paste extrusion', 'Binder jetting', 'Directed energy deposition', 'Cold spray', 'Laser CVD, electrochemical AM'], 'Set aside from the polymer session, Nov 2026.')
+part('part-other', 'X', 'Other AM processes', 'Paste extrusion, microprinting, laser CVD and electrochemical AM: kept for later sessions.',
+     ['Paste extrusion', 'Microprinting', 'Laser CVD', 'Electrochemical AM'], 'Set aside from the polymer and metal sessions, Nov 2026.')
