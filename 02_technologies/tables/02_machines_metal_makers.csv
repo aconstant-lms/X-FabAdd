@@ -1,0 +1,45 @@
+maker,country,region,city,lat,lon,technology,model,build_x_mm,build_y_mm,build_z_mm,round,energy_sources,price_low_usd,price_high_usd,plotted,source,notes
+EOS,Germany,Europe,Krailling,48.10,11.40,LPBF,M 100,100,100,95,yes,1x200 W,200000,280000,yes,laser-spec-hub.vercel.app (estimated ranges 2026),indicative; makers quote on request
+EOS,Germany,Europe,Krailling,48.10,11.40,LPBF,M 290,250,250,325,no,1x400 W,400000,550000,yes,laser-spec-hub.vercel.app; 3dtechvalley.com (450-600k),deck 03_Technologies 2025 said 600k-1M
+EOS,Germany,Europe,Krailling,48.10,11.40,LPBF,M 400-4,400,400,400,no,4x400 W,1000000,1500000,yes,laser-spec-hub.vercel.app; 3dtechvalley.com (0.8-1.2M+),
+AMCM (EOS group),Germany,Europe,Starnberg,47.99,11.34,LPBF,M 8K,800,800,1200,no,8 lasers,,,quote,All3DP 2026 (build volume),Ariane 6 engine parts; price on request
+Nikon SLM Solutions,Germany,Europe,Lübeck,53.87,10.69,LPBF,SLM 125,125,125,125,no,1x400 W,200000,400000,yes,laser-spec-hub.vercel.app,deck 03_Technologies 2025 said 400-500k
+Nikon SLM Solutions,Germany,Europe,Lübeck,53.87,10.69,LPBF,SLM 280 2.0,280,280,365,no,2x700 W,500000,800000,yes,laser-spec-hub.vercel.app; deck 03_Technologies 2025,
+Nikon SLM Solutions,Germany,Europe,Lübeck,53.87,10.69,LPBF,SLM 500,500,280,365,no,4x700 W,900000,1200000,yes,laser-spec-hub.vercel.app (SLM 500 HL),deck table gave 500x500x500 - corrected to maker data
+Nikon SLM Solutions,Germany,Europe,Lübeck,53.87,10.69,LPBF,NXG XII 600,600,600,600,no,12x1000 W,1500000,3500000,yes,laser-spec-hub.vercel.app; metal-am.com (05_Market p28),NXG 600E: 600x600x1500
+TRUMPF,Germany,Europe,Ditzingen,48.83,9.07,LPBF,TruPrint 1000,100,100,100,yes,1x200 W,170000,300000,yes,deck 03_Technologies 2025; laser-spec-hub.vercel.app,
+TRUMPF,Germany,Europe,Ditzingen,48.83,9.07,LPBF,TruPrint 5000,300,300,400,yes,3x500 W,800000,1200000,yes,laser-spec-hub.vercel.app; 3dnatives (from 250k EUR),
+Colibrium Additive (GE Aerospace),Germany,Europe,Lichtenfels,50.15,11.06,LPBF,M2 Series 5,245,245,350,no,2x400 W,450000,650000,yes,laser-spec-hub.vercel.app,ex Concept Laser; GE Additive renamed Colibrium 2024
+Renishaw,United Kingdom,Europe,Wotton-under-Edge,51.64,-2.35,LPBF,RenAM 500Q,250,250,350,no,4x500 W,500000,700000,yes,laser-spec-hub.vercel.app,
+AddUp (Fives-Michelin),France,Europe,Cébazat,45.83,3.10,LPBF,FormUp 350,350,350,350,no,4x500 W,,,quote,metal-am.com (05_Market p28),also BeAM powder DED
+3D Systems,USA,USA,Rock Hill SC / Leuven,34.92,-81.03,LPBF,DMP Flex 200,140,140,115,no,1x500 W,200000,400000,yes,laser-spec-hub.vercel.app,
+3D Systems,USA,USA,Rock Hill SC / Leuven,34.92,-81.03,LPBF,DMP Factory 500,500,500,500,no,3x500 W,,,quote,metal-am.com (05_Market p28),
+Velo3D,USA,USA,Fremont CA,37.55,-121.99,LPBF,Sapphire XC 1MZ,600,600,1000,yes,8x1000 W,2000000,3500000,yes,laser-spec-hub.vercel.app; metal-am.com (05_Market p28),rescued 2024-25; Nasdaq relisting 2025
+BLT (Bright Laser Technologies),China,China,Xi'an,34.34,108.94,LPBF,BLT-S600,600,600,600,no,4x500 W,600000,900000,yes,laser-spec-hub.vercel.app,
+BLT (Bright Laser Technologies),China,China,Xi'an,34.34,108.94,LPBF,BLT-S800,800,800,600,no,8x500 W,1500000,2500000,yes,laser-spec-hub.vercel.app,
+BLT (Bright Laser Technologies),China,China,Xi'an,34.34,108.94,LPBF,BLT-S1500,1500,1500,1200,no,26x500 W,,,quote,metal-am.com (05_Market p28),
+Farsoon Technologies,China,China,Changsha,28.23,112.94,LPBF,FS121M,120,120,100,no,1x500 W,100000,200000,yes,laser-spec-hub.vercel.app,
+Farsoon Technologies,China,China,Changsha,28.23,112.94,LPBF,FS301M,305,305,400,no,1x500 W,280000,380000,yes,laser-spec-hub.vercel.app,
+Farsoon Technologies,China,China,Changsha,28.23,112.94,LPBF,FS1521M,1530,1530,1650,yes,16x500 W,,,quote,metal-am.com (05_Market p28),
+Eplus3D,China,China,Hangzhou,30.27,120.16,LPBF,EP-M2050,2050,2050,1100,no,64x500 W,,,quote,metal-am.com (05_Market p28),largest LPBF bed in 2025
+HBD,China,China,Shanghai,31.23,121.47,LPBF,HBD 1000Pro,660,660,1250,no,8x500 W,,,quote,metal-am.com (05_Market p28),
+ZRapid Tech,China,China,Suzhou,31.30,120.58,LPBF,iSLM420D,420,420,400,no,2x500 W,300000,300000,yes,05_Market p25 (Alibaba listing 0.3 M$),made-in-china listing shows 69.8k$: listing prices are not quotes
+Tianhong Laser,China,China,Suzhou,31.32,120.62,LPBF,TH-M800 (LM-M800),807,607,900,no,multi-laser,800000,800000,yes,05_Market p24 (Alibaba 0.8 M$); directindustry.com (807x607x900),
+Arcam (Colibrium Additive),Sweden,Europe,Mölndal,57.66,12.01,EBM,Spectra H,250,250,430,yes,electron beam 6 kW,,,quote,maker site (from memory - to check),electron-beam PBF; hot bed (~1000 C) -> low residual stress
+Freemelt,Sweden,Europe,Mölndal,57.66,12.01,EBM,eMELT-1000,400,400,400,no,electron beam,,,quote,maker site (from memory - to check),
+JEOL,Japan,Asia,Tokyo,35.68,139.77,EBM,JAM-5200EBM,250,250,400,yes,electron beam 6 kW,,,quote,maker site (from memory - to check),
+DMG MORI,Germany,Europe,Bielefeld,52.02,8.53,DED powder (laser),LASERTEC 65 DED hybrid,500,650,400,no,laser 2-3 kW + 5-axis milling,,,quote,maker site (from memory - to check),hybrid: deposit then machine
+Meltio,Spain,Europe,Linares,38.09,-3.64,DED wire (laser),M600,300,400,600,no,9x200 W blue/IR lasers,,,quote,maker site (from memory - to check),wire-laser; also robot cell
+Prima Additive,Italy,Europe,Turin,45.07,7.69,DED powder (laser),Laser Next 2141,2000,1400,1000,no,laser,,,quote,maker site (from memory - to check),
+Optomec,USA,USA,Albuquerque NM,35.08,-106.65,DED powder (laser),LENS CS 800,800,600,600,no,laser 1-3 kW,,,quote,maker site (from memory - to check),repair of blades
+Gefertec,Germany,Europe,Berlin,52.52,13.40,DED wire (arc),arc405,1000,1000,1000,no,MIG/MAG arc,,,quote,metal-am.com (WAAMathon #2); 3dadept (arc10X 2026),Siemens Sinumerik control
+WAAM3D,United Kingdom,Europe,Milton Keynes,52.04,-0.76,DED wire (arc),RoboWAAM,2000,1500,1000,no,plasma/TIG arc,,,quote,metal-am.com (2026),Cranfield spin-off
+MX3D,Netherlands,Europe,Amsterdam,52.37,4.90,DED wire (arc),M1 Metal AM System,2000,2000,2000,no,robot arc,,,quote,mx3d.com,Amsterdam bridge 2021
+Norsk Titanium,Norway,Europe,Hønefoss,60.17,10.26,DED wire (plasma),MERKE IV RPD,900,600,300,no,plasma arc,,,quote,maker site (from memory - to check),Boeing 787 Ti parts
+Sciaky,USA,USA,Chicago IL,41.75,-87.74,DED wire (e-beam),EBAM 300,5800,1200,1200,no,electron beam,,,quote,All3DP; 3dnatives,largest metal AM envelope
+HP,USA,USA,Palo Alto CA,37.44,-122.14,binder jetting,Metal Jet S100,430,309,200,no,binder + sintering furnace,,,quote,voxelmatters (02 table),
+ExOne (Arc Impact) / ExOne GmbH (Anzu),USA,USA,North Huntingdon PA,40.33,-79.73,binder jetting,X160PRO,800,500,400,no,binder + sintering furnace,,,quote,metal-am.com (Sept 2025),Desktop Metal Chapter 11 (July 2025): US assets to Arc Impact 7 M$; ExOne GmbH (Gersthofen) to Anzu
+Markforged (Nano Dimension),USA,USA,Waltham MA,42.38,-71.24,binder jetting,PX100,250,217,180,no,binder + sintering furnace,300000,600000,yes,laser-spec-hub.vercel.app,ex Digital Metal (Sweden); build height 180 mm to check
+Desktop Metal,USA,USA,Burlington MA,42.50,-71.20,bound metal extrusion,Studio System 2,300,200,200,no,extrusion + debind + sinter,55000,55000,yes,3dnatives (from 50k EUR),company liquidated 2025: price kept as history
+SPEE3D,Australia,Asia-Pacific,Melbourne,-37.81,144.96,cold spray,XSPEE3D,1000,1000,700,no,supersonic gas (no melting),,,quote,maker site (from memory - to check),deployable in a shipping container (defence)
+Titomic,Australia,Asia-Pacific,Melbourne,-37.83,144.98,cold spray,TKF 9000,9000,3000,1500,no,supersonic gas,,,quote,maker site (from memory - to check),

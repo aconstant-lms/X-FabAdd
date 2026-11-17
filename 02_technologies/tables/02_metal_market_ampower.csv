@@ -1,0 +1,11 @@
+year,total_beur,equipment_beur,material_beur,parts_beur,pbf_units,status,source
+2016,0.88,0.43,0.28,0.16,,actual,AMPOWER Report 2024 via 04_Metal p49-51
+2017,1.07,0.53,0.33,0.21,,actual,AMPOWER Report 2024
+2018,1.51,0.83,0.39,0.29,1714,actual,AMPOWER Report 2024
+2019,2.02,1.07,0.51,0.44,1562,actual,AMPOWER Report 2024
+2020,2.03,0.89,0.64,0.50,1487,actual,AMPOWER Report 2024
+2021,2.50,0.99,0.75,0.76,1533,actual,AMPOWER Report 2024
+2022,3.03,1.18,0.95,0.90,1670,actual,AMPOWER Report 2024
+2023,3.47,1.31,1.11,1.05,1520,actual,AMPOWER Report 2024
+2024,3.37,,,,,derived,AMPOWER Report 2025 press (metal market -2.9 %; machine revenue -3 % despite more units)
+2028,8.77,3.09,3.07,2.61,3882,forecast 2024,AMPOWER Report 2024 (CAGR 20.4 %; units: supplier view; buyer view 3195)

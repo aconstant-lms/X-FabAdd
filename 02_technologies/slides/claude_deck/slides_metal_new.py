@@ -4,7 +4,10 @@
 # formula(), strip(), tbl(), cover() ... and A, P are available.
 
 for _k, _p in {"m01": "02_m01_melt_cool", "m02": "02_m02_residual_stress", "m03": "02_m03_murakami_fatigue",
-               "m04": "02_m04_rate_resolution"}.items():
+               "m04": "02_m04_rate_resolution",
+               "n01": "02_n01_metal_price_vs_volume", "n02w": "02_n02_map_world_numbered", "n02e": "02_n02_map_europe_labels",
+               "n03": "02_n03_powder_prices", "n04w": "02_n04_map_world_numbered", "n04e": "02_n04_map_europe_labels",
+               "n05": "02_n05_powder_co2", "n06": "02_n06_metal_market", "n07": "02_n07_powder_routes"}.items():
     A[_k] = f"NEW-{_k}"; P[_k] = _p
 
 cover('cover-metal', 'ADDITIVE MANUFACTURING · TECHNOLOGIES', 'AM technologies: metals',
@@ -79,7 +82,9 @@ write('mlaw-questions', sec_open('mlaw-questions') + head('METAL PHYSICS · SYNT
       + strip('The same questions open the metal exercise: print, cast from a printed mould, repair, or keep in stock?') + foot()
       + notes('Use the checklist on any metal AM claim. Questions 1–5 are physics; question 6 links to the risk deck (part class ↔ consequence of failure ↔ speed of adoption) and to chapter 05 (qualification as an investment). FR : liste de questions. DE: Prüfliste.') + '</section>')
 
-part('part-mrefs', 7, 'References', 'Metal AM processes, physics of the laws, standards.', ['Processes', 'Physics', 'Standards'], '')
+exec(compile(open(__import__('pathlib').Path(HERE_DECK) / 'slides_metal_supply.py').read(), 'slides_metal_supply.py', 'exec'))
+
+part('part-mrefs', 8, 'References', 'Metal AM processes, physics of the laws, supply chain, standards.', ['Processes', 'Physics', 'Machines, powders and markets', 'Standards'], '')
 write('references-mphysics', sec_open('references-mphysics') + head('REFERENCES', 'METAL PHYSICS', 'Melting, residual stress, fatigue and post-processing')
       + ul(['T. DebRoy et al., Additive manufacturing of metallic components – Process, structure and properties, Prog. Mater. Sci. 92, 112 (2018).',
             'W. Kurz, D. J. Fisher, Fundamentals of Solidification, 4th ed., Trans Tech, 1998.',

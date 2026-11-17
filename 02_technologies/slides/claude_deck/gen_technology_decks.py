@@ -43,19 +43,21 @@ POLY_SECTIONS = {"s0": ("Cover", "cover-polymer"), "s2": ("Part 2: AM processes 
 UNUSED = """cover-unused
 part-1 materials groups convention case-1 case-2 case-3 case-4 case-5 case-6 heat-scales hip
 part-other paste micro lcvd ecam vpp-example-template
-part-8 ashby-tree pm geometry twins vpp part-6 part-7""".split()
+part-8 ashby-tree pm geometry twins vpp part-6 part-7 lpbf-prices""".split()
 UNUSED_SECTIONS = {"s0": ("Cover", "cover-unused"), "s1": ("Part 1: Traditional technologies", "part-1"),
                    "s3": ("Other AM processes", "part-other"),
                    "s4": ("Parked slides", "part-8")}
 METAL = """cover-metal
-part-2-metals shape-process groups-paths metal-processes pbf ded cold bjt pm lpbf-prices bj-machines
+part-2-metals shape-process groups-paths metal-processes pbf ded cold bjt pm bj-machines
 part-3 addressing box part-4 clocks part-5 interfaces
 part-mlaws mlaw-melt mlaw-stress mlaw-fatigue mlaw-post mlaw-rate mlaw-questions potentials
-part-mrefs references-metals references-mphysics""".split()
+part-msupply msup-routes msup-powder-makers msup-powder-prices msup-co2 msup-machines msup-makers msup-china msup-market
+part-mrefs references-metals references-mphysics references-msupply""".split()
 METAL_SECTIONS = {"s0": ("Cover", "cover-metal"), "s2": ("Part 2: AM processes for metals", "part-2-metals"),
                   "s3": ("Part 3: A morphological box", "part-3"), "s4": ("Part 4: Clocks", "part-4"),
                   "s5": ("Part 5: The layer interface", "part-5"), "s6": ("Part 6: Five physical laws for metals", "part-mlaws"),
-                  "s7": ("Part 7: References", "part-mrefs")}
+                  "s7": ("Part 7: Machines, powders and makers", "part-msupply"),
+                  "s8": ("Part 8: References", "part-mrefs")}
 DECKS = {"technology_polymer": ("AM technologies: polymers", POLY, POLY_SECTIONS, "cover-polymer"),
          "technology_metal": ("AM technologies: metals", METAL, METAL_SECTIONS, "cover-metal"),
          "technology_unused": ("AM technologies: slides set aside", UNUSED, UNUSED_SECTIONS, "cover-unused")}
@@ -70,6 +72,7 @@ def run_generators(k02):
     ns = {"__name__": "gen_old"}
     exec(compile(src, "gen_am_technologies.py", "exec"), ns)
     ns["K02"] = k02
+    ns["HERE_DECK"] = str(HERE)
     # slides that exist only in the live deck (no generator code), kept verbatim in raw/
     for f in ("twins.html",):
         (all_dir / "slides" / f).write_text((HERE / "raw" / f).read_text())

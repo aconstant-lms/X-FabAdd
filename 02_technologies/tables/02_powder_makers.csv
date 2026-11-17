@@ -1,0 +1,21 @@
+maker,group,country,region,city,lat,lon,process,alloys,notes,source
+Sandvik Osprey,Sandvik,United Kingdom,Europe,Neath,51.66,-3.80,gas atomisation (VIGA),"steel, Ni, Co",40+ years of gas atomisation; Davies CO2 study,metal-am.com
+Carpenter Additive,Carpenter Technology,USA,USA,Reading PA,40.34,-75.93,gas atomisation (VIGA),"Ni, Co, steel, Ti",bought LPW (Widnes UK) 2018 and Puris (Ti) 2017,metal-am.com
+Höganäs,Höganäs AB,Sweden,Europe,Höganäs,56.20,12.56,"water, gas, plasma","steel, Ni, Cu",largest PM powder maker; VIGA and plasma for AM,hoganas.com
+Colibrium Additive (AP&C),GE Aerospace,Canada,North America,Boisbriand QC,45.61,-73.84,plasma atomisation (wire),"Ti, Ni",highly spherical Ti from wire,metal-am.com
+Tekna,Tekna (Arendals Fossekompani),Canada,North America,Sherbrooke QC,45.40,-71.89,induction-plasma spheroidisation,"Ti, refractory",,marketpublishers
+6K Additive,6K Inc.,USA,USA,Burgettstown PA,40.38,-80.39,microwave plasma (UniMelt) from scrap,"Ti, Ni, refractory","capacity 200 -> 800 t/year by end 2026; bought Global Metal Powders (2023)",tctmagazine.com
+Continuum Powders,Continuum,USA,USA,Houston TX,29.76,-95.37,plasma melt-to-powder from scrap,"Ni (IN718, 625)",IN718 from 100 % recycled feedstock qualified on Velo3D,04_Metal p8
+Oerlikon AM,Oerlikon,Germany,Europe,Barleben,52.20,11.58,gas atomisation,"Ni, Co, Ti, steel",,maker site (to check)
+Heraeus AMLOY,Heraeus,Germany,Europe,Hanau,50.13,8.92,gas atomisation,"amorphous Zr, precious",,maker site (to check)
+Linde AMT,Linde,Germany,Europe,Pullach,48.06,11.52,gas atomisation,"Ti, Ni, Co",also argon supplier,marketpublishers
+m4p material solutions,Steirische Gusswerk,Austria,Europe,Feistritz im Rosental,46.52,14.17,gas atomisation,"steel, Al, Ni",,maker site (to check)
+Aubert & Duval,Eramet group -> Airbus/Safran/Tikehau (2022),France,Europe,Les Ancizes,45.92,2.81,gas atomisation (VIGA),"Ni, steel, Ti",Pearl Micro powders; aero-qualified,maker site (to check)
+Erasteel,Eramet,France,Europe,Paris (plants Söderfors SE / Commentry FR),48.85,2.35,gas atomisation,"tool steel, Ni",,maker site (to check)
+Outokumpu,Outokumpu,Finland,Europe,Krefeld (DE) plant,51.33,6.56,gas atomisation from scrap,"stainless steel",330 t/year; "a large recycling unit",04_Metal p6 (plant location to check)
+Amazemet,Amazemet,Poland,Europe,Warsaw,52.23,21.01,ultrasonic atomisation (lab scale),any (from scrap),rePowder: lab-scale recycling,04_Metal p8
+Equispheres,Equispheres,Canada,North America,Ottawa ON,45.42,-75.70,proprietary atomisation,Al,narrow PSD aluminium,maker site (to check)
+BLT powders,BLT,China,China,Xi'an,34.34,108.94,gas / plasma atomisation,"Ti, Ni, Al",machine maker integrates powder,marketpublishers
+AVIMETAL Powder,AVIC,China,China,Beijing,39.90,116.40,gas atomisation (EIGA / VIGA),"Ti, Ni",aerospace group,maker site (to check)
+Sanyo Special Steel,Nippon Steel,Japan,Asia,Himeji,34.82,134.69,gas atomisation,"steel, Ni",,marketpublishers
+Daido Steel,Daido,Japan,Asia,Nagoya,35.18,136.91,gas atomisation,"steel, Ni",,marketpublishers

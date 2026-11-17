@@ -1,0 +1,10 @@
+element_or_alloy,virgin_t_co2_per_t,recycled_t_co2_per_t,virgin_kwh_per_kg,recycled_kwh_per_kg,source
+Co,8.30,4.15,35.56,17.78,Davies (Sandvik AM) PowderMet 2023 via 04_Metal p12
+Ni,11.40,0.22,30.83,15.42,Davies PowderMet 2023
+Mo,5.70,2.85,32.50,16.25,Davies PowderMet 2023
+Cu,2.80,1.40,14.92,7.46,Davies PowderMet 2023
+Cr,2.40,1.20,11.17,5.58,Davies PowderMet 2023
+Fe (steel),2.26,0.36,3.65,0.61,Davies PowderMet 2023
+Mn,1.00,0.50,6.58,3.29,Davies PowderMet 2023
+316L powder,5.13,0.62,,,Davies PowderMet 2023
+Alloy 718 powder,9.63,0.91,,,Davies PowderMet 2023
