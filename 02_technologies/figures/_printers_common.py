@@ -1,5 +1,6 @@
 """Shared data and style for the 02_i0x printer charts and maps."""
 import csv
+import os
 from pathlib import Path
 
 import matplotlib
@@ -23,12 +24,20 @@ TECH = [
     ("volumetric",       "#7b52c7", "h"),   # xolography, tomographic (AMPOWER Insights 11)
     ("high-viscosity film", "#a0522d", "p"),  # Cubicure Hot Lithography, Supernova VLM
 ]
+# XFAB_INTRO=1: version shown before the polymer exercise, without the 2026 additions
+# (volumetric and high-viscosity film printers would give the exercise answers away).
+INTRO = bool(os.environ.get("XFAB_INTRO"))
+HIDDEN = {"volumetric", "high-viscosity film"}
+SUFFIX = "_intro" if INTRO else ""
+if INTRO:
+    TECH = [t for t in TECH if t[0] not in HIDDEN]
 COL = {t: c for t, c, _ in TECH}
 MRK = {t: m for t, _, m in TECH}
 
 
 def rows():
-    return list(csv.DictReader(open(CSV, encoding="utf-8")))
+    r = list(csv.DictReader(open(CSV, encoding="utf-8")))
+    return [x for x in r if x["technology"] not in HIDDEN] if INTRO else r
 
 
 def use_font(name="Inter", size=13):

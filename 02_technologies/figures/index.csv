@@ -188,3 +188,24 @@ _printers_common.py,,,,Andrei Constantinescu,own drawing,shared palette and data
 02_h10_ded_wire_animation.py,,,,Andrei Constantinescu,own drawing,animation source (tools/iso_anim.py)
 02_h11_cold_spray_animation.gif,metal-processes,"Cold spray: de Laval nozzle, supersonic particles bond on impact without melting, tapered deposit","own drawing (pycairo isometric) after Yin et al., Addit. Manuf. 21, 628 (2018)",Andrei Constantinescu,own drawing,
 02_h11_cold_spray_animation.py,,,,Andrei Constantinescu,own drawing,animation source (tools/iso_anim.py)
+02_l01_beer_lambert.png,,"Light in a resin: Beer-Lambert decay for three penetration depths, and the Jacobs working curve",Jacobs (1992),Andrei Constantinescu,own drawing,
+02_l01_beer_lambert.pdf,,,Jacobs (1992),Andrei Constantinescu,own drawing,vector export
+02_l02_two_photon.png,,Energy absorbed per plane along a focused beam: one photon (flat) vs two photons (confined to the focus),,Andrei Constantinescu,own drawing,
+02_l02_two_photon.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_l03_viscosity_ruler.png,,"Viscosity windows of polymer AM processes, log scale (orders of magnitude, to verify)",,Andrei Constantinescu,own drawing,
+02_l03_viscosity_ruler.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_l04_jetting_window.png,,"Drop-on-demand printable window in Re-We space, 1 < Z < 10, after Derby (2010)","Derby, Annu. Rev. Mater. Res. 40, 395 (2010)",Andrei Constantinescu,own drawing,
+02_l04_jetting_window.pdf,,,"Derby, Annu. Rev. Mater. Res. 40, 395 (2010)",Andrei Constantinescu,own drawing,vector export
+02_l05_frenkel_sintering.png,,Frenkel viscous sintering: neck growth vs time for melt viscosities 10^2-10^5 Pa s,Frenkel (1945),Andrei Constantinescu,own drawing,
+02_l05_frenkel_sintering.pdf,,,Frenkel (1945),Andrei Constantinescu,own drawing,vector export
+02_l06_yield_stress.png,,"Height held up by a yield stress, h = tau_y / rho g",,Andrei Constantinescu,own drawing,
+02_l06_yield_stress.pdf,,,,Andrei Constantinescu,own drawing,vector export
+02_k03_maturity_2022.png,,"AMPOWER Maturity Index 2022 only: 17 classes and the ten exercise companies, numbered as the groups","AMPOWER Insights Vol. 11 (Nov. 2022) pp. 11, 70; tables/02_ampower_maturity_2022_2026.csv",Andrei Constantinescu,own drawing,
+02_k03_maturity_2022.pdf,,,"AMPOWER Insights Vol. 11 (Nov. 2022) pp. 11, 70; tables/02_ampower_maturity_2022_2026.csv",Andrei Constantinescu,own drawing,vector export
+02_i01_price_vs_voxel_intro.png,,"Photopolymer printers, price vs voxel, without the 2026 additions (shown before the polymer exercise)",tables/02_printers_price_voxel.csv,Andrei Constantinescu,own drawing,
+02_i01_price_vs_voxel_intro.pdf,,,tables/02_printers_price_voxel.csv,Andrei Constantinescu,own drawing,vector export
+02_i03_price_vs_build_volume_intro.png,,"Photopolymer printers, price vs build volume, without the 2026 additions (shown before the polymer exercise)",tables/02_printers_price_voxel.csv,Andrei Constantinescu,own drawing,
+02_i03_price_vs_build_volume_intro.pdf,,,tables/02_printers_price_voxel.csv,Andrei Constantinescu,own drawing,vector export
+02_l00_physics_laws.py,,,,Andrei Constantinescu,own drawing,chart source (matplotlib) for 02_l01-02_l06
+02_k03_maturity_2022.py,,,,Andrei Constantinescu,own drawing,chart source (matplotlib)
+02_k03_maturity_2022_wall.pdf,,,,Andrei Constantinescu,own drawing,A1 wall poster for the polymer exercise

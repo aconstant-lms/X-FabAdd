@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Polygon
 from scipy.spatial import ConvexHull
 
-from _printers_common import HERE, INK, GREY, GRID, TECH, COL, MRK, rows as load_rows, use_font, usd, is_lease
+from _printers_common import HERE, INK, GREY, GRID, TECH, COL, MRK, rows as load_rows, SUFFIX, use_font, usd, is_lease
 
 use_font()
 FAMILIES = TECH
@@ -147,5 +147,5 @@ lx.text(0, 0.0,
         va="bottom", fontsize=10.5, color=GREY, transform=lx.transAxes, linespacing=1.3)
 
 for ext in ("png", "pdf"):
-    fig.savefig(HERE / f"02_i01_price_vs_voxel.{ext}", dpi=200, facecolor="white")
+    fig.savefig(HERE / f"02_i01_price_vs_voxel{SUFFIX}.{ext}", dpi=200, facecolor="white")
 print("ok")

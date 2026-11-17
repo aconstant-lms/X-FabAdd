@@ -14,7 +14,7 @@ from matplotlib.patches import Polygon
 from matplotlib.ticker import FuncFormatter
 from scipy.spatial import ConvexHull
 
-from _printers_common import HERE, INK, GREY, GRID, TECH, COL, MRK, rows, use_font, usd, is_lease
+from _printers_common import HERE, INK, GREY, GRID, TECH, COL, MRK, rows, use_font, usd, is_lease, SUFFIX
 
 use_font()
 R = rows()
@@ -159,5 +159,5 @@ lx.text(0, 0.0,
 
 label_guides()
 for ext in ("png", "pdf"):
-    fig.savefig(HERE / f"02_i03_price_vs_build_volume.{ext}", dpi=200, facecolor="white")
+    fig.savefig(HERE / f"02_i03_price_vs_build_volume{SUFFIX}.{ext}", dpi=200, facecolor="white")
 print("ok")
