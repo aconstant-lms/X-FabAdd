@@ -91,18 +91,19 @@ write('msup-co2', sec_open('msup-co2', '48px 128px 100px') + head('MACHINES, POW
               'Redistribute: aviation deck (buy-to-fly ratio and CO₂), repair deck (machining revert as feedstock). FR : empreinte carbone, matière recyclée. DE: CO₂-Fußabdruck, Rezyklat.') + '</section>')
 
 # ---------- machines price vs volume
-write('msup-machines', sec_open('msup-machines', '48px 128px 100px') + head('MACHINES, POWDERS AND MAKERS', 'MACHINE PRICES', 'A litre of laser PBF build volume costs 2 to 200 k$, and China sits at the low end')
+write('msup-machines', sec_open('msup-machines', '48px 128px 100px') + head('MACHINES, POWDERS AND MAKERS', 'MACHINE PRICES', 'A litre of laser PBF volume costs 2 to 200 k$, and Chinese machines undercut at every size')
       + '<div style="display:flex;gap:32px;align-items:flex-start">' + figbox('n01', 1100, 700)
       + '<div style="flex:1;display:flex;flex-direction:column;gap:16px">'
-      + card('Western flagships', 'EOS M 400-4 ≈ 1–1.5 M$, Nikon SLM NXG XII 600 ≈ 1.5–3.5 M$, Velo3D Sapphire XC 1MZ ≈ 2–3.5 M$', TOPS[1])
-      + card('Chinese machines', 'similar volume for half the price or less: Tianhong TH-M800 ≈ 0.8 M$ for 441 L, ZRapid iSLM420D ≈ 0.3 M$ (listings)', TOPS[2])
-      + card('Lasers, not litres, set the rate', '12 to 64 lasers on the large beds: rate scales with the number of lasers (law 5)', TOPS[3])
+      + card('Western machines', 'TruPrint 1000 just under 0.4 M$, EOS M 290 ≈ 0.5 M€; NXG XII 600, AMCM M 8K and Velo3D XC 1MZ in the 2 M$+ class', TOPS[1])
+      + card('Chinese machines: no list prices', 'market tiers: 300–400 mm RMB 0.5–3 M (≈ 70–420 k$); above 400 mm with 4+ lasers > RMB 3 M; metre-scale 1 M$+', TOPS[2])
+      + card('The machine hour', '≈ 50–150 $/h with depreciation; a complete industrial metal set-up (gas, powder handling, post-processing) exceeds 0.5 M€', TOPS[3])
       + '</div></div>'
-      + src('laser-spec-hub (estimated ranges, 2026); 3dtechvalley; 3dnatives; All3DP; directindustry (Tianhong); 05_Market pp. 24–25, 28; metal-am.com. Data: tables/02_machines_metal_makers.csv.') + foot()
-      + notes('Makers rarely publish prices: the ranges come from aggregators, resellers and marketplace listings and are indicative. The 2025 deck’s table (moved to the slides set aside) gave higher figures for SLM 125 and M 290; the SLM 500 envelope is 500 × 280 × 365 mm, not 500³. '
-              'Price per litre falls with size, as for polymer printers (polymer deck, i03): a bigger chamber shares the optics, gas and control; but the laser count, not the litres, sets productivity. '
-              'Binder jetting and bound-metal extrusion (squares) are cheaper machines but need a sintering furnace; Desktop Metal’s Studio System 2 is shown as history: the company was liquidated in 2025. '
-              'Redistribute: space deck (large-format machines for engines: Nikon SLM and ArianeGroup, AMCM M 8K), aviation deck (qualified machine fleets). FR : prix machines, volume de fabrication. DE: Maschinenpreise, Bauraum.') + '</section>')
+      + src('laser-spec-hub; 3dtechvalley; FacFox; EduFacturing; Additive Plus 2026; 3DPTEK/AFS 2026; China AM report 2026 (faxiangongchang); Met3DP; Hellopro; 05_Market pp. 24–28. Data: tables/02_machines_metal_makers.csv.') + foot()
+      + notes('No supplier quotation is in hand: all figures are public list prices, listings or market tiers (2025–26), collected partly by Andrei (18 Nov 2026). Filled markers and solid bars: published model price ranges. Open markers and dashed bars: tier estimates where the model has no published price (AMCM M 8K in the 2 M$+ class with NXG XII 600 and Sapphire XC 1MZ; HBD 1000Pro and Eplus3D EP-M1250 in the Chinese tier above RMB 3 M; BLT-S1500, Farsoon FS1521M, Eplus3D EP-M1250/EP-M2050 in the metre-scale 1 M$+ tier: expect high six to low seven figures). '
+              'Green boxes: Chinese market tiers from a 2026 China AM report (RMB at ≈ 0.14 $): mainstream 300–400 mm production machines (BLT-S300/S400, Farsoon FS300M/FS350M) RMB 0.5–3 M; flagships above 400 mm with 4+ lasers (BLT-S1000, EP-M1250, Farsoon HQ611M) above RMB 3 M. Even Farsoon’s 2026 launches (FS812M-U, FS1311M-U) are “contact the manufacturer”, and distributors list the whole Farsoon range on request. '
+              'Other anchors: benchtop LPBF from 59 k$ (AO Metal A30, Additive Plus 2026); general tiers research/entry 150–400 k$, production 400–900 k$, industrial large format 1 M$+ (3DPTEK/AFS); MakerVerse: SLM/DMLS 115–575 k€, EBM 285–690 k€. Machine-hour rates 50–150 $/h including depreciation (Met3DP 2026), e.g. a 1 M$ system over 10 years; a full industrial metal installation exceeds 500 k€ HT (Hellopro 2026). '
+              'Price per litre falls with size, as for polymer printers: a bigger chamber shares optics, gas and control; but the laser count sets productivity (law 5). The SLM 500 envelope is 500 × 280 × 365 mm, not 500³ as in the 2025 table (moved to the slides set aside). Desktop Metal’s Studio System 2 is shown as history (company liquidated 2025). '
+              'Redistribute: space deck (large formats for engines: Nikon SLM and ArianeGroup, AMCM M 8K), aviation deck (qualified fleets), chapter 05 (machine hour). FR : prix machines, volume de fabrication, taux horaire machine. DE: Maschinenpreise, Bauraum, Maschinenstundensatz.') + '</section>')
 
 # ---------- makers map
 PK = {'laser PBF': '#2a78d6', 'e-beam PBF': '#7b52c7', 'DED, laser': '#eda100', 'DED, wire': '#eb6834',

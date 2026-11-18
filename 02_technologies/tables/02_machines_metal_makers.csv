@@ -1,13 +1,13 @@
 maker,country,region,city,lat,lon,technology,model,build_x_mm,build_y_mm,build_z_mm,round,energy_sources,price_low_usd,price_high_usd,plotted,source,notes
 EOS,Germany,Europe,Krailling,48.10,11.40,LPBF,M 100,100,100,95,yes,1x200 W,200000,280000,yes,laser-spec-hub.vercel.app (estimated ranges 2026),indicative; makers quote on request
-EOS,Germany,Europe,Krailling,48.10,11.40,LPBF,M 290,250,250,325,no,1x400 W,400000,550000,yes,laser-spec-hub.vercel.app; 3dtechvalley.com (450-600k),deck 03_Technologies 2025 said 600k-1M
+EOS,Germany,Europe,Krailling,48.10,11.40,LPBF,M 290,250,250,325,no,1x400 W,400000,600000,yes,laser-spec-hub; 3dtechvalley (450-600k); EduFacturing listing EUR 500k (via Andrei 18 Nov 2026),deck 03_Technologies 2025 said 600k-1M
 EOS,Germany,Europe,Krailling,48.10,11.40,LPBF,M 400-4,400,400,400,no,4x400 W,1000000,1500000,yes,laser-spec-hub.vercel.app; 3dtechvalley.com (0.8-1.2M+),
-AMCM (EOS group),Germany,Europe,Starnberg,47.99,11.34,LPBF,M 8K,800,800,1200,no,8 lasers,,,quote,All3DP 2026 (build volume),Ariane 6 engine parts; price on request
+AMCM (EOS group),Germany,Europe,Starnberg,47.99,11.34,LPBF,M 8K,800,800,1200,no,8 lasers,2000000,3500000,tier,All3DP 2026 (volume); Andrei 18 Nov 2026 ($2M+ class with NXG XII 600 and Sapphire XC 1MZ),Ariane 6 engine parts; price on request
 Nikon SLM Solutions,Germany,Europe,Lübeck,53.87,10.69,LPBF,SLM 125,125,125,125,no,1x400 W,200000,400000,yes,laser-spec-hub.vercel.app,deck 03_Technologies 2025 said 400-500k
 Nikon SLM Solutions,Germany,Europe,Lübeck,53.87,10.69,LPBF,SLM 280 2.0,280,280,365,no,2x700 W,500000,800000,yes,laser-spec-hub.vercel.app; deck 03_Technologies 2025,
 Nikon SLM Solutions,Germany,Europe,Lübeck,53.87,10.69,LPBF,SLM 500,500,280,365,no,4x700 W,900000,1200000,yes,laser-spec-hub.vercel.app (SLM 500 HL),deck table gave 500x500x500 - corrected to maker data
 Nikon SLM Solutions,Germany,Europe,Lübeck,53.87,10.69,LPBF,NXG XII 600,600,600,600,no,12x1000 W,1500000,3500000,yes,laser-spec-hub.vercel.app; metal-am.com (05_Market p28),NXG 600E: 600x600x1500
-TRUMPF,Germany,Europe,Ditzingen,48.83,9.07,LPBF,TruPrint 1000,100,100,100,yes,1x200 W,170000,300000,yes,deck 03_Technologies 2025; laser-spec-hub.vercel.app,
+TRUMPF,Germany,Europe,Ditzingen,48.83,9.07,LPBF,TruPrint 1000,100,100,100,yes,1x200 W,170000,400000,yes,"deck 03_Technologies 2025 (170k); laser-spec-hub; FacFox (""just under 400k$"", via Andrei 18 Nov 2026)",
 TRUMPF,Germany,Europe,Ditzingen,48.83,9.07,LPBF,TruPrint 5000,300,300,400,yes,3x500 W,800000,1200000,yes,laser-spec-hub.vercel.app; 3dnatives (from 250k EUR),
 Colibrium Additive (GE Aerospace),Germany,Europe,Lichtenfels,50.15,11.06,LPBF,M2 Series 5,245,245,350,no,2x400 W,450000,650000,yes,laser-spec-hub.vercel.app,ex Concept Laser; GE Additive renamed Colibrium 2024
 Renishaw,United Kingdom,Europe,Wotton-under-Edge,51.64,-2.35,LPBF,RenAM 500Q,250,250,350,no,4x500 W,500000,700000,yes,laser-spec-hub.vercel.app,
@@ -17,12 +17,13 @@ AddUp (Fives-Michelin),France,Europe,Cébazat,45.83,3.10,LPBF,FormUp 350,350,350
 Velo3D,USA,USA,Fremont CA,37.55,-121.99,LPBF,Sapphire XC 1MZ,600,600,1000,yes,8x1000 W,2000000,3500000,yes,laser-spec-hub.vercel.app; metal-am.com (05_Market p28),rescued 2024-25; Nasdaq relisting 2025
 BLT (Bright Laser Technologies),China,China,Xi'an,34.34,108.94,LPBF,BLT-S600,600,600,600,no,4x500 W,600000,900000,yes,laser-spec-hub.vercel.app,
 BLT (Bright Laser Technologies),China,China,Xi'an,34.34,108.94,LPBF,BLT-S800,800,800,600,no,8x500 W,1500000,2500000,yes,laser-spec-hub.vercel.app,
-BLT (Bright Laser Technologies),China,China,Xi'an,34.34,108.94,LPBF,BLT-S1500,1500,1500,1200,no,26x500 W,,,quote,metal-am.com (05_Market p28),
+BLT (Bright Laser Technologies),China,China,Xi'an,34.34,108.94,LPBF,BLT-S1500,1500,1500,1200,no,26x500 W,1000000,2000000,tier,3DPTEK/AFS 2026 cost guide (meter-scale multi-laser: $1M+); Andrei 18 Nov 2026 (no list price published; expect high six to low seven figures),
 Farsoon Technologies,China,China,Changsha,28.23,112.94,LPBF,FS121M,120,120,100,no,1x500 W,100000,200000,yes,laser-spec-hub.vercel.app,
 Farsoon Technologies,China,China,Changsha,28.23,112.94,LPBF,FS301M,305,305,400,no,1x500 W,280000,380000,yes,laser-spec-hub.vercel.app,
-Farsoon Technologies,China,China,Changsha,28.23,112.94,LPBF,FS1521M,1530,1530,1650,yes,16x500 W,,,quote,metal-am.com (05_Market p28),
-Eplus3D,China,China,Hangzhou,30.27,120.16,LPBF,EP-M2050,2050,2050,1100,no,64x500 W,,,quote,metal-am.com (05_Market p28),largest LPBF bed in 2025
-HBD,China,China,Shanghai,31.23,121.47,LPBF,HBD 1000Pro,660,660,1250,no,8x500 W,,,quote,metal-am.com (05_Market p28),
+Farsoon Technologies,China,China,Changsha,28.23,112.94,LPBF,FS1521M,1530,1530,1650,yes,16x500 W,1000000,2000000,tier,3DPTEK/AFS 2026 cost guide (meter-scale multi-laser: $1M+); Andrei 18 Nov 2026 (no list price published; expect high six to low seven figures); Additive Plus 2026: whole Farsoon range on request,
+Eplus3D,China,China,Hangzhou,30.27,120.16,LPBF,EP-M1250,1258,1258,1350,no,9-16 x 500 W (to check),420000,2000000,tier,"faxiangongchang.com China AM report 2026 (flagship >400 mm, 4+ lasers: > RMB 3 M ~ 420 k$); Andrei 18 Nov 2026; top3dshop (build volume)",tier estimate
+Eplus3D,China,China,Hangzhou,30.27,120.16,LPBF,EP-M2050,2050,2050,1100,no,64x500 W,1000000,2000000,tier,3DPTEK/AFS 2026 cost guide (meter-scale multi-laser: $1M+); Andrei 18 Nov 2026 (no list price published; expect high six to low seven figures),largest LPBF bed in 2025
+HBD,China,China,Shanghai,31.23,121.47,LPBF,HBD 1000Pro,660,660,1250,no,8x500 W,420000,1000000,tier,"faxiangongchang.com China AM report 2026 (flagship >400 mm, 4+ lasers: > RMB 3 M ~ 420 k$); Andrei 18 Nov 2026",
 ZRapid Tech,China,China,Suzhou,31.30,120.58,LPBF,iSLM420D,420,420,400,no,2x500 W,300000,300000,yes,05_Market p25 (Alibaba listing 0.3 M$),made-in-china listing shows 69.8k$: listing prices are not quotes
 Tianhong Laser,China,China,Suzhou,31.32,120.62,LPBF,TH-M800 (LM-M800),807,607,900,no,multi-laser,800000,800000,yes,05_Market p24 (Alibaba 0.8 M$); directindustry.com (807x607x900),
 Arcam (Colibrium Additive),Sweden,Europe,Mölndal,57.66,12.01,EBM,Spectra H,250,250,430,yes,electron beam 6 kW,,,quote,maker site (from memory - to check),electron-beam PBF; hot bed (~1000 C) -> low residual stress

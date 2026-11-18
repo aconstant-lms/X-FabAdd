@@ -68,7 +68,7 @@ def vol_l(r):
 
 
 fig = plt.figure(figsize=(13, 8.6))
-ax = fig.add_axes([0.085, 0.08, 0.62, 0.62]); axq = fig.add_axes([0.085, 0.72, 0.62, 0.26], sharex=ax)
+ax = fig.add_axes([0.085, 0.08, 0.62, 0.74]); axq = fig.add_axes([0.085, 0.85, 0.62, 0.12], sharex=ax)
 ax.set_xscale("log"); ax.set_yscale("log"); XL, YL = (0.25, 8000), (3e4, 6e6)
 ax.set_xlim(*XL); ax.set_ylim(*YL); ax.grid(True, which="major", color=GRID, lw=0.8); ax.set_axisbelow(True)
 for s in ("top", "right"):
@@ -93,10 +93,10 @@ OFF = {"EOS M 100": (-9, 8, "right"), "TRUMPF TruPrint 1000": (9, -14), "EOS M 2
        "Nikon SLM Solutions SLM 280 2.0": (9, 4), "Nikon SLM Solutions SLM 500": (9, 0),
        "TRUMPF TruPrint 5000": (-9, 2, "right"), "EOS M 400-4": (9, 6), "ZRapid Tech iSLM420D": (9, -8),
        "Nikon SLM Solutions NXG XII 600": (-9, 8, "right"), "BLT (Bright Laser Technologies) BLT-S600": (0, -20, "center"),
-       "BLT (Bright Laser Technologies) BLT-S800": (9, 2), "Velo3D Sapphire XC 1MZ": (9, 10),
-       "Tianhong Laser TH-M800 (LM-M800)": (9, -6), "Markforged (Nano Dimension) PX100": (-9, 0, "right"),
+       "BLT (Bright Laser Technologies) BLT-S800": (9, 2), "Velo3D Sapphire XC 1MZ": (0, 16, "center"),
+       "Tianhong Laser TH-M800 (LM-M800)": (-9, 4, "right"), "Markforged (Nano Dimension) PX100": (-9, 0, "right"),
        "Desktop Metal Studio System 2": (9, 0)}
-SHORT = {"Colibrium Additive (GE Aerospace)": "Colibrium", "Nikon SLM Solutions": "Nikon SLM", "BLT (Bright Laser Technologies)": "BLT",
+SHORT = {"Colibrium Additive (GE Aerospace)": "Colibrium", "AMCM (EOS group)": "AMCM", "Nikon SLM Solutions": "Nikon SLM", "BLT (Bright Laser Technologies)": "BLT",
          "Farsoon Technologies": "Farsoon", "Markforged (Nano Dimension)": "Markforged", "Tianhong Laser": "Tianhong"}
 LBL = {"SLM 280 2.0": "SLM 280", "RenAM 500Q": "500Q", "TH-M800 (LM-M800)": "TH-M800", "Sapphire XC 1MZ": "Sapphire XC 1MZ"}
 for r in M:
@@ -113,6 +113,29 @@ for r in M:
     ax.annotate(lab, (v, np.sqrt(lo * hi)),
                 xytext=o[:2], textcoords="offset points", ha=ha, va="center", fontsize=11, color=INK,
                 path_effects=[pe.withStroke(linewidth=3, foreground="white")])
+# tier estimates (no model price published): open markers, dashed bars; Chinese metre-scale beds as one box
+from matplotlib.patches import Rectangle as _R
+big = [r for r in M if r["plotted"] == "tier" and r["region"] == "China" and vol_l(r) > 1000]
+if big:
+    v0, v1 = min(vol_l(r) for r in big) / 1.15, max(vol_l(r) for r in big) * 1.15
+    ax.add_patch(_R((v0, 1e6), v1 - v0, 1e6, fc=REGION["China"], alpha=0.12, ec=REGION["China"], ls=(0, (4, 3)), lw=1.4, zorder=1))
+    for r in big:
+        ax.scatter([vol_l(r)], [1.41e6], s=60, facecolor="white", edgecolor=REGION["China"], lw=1.8, zorder=4)
+    ax.text(3600, 9.2e5, "China metre-scale:\nBLT-S1500, FS1521M,\nEP-M1250, EP-M2050\n$1M+ tier, no list price", ha="center", va="top",
+            fontsize=10.5, color=INK, path_effects=[pe.withStroke(linewidth=3, foreground="white")])
+# Chinese 300-400 mm production tier, RMB 0.5-3 M
+ax.add_patch(_R((30, 7e4), 45, 3.5e5, fc=REGION["China"], alpha=0.08, ec="none", zorder=0))
+ax.text(52, 7.6e4, "China\n300–400 mm\nRMB 0.5–3 M", ha="center", va="bottom", fontsize=10, color=REGION["China"])
+TOFF = {"M 8K": (9, 0), "HBD 1000Pro": (12, -22)}
+for r in M:
+    if r["plotted"] != "tier" or r in big:
+        continue
+    v, lo, hi = vol_l(r), float(r["price_low_usd"]), float(r["price_high_usd"]); c = REGION[r["region"]]
+    ax.plot([v, v], [lo, hi], color=c, lw=2, ls=(0, (3, 2)), alpha=0.8)
+    ax.scatter([v], [np.sqrt(lo * hi)], s=60, facecolor="white", edgecolor=c, lw=1.8, zorder=4)
+    o = TOFF.get(r["model"], (9, 0)); ha = o[2] if len(o) > 2 else "left"
+    ax.annotate(f'{SHORT.get(r["maker"], r["maker"].split(" (")[0])} {r["model"].replace("HBD ", "")}', (v, np.sqrt(lo * hi)), xytext=o[:2],
+                textcoords="offset points", ha=ha, va="center", fontsize=11, color=INK, path_effects=[pe.withStroke(linewidth=3, foreground="white")])
 # quotes strip
 axq.set_yscale("linear"); axq.set_ylim(0, 1); axq.axis("off")
 axq.text(XL[0] * 1.05, 0.9, "Price on request (build volume only)", fontsize=12, color=GREY, va="top")
@@ -120,21 +143,20 @@ q = sorted([r for r in M if r["plotted"] == "quote" and r["technology"] == "LPBF
 for j, r in enumerate(q):
     QROW = {"FormUp 350": (0, 0), "M 8K": (0, 0), "DMP Factory 500": (1, 0), "FS1521M": (1, 1), "HBD 1000Pro": (2, 0),
             "EP-M2050": (2, 1), "BLT-S1500": (3, 1)}
-    v = vol_l(r); rgt = v > 1500; y = 0.06 + 0.125 * j
+    v = vol_l(r); rgt = v > 1500; y = 0.15 + 0.3 * j
     axq.scatter([v], [y], s=60, color=REGION[r["region"]], zorder=4)
     axq.annotate(f'{SHORT.get(r["maker"], r["maker"].split(" (")[0]).split(" ")[0]} {r["model"].replace("HBD ", "")}', (v, y), xytext=(-6 if rgt else 6, 0), textcoords="offset points",
                  fontsize=10.5, va="center", ha="right" if rgt else "left", color=INK)
 # legend panel
-lg = fig.add_axes([0.74, 0.08, 0.25, 0.62]); lg.axis("off"); lg.set_xlim(0, 1); lg.set_ylim(0, 1); lg.set_autoscale_on(False)
+lg = fig.add_axes([0.74, 0.08, 0.25, 0.74]); lg.axis("off"); lg.set_xlim(0, 1); lg.set_ylim(0, 1); lg.set_autoscale_on(False)
 yy = 0.97
 lg.text(0, yy, "Maker's home region", fontsize=14, fontweight="bold", color=INK, va="top"); yy -= 0.06
 for t, c in [("Europe", REGION["Europe"]), ("USA", REGION["USA"]), ("China", REGION["China"])]:
     lg.scatter([0.03], [yy - 0.012], s=80, color=c); lg.text(0.08, yy, t, fontsize=13, va="top", color=INK); yy -= 0.05
 yy -= 0.02
 lg.text(0, yy, "● laser PBF   ■ binder jetting / extrusion", fontsize=12, va="top", color=GREY); yy -= 0.07
-for t in ["Bar: published price range;", "marker: geometric mean.", "", "Ranges are indicative estimates", "(aggregators, resellers, listings):",
-          "makers quote on request.", "", "Chinese large formats (BLT,", "Farsoon, Eplus3D, HBD) reach", "1–4.6 m³ at prices not published.",
-          "", "Dashed lines: constant price", "per litre of build volume."]:
+for t in ["Bar: published price range;", "marker: geometric mean.", "Open marker, dashed: tier estimate", "(no model price published).", "", "Ranges are indicative estimates", "(aggregators, resellers, listings):",
+          "makers quote on request.", "", "Dashed lines: constant price", "per litre of build volume."]:
     lg.text(0, yy, t, fontsize=12, va="top", color=GREY); yy -= 0.052
 save(fig, "02_n01_metal_price_vs_volume")
 
