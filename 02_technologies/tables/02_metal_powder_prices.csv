@@ -1,10 +1,11 @@
 alloy,family,powder_low_usd_kg,powder_high_usd_kg,powder_typical_usd_kg,bulk_usd_kg,bulk_form,main_route,source,notes
-316L,stainless steel,50,135,80,4,cold-rolled sheet / bar,gas atomisation (N2 or Ar),makerverse.com (EUR 60-115/kg); 04_Metal p9 (msesupplies small lot 136 $/kg),bulk = LME-type stainless price order of magnitude
+316L,stainless steel,30,150,90,4,cold-rolled sheet / bar,gas atomisation (N2 or Ar),"makerverse.com (from EUR 60/kg); met3dp.com (30-150 $/kg, gas-atomised AM grade); mouldnova.com (80-120 $/kg); 04_Metal p9 (136 $/kg small lot)","EUR converted at 1 EUR = 1.1 $; bulk = order of magnitude"
 17-4PH,stainless steel,50,100,80,5,bar,gas atomisation,04_Metal p9 (80 $/kg); makerverse.com (EUR 50-100/kg),
 Maraging / MS1 (1.2709),tool steel,90,160,120,12,bar,gas atomisation,met3dp.com (vendor 2025),
-AlSi10Mg,aluminium,55,180,90,3,casting ingot,gas atomisation (Ar/N2),met3dp.com (55-120 $/kg); Alibaba seller blog 2026 (EUR 65-95 standard); 04_Metal p9 (176 $/kg small lot),
-CuCrZr,copper,100,300,150,10,bar,gas atomisation,makerverse tier EUR EUR EUR EUR (estimate),to verify with a supplier quote
-IN718,nickel superalloy,60,500,180,30,bar,VIGA / EIGA,LPW case study (60-70 $/kg bulk 2019); makerverse.com (EUR 300-500+ small lots); 04_Metal p9 (186 $/kg),bulk-lot vs small-lot spread is x5
+AlSi10Mg,aluminium,38,180,70,3,casting ingot,gas atomisation (Ar/N2),"additiveplus.com (from 38 $/kg, 10 kg packs); Andrei 18 Nov 2026 (EUR 35-90/kg); 04_Metal p9 (176 $/kg small lot)",
+CuCrZr,copper,200,300,250,10,bar,gas atomisation,mouldnova.com (0.20-0.30 $/g),
+Cu (pure),copper,300,1100,600,10,cathode (LME),gas atomisation,"makerverse.com (highest price class, with Ti64); Andrei 18 Nov 2026 (small-lot certified pure Cu often > EUR 500-1000/kg)",green/blue-laser LPBF; GRCop-42 similar class
+IN718,nickel superalloy,60,550,250,30,bar,VIGA / EIGA,"LPW case study (60-70 $/kg bulk 2019); alloy-materials.com (aerospace AM powder 250+ $/kg); mouldnova.com (300-500 $/kg); Andrei 18 Nov 2026 (EUR 100-500/kg by certification)",bulk-contract vs certified small-lot spread x5-10
 CoCrMo,cobalt alloy,270,620,350,40,bar,VIGA,met3dp.com (270-620 $/kg); 04_Metal p9 (300-600 $/kg),
-Ti-6Al-4V,titanium,140,420,250,8,ingot (TC4),plasma atomisation / EIGA / PREP,LP Information (2024 average 142.5 $/kg); MarketPublishers (2025 average 210 $/kg); Alibaba blog (EUR 300-420); 04_Metal p9 (380 $/kg); carboncredits.com (TC4 ingot ~7.5 $/kg),powder premium x20-50 over ingot
+Ti-6Al-4V,titanium,140,1270,330,8,ingot (TC4),plasma atomisation / EIGA / PREP,"additiveplus.com (CNPC Grade 5, 15-53 um, 10 kg: 240.50 $/kg); mouldnova.com (250-400 $/kg); makerverse.com (over EUR 1150/kg, certified Grade 23 ELI small lots); LP Information / MarketPublishers (market averages 142-210 $/kg 2024-25); carboncredits.com (TC4 ingot ~7.5 $/kg)","standard Grade 5 in 10-100 kg lots: EUR 250-450/kg (Andrei 18 Nov 2026)"
 NiTi (Nitinol),shape-memory,500,900,740,100,wire,EIGA / plasma,04_Metal p9 (739 $/kg),single source - to verify

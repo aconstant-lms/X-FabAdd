@@ -64,16 +64,16 @@ maps_slide('msup-powder-makers', 'POWDER MAKERS', 'Powder makers: steel and nick
            'FR : producteurs de poudre, recyclage, rachats. DE: Pulverhersteller, Recycling, Übernahmen.')
 
 # ---------- powder prices
-write('msup-powder-prices', sec_open('msup-powder-prices', '48px 128px 100px') + head('MACHINES, POWDERS AND MAKERS', 'POWDER PRICES', 'AM powder costs 6 to 30 times the metal it is made of')
+write('msup-powder-prices', sec_open('msup-powder-prices', '48px 128px 100px') + head('MACHINES, POWDERS AND MAKERS', 'POWDER PRICES', 'AM powder costs 7 to 60 times the metal it is made of: lot size and certification set the spread')
       + '<div style="display:flex;gap:32px;align-items:flex-start">' + figbox('n03', 1150, 640)
       + '<div style="flex:1;display:flex;flex-direction:column;gap:16px">'
-      + card('Ti-6Al-4V', 'ingot ≈ 7.5 $/kg, AM powder ≈ 140–420 $/kg: the market average fell to ≈ 140–210 $/kg in 2024–25 as Chinese capacity grew', TOPS[3])
-      + card('Lot size counts', 'IN718 at 60–70 $/kg for an aerospace contract, 300–500 $/kg in 10 kg bottles: a factor 5', TOPS[1])
+      + card('Ti-6Al-4V', 'ingot ≈ 7.5 $/kg; Grade 5 powder ≈ 240–450 $/kg in 10–100 kg lots; certified Grade 23 ELI in small lots above 1 000 €/kg', TOPS[3])
+      + card('Four drivers of the spread', 'lot size, certification (aerospace, medical), particle cut (15–45 vs 45–106 µm), origin (EU/US vs Chinese gas-atomised)', TOPS[1])
       + card('Ask', 'how many kg per year, which particle cut, how many reuse cycles are allowed?', TOPS[2])
       + '</div></div>'
-      + src('makerverse.com (2025); met3dp.com; LPW case study (IN718); LP Information and MarketPublishers (Ti powder averages 2024–25); carboncredits.com (Ti ingot); 04_Metal p. 9. Data: tables/02_metal_powder_prices.csv.') + foot()
+      + src('makerverse.com; met3dp.com; mouldnova.com; additiveplus.com; alloy-materials.com; LPW case study; LP Information, MarketPublishers; 04_Metal p. 9; list prices 2025–26 (1 € ≈ 1.1 $). Data: tables/02_metal_powder_prices.csv.') + foot()
       + notes('Bars: published ranges, mixing small-lot retail (msesupplies, 04_Metal p. 9) and bulk contract prices; dot: typical value used in the course; diamond: bulk metal price, an order of magnitude only (to check per alloy, LME and producer price lists). '
-              'Two numbers on Andrei’s p. 9 cited Gemini/ChatGPT; they are replaced here by web sources, still to confirm with a supplier quote. Powder cost per part also depends on reuse: unmolten powder is sieved and blended back (04_Metal p. 10), within the limits on oxygen pick-up set by the specification. '
+              'Public list prices and market ranges 2025–26 collected by Andrei (18 Nov 2026): 316L ≈ 60–130 €/kg (MakerVerse from 60 €/kg, MET3DP 30–150 $/kg, MouldNova 80–120 $/kg); AlSi10Mg ≈ 35–90 €/kg (Additive Plus from 38 $/kg in 10 kg packs); Ti-6Al-4V Grade 5 ≈ 250–450 €/kg in 10–100 kg lots (Additive Plus, CNPC Grade 5 15–53 µm, 240.50 $/kg), certified Grade 23 ELI small lots above 1 150 €/kg (MakerVerse); IN718 ≈ 100–500 €/kg by certification (aerospace AM powder 250 $/kg and more, alloy-materials.com; MouldNova 300–500 $/kg); CuCrZr ≈ 200–300 $/kg (MouldNova); pure copper in the top class with Ti64, small certified lots often 500–1 000 €/kg and more. The 60 → 1 000+ €/kg band of the course is consistent with the public market. Bulk contract prices are lower (IN718 60–70 $/kg, LPW 2019). Powder cost per part also depends on reuse: unmolten powder is sieved and blended back (04_Metal p. 10), within the limits on oxygen pick-up set by the specification. '
               'Market sizes (to verify): atomised titanium AM powder ≈ 11 kt in 2025 at ≈ 210 $/kg (MarketPublishers), titanium alloy AM powders ≈ 2.5 kt in 2024 at ≈ 140 $/kg (LP Information): the two reports disagree on volume, so quote ranges, not a figure. '
               'Link to chapter 05 (cost per part) and to the exercise: the powder is rarely the largest cost item for a PBF part; machine hours are. FR : prix des poudres, lot, réutilisation. DE: Pulverpreise, Losgröße, Wiederverwendung.') + '</section>')
 

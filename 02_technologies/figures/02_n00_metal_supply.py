@@ -240,7 +240,7 @@ PP.sort(key=lambda r: float(r["powder_typical_usd_kg"]))
 FAM = {"stainless steel": "#566170", "tool steel": "#566170", "aluminium": "#2a78d6", "copper": "#c4561a",
        "nickel superalloy": "#1f7a5c", "cobalt alloy": "#1f7a5c", "titanium": "#7b52c7", "shape-memory": "#7b52c7"}
 fig, ax = plt.subplots(figsize=(13, 7.2)); fig.subplots_adjust(left=0.2, right=0.97, top=0.9, bottom=0.12)
-ax.set_xscale("log"); ax.set_xlim(1.5, 1500)
+ax.set_xscale("log"); ax.set_xlim(1.5, 2400)
 for i, r in enumerate(PP):
     lo, hi, ty, b = (float(r[k]) for k in ("powder_low_usd_kg", "powder_high_usd_kg", "powder_typical_usd_kg", "bulk_usd_kg"))
     c = FAM[r["family"]]
