@@ -40,7 +40,7 @@ verbatim in `slides/claude_deck/raw/`). Slide use of every figure: `figures/exte
 
 The polymer deck holds the exercise answers (part 9 and some notes): do not share it with students before the session.
 
-- **`slides/02_technologies.pptx`** (first version, 52 slides) — to be regenerated from the claude.ai structure once the story is reworked.
+- **PDF and PowerPoint copies** of the three decks: `slides/02_technology_polymer|metal|unused.pdf/.pptx` (see `slides/README.md`); the first PowerPoint version (52 slides, 9 Nov) is `slides/02_technologies_old_2026-11-09.pptx`.
 
 ### First PowerPoint version
 
