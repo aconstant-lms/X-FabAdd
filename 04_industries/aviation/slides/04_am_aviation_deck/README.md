@@ -6,4 +6,4 @@ Source of the 53-slide claude.ai deck (Claude Slides format, 1920×1080), copied
 - `deck.json`: slide order, parts, fonts.
 - `slides/<id>.html`: one `<section>` per slide; speaker notes in `<aside>`.
 - `assets.json`: maps `/_blob/<id>` picture references to files in `04_industries/aviation/figures/` (empty: the deck still shows picture boxes).
-- `export_deck.py`: renders `../04_am_aviation.pdf` and `../04_am_aviation.pptx`.
+- `export_deck.py`: renders `../04_am_aviation_web.pdf` (picture render, PDF only).

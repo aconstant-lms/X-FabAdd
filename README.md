@@ -24,7 +24,7 @@ A chapter made of several independent decks gets **one subfolder per deck**, eac
 
 ```
 04_industries/
-  aviation/   slides/04_am_aviation.pdf/.pptx (+ _deck/ source, _editable.pptx)  figures/04_av_*   tables/04_av_*
+  aviation/   slides/04_am_aviation.pptx (+ _web.pdf, _deck/ source)  figures/04_av_*   tables/04_av_*
   repair/     slides/04_am_repair_figures_test.pptx      figures/          tables/
   risk/       slides/04_risk_human_activities.pptx (+ _deck/ source, PDF)  figures/   tables/
   space/      slides/04_am_space.pptx                    figures/04_sp_*   tables/
