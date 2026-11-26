@@ -1,0 +1,29 @@
+slide,picture,source page,credit,license,notes
+cover,LEAP assembly line Villaroche,01_introduction.pdf (course),Safran,to check,online deck only
+timeline,Lima hip cup banner,https://prnewswire.com/news-releases/lima-corporate-celebrates-10-years-of-3d-printing-trabecular-titanium-616123024.html,Lima Corporate / PR Newswire,to check,online deck only
+timeline,Trent XWB-97 on A380 testbed,https://3dprintingindustry.com/?p=61608,Rolls-Royce via 3D Printing Industry,to check,online deck only
+timeline,Siemens printed gas-turbine blade,https://www.digitalengineering247.com/article/siemens-3d-prints-power-turbine-blades/additive-manufacturing,Siemens,to check,online deck only
+timeline,Bugatti printed brake caliper,https://newsroom.bugatti.com/press-releases/world-premiere-brake-caliper-from-3-d-printer,Bugatti,to check (press image),online deck only
+timeline,FRCE metal printer operator,https://www.dvidshub.net/image/9643113/frce-delivers-first-metal-3d-printed-parts-fleet,"US Navy photo, Heather Wilburn",US government work (DVIDS terms) - to check,online deck only
+timeline / why-am / applications / ex-t25 / ge-timeline / catalyst-1,"LEAP nozzle, T25, Catalyst, GE9X, T901, timeline parts",01_introduction.pdf and GE capability slides (course),GE Aerospace,to check,online deck only
+why-am,GE Catalyst cutaway,https://avweb.com/ownership/catalyst-turboprop-certified/,GE Aerospace via AVweb,to check,online deck only
+applications / ex-a350,Airbus team with w-DED titanium part,https://3dadept.com/airbus-relies-on-w-ded-to-produce-structural-aircraft-parts/,Airbus,to check (press image),online deck only
+applications / ex-liebherr,A380 spoiler valve block,https://www.liebherr.com/en-ae/n/world-premier-first-ever-3d-printed-primary-flight-control-component-from-liebherr-aerospace-flown-on-an-airbus-aircraft-24183-4788229,Liebherr-Aerospace,to check (press image),online deck only
+applications,FRCSW cold-sprayed components,https://www.dvidshub.net/image/8877474,"US Navy photo, Janina Lamoglia (FRCSW)",US government work - to check,already in repair/figures
+ex-ge9x,GE9X TiAl LPT blades,user upload (Avio Aero),Avio Aero,to check,"printed in Cameri, finished in Pomigliano"
+ex-uec,VK-1600V printed first-support housing,https://www1.ru/en/news/2024/11/12/dlia-rossiiskogo-aviadvigatelia-vk-1600v-sozdali-s-pomoshhiu-3d-pecati-korpus-pervoi-opory.html,UEC via www1.ru,to check,online deck only
+ex-787,Norsk Titanium RPD machine and part,https://3dprint.com/277658/norsk-titanium-delivers-3d-printed-titanium-components-for-boeing-787-dreamliner/,Norsk Titanium,to check (press image),online deck only
+ex-c919,C919 first flight,https://3dprintingindustry.com/news/chinese-c919-commercial-airplane-takes-maiden-flight-3d-printed-components-114149/,COMAC,to check,online deck only
+ex-blt,BLT-Airbus signing Zhuhai 2024,https://www.industrialautomationindia.in/articles/blt-airbus-a330-production-certification-metal-additive-manufacturing,BLT,to check,O-ring picture on metal-am.com not reachable
+ex-ariane,ArianeGroup launch illustration,https://eos.info/industries/customer-success-stories/aerospace-additive-manufacturing-for-ariane-injection-nozzles,EOS / ArianeGroup,to check,"illustration, not the injector"
+ex-safran,RenAM 500Q at Safran campus,https://manufactur3dmag.com/safran-additive-manufacturing-campus/,Safran,to check (press image),online deck only
+ex-frce,AH-1Z pylon fitting (VIRIN 260304-N-KN454-1001),https://www.navy.mil/Resources/Photo-Gallery/igphoto/2003920447/,"US Navy photo, Samantha Morse",US government work - to check,user upload
+polymers,EOS P3 NEXT (successor of P 396),https://www.eos.info/en-us/polymer-solutions/polymer-printers/eos-p-396,EOS,to check (product image),online deck only
+polymers,Prodways printer range,https://3dprint.com/172612/safran-prodways-partnership/,Prodways,to check,online deck only
+ga-divergent,GA-ASI / Divergent drone structure collage,https://3dprint.com/298800/divergent-reveals-automated-assembly-of-3d-printed-drone-for-general-atomics/,General Atomics / Divergent,to check,online deck only
+daps,Divergent factory printer,https://3dprint.com/335497/divergent-is-building-a-factory-around-3d-printing/,Divergent,to check,online deck only
+nozzle-1,Printed LEAP fuel nozzle,https://www.ge.com/news/reports/the-faa-cleared-the-first-3d-printed-part-to-fly-2,CFM International (GE Reports),to check,user upload
+nozzle-2,GE Aviation Auburn plant sign,https://alreporter.com/2021/08/31/ge-aviation-in-auburn-ships-100000th-fuel-nozzle/,Alabama Reporter,to check,online deck only
+catalyst-1,Catalyst on test stand,https://3dprint.com/266774/ge-aviation-plants-in-italy-and-the-us-3d-printing-parts-for-ge-catalyst-engine/,GE Aviation,to check,online deck only
+catalyst-2,Beechcraft Denali first flight,https://flyingmag.com/denali-takes-first-flight-behind-catalyst-engine,Textron Aviation,to check (press image),online deck only
+metal-processes,"LPBF, powder DED, wire DED, cold spray animations; rate vs resolution chart",02_technologies/figures,Andrei Constantinescu,own drawing,reused from chapter 02
