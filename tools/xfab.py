@@ -17,6 +17,8 @@ Commands (run from anywhere; paths are resolved against the repo root):
   footer     DECK                same as restyle (kept for old instructions)
   template                       rebuild templates/exed_am_template.pptx
   new        DECK --title T      start a deck from the template
+  link       DECK... | --all     set picture alt texts to repo paths by matching picture content
+                                 (for decks exported from claude.ai); unmatched pictures are listed
   status                         missing / unused figures across all decks
 
 Every command (except --check) rewrites the figures/index.csv files.
@@ -793,8 +795,11 @@ def restyle_deck(deck: Path, chapter_label_text: str | None = None, cover: str =
     for i, s in enumerate(prs.slides, 1):
         if s.slide_layout.name in dark_layouts:
             lit += _lighten_on_dark(s, style["colors"]["text_on_dark"])
+        prefix = style["footer"]["text"].split("{chapter}")[0].strip()
         for sh in list(s.shapes):
-            if sh.name == FOOTER_NAME:
+            is_copy = (sh.name != FOOTER_NAME and getattr(sh, "has_text_frame", False) and sh.has_text_frame
+                       and sh.text_frame.text.strip().startswith(prefix))
+            if sh.name == FOOTER_NAME or is_copy:
                 sh._element.getparent().remove(sh._element)
                 removed += 1
         fonts += _set_run_fonts(s, style)
@@ -865,6 +870,76 @@ def cmd_new(a):
     print(restyle_deck(deck, a.chapter))
 
 
+def _ahash(data: bytes, n: int = 16):
+    """Average hash of an image (flattened on white), for matching re-encoded pictures."""
+    from PIL import Image
+    try:
+        im = Image.open(io.BytesIO(data))
+        if im.mode in ("RGBA", "LA", "P"):
+            im = im.convert("RGBA")
+            bg = Image.new("RGBA", im.size, (255, 255, 255, 255))
+            im = Image.alpha_composite(bg, im)
+        g = im.convert("L").resize((n, n))
+        px = list(g.tobytes())
+        m = sum(px) / len(px)
+        return tuple(1 if v > m else 0 for v in px), im.size[0] / max(1, im.size[1])
+    except Exception:
+        return None
+
+
+def cmd_link(a):
+    """Write the repo path into the alt text of pictures that lack it, by matching the picture to a
+    figure file: exact bytes first, then a visual match (average hash, same aspect ratio).
+    Unmatched pictures are only listed: nothing is copied into the repository."""
+    decks = all_decks() if a.all else [Path(d).resolve() for d in a.decks]
+    figs = []
+    for g in figure_groups():
+        for f in sorted((REPO / g / "figures").iterdir()):
+            if f.suffix.lower() in (".png", ".jpg", ".jpeg", ".gif", ".webp", ".bmp", ".tif", ".tiff"):
+                figs.append(f)
+    by_sha = {sha1(f.read_bytes()): f for f in figs}
+    by_hash = [(f, _ahash(f.read_bytes())) for f in figs]
+    by_hash = [(f, h) for f, h in by_hash if h]
+    for deck in decks:
+        prs = Presentation(deck)
+        linked, fixed, unmatched = 0, 0, []
+        for i, s in enumerate(prs.slides, 1):
+            for pic in iter_pictures(s.shapes):
+                alt = get_alt(pic)
+                if FIG_RE.match(alt) and (REPO / alt).exists() and not a.force:
+                    continue
+                try:
+                    blob = pic.image.blob
+                except Exception:
+                    continue
+                hit = by_sha.get(sha1(blob))
+                how = "same file"
+                if hit is None:
+                    h = _ahash(blob)
+                    if h:
+                        best = min(((sum(x != y for x, y in zip(h[0], fh[0])), f) for f, fh in by_hash
+                                    if abs(fh[1] - h[1]) / max(h[1], 1e-6) < 0.03), default=None, key=lambda t: t[0])
+                        if best and best[0] <= a.tolerance:
+                            hit, how = best[1], f"visual match ({best[0]} bits)"
+                if hit is None:
+                    unmatched.append(f"slide {i}: {alt[:60] or pic.name}")
+                    continue
+                new = rel(hit)
+                if alt != new:
+                    if not a.check:
+                        set_alt(pic, new)
+                    fixed += 1
+                    print(f"   slide {i}: {new}  ({how}; was: {alt[:50] or '-'})")
+                linked += 1
+        if fixed and not a.check:
+            prs.save(deck)
+        print(f"{deck.name}: {fixed} alt text(s) {'to set' if a.check else 'set'}, {len(unmatched)} picture(s) not in the repository")
+        for u in unmatched:
+            print(f"   ? {u}")
+    if not a.check:
+        refresh_indexes()
+
+
 def cmd_status(a):
     use = scan_usage()
     files = figure_files()
@@ -928,6 +1003,14 @@ def main(argv=None):
     p.add_argument("--title", required=True)
     p.add_argument("--chapter", help="footer label (default: from the folder)")
     p.set_defaults(fn=cmd_new)
+
+    p = sub.add_parser("link", help="set picture alt texts to repo paths by matching picture content")
+    p.add_argument("decks", nargs="*")
+    p.add_argument("--all", action="store_true")
+    p.add_argument("--check", action="store_true", help="report only")
+    p.add_argument("--force", action="store_true", help="re-check pictures that already have a repo path")
+    p.add_argument("--tolerance", type=int, default=12, help="max differing bits of the 256-bit visual hash")
+    p.set_defaults(fn=cmd_link)
 
     p = sub.add_parser("status", help="missing and unused figures")
     p.set_defaults(fn=cmd_status)

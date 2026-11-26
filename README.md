@@ -74,6 +74,7 @@ pip install -r tools/requirements.txt
 | Start a new deck in the course style | `python tools/xfab.py new 05_economics/slides/05_economics.pptx --title "…"` |
 | Apply the course style (fonts, colours, footer) to every deck | `python tools/xfab.py restyle --all` |
 | Rebuild the template after changing the style | `python tools/xfab.py template` |
+| Link the pictures of a deck exported from claude.ai to their files (alt text = repo path; exact or visual match; unmatched pictures are only listed) | `python tools/xfab.py link DECK` (`--check` to report only) |
 | List missing and unused figures across all decks | `python tools/xfab.py status` |
 | Build a catalogue of every figure (picture, full path, caption, decks and slides using it, source, credit, licence) | `python tools/catalogue.py` → `figures_catalogue.pptx` (not committed) |
 | Rebuild the TikZ schematics (`figures/*.tex` → `.pdf` + `.png`) | `python tools/build_figures.py` |
