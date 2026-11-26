@@ -1,0 +1,118 @@
+{
+ "v": 4,
+ "createdOnFiles": {
+  "v": 1,
+  "at": "2026-11-07T00:30:00Z"
+ },
+ "lists": "css",
+ "title": "AM in Aviation — Applications",
+ "order": [
+  "cover",
+  "part-1",
+  "timeline",
+  "why-am",
+  "weight-value",
+  "part-2",
+  "timeline-aviation",
+  "applications",
+  "part-3",
+  "ex-t25",
+  "ex-ge9x",
+  "ex-uec",
+  "ex-liebherr",
+  "ex-a350",
+  "ex-787",
+  "ex-c919",
+  "ex-blt",
+  "ex-cabin",
+  "ex-etihad",
+  "ex-ariane",
+  "part-4",
+  "map-machines",
+  "map-parts",
+  "ex-safran",
+  "ex-frce",
+  "part-5",
+  "metals",
+  "machines",
+  "polymers",
+  "part-6",
+  "ge-invest",
+  "ge-sites",
+  "ge-timeline",
+  "nozzle-1",
+  "nozzle-2",
+  "catalyst-1",
+  "catalyst-2",
+  "ge-chain",
+  "part-7",
+  "ga-divergent",
+  "daps",
+  "supplier-chain",
+  "supplier-models",
+  "part-8",
+  "state-2026",
+  "part-9",
+  "references-1",
+  "references-2",
+  "references-3",
+  "references-4",
+  "references-5",
+  "references-6",
+  "references-7"
+ ],
+ "sections": {
+  "s0": {
+   "description": "Cover",
+   "start": "cover"
+  },
+  "s1": {
+   "description": "Part 1: Introduction",
+   "start": "part-1"
+  },
+  "s2": {
+   "description": "Part 2: Aviation milestones and applications",
+   "start": "part-2"
+  },
+  "s3": {
+   "description": "Part 3: Application examples",
+   "start": "part-3"
+  },
+  "s4": {
+   "description": "Part 4: Where aviation prints",
+   "start": "part-4"
+  },
+  "s5": {
+   "description": "Part 5: Technologies",
+   "start": "part-5"
+  },
+  "s6": {
+   "description": "Part 6: The GE success story",
+   "start": "part-6"
+  },
+  "s7": {
+   "description": "Part 7: Supplier models",
+   "start": "part-7"
+  },
+  "s8": {
+   "description": "Part 8: State of play 2026",
+   "start": "part-8"
+  },
+  "s9": {
+   "description": "Part 9: References",
+   "start": "part-9"
+  }
+ },
+ "cover": "cover",
+ "faces": {
+  "space-grotesk": {
+   "family": "Space Grotesk",
+   "href": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400..700&display=swap"
+  },
+  "inter": {
+   "family": "Inter",
+   "href": "https://fonts.googleapis.com/css2?family=Inter:wght@400..700&display=swap"
+  }
+ },
+ "designSystems": []
+}
