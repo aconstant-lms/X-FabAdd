@@ -5,6 +5,7 @@ Slides, figures and tables, organised by chapter.
 
 | Chapter | Folder |
 |---|---|
+| 0. Organisation (programmes, film lists, data sources; no slides) | `00_organisation/` |
 | 1. Introduction | `01_introduction/` |
 | 2. Technologies | `02_technologies/` |
 | 3. Materials in design | `03_materials_in_design/` |

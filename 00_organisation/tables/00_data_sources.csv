@@ -1,0 +1,19 @@
+category,source,key_figures,access,url,notes
+market,Wohlers Report 2026 (Wohlers Associates / ASTM),$24.2 B in 2025; +10.9 %; services 48 % / machines 26 % / materials 20 % / software 6 %,paid (headlines public),https://wohlersassociates.com/press-releases/new-wohlers-report-2026-values-additive-manufacturing-market-at-24-2b/,
+market,AMPOWER Report 2026,industrial AM > €11 B in 2025; +5.6 %; 13.5 % CAGR to > €21 B in 2030; defence a key driver,online,https://manufactur3dmag.com/ampower-report-2026-reveals-am-market-recovery/,also https://additive-manufacturing-report.com
+market,AM Research quarterly data,$4.48 B in Q2 2026; +12 % y/y,paid (headlines public),https://www.australianmanufacturing.com.au/?p=196251,
+market,Share prices of listed AM companies,5-year charts,free,,exercise on the hype cycle
+case,Deutsche Bahn spare parts,> 200000 parts in service; > €20 M saved since 2015; ~1000 digital models; 10000 target by 2030,free,https://railwaynews.net/germanys-db-200000-3d-printed-rail-parts-e20m-saved.html,see 04_industries/rail/
+case,GE / CFM LEAP fuel nozzle,~20 welded parts → 1; Auburn serial production 2015; 100000th nozzle 2021,free,https://www.geaerospace.com/news/articles/100-year-anniversary-manufacturing-technology/outside-box-how-ge-aviation-entered-brave,
+case,Relativity Space,Terran 1: 85 % printed; first launch failed short of orbit (2023),free,https://www.pbs.org/newshour/science/launch-debut-of-3d-printed-rocket-fails-far-short-of-orbit,cautionary case
+case,Vendor case libraries (EOS / Stratasys / HP / Materialise / Carbon),best-case numbers,free,,exercise: what is missing?
+case,Harvard Business Publishing / The Case Centre,teaching cases with notes,paid,,search "additive manufacturing" and "3D printing"; check dates
+case,Martens / Fan / Dwyer 2020,identify → experiment → embed (Dutch SMEs),open access,https://xreiss.efri.uniri.hr/article.php?id=19045,framework for closing checklist
+law,EPO Innovation trends in additive manufacturing (2023),IPF +26.3 %/yr 2013–2020 (~8× all fields); top applicants GE / Raytheon / HP,free,https://www.epo.org/en/news-events/press-centre/press-release/2023/885238,
+law,EPO Patents and additive manufacturing (2020),health sector leads AM filings since 2010,free,https://www.epo.org/en/news-events/press-centre/press-release/2020/451900,
+law,FDA Technical Considerations for Additive Manufactured Medical Devices,guidance,free,,to link
+law,EU MDR custom-made devices,regulation,free,,to link
+law,ISO/ASTM 52900 series,terminology and process categories,abstracts free,,
+law,EU dual-use regulation / US ITAR and EAR,CAD files as controlled technical data,free,,to link
+background,Metal AM / VoxelMatters / TCT / 3D Printing Industry,news,free,,
+background,Deloitte 3D Opportunity series and course,business-case frameworks,free,https://www2.deloitte.com/insights/us/en/learn/3d-opportunity-additive-manufacturing-course.html,figures dated
