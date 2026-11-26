@@ -7,7 +7,19 @@
 | `02_technology_unused.pdf` / `.pptx` | Slides set aside (28): traditional technologies, other AM processes, parked slides. |
 | `02_technologies_old_2026-11-09.pptx` | First PowerPoint version (52 slides, 9 Nov 2026), kept for reference only. |
 
-The PDFs open directly on GitHub. The PowerPoints show each slide as a picture with the speaker
+## Direct downloads (click: the file itself downloads)
+
+| Deck | PDF | PowerPoint |
+|---|---|---|
+| Polymers | [02_technology_polymer.pdf](https://github.com/aconstant-lms/X-FabAdd/raw/main/02_technologies/slides/02_technology_polymer.pdf) | [02_technology_polymer.pptx](https://github.com/aconstant-lms/X-FabAdd/raw/main/02_technologies/slides/02_technology_polymer.pptx) |
+| Metals | [02_technology_metal.pdf](https://github.com/aconstant-lms/X-FabAdd/raw/main/02_technologies/slides/02_technology_metal.pdf) | [02_technology_metal.pptx](https://github.com/aconstant-lms/X-FabAdd/raw/main/02_technologies/slides/02_technology_metal.pptx) |
+| Set aside | [02_technology_unused.pdf](https://github.com/aconstant-lms/X-FabAdd/raw/main/02_technologies/slides/02_technology_unused.pdf) | [02_technology_unused.pptx](https://github.com/aconstant-lms/X-FabAdd/raw/main/02_technologies/slides/02_technology_unused.pptx) |
+
+Do not right-click a file name in GitHub's file list and "Save link as": that saves GitHub's web page
+(about 200 KB) under the file's name, and it will not open. Use the links above, or open the file
+on GitHub and press the download button (↓, "Download raw file") at the top right.
+
+The PDFs also open directly on GitHub. The PowerPoints show each slide as a picture with the speaker
 notes; to change a slide, edit the claude.ai deck and export again:
 
 ```bash
