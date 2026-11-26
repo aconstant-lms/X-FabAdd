@@ -1,0 +1,3 @@
+file,slides,caption,source,credit,license,notes
+04_rl_db_printed_parts.png,04_rl_db_workshop.md,Deutsche Bahn: cumulative 3D-printed parts 2015-2025 (10k Jan 2020 → 200k Nov 2025),Drawn for the course from 04_industries/rail/tables/04_rl_db_milestones.csv (DB press releases),X-FabAdd,course,Source 04_rl_db_printed_parts.py; DB counts are lower bounds ("more than")
+04_rl_digital_warehouse_flow.png,04_rl_db_workshop.md,"Digital-warehouse flow: part needed → record → print, inspect, install; or digitize once",Drawn for the course,X-FabAdd,course,Source 04_rl_digital_warehouse_flow.py

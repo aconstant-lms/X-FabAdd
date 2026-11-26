@@ -27,6 +27,7 @@ A chapter made of several independent decks gets **one subfolder per deck**, eac
   repair/     slides/04_am_repair_figures_test.pptx      figures/          tables/
   risk/       slides/04_risk_human_activities.pptx (+ _deck/ source, PDF)  figures/   tables/
   space/      slides/04_am_space.pptx                    figures/04_sp_*   tables/
+  rail/       04_rl_db_workshop.md (+ PDF)               figures/04_rl_*   tables/04_rl_*
 ```
 
 A new topic in such a chapter = a new subfolder (`04_industries/medical/…`). File names still
