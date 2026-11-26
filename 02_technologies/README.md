@@ -3,9 +3,9 @@
 A growing path, one idea per slide. Figures follow M. F. Ashby's drawing style: plain
 cross-sections, pale flat fills, thin dark outlines, a few labels with leader lines, no title
 inside the picture (titles go on the slide, with French and German names where useful).
-Slides use the course style (Cambria, EXED footer, picture alt text = repository path).
+Slides use the course style (Space Grotesk titles, Inter body, EXED footer, picture alt text = repository path).
 
-Figure names carry the part: `02_a` structure, `02_b` kitchen, `02_c` classical machines, `02_d` voxels and addressing, `02_e` paths, clocks, interfaces, `02_f` AM processes.
+Figure names carry the part: `02_a` structure, `02_b` kitchen, `02_c` classical machines, `02_d` voxels and addressing, `02_e` paths, clocks, interfaces, `02_f` AM processes, `02_g` industrial twins, `02_h` process animations (SLA, DLP, multi-photon, Carbon CLIP, volumetric, LPBF, powder DED, wire DED, cold spray), `02_i` polymer printer prices and maps, `02_j` polymer materials (pyramid, Ashby, prices, makers), `02_k` maturity index, `02_l` polymer physical laws, `02_m` metal physics, `02_n` metal supply (machines, powders, makers, market).
 
 ## Colour convention (`02_a00_colour_convention.png`)
 
@@ -26,7 +26,20 @@ Defined once in `tools/tikz/xfab-tikz.sty`.
 
 ## The decks
 
-- **claude.ai Slides: "AM technologies"**, https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk (45 slides, course style: Caladea, navy part slides, EXED footer, picture boxes labelled with the repo path; slide numbers in `figures/external_usage.csv`). Part 1 *Traditional technologies* shows six cases, one per DIN 8580 group, each titled by its operation with the kitchen steps above and the industrial twin's steps below (`02_b…` + `02_g…`).
+Since 17 Nov 2026 the chapter is taught from two claude.ai Slides decks, built by
+`slides/claude_deck/gen_technology_decks.py` (which runs `gen_am_technologies.py`, then
+`slides_polymer_new.py`, `slides_metal_new.py` and `slides_metal_supply.py`; Andrei's page edits are kept
+verbatim in `slides/claude_deck/raw/`). Slide use of every figure: `figures/external_usage.csv`.
+
+| Deck | Link | Slides | Content |
+|---|---|---|---|
+| AM technologies: polymers | https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF | 66 | polymer processes (photopolymerisation, Carbon CLIP, MJT, MEX, SHL, PBF, injection moulding), prices and makers, box, clocks, interface, six physical laws, maturity index, exercise "Polymer AM 2022 → 2026" and its debrief (volumetric printing, PERFI, Quadratic 3D, 2026 status, market), references |
+| AM technologies: metals | https://claude.ai/artifact/Jre7zVeP4jn9DWpsZQVyVf | 39 | metal processes (LPBF, powder DED, WAAM, cold spray, binder jetting, powder metallurgy), box, clocks, interface, five physical laws for metals, machines, powders and makers (prices, maps, China, market), references |
+| AM technologies: slides set aside | https://claude.ai/artifact/92KDPMDHVf63xrDNPEGhwJ | 28 | Part 1 traditional technologies (kitchen cases and industrial twins), other AM processes (paste, micro, LCVD, ECAM), parked slides |
+| AM technologies (superseded) | https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk | 68 | the single deck before the split; every slide is in one of the three decks above |
+
+The polymer deck holds the exercise answers (part 9 and some notes): do not share it with students before the session.
+
 - **`slides/02_technologies.pptx`** (first version, 52 slides) — to be regenerated from the claude.ai structure once the story is reworked.
 
 ### First PowerPoint version
@@ -55,6 +68,10 @@ sugar cube, papier-mâché, frost on a window, electroformed leaf; CandyFab suga
 - `02_din8580_main_groups.csv` — six groups, DE/EN/FR, cohesion, link with AM
 - `02_primary_shaping_states.csv` — seven starting states, DE/EN/FR, conventional and AM processes
 - `02_machines_lpbf_metal.csv`, `02_machines_binder_jetting_metal.csv`, `02_machines_microprinting.csv`
+- `02_printers_price_voxel.csv` — polymer printers: price, voxel, build volume, head office (charts `02_i…`, maps)
+- `02_polymer_prices_makers.csv`, `02_polymers_ashby.csv` — polymer feedstock prices, makers, Ashby data (`02_j…`)
+- `02_ampower_maturity_2022_2026.csv` — AMPOWER Insights Vol. 11 (2022) maturity points and the 2026 status of the ten companies (exercise answer key: public)
+- `02_machines_metal_makers.csv` (column `plotted`: yes / tier / quote), `02_metal_powder_prices.csv`, `02_powder_makers.csv`, `02_powder_co2.csv`, `02_metal_market_ampower.csv` — metal supply (`02_n…`)
 
 ## References
 
@@ -80,7 +97,14 @@ sugar cube, papier-mâché, frost on a window, electroformed leaf; CandyFab suga
 
 ```bash
 python tools/build_figures.py          # every NN_*/figures/*.tex -> .pdf + .png (300 dpi)
+python 02_technologies/figures/02_h08_lpbf_animation.py   # each animation / chart has its own script
 ```
-Needs XeLaTeX (TeX Live / MacTeX), poppler (`pdftoppm`) and the Caladea font.
+TikZ needs XeLaTeX (TeX Live / MacTeX), poppler (`pdftoppm`) and the Inter font. Animations use
+pycairo and `tools/iso_anim.py`; charts use matplotlib (`_printers_common.py` holds the validated
+technology palette); the maps need `geopandas<1.0`.
+
+Pictures kept out of this public repository until permission is checked: the AMPOWER polymer
+landscape (`02_k02`, deck only) and Ashby's materials evolution. The Carbon and Femtika
+animations are in the repository with their credit; licence still to confirm.
 `figures/drafts/` holds the first, denser schematics, kept as material for steps (iii) and (vi);
 they are not built or indexed.

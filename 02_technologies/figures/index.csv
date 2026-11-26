@@ -228,3 +228,12 @@ _printers_common.py,,,,Andrei Constantinescu,own drawing,shared palette and data
 02_n05_powder_co2.png,msup-co2,CO2 of virgin vs recycled feedstock,"Davies (Sandvik), PowderMet 2023; tables/02_powder_co2.csv",Andrei Constantinescu,own drawing (data cited),
 02_n06_metal_market.png,msup-market,Metal AM market 2016-2028 and metal PBF units,AMPOWER Report 2024/2025 figures; tables/02_metal_market_ampower.csv,Andrei Constantinescu,own drawing (data cited),"redrawn from published numbers, not the AMPOWER chart"
 02_n07_powder_routes.png,msup-routes,"Four powder atomisation routes, schematic",after metal-am.com powder introduction,Andrei Constantinescu,own drawing,
+02_n01_metal_price_vs_volume.pdf,,,,Andrei Constantinescu,own drawing,vector export (02_n00_metal_supply.py)
+02_n02_map_europe_labels.svg,,,,Andrei Constantinescu,own drawing,vector export (02_n00_metal_supply.py)
+02_n02_map_world_numbered.svg,,,,Andrei Constantinescu,own drawing,vector export (02_n00_metal_supply.py)
+02_n03_powder_prices.pdf,,,,Andrei Constantinescu,own drawing,vector export (02_n00_metal_supply.py)
+02_n04_map_europe_labels.svg,,,,Andrei Constantinescu,own drawing,vector export (02_n00_metal_supply.py)
+02_n04_map_world_numbered.svg,,,,Andrei Constantinescu,own drawing,vector export (02_n00_metal_supply.py)
+02_n05_powder_co2.pdf,,,,Andrei Constantinescu,own drawing,vector export (02_n00_metal_supply.py)
+02_n06_metal_market.pdf,,,,Andrei Constantinescu,own drawing,vector export (02_n00_metal_supply.py)
+02_n07_powder_routes.pdf,,,,Andrei Constantinescu,own drawing,vector export (02_n00_metal_supply.py)

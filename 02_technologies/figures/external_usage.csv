@@ -1,60 +1,152 @@
 file,deck,slides
-02_a00_colour_convention.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,5
-02_a01_process_groups.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,4
-02_b01_kitchen_primary_shaping.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,6
-02_b02_kitchen_forming.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,7
-02_b03_kitchen_separating.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,8
-02_b04_kitchen_joining.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,9
-02_b05_kitchen_coating.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,10
-02_b06_kitchen_properties.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,11
-02_c00_ashby_process_tree.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,51
-02_c02_injection_moulding.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,52
-02_c07_heat_treatment_scales.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,12
-02_c08_press_and_sinter.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,53
-02_c09_four_routes.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,54
-02_c10_hip.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,13
-02_d01_file_layer_voxel.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,15
-02_d02_point_line_area_volume.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,36
-02_e02_clocks.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,39
-02_e03_layer_interfaces.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,41
-02_e04_groups_paths_matrix.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,16
-02_e05_material_paths_physics.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,15
-02_f02_vat_photopolymerisation.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,56
-02_f03_material_extrusion.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,26
-02_f04_material_jetting.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,25
-02_f05_binder_jetting_chain.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,28
-02_f06_laser_powder_bed_fusion.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,1 29
-02_f07_directed_energy_deposition.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,30
-02_f08_sheet_lamination.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,31
-02_f09_cold_spray.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,32
-02_f10_laser_cvd.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,33
-02_f11_electrochemical_am.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,34
-02_f12_paste_extrusion.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,27
-02_g01_twin_casting.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,6
-02_g03_twin_milling.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,8
-02_g04_twin_welding.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,9
-02_g05_twin_thermal_spraying.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,10
-02_g06_twin_quench_hardening.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,11
-02_g07_twin_sheet_rolling.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,7
-02_h01_sla_animation.gif,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,17
-02_h02_dlp_animation.gif,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,17
-02_h03_mpp_animation.gif,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,17
-02_i01_price_vs_voxel.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,19
-02_i03_price_vs_build_volume.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,19
-02_i04_map_europe_labels.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,20
-02_i04_map_world_numbered.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,20
-02_j01_polymer_pyramid.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,21
-02_j02_polymer_ashby_E_strength.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,22
-02_j03_polymer_prices.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,23
-02_j04_map_europe_labels.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,24
-02_j04_map_world_numbered.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,24
-02_h04_carbon_clip_animation.gif,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,vpp-example-carbon
-02_h05_volumetric_printing.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,vpp-volumetric
-02_k01_maturity_index.png,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,poly-readiness
-(deck only) 02_k02_ampower_polymer_landscape.jpg,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,poly-landscape
-02_h06_tomographic_animation.gif,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,vpp-volumetric-two
-02_h07_lightsheet_animation.gif,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,vpp-volumetric-two
-02_h08_lpbf_animation.gif,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,metal-processes
-02_h09_ded_powder_animation.gif,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,metal-processes
-02_h10_ded_wire_animation.gif,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,metal-processes
-02_h11_cold_spray_animation.gif,AM technologies (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk,metal-processes
+02_a00_colour_convention.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",5
+02_a01_process_groups.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",4
+02_b01_kitchen_primary_shaping.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",6
+02_b02_kitchen_forming.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",7
+02_b03_kitchen_separating.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",8
+02_b04_kitchen_joining.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",9
+02_b05_kitchen_coating.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",10
+02_b06_kitchen_properties.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",11
+02_c00_ashby_process_tree.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",51
+02_c02_injection_moulding.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",52
+02_c07_heat_treatment_scales.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",12
+02_c08_press_and_sinter.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",53
+02_c09_four_routes.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",54
+02_c10_hip.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",13
+02_d01_file_layer_voxel.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",15
+02_d02_point_line_area_volume.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",36
+02_e02_clocks.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",39
+02_e03_layer_interfaces.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",41
+02_e04_groups_paths_matrix.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",16
+02_e05_material_paths_physics.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",15
+02_f02_vat_photopolymerisation.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",56
+02_f03_material_extrusion.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",26
+02_f04_material_jetting.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",25
+02_f05_binder_jetting_chain.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",28
+02_f06_laser_powder_bed_fusion.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",1 29
+02_f07_directed_energy_deposition.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",30
+02_f08_sheet_lamination.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",31
+02_f09_cold_spray.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",32
+02_f10_laser_cvd.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",33
+02_f11_electrochemical_am.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",34
+02_f12_paste_extrusion.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",27
+02_g01_twin_casting.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",6
+02_g03_twin_milling.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",8
+02_g04_twin_welding.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",9
+02_g05_twin_thermal_spraying.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",10
+02_g06_twin_quench_hardening.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",11
+02_g07_twin_sheet_rolling.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",7
+02_h01_sla_animation.gif,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",17
+02_h02_dlp_animation.gif,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",17
+02_h03_mpp_animation.gif,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",17
+02_i01_price_vs_voxel.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",19
+02_i03_price_vs_build_volume.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",19
+02_i04_map_europe_labels.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",20
+02_i04_map_world_numbered.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",20
+02_j01_polymer_pyramid.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",21
+02_j02_polymer_ashby_E_strength.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",22
+02_j03_polymer_prices.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",23
+02_j04_map_europe_labels.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",24
+02_j04_map_world_numbered.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",24
+02_h04_carbon_clip_animation.gif,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",vpp-example-carbon
+02_h05_volumetric_printing.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",vpp-volumetric
+02_k01_maturity_index.png,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",poly-readiness
+(deck only) 02_k02_ampower_polymer_landscape.jpg,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",poly-landscape
+02_h06_tomographic_animation.gif,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",vpp-volumetric-two
+02_h07_lightsheet_animation.gif,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",vpp-volumetric-two
+02_h08_lpbf_animation.gif,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",metal-processes
+02_h09_ded_powder_animation.gif,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",metal-processes
+02_h10_ded_wire_animation.gif,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",metal-processes
+02_h11_cold_spray_animation.gif,"AM technologies, superseded 17 Nov 2026 (claude.ai Slides) https://claude.ai/artifact/4bKyVcrndt1NUbHWZMYcqk",metal-processes
+02_c02_injection_moulding.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,12
+02_d01_file_layer_voxel.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,3
+02_d02_point_line_area_volume.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,19
+02_e02_clocks.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,22
+02_e03_layer_interfaces.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,24
+02_e04_groups_paths_matrix.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,4
+02_e05_material_paths_physics.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,3
+02_f02_vat_photopolymerisation.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,1
+02_f03_material_extrusion.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,9
+02_f04_material_jetting.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,8
+02_f06_laser_powder_bed_fusion.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,11
+02_f08_sheet_lamination.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,10
+02_h01_sla_animation.gif,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,6
+02_h02_dlp_animation.gif,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,6
+02_h03_mpp_animation.gif,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,6
+02_h04_carbon_clip_animation.gif,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,7
+02_h05_volumetric_printing.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,54
+02_h06_tomographic_animation.gif,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,55
+02_h07_lightsheet_animation.gif,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,55
+02_i01_price_vs_voxel.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,56
+02_i01_price_vs_voxel_intro.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,13
+02_i03_price_vs_build_volume.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,56
+02_i03_price_vs_build_volume_intro.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,13
+02_i04_map_europe_labels.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,57
+02_i04_map_world_numbered.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,57
+02_j01_polymer_pyramid.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,14
+02_j02_polymer_ashby_E_strength.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,15
+02_j03_polymer_prices.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,16
+02_j04_map_europe_labels.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,17
+02_j04_map_world_numbered.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,17
+02_k01_maturity_index.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,52
+"02_k02_ampower_polymer_landscape.jpg (deck only, AMPOWER picture)",AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,36
+02_k03_maturity_2022.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,41 49
+02_l01_beer_lambert.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,26
+02_l02_two_photon.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,27
+02_l03_viscosity_ruler.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,28
+02_l04_jetting_window.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,29
+02_l05_frenkel_sintering.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,30
+02_l06_yield_stress.png,AM technologies: polymers (claude.ai Slides) https://claude.ai/artifact/QUfFAekdYybxee5PVWWPAF,31
+02_c08_press_and_sinter.png,AM technologies: metals (claude.ai Slides) https://claude.ai/artifact/Jre7zVeP4jn9DWpsZQVyVf,10
+02_c10_hip.png,AM technologies: metals (claude.ai Slides) https://claude.ai/artifact/Jre7zVeP4jn9DWpsZQVyVf,23
+02_d01_file_layer_voxel.png,AM technologies: metals (claude.ai Slides) https://claude.ai/artifact/Jre7zVeP4jn9DWpsZQVyVf,3
+02_d02_point_line_area_volume.png,AM technologies: metals (claude.ai Slides) https://claude.ai/artifact/Jre7zVeP4jn9DWpsZQVyVf,13
+02_e02_clocks.png,AM technologies: metals (claude.ai Slides) https://claude.ai/artifact/Jre7zVeP4jn9DWpsZQVyVf,16
+02_e03_layer_interfaces.png,AM technologies: metals (claude.ai Slides) https://claude.ai/artifact/Jre7zVeP4jn9DWpsZQVyVf,18
+02_e04_groups_paths_matrix.png,AM technologies: metals (claude.ai Slides) https://claude.ai/artifact/Jre7zVeP4jn9DWpsZQVyVf,4
+02_e05_material_paths_physics.png,AM technologies: metals (claude.ai Slides) https://claude.ai/artifact/Jre7zVeP4jn9DWpsZQVyVf,3
+02_f05_binder_jetting_chain.png,AM technologies: metals (claude.ai Slides) https://claude.ai/artifact/Jre7zVeP4jn9DWpsZQVyVf,9
+02_f06_laser_powder_bed_fusion.png,AM technologies: metals (claude.ai Slides) https://claude.ai/artifact/Jre7zVeP4jn9DWpsZQVyVf,1 6
+02_f07_directed_energy_deposition.png,AM technologies: metals (claude.ai Slides) https://claude.ai/artifact/Jre7zVeP4jn9DWpsZQVyVf,7
+02_f09_cold_spray.png,AM technologies: metals (claude.ai Slides) https://claude.ai/artifact/Jre7zVeP4jn9DWpsZQVyVf,8
+02_h08_lpbf_animation.gif,AM technologies: metals (claude.ai Slides) https://claude.ai/artifact/Jre7zVeP4jn9DWpsZQVyVf,5
+02_h09_ded_powder_animation.gif,AM technologies: metals (claude.ai Slides) https://claude.ai/artifact/Jre7zVeP4jn9DWpsZQVyVf,5
+02_h10_ded_wire_animation.gif,AM technologies: metals (claude.ai Slides) https://claude.ai/artifact/Jre7zVeP4jn9DWpsZQVyVf,5
+02_h11_cold_spray_animation.gif,AM technologies: metals (claude.ai Slides) https://claude.ai/artifact/Jre7zVeP4jn9DWpsZQVyVf,5
+02_m01_melt_cool.png,AM technologies: metals (claude.ai Slides) https://claude.ai/artifact/Jre7zVeP4jn9DWpsZQVyVf,20
+02_m02_residual_stress.png,AM technologies: metals (claude.ai Slides) https://claude.ai/artifact/Jre7zVeP4jn9DWpsZQVyVf,21
+02_m03_murakami_fatigue.png,AM technologies: metals (claude.ai Slides) https://claude.ai/artifact/Jre7zVeP4jn9DWpsZQVyVf,22
+02_m04_rate_resolution.png,AM technologies: metals (claude.ai Slides) https://claude.ai/artifact/Jre7zVeP4jn9DWpsZQVyVf,24
+02_n01_metal_price_vs_volume.png,AM technologies: metals (claude.ai Slides) https://claude.ai/artifact/Jre7zVeP4jn9DWpsZQVyVf,32
+02_n02_map_europe_labels.png,AM technologies: metals (claude.ai Slides) https://claude.ai/artifact/Jre7zVeP4jn9DWpsZQVyVf,33
+02_n02_map_world_numbered.png,AM technologies: metals (claude.ai Slides) https://claude.ai/artifact/Jre7zVeP4jn9DWpsZQVyVf,33
+02_n03_powder_prices.png,AM technologies: metals (claude.ai Slides) https://claude.ai/artifact/Jre7zVeP4jn9DWpsZQVyVf,30
+02_n04_map_europe_labels.png,AM technologies: metals (claude.ai Slides) https://claude.ai/artifact/Jre7zVeP4jn9DWpsZQVyVf,29
+02_n04_map_world_numbered.png,AM technologies: metals (claude.ai Slides) https://claude.ai/artifact/Jre7zVeP4jn9DWpsZQVyVf,29
+02_n05_powder_co2.png,AM technologies: metals (claude.ai Slides) https://claude.ai/artifact/Jre7zVeP4jn9DWpsZQVyVf,31
+02_n06_metal_market.png,AM technologies: metals (claude.ai Slides) https://claude.ai/artifact/Jre7zVeP4jn9DWpsZQVyVf,35
+02_n07_powder_routes.png,AM technologies: metals (claude.ai Slides) https://claude.ai/artifact/Jre7zVeP4jn9DWpsZQVyVf,28
+02_a00_colour_convention.png,AM technologies: slides set aside (claude.ai Slides) https://claude.ai/artifact/92KDPMDHVf63xrDNPEGhwJ,5
+02_a01_process_groups.png,AM technologies: slides set aside (claude.ai Slides) https://claude.ai/artifact/92KDPMDHVf63xrDNPEGhwJ,4
+02_b01_kitchen_primary_shaping.png,AM technologies: slides set aside (claude.ai Slides) https://claude.ai/artifact/92KDPMDHVf63xrDNPEGhwJ,6
+02_b02_kitchen_forming.png,AM technologies: slides set aside (claude.ai Slides) https://claude.ai/artifact/92KDPMDHVf63xrDNPEGhwJ,7
+02_b03_kitchen_separating.png,AM technologies: slides set aside (claude.ai Slides) https://claude.ai/artifact/92KDPMDHVf63xrDNPEGhwJ,8
+02_b04_kitchen_joining.png,AM technologies: slides set aside (claude.ai Slides) https://claude.ai/artifact/92KDPMDHVf63xrDNPEGhwJ,9
+02_b05_kitchen_coating.png,AM technologies: slides set aside (claude.ai Slides) https://claude.ai/artifact/92KDPMDHVf63xrDNPEGhwJ,10
+02_b06_kitchen_properties.png,AM technologies: slides set aside (claude.ai Slides) https://claude.ai/artifact/92KDPMDHVf63xrDNPEGhwJ,11
+02_c00_ashby_process_tree.png,AM technologies: slides set aside (claude.ai Slides) https://claude.ai/artifact/92KDPMDHVf63xrDNPEGhwJ,21
+02_c07_heat_treatment_scales.png,AM technologies: slides set aside (claude.ai Slides) https://claude.ai/artifact/92KDPMDHVf63xrDNPEGhwJ,12
+02_c08_press_and_sinter.png,AM technologies: slides set aside (claude.ai Slides) https://claude.ai/artifact/92KDPMDHVf63xrDNPEGhwJ,22
+02_c09_four_routes.png,AM technologies: slides set aside (claude.ai Slides) https://claude.ai/artifact/92KDPMDHVf63xrDNPEGhwJ,23
+02_c10_hip.png,AM technologies: slides set aside (claude.ai Slides) https://claude.ai/artifact/92KDPMDHVf63xrDNPEGhwJ,13
+02_f02_vat_photopolymerisation.png,AM technologies: slides set aside (claude.ai Slides) https://claude.ai/artifact/92KDPMDHVf63xrDNPEGhwJ,25
+02_f06_laser_powder_bed_fusion.png,AM technologies: slides set aside (claude.ai Slides) https://claude.ai/artifact/92KDPMDHVf63xrDNPEGhwJ,1
+02_f10_laser_cvd.png,AM technologies: slides set aside (claude.ai Slides) https://claude.ai/artifact/92KDPMDHVf63xrDNPEGhwJ,17
+02_f11_electrochemical_am.png,AM technologies: slides set aside (claude.ai Slides) https://claude.ai/artifact/92KDPMDHVf63xrDNPEGhwJ,18
+02_f12_paste_extrusion.png,AM technologies: slides set aside (claude.ai Slides) https://claude.ai/artifact/92KDPMDHVf63xrDNPEGhwJ,15
+02_g01_twin_casting.png,AM technologies: slides set aside (claude.ai Slides) https://claude.ai/artifact/92KDPMDHVf63xrDNPEGhwJ,6
+02_g03_twin_milling.png,AM technologies: slides set aside (claude.ai Slides) https://claude.ai/artifact/92KDPMDHVf63xrDNPEGhwJ,8
+02_g04_twin_welding.png,AM technologies: slides set aside (claude.ai Slides) https://claude.ai/artifact/92KDPMDHVf63xrDNPEGhwJ,9
+02_g05_twin_thermal_spraying.png,AM technologies: slides set aside (claude.ai Slides) https://claude.ai/artifact/92KDPMDHVf63xrDNPEGhwJ,10
+02_g06_twin_quench_hardening.png,AM technologies: slides set aside (claude.ai Slides) https://claude.ai/artifact/92KDPMDHVf63xrDNPEGhwJ,11
+02_g07_twin_sheet_rolling.png,AM technologies: slides set aside (claude.ai Slides) https://claude.ai/artifact/92KDPMDHVf63xrDNPEGhwJ,7
