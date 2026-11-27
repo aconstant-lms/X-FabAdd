@@ -16,7 +16,6 @@ ex-safran,RenAM 500Q at Safran campus,https://manufactur3dmag.com/safran-additiv
 ex-frce,AH-1Z pylon fitting (VIRIN 260304-N-KN454-1001),https://www.navy.mil/Resources/Photo-Gallery/igphoto/2003920447/,"US Navy photo, Samantha Morse",US government work - to check,user upload
 polymers,EOS P3 NEXT (successor of P 396),https://www.eos.info/en-us/polymer-solutions/polymer-printers/eos-p-396,EOS,to check (product image),online deck only
 polymers,Prodways printer range,https://3dprint.com/172612/safran-prodways-partnership/,Prodways,to check,online deck only
-ga-divergent,GA-ASI / Divergent drone structure collage,https://3dprint.com/298800/divergent-reveals-automated-assembly-of-3d-printed-drone-for-general-atomics/,General Atomics / Divergent,to check,online deck only
 daps,Divergent factory printer,https://3dprint.com/335497/divergent-is-building-a-factory-around-3d-printing/,Divergent,to check,online deck only
 nozzle-1,Printed LEAP fuel nozzle,https://www.ge.com/news/reports/the-faa-cleared-the-first-3d-printed-part-to-fly-2,CFM International (GE Reports),to check,user upload
 catalyst-1,Catalyst on test stand,https://3dprint.com/266774/ge-aviation-plants-in-italy-and-the-us-3d-printing-parts-for-ge-catalyst-engine/,GE Aviation,to check,online deck only
@@ -34,3 +33,8 @@ ex-cabin,Aircraft cabin seats (Stratasys Direct aerospace page),https://www.stra
 ex-etihad,Etihad Engineering technicians at the EOS P 396,https://www.eos.info/07-press/eos_pm_etihad_technicians-at-work.jpg,EOS / Etihad Aviation Group (press photo),to check (press image),user upload
 nozzle-1,Fuel nozzle cross-section scheme after GE patent US 8806871 B2,https://patents.google.com/patent/US8806871B2/en,own drawing (inline SVG in the deck),own drawing,simplified; braze/weld counts from the patent background and preferred embodiment
 nozzle-2,GE Aviation Additive Technology Center (Cincinnati): Concept Laser XL printers on the floor,user upload (ATC.jpg),Photo: GE Aviation,to check (press image),replaces the GE Reports floor photo
+ga-divergent,GA-ASI MQ-9B SkyGuardian in flight,01_introduction.pdf p41 (https://www.ga-asi.com/),GA-ASI,to check,replaces the 3DPrint.com collage
+ga-divergent,PBF-LB Ti-6Al-4V NACA intake for the SkyGuardian,01_introduction.pdf p41 (https://www.ge.com/additive/webinars),GA-ASI / GE Additive webinar,to check,
+ga-divergent,GA-ASI printed lattice frame,01_introduction.pdf p41 (https://www.ga-asi.com/),GA-ASI,to check,
+daps,Divergent aerospace integrated fuselage,01_introduction.pdf p43 (https://www.divergent3d.com/),Divergent,to check,fills the former robotic-assembly box
+daps,Divergent automotive frame and suspension structures,01_introduction.pdf p43 (https://www.divergent3d.com/),Divergent,to check,
