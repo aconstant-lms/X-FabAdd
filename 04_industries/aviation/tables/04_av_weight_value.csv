@@ -1,10 +1,11 @@
 per_kg_removed_from_each_engine,a320neo_737max,a330neo_787
-(1) Fuel to carry 1 kg for 1 hour (rule of thumb: 3%/h Aircraft IT; 3.5%/h OpenAirlines),0.030 kg,0.035 kg
-(2) Flight hours per aircraft per year (typical utilisation),"3,500 h (≈10 h/day)","5,000 h (≈14 h/day)"
-(3) Engines per aircraft,2,2
-Fuel saved per aircraft per year = (1)x(2)x(3),≈210 kg,≈350 kg
-CO₂ avoided per year (x 3.16),≈660 kg,≈1.1 t
-"€ per year at $90 / $152 / $190 per barrel","€130 / 220 / 275","€215 / 365 / 455"
-Per aircraft over 25 years (2 engines),"€3,200–6,800","€5,400–11,400"
-"Per engine over its life (25 yr ≈ 87,500 h / 125,000 h): fuel",≈2.6 t,≈4.4 t
-Per engine over its life (25 yr): value,"€1,600–3,400","€2,700–5,700"
+(1) Fuel for 1 kg / hour,0.030 kg,0.035 kg
+(2) Flight h / aircraft / year,"3,500 h","5,000 h"
+(3) Engines / aircraft,2,2
+Fuel saved / aircraft / year = (1)x(2)x(3),≈210 kg,≈350 kg
+CO₂ avoided / aircraft / year,≈660 kg,≈1.1 t
+€ / aircraft / year ($90 / 152 / 190 per bbl),"€130 / 220 / 275","€215 / 365 / 455"
+€ / aircraft / 25 years,"€3,200–6,800","€5,400–11,400"
+Fuel / engine / life (25 yr),≈2.6 t,≈4.4 t
+€ / engine / life (25 yr),"€1,600–3,400","€2,700–5,700"
+notes,"(1) 3%/h Aircraft IT; 3.5%/h OpenAirlines. (2) ≈10 h/day narrow-body, ≈14 h/day wide-body; engine life 25 yr ≈ 87,500 / 125,000 h. CO₂ 3.16 kg/kg fuel. Jet A-1 0.8 kg/L, 159 L/bbl, €1 = $1.15, undiscounted.",
