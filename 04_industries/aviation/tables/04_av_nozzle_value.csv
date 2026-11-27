@@ -1,12 +1,13 @@
 leap_fuel_nozzle_in_euros,per_engine
-5x durability,
+5x durability in euros,
 Nozzles / engine,19
-Repairs / nozzle / engine life: conventional -> printed (assumption),5 -> 1
+Repairs: conventional -> printed (assumption),5 -> 1
 Cost / nozzle repair or replacement (assumption),$5–15k
 € / engine / life (19 x 4 avoided),≈€330–990k
 € / engine / year (25 yr),≈€13–40k
 Better fuel burn (A320neo; 3500 h / year),
 Fuel / engine / year,"≈3,900 t"
+Lighter nozzles: -1 kg / engine (assumption),≈0.003% ≈ €65–135 / yr
 € / engine / year per 0.1% lower fuel burn,≈€2.4–5.1k
 If the nozzle brings 1 point of the LEAP's 15% (assumption),≈€24–51k / year
 Same value as removing from the engine,≈370 kg
