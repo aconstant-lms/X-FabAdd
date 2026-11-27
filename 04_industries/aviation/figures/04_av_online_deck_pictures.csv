@@ -19,7 +19,6 @@ polymers,Prodways printer range,https://3dprint.com/172612/safran-prodways-partn
 ga-divergent,GA-ASI / Divergent drone structure collage,https://3dprint.com/298800/divergent-reveals-automated-assembly-of-3d-printed-drone-for-general-atomics/,General Atomics / Divergent,to check,online deck only
 daps,Divergent factory printer,https://3dprint.com/335497/divergent-is-building-a-factory-around-3d-printing/,Divergent,to check,online deck only
 nozzle-1,Printed LEAP fuel nozzle,https://www.ge.com/news/reports/the-faa-cleared-the-first-3d-printed-part-to-fly-2,CFM International (GE Reports),to check,user upload
-nozzle-2,GE Aviation Auburn plant sign,https://alreporter.com/2021/08/31/ge-aviation-in-auburn-ships-100000th-fuel-nozzle/,Alabama Reporter,to check,online deck only
 catalyst-1,Catalyst on test stand,https://3dprint.com/266774/ge-aviation-plants-in-italy-and-the-us-3d-printing-parts-for-ge-catalyst-engine/,GE Aviation,to check,online deck only
 catalyst-2,Beechcraft Denali first flight,https://flyingmag.com/denali-takes-first-flight-behind-catalyst-engine,Textron Aviation,to check (press image),online deck only
 metal-processes,"LPBF, powder DED, wire DED, cold spray animations; rate vs resolution chart",02_technologies/figures,Andrei Constantinescu,own drawing,reused from chapter 02
@@ -33,3 +32,5 @@ ex-c919,C919 laser-printed titanium central wing flange,https://3dprintingindust
 ex-blt,BLT-printed Airbus A320 O-ring (BLT-S400; superalloy),https://www.metal-am.com/blt-secures-airbus-a320-serial-production-contract/,Courtesy BLT via Metal AM,to check,user upload; replaces the Zhuhai signing photo
 ex-cabin,Aircraft cabin seats (Stratasys Direct aerospace page),https://www.stratasys.com/en/stratasysdirect/industries/aerospace/,Stratasys Direct,to check (marketing image),user upload
 ex-etihad,Etihad Engineering technicians at the EOS P 396,https://www.eos.info/07-press/eos_pm_etihad_technicians-at-work.jpg,EOS / Etihad Aviation Group (press photo),to check (press image),user upload
+nozzle-1,Fuel nozzle cross-section scheme after GE patent US 8806871 B2,https://patents.google.com/patent/US8806871B2/en,own drawing (inline SVG in the deck),own drawing,simplified; braze/weld counts from the patent background and preferred embodiment
+nozzle-2,GE metal printers on the floor of the Additive Technology Center (Cincinnati),https://www.ge.com/news/reports/3d-printed-age-futuristic-ohio-factory-proving-mark-twain-wrong/,GE Reports,to check (press image),not Auburn; Auburn team photo (30000 tips) uploaded as alternative: https://3dprint.com/226703/ge-aviation-fuel-nozzle-3d-printed-30000/
