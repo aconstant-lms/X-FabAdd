@@ -1,0 +1,10 @@
+part_consolidation,leap_fuel_nozzle,ge_catalyst
+Parts per unit,20 → 1,855 → 12
+Parts per engine,380 → 19 (19 nozzles),855 → 12
+Brazes + welds per nozzle,25 → 5,–
+Durability / overhaul interval,5× more durable,"TBO 4,000 h (+33% vs ≈3,000 h)"
+Spares inventory,−95% (course slides),fewer part numbers
+Overhaul reserve / engine / hour,–,$133–200 → $100–150
+€ / engine / year (500 h),–,≈€15–22k
+"€ / engine / 10,000 h",–,≈€290–435k
+notes,"GE Reports 2013–2018 (20 parts into 1, 25% lighter, 5× durable, 30% more cost-efficient; brazes and welds 25 → 5). Known issue: LEAP fuel nozzle carbonisation (AJW 2025).","GE: 855 → 12, TBO 4,000 h = +33% vs leading competitor. Overhaul $400–600k assumed equal for both TBOs (P&WC PT6A 2026 flat-rate prices as reference). €1 = $1.15."
